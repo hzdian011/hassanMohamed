@@ -1,0 +1,9 @@
+{
+    "sections": {
+        "navbar":{
+            "type":"new-navbar",
+            "settings":{}
+        }
+    },
+    "order":["navbar"],
+}

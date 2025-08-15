@@ -1,0 +1,53 @@
+{% schema %}
+{
+  "name": "New Navbar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Brand Text",
+      "default": "My Brand"
+    },
+    {
+      "type": "text",
+      "id": "center_text",
+      "label": "Center Text",
+      "default": "you can edit me man"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Click Me"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/"
+    }
+  ]
+}
+{% endschema %}
+
+<div>
+  <!-- left: Brand -->
+  <div>
+    <a href="/home" class="navbar-brand">
+      {{ settings.brand_text }}
+    </a>
+  </div>
+  <!-- center: Text -->
+  <div>
+    {{ section.settings.center_text }}
+  </div>
+  <!-- Right: Button -->
+  <div>
+    <a
+      href="{{ section.settings.button_link }}"
+      style="padding:0.5rem 1rem;background:#000;color:#fff;text-decoration:none;border-radius:4px;"
+    >
+      {{ section.settings.button_label }}
+    </a>
+  </div>
+</div>
