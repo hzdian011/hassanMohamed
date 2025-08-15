@@ -1,0 +1,41 @@
+{% comment %}
+  Section: soka-prod
+  يسمح بعرض منتجات من Collection محددة
+{% endcomment %}
+
+<section class="product-gallery">
+  <div class="grid grid-cols-4 gap-4">
+    {% assign products = collections[section.settings.collection].products %}
+    {% for product in products %}
+      <div class="product-card">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}" width="200" height="200">
+        {% endif %}
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.price | money }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.product-gallery {
+  padding: 20px;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+  font-size: 16px;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #555;
+}
+</style>
