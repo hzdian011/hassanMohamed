@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "gift-guide-section": {
+      "type": "gift-guide-section"
+    }
+  },
+  "order": [
+    "gift-guide-section"
+  ]
+}
