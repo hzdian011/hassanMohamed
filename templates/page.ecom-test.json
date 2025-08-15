@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "banner_custom": { "type": "banner-custom" },
+    "grid_custom": { "type": "grid-custom" }
+  },
+  "order": ["banner_custom", "grid_custom"]
+}

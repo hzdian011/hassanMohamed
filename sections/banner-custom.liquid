@@ -1,0 +1,57 @@
+<section class="ecom-banner" style="position:relative;overflow:hidden">
+  {% if section.settings.bg_image %}
+    <div class="ecom-banner__bg" style="background-image:url({{ section.settings.bg_image | image_url: width: 2400 }});"></div>
+  {% endif %}
+
+  <div class="ecom-banner__inner">
+    {% if section.settings.kicker != blank %}
+      <p class="ecom-banner__kicker">{{ section.settings.kicker }}</p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h1 class="ecom-banner__heading">{{ section.settings.heading }}</h1>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="ecom-banner__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    {% if section.settings.cta_label != blank %}
+      <a href="{{ section.settings.cta_link }}" class="ecom-btn ecom-btn--pulse" data-animate="pulse">{{ section.settings.cta_label }}</a>
+    {% endif %}
+  </div>
+
+  {% comment %} {{ 'custom-test.css' | asset_url | stylesheet_tag }} {% endcomment %}
+</section>
+
+<style>
+  .ecom-banner{min-height:60vh;display:grid;place-items:center;padding:clamp(24px,5vw,72px);}
+  .ecom-banner__bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:var(--banner-filter, none);}
+  .ecom-banner__inner{position:relative;z-index:1;max-width:1100px;text-align:{{ section.settings.text_align }};}
+  .ecom-banner__kicker{letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin:0 0 .5rem}
+  .ecom-banner__heading{font-size:clamp(28px,5vw,56px);margin:.25rem 0}
+  .ecom-banner__subheading{max-width:70ch;opacity:.9}
+  .ecom-btn{display:inline-block;padding:.9rem 1.25rem;border:1px solid currentColor;border-radius:999px;font-weight:600;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease}
+  .ecom-btn--pulse:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.12)}
+  @media (max-width: 768px){.ecom-banner{min-height:46vh}.ecom-banner__inner{padding:0 12px}}
+</style>
+
+{% schema %}
+{
+  "name": "Custom Banner (Test)",
+  "settings": [
+    { "type": "image_picker", "id": "bg_image", "label": "Background image" },
+    { "type": "text", "id": "kicker", "label": "Kicker (small title)" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Shop now" },
+    { "type": "url",  "id": "cta_link",  "label": "Button link" },
+    { "type": "select", "id": "text_align", "label": "Text alignment", "options": [
+      {"value":"left","label":"Left"},
+      {"value":"center","label":"Center"},
+      {"value":"right","label":"Right"}
+    ], "default":"center" }
+  ],
+  "presets": [{ "name": "Custom Banner (Test)" }]
+}
+{% endschema %}
