@@ -1,0 +1,115 @@
+{% schema %}
+{
+  "name": "Custom Products Grid",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Select product 1"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Select product 2"
+    },
+    {
+      "type": "product",
+      "id": "product_3",
+      "label": "Select product 3"
+    },
+    {
+      "type": "product",
+      "id": "product_4",
+      "label": "Select product 4"
+    },
+    {
+      "type": "product",
+      "id": "product_5",
+      "label": "Select product 5"
+    },
+    {
+      "type": "product",
+      "id": "product_6",
+      "label": "Select product 6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Products Grid"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-products-grid">
+  {% for i in (1..6) %}
+    {% assign product = all_products[section.settings["product_" | append: i]] %}
+    {% if product %}
+      <div class="product-card" data-product-id="{{ product.id }}">
+        <div class="product-image">
+          <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" width="" height="">
+        </div>
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.price | money }}</p>
+        <button class="open-dialog-btn" data-handle="{{ product.handle }}">+</button>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<!-- Modal -->
+<div id="product-dialog" class="dialog" style="display:none;">
+  <div class="dialog-content">
+    <span class="close-btn">&times;</span>
+    <div class="dialog-body">
+      <!-- تفاصيل المنتج هتيجي هنا بالـ JS -->
+    </div>
+  </div>
+</div>
+
+<style>
+.custom-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.product-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+}
+.open-dialog-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.dialog {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dialog-content {
+  background: #fff;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+</style>
+<script src="{{ 'custom-products-grid.js' | asset_url }}" defer></script>
