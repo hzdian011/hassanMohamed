@@ -1,49 +1,58 @@
 {% schema %}
 {
-  "name": "New Navbar",
+  "name": "Custom Navbar",
   "settings": [
     {
       "type": "text",
-      "id": "brand_text",
-      "label": "Brand Text",
-      "default": "My Brand"
+      "id": "item_1",
+      "label": "Navbar Item 1",
+      "default": "Home"
     },
     {
       "type": "text",
-      "id": "center_text",
-      "label": "Center Text",
-      "default": "you can edit me man"
+      "id": "item_2",
+      "label": "Navbar Item 2",
+      "default": "About"
     },
     {
       "type": "text",
-      "id": "button_label",
-      "label": "Button Label",
-      "default": "Click Me"
-    },
+      "id": "item_3",
+      "label": "Navbar Item 3",
+      "default": "Contact"
+    }
+  ],
+  "presets": [
     {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button Link",
-      "default": "/"
+      "name": "Custom Navbar"
     }
   ]
 }
 {% endschema %}
 
-{{ 'new-navbar.css' | asset_url | stylesheet_tag }}
+<nav class="custom-navbar">
+  <div class="nav-item">{{ section.settings.item_1 }}</div>
+  <div class="nav-item">{{ section.settings.item_2 }}</div>
+  <div class="nav-item">{{ section.settings.item_3 }}</div>
+</nav>
 
-<div>
-  <!-- left: Brand -->
-  <div>
-    <a href="/home" class="navbar-brand">
-      {{ settings.brand_text }}
-    </a>
-  </div>
-  <!-- center: Text -->
-  <div>
-    {{ section.settings.center_text }}
-  </div>
-  <!-- Right: Button -->
-  {% render 'button-snippet', link: section.settings.button_link, label: section.settings.button_label %}
+<style>
+.custom-navbar {
+  width: 100%;
+  background-color: gray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
 
-</div>
+.custom-navbar .nav-item {
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.custom-navbar .nav-item:hover {
+  color: yellow;
+}
+</style>
