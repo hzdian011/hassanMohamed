@@ -1,0 +1,39 @@
+<section>
+  <h1>{{ section.settings.title }}</h1>
+  <p>{{ section.settings.description }}</p>
+</section>
+
+{% schema %}
+{
+  "name": "About Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "About Us"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Write something about your company."
+    }
+  ]
+}
+{% endschema %}
+{% style %}
+  section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 1.2em;
+    color: #666;
+  }
+{% endstyle %}
