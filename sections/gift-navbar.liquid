@@ -1,0 +1,65 @@
+<div style="display:flex; align-items:center; justify-content:space-between; padding: 15px;">
+  <!-- Brand Name -->
+  <div>
+    <h2>{{ section.settings.brand_name }}</h2>
+  </div>
+
+  <!-- Center Text -->
+  <div>
+    <p>{{ section.settings.center_text }}</p>
+  </div>
+
+  <!-- Button -->
+  <div>
+    <a href="{{ section.settings.button_link }}"
+       style="padding:10px 20px; background:{{ section.settings.button_color }}; color:white; text-decoration:none; transition: all 0.3s ease;"
+       onmouseover="this.style.background='{{ section.settings.button_hover_color }}'"
+       onmouseout="this.style.background='{{ section.settings.button_color }}'">
+      <span style="margin-right:8px;">{{ section.settings.button_text }}</span> ←
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Navbar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "My Brand"
+    },
+    {
+      "type": "text",
+      "id": "center_text",
+      "label": "Center Text",
+      "default": "Find the best gift for you"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Choose Gift"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button Hover Color",
+      "default": "#000000"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/"
+    }
+  ]
+}
+{% endschema %}
