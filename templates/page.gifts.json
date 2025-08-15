@@ -1,0 +1,9 @@
+// this the template for the newest page
+{
+    "sections":{
+        "nabvbar_gifts":{"type":"nabvbar-gifts"},
+    },
+    "order": [
+        "nabvbar_gifts"
+    ],
+}
