@@ -6,7 +6,7 @@
       "type": "text",
       "id": "item_1",
       "label": "Navbar Item 1",
-      "default": "Home"
+      "default": "TISSO VISON"
     },
     {
       "type": "text",
@@ -31,9 +31,13 @@
 
 <nav class="custom-navbar">
   <div class="nav-item">{{ section.settings.item_1 }}</div>
-  <div class="nav-item">{{ section.settings.item_2 }}</div>
+  <P class="nav-item">{{ section.settings.item_2 }}</P>
   <div class="nav-item">{{ section.settings.item_3 }}</div>
 </nav>
+<div class="full-width-image">
+  <img src="{{ 'gift-icons2.svg' | asset_url }}" alt="Gift Icon" width="" height="">
+</div>
+
 
 <style>
 .custom-navbar {
@@ -46,7 +50,7 @@
 }
 
 .custom-navbar .nav-item {
-  color: white;
+  color: #000000;
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
@@ -54,5 +58,12 @@
 
 .custom-navbar .nav-item:hover {
   color: yellow;
+}
+
+.full-width-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain; /* علشان تحافظ على أبعاد الصورة */
+  display: block;
 }
 </style>
