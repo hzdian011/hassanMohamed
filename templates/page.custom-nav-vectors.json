@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "nav-bar-section": {
+      "type": "custom-nav-bar",
+      "settings": {}
+    },
+    "vectors-section": {
+      "type": "custom-vectors",
+      "settings": {}
+    }
+  },
+  "order": ["nav-bar-section", "vectors-section"]
+}

@@ -1,0 +1,24 @@
+{% schema %}
+{
+  "name": "Custom Vectors",
+  "settings": []
+}
+{% endschema %}
+
+<div class="custom-vectors">
+  <img src="{{ 'gift-icons1.svg' | asset_url }}" alt="Gift Icon 1" width="60" height="60">
+  <img src="{{ 'gift-icons2.svg' | asset_url }}" alt="Gift Icon 2" width="60" height="60">
+</div>
+
+<style>
+.custom-vectors {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+}
+.custom-vectors img {
+  width: 60px;
+  height: 60px;
+}
+</style>
