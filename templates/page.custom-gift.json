@@ -1,0 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gift-navbar": {
+      "type": "gift-navbar",
+      "settings": {
+        "brand_name": "My Brand",
+        "center_text": "find the best gift for you",
+        "button_text": "choose gift"
+      }
+    }
+  },
+  "order": [
+    "gift-navbar"
+  ]
+}
