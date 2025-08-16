@@ -1,24 +1,3 @@
-{% comment %} {% schema %}
-{
-  "name": "Products Grid",
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Product Block",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Select a product"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 6
-}
-{% endschema %} {% endcomment %}
-
-
 {% schema %}
 {
   "name": "Products Grid",
@@ -55,34 +34,6 @@
 }
 {% endschema %}
 
-
-{% comment %} <div class="products-grid">
-  {% for block in section.blocks %}
-    {% assign product = all_products[block.settings.product] %}
-    <div class="product-card">
-      <div class="image-wrapper">
-        <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" width="" height="">
-        
-        <!-- زرار البلس -->
-        <button 
-          class="plus-btn" 
-          data-handle="{{ product.handle }}" 
-          style="top:50%; left:50%;">
-          +
-        </button>
-      </div>
-
-      <!-- التحكم في مكان زرار البلس -->
-      <div class="controls">
-        <label>X Position</label>
-        <input type="range" min="0" max="100" value="50" class="range-x" data-target="{{ product.handle }}">
-        
-        <label>Y Position</label>
-        <input type="range" min="0" max="100" value="50" class="range-y" data-target="{{ product.handle }}">
-      </div>
-    </div>
-  {% endfor %}
-</div> {% endcomment %}
 
 <div class="products-grid">
   {% for block in section.blocks %}
@@ -239,9 +190,8 @@
     transform: translate(-50%, -50%);
     background: white;
     border-radius: 50%;
-    border: 2px solid black;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     font-size: 20px;
     cursor: pointer;
     }
