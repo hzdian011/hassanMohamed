@@ -1,54 +1,14 @@
 <section>
-  <!-- Raw 1 -->
-  <h4>Tisso vison in the wild</h4>
-
-  {% schema %}
-{
-  "name": "Product Hotspot Grid",
-  "settings": [],
-  "blocks": [
-    {
-      "type": "image",
-      "name": "Image with hotspot",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "product", "id": "product", "label": "Select Product" },
-        {
-          "type": "range",
-          "id": "hotspot_top",
-          "label": "Hotspot Top (%)",
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "default": 50
-        },
-        {
-          "type": "range",
-          "id": "hotspot_left",
-          "label": "Hotspot Left (%)",
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "default": 50
-        }
-      ]
-    }
-  ],
-  "presets": [{ "name": "Product Hotspot Grid", "category": "Custom" }]
-}
-  {% endschema %}
+  <h4>Tisso vision in the wild</h4>
 
   <div class="product-hotspot-grid grid grid-cols-2 md:grid-cols-3 gap-6">
     {% for block in section.blocks %}
       <div class="relative group">
-        <!-- صورة الخلفية -->
         {% if block.settings.image != blank %}
           <img
             src="{{ block.settings.image | image_url: width: 600 }}"
             alt=""
             class="w-full h-auto rounded-md"
-            width=""
-            height=""
           >
         {% endif %}
 
@@ -56,7 +16,7 @@
         <button
           class="absolute bg-white rounded-full w-8 h-8 flex items-center justify-center shadow cursor-pointer"
           style="top: {{ block.settings.hotspot_top }}%; left: {{ block.settings.hotspot_left }}%;"
-          data-product-handle="{{ block.settings.product }}"
+          data-product-handle="{{ all_products[block.settings.product].handle }}"
         >
           +
         </button>
@@ -64,6 +24,7 @@
     {% endfor %}
   </div>
 
+  <!-- Modal -->
   <div id="hotspotModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
     <div class="bg-white p-6 rounded-md w-[400px] relative">
       <button id="closeModal" class="absolute top-2 right-2">✕</button>
@@ -79,14 +40,14 @@
           .then((res) => res.json())
           .then((product) => {
             let content = `
-          <img src="${product.images[0]}" class="w-full h-48 object-cover rounded-md mb-4"/>
-          <h2 class="text-lg font-semibold">${product.title}</h2>
-          <p class="text-gray-600 mb-2">${(product.price / 100).toFixed(2)} €</p>
-          <select id="variantSelect" class="border p-2 rounded mb-4 w-full">
-            ${product.variants.map((v) => `<option value="${v.id}">${v.title}</option>`).join('')}
-          </select>
-          <button id="addToCartBtn" class="bg-black text-white px-4 py-2 rounded w-full">Add to Cart</button>
-        `;
+              <img src="${product.images[0]}" class="w-full h-48 object-cover rounded-md mb-4"/>
+              <h2 class="text-lg font-semibold">${product.title}</h2>
+              <p class="text-gray-600 mb-2">${(product.price / 100).toFixed(2)} €</p>
+              <select id="variantSelect" class="border p-2 rounded mb-4 w-full">
+                ${product.variants.map((v) => `<option value="${v.id}">${v.title}</option>`).join('')}
+              </select>
+              <button id="addToCartBtn" class="bg-black text-white px-4 py-2 rounded w-full">Add to Cart</button>
+            `;
             document.getElementById('modalContent').innerHTML = content;
             document.getElementById('hotspotModal').classList.remove('hidden');
 
@@ -102,9 +63,30 @@
       });
     });
 
-    // Close modal
     document.getElementById('closeModal').addEventListener('click', () => {
       document.getElementById('hotspotModal').classList.add('hidden');
     });
   </script>
 </section>
+
+{% schema %}
+{
+  "name": "Product Hotspot Grid",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image with hotspot",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "product", "id": "product", "label": "Select Product" },
+        { "type": "range", "id": "hotspot_top", "label": "Hotspot Top (%)", "min": 0, "max": 100, "step": 1, "default": 50 },
+        { "type": "range", "id": "hotspot_left", "label": "Hotspot Left (%)", "min": 0, "max": 100, "step": 1, "default": 50 }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Product Hotspot Grid", "category": "Custom" }
+  ]
+}
+{% endschema %}
