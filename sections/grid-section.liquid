@@ -86,170 +86,169 @@
 </div>
 
 <style>
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 1000px;
-  margin: auto;
-}
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 1000px;
+    margin: auto;
+  }
 
-.product-card {
-  text-align: center;
-}
+  .product-card {
+    text-align: center;
+  }
 
-.image-wrapper {
-  position: relative;
-  display: inline-block;
-}
+  .image-wrapper {
+    position: relative;
+    display: inline-block;
+  }
 
-.controls {
-  margin-top: 10px;
-}
+  .controls {
+    margin-top: 10px;
+  }
 
-.controls label {
-  display: block;
-  font-size: 12px;
-  margin-bottom: 2px;
-}
+  .controls label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
 
-/* المودال */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
-}
+  /* المودال */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+  }
 
-/* محتوى المودال */
-.modal-content {
-  background: #fff;
-  margin: 5% auto;
-  padding: 20px;
-  width: 311px;          /* زي التصميم */
-  border-radius: 10px;
-  position: relative;
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+  /* محتوى المودال */
+  .modal-content {
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    width: 311px;          /* زي التصميم */
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
 
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  font-family: Arial, sans-serif;
-}
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+  }
 
-/* زر الإغلاق */
-.close {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 20px;
-  cursor: pointer;
-}
+  /* زر الإغلاق */
+  .close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
 
-/* صورة المنتج */
-.modal-content img.product-image {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
+  /* صورة المنتج */
+  .modal-content img.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
 
-/* تفاصيل المنتج */
-.modal-details {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+  /* تفاصيل المنتج */
+  .modal-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.modal-details h2 {
-  font-size: 16px;
-  margin: 0;
-  font-weight: normal;
-}
+  .modal-details h2 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: normal;
+  }
 
-.modal-details p {
-  margin: 0;
-  font-size: 14px;
-  color: #333;
-}
+  .modal-details p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+  }
 
-/* خيارات الألوان */
-.color-options {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+  /* خيارات الألوان */
+  .color-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-.color-options label {
-  font-size: 14px;
-  font-weight: bold;
-}
+  .color-options label {
+    font-size: 14px;
+    font-weight: bold;
+  }
 
-#colorContainer {
-  display: flex;
-  gap: 10px;
-}
+  #colorContainer {
+    display: flex;
+    gap: 10px;
+  }
 
-.color-btn {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #000;
-  background: #fff;
-  cursor: pointer;
-  font-weight: bold;
-}
+  .color-btn {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+    font-weight: bold;
+  }
 
-.color-btn.active {
-  border-left: 4px solid blue;
-}
+  .color-btn.active {
+    border-left: 4px solid blue;
+  }
 
-/* خيارات المقاس */
-.size-options {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
+  /* خيارات المقاس */
+  .size-options {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
 
-.size-options label {
-  font-size: 14px;
-  font-weight: bold;
-}
+  .size-options label {
+    font-size: 14px;
+    font-weight: bold;
+  }
 
-.size-options select {
-  padding: 8px;
-  border: 1px solid #000;
-  cursor: pointer;
-}
+  .size-options select {
+    padding: 8px;
+    border: 1px solid #000;
+    cursor: pointer;
+  }
 
-/* زرار الكارت */
-#addToCartBtn {
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 14px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 2px;
-  margin-top: auto;
-  width: 100%;
-}
+  /* زرار الكارت */
+  #addToCartBtn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-top: auto;
+    width: 100%;
+  }
 
-.image-wrapper img {
-  width: 100%;
-}
+  .image-wrapper img {
+    width: 100%;
+  }
 
-.plus-btn {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  background: white;
-  border-radius: 50%;
-  border:none;
-  width: 25px;
-  height: 25px;
-  font-size: 15px;
-  cursor: pointer;
-}
+  .plus-btn {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    border:none;
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+    cursor: pointer;
+  }
 </style>
-
 
 <script>
   // تحريك البلس بالـ range
@@ -298,7 +297,6 @@
           });
           colorContainer.appendChild(colorBtn);
         });
-
       }
 
       // بناء المقاسات (لو فيه option اسمها Size)
@@ -329,11 +327,6 @@
   });
 
   document.querySelector('.close').addEventListener('click', () => {
-  document.getElementById('myModal').style.display = 'none';
-
-
-
-
-
-});
+    document.getElementById('myModal').style.display = 'none';
+  });
 </script>
