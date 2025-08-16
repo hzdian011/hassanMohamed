@@ -34,56 +34,58 @@
 }
 {% endschema %}
 
-<div class="products-grid">
-  {% for block in section.blocks %}
-    {% assign product = all_products[block.settings.product] %}
-    <div class="product-card">
-      <div class="image-wrapper">
-        <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" width="" height="">
+<section>
+    <div class="products-grid">
+    {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.product] %}
+        <div class="product-card">
+        <div class="image-wrapper">
+            <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" width="" height="">
 
-        <!-- زرار البلس -->
-        <button
-          class="plus-btn"
-          data-handle="{{ product.handle }}"
-          style="top:{{ block.settings.pos_y }}%; left:{{ block.settings.pos_x }}%;"
-        >
-          +
-        </button>
-      </div>
-    </div>
-  {% endfor %}
-</div>
-
-<!-- المودال -->
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-
-    <!-- image -->
-    <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
-
-    <div class="modal-details">
-      <!-- details -->
-      <h2 id="modalTitle"></h2>
-      <p id="modalPrice"></p>
-      <p id="modalDescription"></p>
-
-      <div class="color-options">
-        <label>Color</label>
-        <div id="colorContainer"></div>
-      </div>
-
-      <div class="size-options">
-        <label for="sizeSelect">Size</label>
-        <select id="sizeSelect">
-          <option>Choose your size</option>
-        </select>
-      </div>
+            <!-- زرار البلس -->
+            <button
+            class="plus-btn"
+            data-handle="{{ product.handle }}"
+            style="top:{{ block.settings.pos_y }}%; left:{{ block.settings.pos_x }}%;"
+            >
+            +
+            </button>
+        </div>
+        </div>
+    {% endfor %}
     </div>
 
-    <button id="addToCartBtn">ADD TO CART →</button>
-  </div>
-</div>
+    <!-- المودال -->
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <!-- image -->
+        <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
+
+        <div class="modal-details">
+        <!-- details -->
+        <h2 id="modalTitle"></h2>
+        <p id="modalPrice"></p>
+        <p id="modalDescription"></p>
+
+        <div class="color-options">
+            <label>Color</label>
+            <div id="colorContainer"></div>
+        </div>
+
+        <div class="size-options">
+            <label for="sizeSelect">Size</label>
+            <select id="sizeSelect">
+            <option>Choose your size</option>
+            </select>
+        </div>
+        </div>
+
+        <button id="addToCartBtn">ADD TO CART →</button>
+    </div>
+    </div>
+</section>
 
 <style>
   .products-grid {
