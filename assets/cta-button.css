@@ -17,3 +17,24 @@
   margin-left: 10px;         /* مسافة بين النص والسهم */
   transition: transform 0.3s;
 }
+
+.custom-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;                 /* نبدأ من الشمال بره الزر */
+  width: 100%;
+  height: 100%;
+  background-color: #FFF544;   /* اللون الجديد عند hover */
+  z-index: 0;                  /* تحت النص */
+  transition: left 0.3s;
+}
+
+.custom-btn:hover::before {
+  left: 0;                     /* يتحرك لليمين ويغطي الزر */
+}
+
+.custom-btn span, .custom-btn img {
+  position: relative;
+  z-index: 1;                  /* النص والسهم فوق الـ slide */
+}
