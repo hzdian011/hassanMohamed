@@ -232,3 +232,22 @@
     </div>
   {% endfor %}
 </div>
+
+
+<script> 
+    document.querySelectorAll(.plus-btn).forEach(btn =>{
+        btn.addEventListener('click', async ()=>{
+            //fetch products from shopify
+            const response = await fetch(`/products/${handle}.js`);
+            const product = await response.json();
+
+            //update the Modal
+            document.getElementById('modalTitle').textContent = product.title;
+            document.getElementById('modalPrice').textContent = (product.price / 100) + 'USD';
+            document.getElementById('modalDescription').textContent = product.description;
+        
+            //show the Modal
+            document.getElementById('myModal').style.display = 'block';
+        });
+    });
+</script>
