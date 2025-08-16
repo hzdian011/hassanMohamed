@@ -13,128 +13,10 @@
         }
       ]
     }
-  ]
+  ],
+  "max_blocks": 6
 }
-{% endschema %}
-
-<div class="products-grid">
-  {% for block in section.blocks %}
-    {% assign product = all_products[block.settings.product] %}
-
-    <div class="product-card">
-      <h3>{{ product.title }}</h3>
-      <button class="plus-btn" data-handle="{{ product.handle }}">+</button>
-    </div>
-  {% endfor %}
-</div>
-
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-
-    <!-- صورة المنتج -->
-    <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
-
-    <!-- تفاصيل المنتج -->
-    <h2 id="modalTitle"></h2>
-    <p id="modalPrice" class="price"></p>
-    <p id="modalDescription"></p>
-
-    <!-- اختيار اللون -->
-    <div class="color-options">
-      <label>Color</label>
-      <div id="colorContainer"></div>
-    </div>
-
-    <!-- اختيار المقاس -->
-    <div class="size-options">
-      <label for="sizeSelect">Size</label>
-      <select id="sizeSelect">
-        <option>Choose your size</option>
-      </select>
-    </div>
-
-    <!-- زرار Add to Cart -->
-    <button id="addToCartBtn">ADD TO CART →</button>
-  </div>
-</div>
-
-<style>
-    .color-options {
-    display: flex;
-    gap: 10px;
-    margin: 15px 0;
-  }
-
-  .color-btn {
-    padding: 8px 20px;
-    border: 1px solid #ccc;
-    background: #fff;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  .color-btn.active {
-    border-left: 4px solid blue; /* هنا اللون يتغير حسب اللون */
-  }
-</style>
-
-<script>
-  document.querySelectorAll('.plus-btn').forEach((btn) => {
-    btn.addEventListener('click', async () => {
-      const handle = btn.dataset.handle;
-
-      const response = await fetch(`/products/${handle}.js`);
-      const product = await response.json();
-
-      // تعبئة البيانات
-      document.getElementById('modalTitle').textContent = product.title;
-      document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
-      document.getElementById('modalDescription').textContent = product.description;
-      document.getElementById('modalImage').src = product.images[0];
-
-      // بناء أزرار الألوان
-      const colorContainer = document.getElementById('colorContainer');
-      colorContainer.innerHTML = ''; // reset
-
-      const colors = ['Blue', 'Black']; // هنا تقدر تجيبها من product.options لو موجودة
-      colors.forEach((color, index) => {
-        const btn = document.createElement('button');
-        btn.textContent = color;
-        btn.classList.add('color-btn');
-        if (index === 0) btn.classList.add('active'); // أول لون active
-
-        // تغيير الborder حسب اللون
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
-          btn.classList.add('active');
-          btn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
-        });
-
-        colorContainer.appendChild(btn);
-      });
-
-      // بناء المقاسات
-      const sizeSelect = document.getElementById('sizeSelect');
-      sizeSelect.innerHTML = '<option>Choose your size</option>';
-      if (product.variants) {
-        product.variants.forEach((variant) => {
-          let opt = document.createElement('option');
-          opt.value = variant.id;
-          opt.textContent = variant.option1; // على حسب الـ options
-          sizeSelect.appendChild(opt);
-        });
-      }
-
-      document.getElementById('myModal').style.display = 'block';
-    });
-  });
-
-  // غلق المودال
-  document.querySelector('.close').addEventListener('click', () => {
-    document.getElementById('myModal').style.display = 'none';
-  });
-</script> {% endcomment %}
+{% endschema %} {% endcomment %}
 
 
 {% schema %}
@@ -149,6 +31,22 @@
           "type": "product",
           "id": "product",
           "label": "Select a product"
+        },
+        {
+          "type": "range",
+          "id": "pos_x",
+          "label": "X Position (%)",
+          "min": 0,
+          "max": 100,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "pos_y",
+          "label": "Y Position (%)",
+          "min": 0,
+          "max": 100,
+          "default": 50
         }
       ]
     }
@@ -156,6 +54,7 @@
   "max_blocks": 6
 }
 {% endschema %}
+
 
 <div class="products-grid">
   {% for block in section.blocks %}
