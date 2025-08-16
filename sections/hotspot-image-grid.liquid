@@ -1,0 +1,47 @@
+{% schema %}
+{
+  "name": "Hotspot Image Grid",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image_hotspot",
+      "name": "Image with hotspot",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "range",
+          "id": "btn_top",
+          "label": "Button Top Position (%)",
+          "min": 0,
+          "max": 100,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "btn_left",
+          "label": "Button Left Position (%)",
+          "min": 0,
+          "max": 100,
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Hotspot Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
