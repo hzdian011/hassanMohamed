@@ -75,21 +75,22 @@
 
 
 {% schema %}
-{
-    "name":"Product Grid with plus",
-    "settings": [],
-    "blocks": [
-        {
-         "type": "product",   
-         "name": "product",   
-         "settings": [
+    {
+        "name":"Product Grid with plus",
+        "settings": [],
+        "blocks": [
             {
-                "type": "product",
-                "id": "product",
-                "label": "Select Product"
+            "type": "product",   
+            "name": "product",   
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Select Product"
+                }
+            ]
             }
-         ]
-        }
-    ]
-}
+        ],
+        "max_blocks": 12,
+    }
 {% endschema %}
