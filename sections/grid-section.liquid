@@ -133,3 +133,21 @@
     margin: 10px;
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.plus-btn').forEach((btn) => {
+      btn.addEventListener('click', function () {
+        const productId = this.dataset.productId;
+        const dialog = document.getElementById(`dialog-${productId}`);
+        dialog.style.display = 'block';
+      });
+    });
+
+    document.querySelectorAll('.close-btn').forEach((btn) => {
+      btn.addEventListener('click', function () {
+        this.parentElement.style.display = 'none';
+      });
+    });
+  });
+</script>
