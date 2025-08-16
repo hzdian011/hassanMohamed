@@ -11,7 +11,7 @@
   "sections": {
     "gift-navbar": {
       "type": "gift-navbar",
-      "settings": {
+      "settings": { 
         "brand_name": "My Brand",
         "center_text": "find the best gift for you",
         "button_text": "choose gift"
