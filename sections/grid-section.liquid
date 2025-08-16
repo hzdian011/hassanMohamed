@@ -63,22 +63,22 @@
     <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
 
     <div class="modal-details">
-        <!-- details-->
-        <h2 id="modalTitle"></h2>
-        <p id="modalPrice"></p>
-        <p id="modalDescription"></p>
+      <!-- details -->
+      <h2 id="modalTitle"></h2>
+      <p id="modalPrice"></p>
+      <p id="modalDescription"></p>
 
-        <div class="color-options">
-            <label>Color</label>
-            <div id="colorContainer"></div>
-        </div>
+      <div class="color-options">
+        <label>Color</label>
+        <div id="colorContainer"></div>
+      </div>
 
-        <div class="size-options">
-            <label for="sizeSelect">Size</label>
-            <select id="sizeSelect">
-                <option>Choose your size</option>
-            </select>
-        </div>
+      <div class="size-options">
+        <label for="sizeSelect">Size</label>
+        <select id="sizeSelect">
+          <option>Choose your size</option>
+        </select>
+      </div>
     </div>
 
     <button id="addToCartBtn">ADD TO CART →</button>
@@ -140,7 +140,16 @@
     display: flex;          /* خليها flex */
     gap: 20px;              /* مسافة بين الصورة والمحتوى */
     align-items: flex-start; /* المحتوى يبقى فوق */
+
     }
+
+    .modal-content img.product-image {
+      max-width: 40%; /* الصورة تاخد 40% */
+      height: auto;
+      border-radius: 8px;
+  }
+
+
   .close {
   position: absolute;
   top: 10px; right: 15px;
