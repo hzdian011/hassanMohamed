@@ -117,10 +117,30 @@
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default"
       }
+    },
+    "hotspot_image_grid_LwzHLx": {
+      "type": "hotspot-image-grid",
+      "blocks": {
+        "image_hotspot_Tz4nFd": {
+          "type": "image_hotspot",
+          "settings": {
+            "image": "shopify://shop_images/man-adjusts-blue-tuxedo-bowtie_925x_55a49e12-d54b-488e-b7a0-ea4c201eb01f.jpg",
+            "product": "blue-silk-tuxedo",
+            "btn_top": 61,
+            "btn_left": 71
+          }
+        }
+      },
+      "block_order": [
+        "image_hotspot_Tz4nFd"
+      ],
+      "name": "Hotspot Grid",
+      "settings": {}
     }
   },
   "order": [
     "header_announcements_9jGBFp",
-    "header_section"
+    "header_section",
+    "hotspot_image_grid_LwzHLx"
   ]
 }
