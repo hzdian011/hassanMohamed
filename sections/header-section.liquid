@@ -16,12 +16,14 @@
   justify-content: center;
   gap: 12px;
   padding: 16px 32px;
-  background-color: #ffeb3b; /* أصفر */
+  background: linear-gradient(to right, #ffeb3b 50%, #000 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
   color: #000;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-position 1s ease; /* ابطأ */
   position: relative;
   overflow: hidden;
 }
@@ -29,17 +31,18 @@
 .custom-btn .arrow-icon {
   width: 22px;
   height: auto;
-  transition: transform 0.4s ease;
+  transition: transform 0.6s ease, filter 0.6s ease;
 }
 
 /* Hover Effect */
 .custom-btn:hover {
-  background-color: #000; /* أسود */
+  background-position: right bottom; /* يعمل slide */
   color: #fff;
 }
 
 .custom-btn:hover .arrow-icon {
-  transform: translateX(6px); /* slide effect */
-  filter: brightness(0) invert(1); /* يخلي السهم لونه أبيض */
+  transform: translateX(8px); /* slide effect */
+  filter: brightness(0) invert(1); /* يخلي السهم أبيض */
 }
 </style>
+
