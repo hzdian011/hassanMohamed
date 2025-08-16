@@ -1,13 +1,76 @@
+{% schema %}
+{
+  "name": "Custom Image Grid",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_block",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Choose Image"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "range",
+          "id": "button_top",
+          "label": "Button Top Position",
+          "min": 0,
+          "max": 100,
+          "default":50,
+          "step": 1,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "button_left",
+          "label": "Button Left Position",
+          "min": 0,
+          "max": 100,
+          "default":50,
+          "step": 1,
+          "unit": "%"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Image Grid"
+    }
+  ]
+}
+{% endschema %}
+
 <div class="custom-image-grid">
   {% for block in section.blocks %}
     <div class="image-block" style="position: relative;">
       <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Image Block" width="" height="">
-      <a href="{{ block.settings.button_link }}" 
-         class="image-button"
-         style="position: absolute; top: {{ block.settings.button_top }}%; left: {{ block.settings.button_left }}%;">
-         {{ block.settings.button_text }}
+      <a
+        href="{{ block.settings.button_link }}"
+        class="image-button"
+        style="position: absolute; top: {{ block.settings.button_top }}%; left: {{ block.settings.button_left }}%;"
+      >
+        {{ block.settings.button_text }}
       </a>
     </div>
   {% endfor %}
 </div>
-
