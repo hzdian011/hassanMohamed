@@ -316,5 +316,27 @@
 
   document.querySelector('.close').addEventListener('click', () => {
   document.getElementById('myModal').style.display = 'none';
+
+
+
+  document.getElementById('addToCartBtn').addEventListener('click', () => {
+  const sizeSelect = document.getElementById('sizeSelect');
+  const variantId = sizeSelect.value;
+
+  if (variantId && variantId !== "Choose your size") {
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: variantId, quantity: 1 })
+    })
+    .then(() => {
+      alert('تمت الإضافة للعربة!');
+      document.getElementById('myModal').style.display = 'none';
+    });
+  } else {
+    alert('من فضلك اختر المقاس');
+  }
+});
+
 });
 </script>
