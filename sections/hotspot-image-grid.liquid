@@ -5,7 +5,7 @@
   "blocks": [
     {
       "type": "image_hotspot",
-      "name": "Image with hotspot",
+      "name": "Image with Hotspot",
       "settings": [
         {
           "type": "image_picker",
@@ -45,3 +45,98 @@
   ]
 }
 {% endschema %}
+
+
+
+<!-- Modal -->
+<div id="quick-view-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="quick-view-content"></div>
+  </div>
+</div>
+
+<style>
+.hotspot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.hotspot-item {
+  position: relative;
+}
+
+.hotspot-item img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
+
+.hotspot-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  margin: 5% auto;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 6px;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.hotspot-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      let handle = this.getAttribute('data-product-handle');
+      
+      fetch(`/products/${handle}?view=quick-view`)
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('quick-view-content').innerHTML = html;
+          document.getElementById('quick-view-modal').style.display = 'block';
+        });
+    });
+  });
+
+  document.querySelector('#quick-view-modal .close').addEventListener('click', function() {
+    document.getElementById('quick-view-modal').style.display = 'none';
+  });
+
+  window.addEventListener('click', function(e) {
+    if (e.target.id === 'quick-view-modal') {
+      document.getElementById('quick-view-modal').style.display = 'none';
+    }
+  });
+});
+</script>
