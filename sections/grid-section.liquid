@@ -1,5 +1,30 @@
 <section>
-    <!-- Raw 1-->
-    <h4>Tisso vison in the wild</h4>
-    
+  <!-- Raw 1 -->
+  <h4>Tisso vison in the wild</h4>
+
+  <div class="product-hotspot-grid grid grid-cols-2 md:grid-cols-3 gap-6">
+    {% for block in section.blocks %}
+      <div class="relative group">
+        <!-- صورة الخلفية -->
+        {% if block.settings.image != blank %}
+          <img
+            src="{{ block.settings.image | image_url: width: 600 }}"
+            alt=""
+            class="w-full h-auto rounded-md"
+            width=""
+            height=""
+          >
+        {% endif %}
+
+        <!-- Hotspot button -->
+        <button
+          class="absolute bg-white rounded-full w-8 h-8 flex items-center justify-center shadow cursor-pointer"
+          style="top: {{ block.settings.hotspot_top }}%; left: {{ block.settings.hotspot_left }}%;"
+          data-product-handle="{{ block.settings.product }}"
+        >
+          +
+        </button>
+      </div>
+    {% endfor %}
+  </div>
 </section>
