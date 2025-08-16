@@ -16,14 +16,61 @@
     "grid": {
       "type": "grid-section",
       "blocks": {
+        "product_8Giq3j": {
+          "type": "product",
+          "settings": {
+            "product": "classic-varsity-top",
+            "pos_x": 39,
+            "pos_y": 50
+          }
+        },
+        "product_g3RP78": {
+          "type": "product",
+          "settings": {
+            "product": "silk-summer-top",
+            "pos_x": 50,
+            "pos_y": 50
+          }
+        },
+        "product_feDGPx": {
+          "type": "product",
+          "settings": {
+            "product": "red-sports-tee",
+            "pos_x": 50,
+            "pos_y": 50
+          }
+        },
+        "product_zpxJ6G": {
+          "type": "product",
+          "settings": {
+            "product": "yellow-wool-jumper",
+            "pos_x": 50,
+            "pos_y": 50
+          }
+        },
+        "product_pQUFHd": {
+          "type": "product",
+          "settings": {
+            "product": "dark-winter-jacket",
+            "pos_x": 50,
+            "pos_y": 50
+          }
+        },
         "product_UzVQgL": {
           "type": "product",
           "settings": {
-            "product": "blue-silk-tuxedo"
+            "product": "blue-silk-tuxedo",
+            "pos_x": 50,
+            "pos_y": 50
           }
         }
       },
       "block_order": [
+        "product_8Giq3j",
+        "product_g3RP78",
+        "product_feDGPx",
+        "product_zpxJ6G",
+        "product_pQUFHd",
         "product_UzVQgL"
       ],
       "settings": {}
