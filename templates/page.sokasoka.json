@@ -8,6 +8,7 @@
  * ------------------------------------------------------------
  */
 {
+  "layout": "no-header",
   "sections": {
     "header": {
       "type": "header-section",
