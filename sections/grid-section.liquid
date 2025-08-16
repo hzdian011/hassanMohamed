@@ -1,94 +1,119 @@
-<section>
-  <h4>Tisso vision in the wild</h4>
-
-  <div class="product-hotspot-grid grid grid-cols-2 md:grid-cols-3 gap-6">
-    {% for block in section.blocks %}
-      <div class="relative group">
-        {% if block.settings.image != blank %}
-          <img
-            src="{{ block.settings.image | image_url: width: 600 }}"
-            alt=""
-            class="w-full h-auto rounded-md"
-            width=""
-            height=""
-          >
-        {% endif %}
-
-        <!-- Hotspot button -->
-        <button
-          class="absolute bg-white rounded-full w-8 h-8 flex items-center justify-center shadow cursor-pointer"
-          style="top: {{ block.settings.hotspot_top }}%; left: {{ block.settings.hotspot_left }}%;"
-          data-product-handle="{{ all_products[block.settings.product].handle }}"
-        >
-          +
-        </button>
-      </div>
-    {% endfor %}
-  </div>
-
-  <!-- Modal -->
-  <div id="hotspotModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
-    <div class="bg-white p-6 rounded-md w-[400px] relative">
-      <button id="closeModal" class="absolute top-2 right-2">✕</button>
-      <div id="modalContent"></div>
-    </div>
-  </div>
-
-  <script>
-    document.querySelectorAll('[data-product-handle]').forEach((btn) => {
-      btn.addEventListener('click', function () {
-        let handle = this.dataset.product;
-        fetch(`/products/${handle}.js`)
-          .then((res) => res.json())
-          .then((product) => {
-            let content = `
-              <img src="${product.images[0]}" class="w-full h-48 object-cover rounded-md mb-4"/>
-              <h2 class="text-lg font-semibold">${product.title}</h2>
-              <p class="text-gray-600 mb-2">${(product.price / 100).toFixed(2)} €</p>
-              <select id="variantSelect" class="border p-2 rounded mb-4 w-full">
-                ${product.variants.map((v) => `<option value="${v.id}">${v.title}</option>`).join('')}
-              </select>
-              <button id="addToCartBtn" class="bg-black text-white px-4 py-2 rounded w-full">Add to Cart</button>
-            `;
-            document.getElementById('modalContent').innerHTML = content;
-            document.getElementById('hotspotModal').classList.remove('hidden');
-
-            document.getElementById('addToCartBtn').addEventListener('click', function () {
-              let variantId = document.getElementById('variantSelect').value;
-              fetch('/cart/add.js', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: variantId, quantity: 1 }),
-              }).then(() => (window.location.href = '/cart'));
-            });
-          });
-      });
-    });
-
-    document.getElementById('closeModal').addEventListener('click', () => {
-      document.getElementById('hotspotModal').classList.add('hidden');
-    });
-  </script>
-</section>
-
 {% schema %}
 {
-  "name": "Product Hotspot Grid",
+  "name": "Gift Guide Section",
   "settings": [],
   "blocks": [
     {
-      "type": "image",
-      "name": "Image with hotspot",
+      "type": "row1",
+      "name": "Row 1",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "product", "id": "product", "label": "Select Product" },
-        { "type": "range", "id": "hotspot_top", "label": "Hotspot Top (%)", "min": 0, "max": 100, "step": 1, "default": 50 },
-        { "type": "range", "id": "hotspot_left", "label": "Hotspot Left (%)", "min": 0, "max": 100, "step": 1, "default": 50 }
+        { "type": "text", "id": "brand_text", "label": "Brand Text", "default": "TISSO VISON" },
+        { "type": "text", "id": "center_sentence", "label": "Center Sentence", "default": "Find the ideal gift for your loved ones." },
+        { "type": "text", "id": "btn_text", "label": "Button Text", "default": "CHOOSE GIFT" },
+        { "type": "url", "id": "btn_link", "label": "Button Link" }
+      ]
+    },
+    {
+      "type": "row2",
+      "name": "Row 2",
+      "settings": [
+        { "type": "image_picker", "id": "svg_row2", "label": "SVG Image" }
+      ]
+    },
+    {
+      "type": "row3",
+      "name": "Row 3",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "The Gift Guide" },
+        { "type": "textarea", "id": "paragraph", "label": "Paragraph", "default": "Discover Joy: Your Ultimate Holiday Gift Destination." },
+        { "type": "text", "id": "btn_text", "label": "Button Text", "default": "SHOP NOW" },
+        { "type": "url", "id": "btn_link", "label": "Button Link" },
+        { "type": "image_picker", "id": "svg_row3", "label": "SVG Image" }
+      ]
+    },
+    {
+      "type": "row4",
+      "name": "Row 4",
+      "settings": [
+        { "type": "text", "id": "footer_text", "label": "Footer Text", "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL" }
       ]
     }
   ],
   "presets": [
-    { "name": "Product Hotspot Grid", "category": "Custom" }
+    { "name": "Gift Guide Section" }
   ]
 }
 {% endschema %}
+
+<div class="gift-guide-wrapper">
+  {% for block in section.blocks %}
+    {% if block.type == 'row1' %}
+      <!-- Row 1 -->
+      <div class="row row-1">
+        <div class="col left">{{ block.settings.brand_text }}</div>
+        <div class="col center">{{ block.settings.center_sentence }}</div>
+        <div class="col right"><a href="{{ block.settings.btn_link }}" class="btn">{{ block.settings.btn_text }}</a></div>
+      </div>
+    {% endif %}
+    {% if block.type == 'row2' %}
+      <!-- Row 2 -->
+      <div class="row row-2">
+        {% if block.settings.svg_row2 != blank %}
+          <img 
+            src="{{ block.settings.svg_row2 | image_url }}" 
+            alt="" 
+            width="{{ block.settings.svg_row2.width }}" 
+            height="{{ block.settings.svg_row2.height }}" 
+          />
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if block.type == 'row3' %}
+      <!-- Row 3 -->
+      <div class="row row-3">
+        <div class="col left">
+          <h2>{{ block.settings.title }}</h2>
+          <p>{{ block.settings.paragraph }}</p>
+          <a href="{{ block.settings.btn_link }}" class="btn">{{ block.settings.btn_text }}</a>
+        </div>
+        <div class="col right">
+          {% if block.settings.svg_row3 != blank %}
+            <img 
+              src="{{ block.settings.svg_row3 | image_url }}" 
+              alt="" 
+              width="{{ block.settings.svg_row3.width }}" 
+              height="{{ block.settings.svg_row3.height }}" 
+            />
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+    {% if block.type == 'row4' %}
+      <!-- Row 4 -->
+      <div class="row row-4">
+        <p>{{ block.settings.footer_text }}</p>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<style>
+  .gift-guide-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .row-1 { height: 64px; }
+  .row-2 { height: 390px; justify-content: center; }
+  .row-3 { height: 402px; }
+  .row-4 { height: 34px; justify-content: center; font-size: 14px; }
+  img { max-width: 100%; height: auto; }
+  @media (max-width: 768px) {
+    .row { flex-direction: column; text-align: center; }
+    .row-3 { flex-direction: column; }
+  }
+</style>
