@@ -34,16 +34,14 @@
 }
 {% endschema %}
 
-<!-- Products Grid -->
 <div class="products-grid">
   {% for block in section.blocks %}
     {% assign product = all_products[block.settings.product] %}
-    {% if product %}
     <div class="product-card">
       <div class="image-wrapper">
-        <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}">
+        <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" width="" height="">
 
-        <!-- plus button -->
+        <!-- زرار البلس -->
         <button
           class="plus-btn"
           data-handle="{{ product.handle }}"
@@ -53,20 +51,19 @@
         </button>
       </div>
     </div>
-    {% endif %}
   {% endfor %}
 </div>
 
-<!-- Modal -->
+<!-- المودال -->
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
 
     <!-- image -->
-    <img id="modalImage" class="product-image" src="" alt="Product image">
+    <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
 
-    <!-- details -->
     <div class="modal-details">
+      <!-- details -->
       <h2 id="modalTitle"></h2>
       <p id="modalPrice"></p>
       <p id="modalDescription"></p>
@@ -82,125 +79,156 @@
           <option>Choose your size</option>
         </select>
       </div>
-
-      <button id="addToCartBtn">ADD TO CART →</button>
     </div>
+
+    <button id="addToCartBtn">ADD TO CART →</button>
   </div>
 </div>
 
 <style>
   .products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1000px;
-    margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
   }
 
   .product-card {
-    text-align: center;
+  text-align: center;
   }
 
   .image-wrapper {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
+
+  .controls {
+  margin-top: 10px;
   }
 
-  .image-wrapper img {
-    width: 100%;
-    border-radius: 8px;
+  .controls label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 2px;
   }
 
-  .plus-btn {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    background: white;
-    border-radius: 50%;
-    border: none;
-    width: 25px;
-    height: 25px;
-    font-size: 15px;
-    cursor: pointer;
-  }
-
-  /* Modal */
   .modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
   }
+
+  {% comment %} .modal-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  max-width: 500px;
+  border-radius: 10px;
+  position: relative;
+  } {% endcomment %}
 
   .modal-content {
     background: #fff;
     margin: 5% auto;
     padding: 20px;
-    max-width: 800px;
+    max-width: 800px; /* خلي العرض أكبر شوية عشان يكفي الصورة والنص */
     border-radius: 10px;
     position: relative;
 
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-  }
+    display: flex;          /* خليها flex */
+    gap: 20px;              /* مسافة بين الصورة والمحتوى */
+    align-items: flex-start; /* المحتوى يبقى فوق */
 
-  .modal-content img.product-image {
-    max-width: 40%;
-    height: auto;
-    border-radius: 8px;
-  }
-
-  .modal-details {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .close {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 22px;
-    cursor: pointer;
-  }
-
-  .color-options {
-    display: flex;
-    gap: 10px;
-    margin: 15px 0;
-  }
-
-  .color-btn {
-    padding: 8px 20px;
-    border: 1px solid #ccc;
-    background: #fff;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  .color-btn.active {
-    border-left: 4px solid blue;
-  }
-
-  @media (max-width: 600px) {
-    .modal-content {
-      flex-direction: column;
-      max-width: 95%;
     }
 
     .modal-content img.product-image {
-      max-width: 100%;
+      max-width: 40%; /* الصورة تاخد 40% */
+      height: auto;
+      border-radius: 8px;
     }
+
+    .modal-details {
+        flex: 1; /* المحتوى ياخد المساحة الباقية */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+  .close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  }
+
+  .color-options {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  }
+
+  .color-btn {
+  padding: 8px 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  }
+
+  .color-btn.active {
+  border-left: 4px solid blue;
+  }
+
+  .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+  }
+
+  .image-wrapper {
+  position: relative;
+  }
+
+  .image-wrapper img {
+  width: 100%;
+  }
+
+  .plus-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 50%;
+  border:none;
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  cursor: pointer;
   }
 </style>
 
 <script>
-  const modal = document.getElementById('myModal');
-  const closeBtn = document.querySelector('.close');
+  // تحريك البلس بالـ range
+  document.querySelectorAll('.range-x').forEach((input) => {
+    input.addEventListener('input', () => {
+      const handle = input.dataset.target;
+      const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
+      btn.style.left = input.value + '%';
+    });
+  });
 
-  // open modal on plus click
+  document.querySelectorAll('.range-y').forEach((input) => {
+    input.addEventListener('input', () => {
+      const handle = input.dataset.target;
+      const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
+      btn.style.top = input.value + '%';
+    });
+  });
+
+  // فتح المودال عند الضغط على البلس
   document.querySelectorAll('.plus-btn').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const handle = btn.dataset.handle;
@@ -208,11 +236,11 @@
       const product = await response.json();
 
       document.getElementById('modalTitle').textContent = product.title;
-      document.getElementById('modalPrice').textContent = (product.price / 100) + ' €';
+      document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
       document.getElementById('modalDescription').textContent = product.description;
       document.getElementById('modalImage').src = product.images[0];
 
-      // build colors
+      // بناء أزرار الألوان (لو فيه option اسمها Color)
       const colorContainer = document.getElementById('colorContainer');
       colorContainer.innerHTML = '';
       const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
@@ -231,7 +259,7 @@
         });
       }
 
-      // build sizes
+      // بناء المقاسات (لو فيه option اسمها Size)
       const sizeSelect = document.getElementById('sizeSelect');
       sizeSelect.innerHTML = '<option>Choose your size</option>';
       product.variants.forEach((variant) => {
@@ -241,19 +269,12 @@
         sizeSelect.appendChild(opt);
       });
 
-      modal.style.display = 'block';
+      document.getElementById('myModal').style.display = 'block';
     });
   });
 
-  // close on X
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  // close on outside click
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
+  // اغلاق المودال
+  document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('myModal').style.display = 'none';
   });
 </script>
