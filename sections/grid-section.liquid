@@ -261,7 +261,7 @@
       colorContainer.innerHTML = '';
       const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
       if (colorOption) {
-        {% comment %} colorOption.values.forEach((color, i) => {
+        colorOption.values.forEach((color, i) => {
           const colorBtn = document.createElement('button');
           colorBtn.textContent = color;
           colorBtn.classList.add('color-btn');
@@ -272,19 +272,8 @@
             colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
           });
           colorContainer.appendChild(colorBtn);
-        }); {% endcomment %}
+        });
 
-        colorOption.values.forEach((color, i) => {
-        const colorBtn = document.createElement('button');
-        colorBtn.classList.add('color-btn');
-        colorBtn.style.background = color.toLowerCase(); // الخلفية بلون اللون
-        if (i === 0) colorBtn.classList.add('active');
-        colorBtn.addEventListener('click', () => {
-            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
-            colorBtn.classList.add('active');
-        });
-        colorContainer.appendChild(colorBtn);
-        });
       }
 
       // بناء المقاسات (لو فيه option اسمها Size)
@@ -319,24 +308,7 @@
 
 
 
-  document.getElementById('addToCartBtn').addEventListener('click', () => {
-  const sizeSelect = document.getElementById('sizeSelect');
-  const variantId = sizeSelect.value;
 
-  if (variantId && variantId !== "Choose your size") {
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: variantId, quantity: 1 })
-    })
-    .then(() => {
-      alert('تمت الإضافة للعربة!');
-      document.getElementById('myModal').style.display = 'none';
-    });
-  } else {
-    alert('من فضلك اختر المقاس');
-  }
-});
 
 });
 </script>
