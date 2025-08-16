@@ -173,13 +173,12 @@
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.plus-btn').forEach((btn) => {
     btn.addEventListener('click', function () {
-      const variantId = this.dataset.variantId;
-
-      // فتح الـ dialog
+      // نجيب الـ dialog اللي جنب الزرار
       const dialog = this.parentElement.querySelector('.product-dialog');
       if (dialog) dialog.style.display = 'block';
 
       // إضافة المنتج للعربة
+      const variantId = this.dataset.variantId;
       fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
