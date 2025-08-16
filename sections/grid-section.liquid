@@ -284,34 +284,92 @@
   }
 </style>
 
+{% comment %}
+  <script>
+    document.querySelectorAll('.plus-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const handle = btn.dataset.handle;
+
+        // جلب بيانات المنتج من Shopify
+        const response = await fetch(`/products/${handle}.js`);
+        const product = await response.json();
+
+        // تحديث محتوى الـ Modal
+        document.getElementById('modalTitle').textContent = product.title;
+        document.getElementById('modalPrice').textContent = product.price / 100 + ' USD';
+        document.getElementById('modalDescription').textContent = product.description;
+
+        // إظهار الـ Modal
+        document.getElementById('myModal').style.display = 'block';
+      });
+    });
+
+    // غلق الـ Modal
+    document.querySelector('.close').addEventListener('click', () => {
+      document.getElementById('myModal').style.display = 'none';
+    });
+
+    // غلق عند الضغط خارج الـ Modal
+    window.addEventListener('click', (e) => {
+      if (e.target.id === 'myModal') {
+        document.getElementById('myModal').style.display = 'none';
+      }
+    });
+  </script>
+{% endcomment %}
 <script>
   document.querySelectorAll('.plus-btn').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const handle = btn.dataset.handle;
 
-      // جلب بيانات المنتج من Shopify
       const response = await fetch(`/products/${handle}.js`);
       const product = await response.json();
 
-      // تحديث محتوى الـ Modal
+      // تعبئة البيانات
       document.getElementById('modalTitle').textContent = product.title;
-      document.getElementById('modalPrice').textContent = product.price / 100 + ' USD';
+      document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
       document.getElementById('modalDescription').textContent = product.description;
+      document.getElementById('modalImage').src = product.images[0];
 
-      // إظهار الـ Modal
+      // بناء أزرار الألوان
+      const colorContainer = document.getElementById('colorContainer');
+      colorContainer.innerHTML = ''; // reset
+
+      const colors = ['Blue', 'Black']; // هنا تقدر تجيبها من product.options لو موجودة
+      colors.forEach((color, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = color;
+        btn.classList.add('color-btn');
+        if (index === 0) btn.classList.add('active'); // أول لون active
+
+        // تغيير الborder حسب اللون
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          btn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
+        });
+
+        colorContainer.appendChild(btn);
+      });
+
+      // بناء المقاسات
+      const sizeSelect = document.getElementById('sizeSelect');
+      sizeSelect.innerHTML = '<option>Choose your size</option>';
+      if (product.variants) {
+        product.variants.forEach((variant) => {
+          let opt = document.createElement('option');
+          opt.value = variant.id;
+          opt.textContent = variant.option1; // على حسب الـ options
+          sizeSelect.appendChild(opt);
+        });
+      }
+
       document.getElementById('myModal').style.display = 'block';
     });
   });
 
-  // غلق الـ Modal
+  // غلق المودال
   document.querySelector('.close').addEventListener('click', () => {
     document.getElementById('myModal').style.display = 'none';
-  });
-
-  // غلق عند الضغط خارج الـ Modal
-  window.addEventListener('click', (e) => {
-    if (e.target.id === 'myModal') {
-      document.getElementById('myModal').style.display = 'none';
-    }
   });
 </script>
