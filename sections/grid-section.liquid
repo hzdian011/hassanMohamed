@@ -86,128 +86,144 @@
 </div>
 
 <style>
-  .products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 1000px;
-  margin: auto;
-  }
+    .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+    }
 
-  .product-card {
-  text-align: center;
-  }
+    .product-card {
+    text-align: center;
+    }
 
-  .image-wrapper {
-  position: relative;
-  display: inline-block;
+    .image-wrapper {
+    position: relative;
+    display: inline-block;
 
-  .controls {
-  margin-top: 10px;
-  }
+    .controls {
+    margin-top: 10px;
+    }
 
-  .controls label {
-  display: block;
-  font-size: 12px;
-  margin-bottom: 2px;
-  }
+    .controls label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 2px;
+    }
 
-  .modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
-  }
+    .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    }
 
-  {% comment %} .modal-content {
-  background: #fff;
-  margin: 5% auto;
-  padding: 20px;
-  max-width: 500px;
-  border-radius: 10px;
-  position: relative;
-  } {% endcomment %}
-
-  .modal-content {
+    {% comment %} .modal-content {
     background: #fff;
     margin: 5% auto;
     padding: 20px;
-    max-width: 800px; /* خلي العرض أكبر شوية عشان يكفي الصورة والنص */
+    max-width: 500px;
     border-radius: 10px;
     position: relative;
+    } {% endcomment %}
 
-    display: flex;          /* خليها flex */
-    gap: 20px;              /* مسافة بين الصورة والمحتوى */
-    align-items: flex-start; /* المحتوى يبقى فوق */
+    {% comment %} .modal-content {
+      background: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      max-width: 800px; /* خلي العرض أكبر شوية عشان يكفي الصورة والنص */
+      border-radius: 10px;
+      position: relative;
 
+      display: flex;          /* خليها flex */
+      gap: 20px;              /* مسافة بين الصورة والمحتوى */
+      align-items: flex-start; /* المحتوى يبقى فوق */
+
+      } {% endcomment %}
+
+      .modal-content {
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    width: 311px;          /* زي التصميم */
+    height: 447px;         /* زي التصميم */
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+
+      .modal-content img.product-image {
+        max-width: 40%; /* الصورة تاخد 40% */
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .modal-details {
+          flex: 1; /* المحتوى ياخد المساحة الباقية */
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+      }
+
+    .close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 22px;
+    cursor: pointer;
     }
 
-    .modal-content img.product-image {
-      max-width: 40%; /* الصورة تاخد 40% */
-      height: auto;
-      border-radius: 8px;
+    .color-options {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
     }
 
-    .modal-details {
-        flex: 1; /* المحتوى ياخد المساحة الباقية */
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    .color-btn {
+    padding: 8px 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    font-weight: bold;
     }
 
-  .close {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 22px;
-  cursor: pointer;
-  }
+    .color-btn.active {
+    border-left: 4px solid blue;
+    }
 
-  .color-options {
-  display: flex;
-  gap: 10px;
-  margin: 15px 0;
-  }
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        max-width: 1000px;
+        margin: auto;
+    }
 
-  .color-btn {
-  padding: 8px 20px;
-  border: 1px solid #ccc;
-  background: #fff;
-  cursor: pointer;
-  font-weight: bold;
-  }
+    .image-wrapper {
+    position: relative;
+    }
 
-  .color-btn.active {
-  border-left: 4px solid blue;
-  }
+    .image-wrapper img {
+    width: 100%;
+    }
 
-  .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 1000px;
-      margin: auto;
-  }
-
-  .image-wrapper {
-  position: relative;
-  }
-
-  .image-wrapper img {
-  width: 100%;
-  }
-
-  .plus-btn {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  background: white;
-  border-radius: 50%;
-  border:none;
-  width: 25px;
-  height: 25px;
-  font-size: 15px;
-  cursor: pointer;
-  }
+    .plus-btn {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    border:none;
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    }
 </style>
 
 <script>
