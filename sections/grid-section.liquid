@@ -34,19 +34,19 @@
 }
 {% endschema %}
 
-
 <div class="products-grid">
   {% for block in section.blocks %}
     {% assign product = all_products[block.settings.product] %}
     <div class="product-card">
       <div class="image-wrapper">
         <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" width="" height="">
-        
+
         <!-- زرار البلس -->
-        <button 
-          class="plus-btn" 
-          data-handle="{{ product.handle }}" 
-          style="top:{{ block.settings.pos_y }}%; left:{{ block.settings.pos_x }}%;">
+        <button
+          class="plus-btn"
+          data-handle="{{ product.handle }}"
+          style="top:{{ block.settings.pos_y }}%; left:{{ block.settings.pos_x }}%;"
+        >
           +
         </button>
       </div>
@@ -54,135 +54,135 @@
   {% endfor %}
 </div>
 
-
 <!-- المودال -->
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
 
-    <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
-    <h2 id="modalTitle"></h2>
-    <p id="modalPrice"></p>
-    <p id="modalDescription"></p>
+    <div class="modal-details">
+      <!-- Raw 1 -->
+      <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
+      <h2 id="modalTitle"></h2>
+      <p id="modalPrice"></p>
+      <p id="modalDescription"></p>
 
-    <div class="color-options">
-      <label>Color</label>
-      <div id="colorContainer"></div>
+      <div class="color-options">
+        <label>Color</label>
+        <div id="colorContainer"></div>
+      </div>
+
+      <div class="size-options">
+        <label for="sizeSelect">Size</label>
+        <select id="sizeSelect">
+          <option>Choose your size</option>
+        </select>
+      </div>
     </div>
-
-    <div class="size-options">
-      <label for="sizeSelect">Size</label>
-      <select id="sizeSelect">
-        <option>Choose your size</option>
-      </select>
-    </div>
-
     <button id="addToCartBtn">ADD TO CART →</button>
   </div>
 </div>
 
 <style>
-    .products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1000px;
-    margin: auto;
-    }
+  .products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+  }
 
-    .product-card {
-    text-align: center;
-    }
+  .product-card {
+  text-align: center;
+  }
 
-    .image-wrapper {
-    position: relative;
-    display: inline-block;
+  .image-wrapper {
+  position: relative;
+  display: inline-block;
 
-    .controls {
-    margin-top: 10px;
-    }
+  .controls {
+  margin-top: 10px;
+  }
 
-    .controls label {
-    display: block;
-    font-size: 12px;
-    margin-bottom: 2px;
-    }
+  .controls label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 2px;
+  }
 
-    .modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-    }
+  .modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  }
 
-    .modal-content {
-    background: #fff;
-    margin: 5% auto;
-    padding: 20px;
-    max-width: 500px;
-    border-radius: 10px;
-    position: relative;
-    }
+  .modal-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  max-width: 500px;
+  border-radius: 10px;
+  position: relative;
+  }
 
-    .close {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 22px;
-    cursor: pointer;
-    }
+  .close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  }
 
-    .color-options {
-    display: flex;
-    gap: 10px;
-    margin: 15px 0;
-    }
+  .color-options {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  }
 
-    .color-btn {
-    padding: 8px 20px;
-    border: 1px solid #ccc;
-    background: #fff;
-    cursor: pointer;
-    font-weight: bold;
-    }
+  .color-btn {
+  padding: 8px 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  }
 
-    .color-btn.active {
-    border-left: 4px solid blue;
-    }
+  .color-btn.active {
+  border-left: 4px solid blue;
+  }
 
-    .products-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        max-width: 1000px;
-        margin: auto;
-    }
+  .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+  }
 
-    .image-wrapper {
-    position: relative;
-    }
+  .image-wrapper {
+  position: relative;
+  }
 
-    .image-wrapper img {
-    width: 100%;
-    }
+  .image-wrapper img {
+  width: 100%;
+  }
 
-    .plus-btn {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    background: white;
-    border-radius: 50%;
-    border:none;
-    width: 25px;
-    height: 25px;
-    font-size: 15px;
-    cursor: pointer;
-    }
-
+  .plus-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 50%;
+  border:none;
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  }
 </style>
 
 <script>
   // تحريك البلس بالـ range
-  document.querySelectorAll('.range-x').forEach(input => {
+  document.querySelectorAll('.range-x').forEach((input) => {
     input.addEventListener('input', () => {
       const handle = input.dataset.target;
       const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
@@ -190,7 +190,7 @@
     });
   });
 
-  document.querySelectorAll('.range-y').forEach(input => {
+  document.querySelectorAll('.range-y').forEach((input) => {
     input.addEventListener('input', () => {
       const handle = input.dataset.target;
       const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
@@ -206,14 +206,14 @@
       const product = await response.json();
 
       document.getElementById('modalTitle').textContent = product.title;
-      document.getElementById('modalPrice').textContent = (product.price / 100) + ' €';
+      document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
       document.getElementById('modalDescription').textContent = product.description;
       document.getElementById('modalImage').src = product.images[0];
 
       // بناء أزرار الألوان (لو فيه option اسمها Color)
       const colorContainer = document.getElementById('colorContainer');
       colorContainer.innerHTML = '';
-      const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
+      const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
       if (colorOption) {
         colorOption.values.forEach((color, i) => {
           const colorBtn = document.createElement('button');
@@ -221,7 +221,7 @@
           colorBtn.classList.add('color-btn');
           if (i === 0) colorBtn.classList.add('active');
           colorBtn.addEventListener('click', () => {
-            document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
             colorBtn.classList.add('active');
             colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
           });
@@ -232,7 +232,7 @@
       // بناء المقاسات (لو فيه option اسمها Size)
       const sizeSelect = document.getElementById('sizeSelect');
       sizeSelect.innerHTML = '<option>Choose your size</option>';
-      product.variants.forEach(variant => {
+      product.variants.forEach((variant) => {
         let opt = document.createElement('option');
         opt.value = variant.id;
         opt.textContent = variant.option1;
