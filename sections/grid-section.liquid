@@ -261,7 +261,7 @@
       colorContainer.innerHTML = '';
       const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
       if (colorOption) {
-        colorOption.values.forEach((color, i) => {
+        {% comment %} colorOption.values.forEach((color, i) => {
           const colorBtn = document.createElement('button');
           colorBtn.textContent = color;
           colorBtn.classList.add('color-btn');
@@ -272,6 +272,18 @@
             colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
           });
           colorContainer.appendChild(colorBtn);
+        }); {% endcomment %}
+
+        colorOption.values.forEach((color, i) => {
+        const colorBtn = document.createElement('button');
+        colorBtn.classList.add('color-btn');
+        colorBtn.style.background = color.toLowerCase(); // الخلفية بلون اللون
+        if (i === 0) colorBtn.classList.add('active');
+        colorBtn.addEventListener('click', () => {
+            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+            colorBtn.classList.add('active');
+        });
+        colorContainer.appendChild(colorBtn);
         });
       }
 
@@ -293,4 +305,16 @@
   document.querySelector('.close').addEventListener('click', () => {
     document.getElementById('myModal').style.display = 'none';
   });
+
+  // يقفل لو ضغطت بره المودال
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('myModal');
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  document.querySelector('.close').addEventListener('click', () => {
+  document.getElementById('myModal').style.display = 'none';
+});
 </script>
