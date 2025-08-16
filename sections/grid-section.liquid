@@ -59,25 +59,28 @@
   <div class="modal-content">
     <span class="close">&times;</span>
 
+    <!-- image -->
+    <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
+
     <div class="modal-details">
-      <!-- Raw 1 -->
-      <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
-      <h2 id="modalTitle"></h2>
-      <p id="modalPrice"></p>
-      <p id="modalDescription"></p>
+        <!-- details-->
+        <h2 id="modalTitle"></h2>
+        <p id="modalPrice"></p>
+        <p id="modalDescription"></p>
 
-      <div class="color-options">
-        <label>Color</label>
-        <div id="colorContainer"></div>
-      </div>
+        <div class="color-options">
+            <label>Color</label>
+            <div id="colorContainer"></div>
+        </div>
 
-      <div class="size-options">
-        <label for="sizeSelect">Size</label>
-        <select id="sizeSelect">
-          <option>Choose your size</option>
-        </select>
-      </div>
+        <div class="size-options">
+            <label for="sizeSelect">Size</label>
+            <select id="sizeSelect">
+                <option>Choose your size</option>
+            </select>
+        </div>
     </div>
+
     <button id="addToCartBtn">ADD TO CART →</button>
   </div>
 </div>
@@ -117,15 +120,27 @@
   background: rgba(0,0,0,0.5);
   }
 
-  .modal-content {
+  {% comment %} .modal-content {
   background: #fff;
   margin: 5% auto;
   padding: 20px;
   max-width: 500px;
   border-radius: 10px;
   position: relative;
-  }
+  } {% endcomment %}
 
+  .modal-content {
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    max-width: 800px; /* خلي العرض أكبر شوية عشان يكفي الصورة والنص */
+    border-radius: 10px;
+    position: relative;
+
+    display: flex;          /* خليها flex */
+    gap: 20px;              /* مسافة بين الصورة والمحتوى */
+    align-items: flex-start; /* المحتوى يبقى فوق */
+    }
   .close {
   position: absolute;
   top: 10px; right: 15px;
