@@ -227,7 +227,7 @@
     {% assign product = all_products[block.settings.product] %}
 
     <div class="product-card">
-      <h3>{{ product.images }}</h3>
+      <h3>{{ product.title }}</h3>
       <button class="plus-btn" data-handle="{{ product.handle }}">+</button>
     </div>
   {% endfor %}
