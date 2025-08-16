@@ -76,54 +76,119 @@
   </div>
 
   <!-- Raw 4 -->
-    <div class="gift-row4">
+  <div class="gift-row4">
     <p class="gift-footer">{{ section.settings.footer_text }}</p>
   </div>
 </section>
 
 <style>
-  {% comment %} Nav style {% endcomment %}
-    /* Nav style */
-    .gift-nav {
+    {% comment %} Nav style {% endcomment %}
+      /* Nav style */
+      .gift-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* يخلي العناصر تتوزع كويس */
+        align-items: center;
+        padding: 10px 50px;
+        gap: 20px; /* gap معقول مش كبير */
+        width: 100%;
+        max-width: 1440px;
+        height: 64px;
+        background: #F5F5F5;
+        margin: 0 auto;
+        flex-wrap: nowrap; /* امنع العناصر تنزل تحت بعض */
+      }
+
+      /* اللوجو */
+      .gift-logo {
+        font-family: 'Jost', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #000;
+        white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
+      }
+
+      /* النص */
+      .gift-subtitle {
+        font-family: 'Jost', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+        margin: 0;
+        text-align: center;
+        flex: 1; /* يخلي النص ياخد المساحة في النص */
+      }
+
+      /* الزرار */
+      .gift-btn {
+        background: #FFF544;
+        border: 1.5px solid #000;
+        padding: 10px 20px;
+        font-family: 'Jost', sans-serif;
+        font-size: 16px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .gift-btn:hover {
+        background: #000;
+        color: #FFF544;
+      }
+
+      /* Responsive للموبايل */
+      @media (max-width: 768px) {
+        .gift-nav {
+          flex-direction: column;
+          height: auto;
+          gap: 10px;
+          padding: 20px;
+        }
+
+        .gift-subtitle {
+          text-align: center;
+          flex: unset;
+        }
+      }
+
+      {% comment %} Raw 3 left side and right side with image {% endcomment %}
+      /* Raw 3 Layout */
+    .gift-row3 {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between; /* يخلي العناصر تتوزع كويس */
+      justify-content: space-between;
       align-items: center;
-      padding: 10px 50px;
-      gap: 20px; /* gap معقول مش كبير */
-      width: 100%;
       max-width: 1440px;
-      height: 64px;
-      background: #F5F5F5;
-      margin: 0 auto;
-      flex-wrap: nowrap; /* امنع العناصر تنزل تحت بعض */
+      margin: 80px auto; /* مسافة من فوق وتحت */
+      padding: 0 50px;
+      gap: 40px;
     }
 
-    /* اللوجو */
-    .gift-logo {
+    /* النصوص */
+    .gift-title {
       font-family: 'Jost', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 70px;
+      font-weight: 500;
+      line-height: 100%;
       color: #000;
-      white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
+      margin-bottom: 20px;
     }
 
-    /* النص */
-    .gift-subtitle {
+    .gift-desc {
       font-family: 'Jost', sans-serif;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 400;
+      line-height: 140%;
+      max-width: 480px;
+      margin-bottom: 30px;
       color: #000;
-      margin: 0;
-      text-align: center;
-      flex: 1; /* يخلي النص ياخد المساحة في النص */
     }
 
-    /* الزرار */
-    .gift-btn {
-      background: #FFF544;
-      border: 1.5px solid #000;
-      padding: 10px 20px;
+    /* زرار CTA */
+    .gift-cta {
+      background: #000;
+      color: #FFF;
+      border: none;
+      padding: 14px 40px;
       font-family: 'Jost', sans-serif;
       font-size: 16px;
       text-transform: uppercase;
@@ -131,92 +196,58 @@
       transition: all 0.3s ease;
     }
 
-    .gift-btn:hover {
-      background: #000;
-      color: #FFF544;
+    .gift-cta:hover {
+      background: #FFF;
+      color: #000;
+      border: 1.5px solid #000;
     }
 
-    /* Responsive للموبايل */
-    @media (max-width: 768px) {
-      .gift-nav {
+    /* الصورة */
+    .gift-row3-right img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .gift-row3 {
         flex-direction: column;
-        height: auto;
-        gap: 10px;
-        padding: 20px;
-      }
-
-      .gift-subtitle {
         text-align: center;
-        flex: unset;
+      }
+
+      .gift-desc {
+        margin: 0 auto 20px;
       }
     }
 
-    {% comment %} Raw 3 left side and right side with image {% endcomment %}
-    /* Raw 3 Layout */
-  .gift-row3 {
+    {% comment %} Raw 4 text at the footer of the section {% endcomment %}
+     /* Raw 4 */
+  .gift-row4 {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    padding: 10px 50px;
+    gap: 375px;
+
+    width: 100%;
     max-width: 1440px;
-    margin: 80px auto; /* مسافة من فوق وتحت */
-    padding: 0 50px;
-    gap: 40px;
+    height: 34px;
+    margin: 0 auto;
+
+    background: #F5F5F5;
   }
 
-  /* النصوص */
-  .gift-title {
+  .gift-footer {
     font-family: 'Jost', sans-serif;
-    font-size: 70px;
-    font-weight: 500;
-    line-height: 100%;
-    color: #000;
-    margin-bottom: 20px;
-  }
-
-  .gift-desc {
-    font-family: 'Jost', sans-serif;
-    font-size: 20px;
+    font-style: normal;
     font-weight: 400;
-    line-height: 140%;
-    max-width: 480px;
-    margin-bottom: 30px;
-    color: #000;
-  }
-
-  /* زرار CTA */
-  .gift-cta {
-    background: #000;
-    color: #FFF;
-    border: none;
-    padding: 14px 40px;
-    font-family: 'Jost', sans-serif;
     font-size: 16px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .gift-cta:hover {
-    background: #FFF;
-    color: #000;
-    border: 1.5px solid #000;
-  }
-
-  /* الصورة */
-  .gift-row3-right img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .gift-row3 {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .gift-desc {
-      margin: 0 auto 20px;
-    }
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 0;
   }
 </style>
