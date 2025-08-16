@@ -29,10 +29,46 @@
   </div>
 
   <div id="hotspotModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
-  <div class="bg-white p-6 rounded-md w-[400px] relative">
-    <button id="closeModal" class="absolute top-2 right-2">✕</button>
-    <div id="modalContent"></div>
+    <div class="bg-white p-6 rounded-md w-[400px] relative">
+      <button id="closeModal" class="absolute top-2 right-2">✕</button>
+      <div id="modalContent"></div>
+    </div>
   </div>
-</div>
 
+  <script>
+    document.querySelectorAll('[data-product-handle]').forEach((btn) => {
+      btn.addEventListener('click', function () {
+        let handle = this.dataset.product;
+        fetch(`/products/${handle}.js`)
+          .then((res) => res.json())
+          .then((product) => {
+            let content = `
+          <img src="${product.images[0]}" class="w-full h-48 object-cover rounded-md mb-4"/>
+          <h2 class="text-lg font-semibold">${product.title}</h2>
+          <p class="text-gray-600 mb-2">${(product.price / 100).toFixed(2)} €</p>
+          <select id="variantSelect" class="border p-2 rounded mb-4 w-full">
+            ${product.variants.map((v) => `<option value="${v.id}">${v.title}</option>`).join('')}
+          </select>
+          <button id="addToCartBtn" class="bg-black text-white px-4 py-2 rounded w-full">Add to Cart</button>
+        `;
+            document.getElementById('modalContent').innerHTML = content;
+            document.getElementById('hotspotModal').classList.remove('hidden');
+
+            document.getElementById('addToCartBtn').addEventListener('click', function () {
+              let variantId = document.getElementById('variantSelect').value;
+              fetch('/cart/add.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: variantId, quantity: 1 }),
+              }).then(() => (window.location.href = '/cart'));
+            });
+          });
+      });
+    });
+
+    // Close modal
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('hotspotModal').classList.add('hidden');
+    });
+  </script>
 </section>
