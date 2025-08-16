@@ -2,6 +2,42 @@
   <!-- Raw 1 -->
   <h4>Tisso vison in the wild</h4>
 
+  {% schema %}
+{
+  "name": "Product Hotspot Grid",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image with hotspot",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "product", "id": "product", "label": "Select Product" },
+        {
+          "type": "range",
+          "id": "hotspot_top",
+          "label": "Hotspot Top (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "hotspot_left",
+          "label": "Hotspot Left (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Product Hotspot Grid", "category": "Custom" }]
+}
+  {% endschema %}
+
   <div class="product-hotspot-grid grid grid-cols-2 md:grid-cols-3 gap-6">
     {% for block in section.blocks %}
       <div class="relative group">
