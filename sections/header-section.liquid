@@ -62,16 +62,16 @@
   </div>
 
   <!-- Raw 3 -->
-  <div>
+  <div class="gift-row3">
     <!-- Left Side -->
-    <div>
-      <h3>{{ section.settings.left_title }}</h3>
-      <p>{{ section.settings.left_text }}</p>
-      <button>{{ section.settings.left_button }}</button>
+    <div class="gift-row3-left">
+      <h3 class="gift-title">{{ section.settings.left_title }}</h3>
+      <p class="gift-desc">{{ section.settings.left_text }}</p>
+      <button class="gift-cta">{{ section.settings.left_button }}</button>
     </div>
     <!-- Right Side -->
-    <div>
-      <img src="{{ 'gifts-right.svg' | asset_url }}" width="" height="">
+    <div class="gift-row3-right">
+      <img src="{{ 'gifts-right.svg' | asset_url }}" alt="Gift Image" width="" height="">
     </div>
   </div>
 
