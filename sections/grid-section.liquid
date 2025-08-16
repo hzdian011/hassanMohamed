@@ -85,6 +85,207 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <!-- Left: Product Image -->
+    <div class="modal-image">
+      <img src="image.png" alt="Product" width="" height="">
+    </div>
+
+    <!-- Right: Details -->
+    <div class="modal-details">
+      <h2 class="product-title">Tailored Jacket</h2>
+      <p class="product-price">980,00€</p>
+      <p class="product-description">
+        This one-piece swimsuit is crafted from jersey featuring an allover micro Monogram motif in relief.
+      </p>
+
+      <!-- Colors -->
+      <div class="color-options">
+        <label class="section-label">Color</label>
+        <div class="colors">
+          <button class="color-btn blue active">Blue</button>
+          <button class="color-btn black">Black</button>
+        </div>
+      </div>
+
+      <!-- Sizes -->
+      <div class="size-options">
+        <label class="section-label">Size</label>
+        <select id="sizeSelect">
+          <option>Choose your size</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+        </select>
+      </div>
+
+      <!-- Add to cart -->
+      <button class="add-to-cart">ADD TO CART →</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Overlay */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+  }
+
+  /* Modal box */
+  .modal-content {
+    background: #fff;
+    max-width: 800px;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+  }
+
+  /* Close button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* Left image */
+  .modal-image img {
+    width: 300px;
+    border-radius: 6px;
+  }
+
+  /* Right details */
+  .modal-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .product-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #000;
+  }
+
+  .product-price {
+    font-family: 'Lustria', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+  }
+
+  .product-description {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.3;
+    color: #000;
+    max-width: 300px;
+  }
+
+  /* Labels */
+  .section-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+  }
+
+  /* Colors */
+  .color-options .colors {
+    display: flex;
+    gap: 10px;
+  }
+
+  .color-btn {
+    padding: 8px 20px;
+    border: 0.5px solid #000;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+
+  .color-btn.blue {
+    background: #0D499F;
+    color: #fff;
+  }
+
+  .color-btn.black {
+    background: #000;
+    color: #fff;
+  }
+
+  .color-btn.active {
+    outline: 2px solid #000;
+  }
+
+  /* Size */
+  .size-options select {
+    padding: 10px;
+    border: 0.5px solid #000;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  /* Add to cart */
+  .add-to-cart {
+    margin-top: 20px;
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+  }
+  .add-to-cart:hover {
+    background: #333;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .modal-content {
+      flex-direction: column;
+      max-width: 95%;
+    }
+    .modal-image img {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const modal = document.getElementById('myModal');
+  const closeBtn = document.querySelector('.close');
+
+  // افتح المودال للتجربة
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'm') modal.style.display = 'block';
+  });
+
+  // اقفال المودال
+  closeBtn.onclick = () => (modal.style.display = 'none');
+  window.onclick = (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+  };
+</script>
+
 <style>
     .products-grid {
     display: grid;
@@ -273,7 +474,6 @@
           });
           colorContainer.appendChild(colorBtn);
         });
-
       }
 
       // بناء المقاسات (لو فيه option اسمها Size)
@@ -304,11 +504,6 @@
   });
 
   document.querySelector('.close').addEventListener('click', () => {
-  document.getElementById('myModal').style.display = 'none';
-
-
-
-
-
-});
+    document.getElementById('myModal').style.display = 'none';
+  });
 </script>
