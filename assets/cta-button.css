@@ -1,21 +1,22 @@
 .custom-btn {
-  display: inline-flex;      /* نخلي المحتوى + الصورة في خط واحد */
-  align-items: center;       /* نركبهم في المنتصف عموديًا */
-  justify-content: center;   /* محتوى الزر في الوسط */
+  display: inline-flex;
+  flex-direction: column; /* خلي النص فوق السهم */
+  align-items: center;
+  justify-content: center;
   background-color: #000000;
   color: #fff;
   border: none;
   padding: 10px 20px;
   font-weight: bold;
   cursor: pointer;
-  position: relative;        /* مهم للـ hover slide effect */
-  overflow: hidden;          /* عشان التأثير ما يخرجش برا الزر */
+  position: relative;
+  overflow: hidden;
   transition: color 0.3s;
 }
 
 .custom-btn .btn-arrow {
-  margin-left: 10px;         /* مسافة بين النص والسهم */
-  transition: transform 0.3s;
+  margin-left: 0; /* ما يبقاش فيه مسافة جانبية */
+  margin-top: 5px; /* مسافة بين النص والسهم */
 }
 
 .custom-btn::before {
