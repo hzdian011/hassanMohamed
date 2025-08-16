@@ -101,13 +101,16 @@
     {% assign product = all_products[block.settings.product] %}
     <div class="product-item">
       <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title}}" width="" height="">
-      <button class="plus-btn" data-product-id="{{ product.id }}">+</button>
+      {% comment %} <button class="plus-btn" data-product-id="{{ product.id }}">+</button> {% endcomment %}
+      <button class="plus-btn" data-variant-id="{{ product.variants.first.id }}">+</button>
+
 
       <div class="product-dialog" id="dialog-{{ product.id}}">
         <h3>{{ product.title }}</h3>
         <p>{{ product.description | truncate: 150 }}</p>
         <p>{{ product.price | money }}</p>
         <button class="close-btn">X</button>
+        
       </div>
     </div>
   {% endfor %}
