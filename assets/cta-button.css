@@ -14,36 +14,6 @@
 
 
 
-.shop-now-btn {
-  position: relative; /* عشان العناصر الداخلية absolute */
-  display: flex;
-  align-items: center;
-  justify-content: center; /* النص في النص بالظبط */
-  padding: 10px 20px; /* بدل من ال width والheight الثابتة */
-  background-color: #000; /* Rectangle 26035 */
-  border: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-family: 'Jost', sans-serif;
-  font-size: 16px;
-  line-height: 20px;
-  color: #F5F5F5;
-  overflow: hidden;
-}
-
-.btn-line {
-  position: absolute;
-  right: 15%; /* تقريبا زي نسبة left/right في Figma */
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1.5px; /* thickness */
-  height: 60%; /* ارتفاع الخط */
-  background-color: #F5F5F5;
-}
-
-.btn-text {
-  z-index: 1; /* عشان النص يبقى فوق الخط */
-}
 
 
 
