@@ -238,7 +238,7 @@
     <span class="close">&times;</span>
 
     <!-- صورة المنتج -->
-    <img id="modalImage" class="product-image" src="" alt="Product image" />
+    <img id="modalImage" class="product-image" src="" alt="Product image">
 
     <!-- تفاصيل المنتج -->
     <h2 id="modalTitle"></h2>
@@ -264,6 +264,25 @@
   </div>
 </div>
 
+<style>
+    .color-options {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  .color-btn {
+    padding: 8px 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .color-btn.active {
+    border-left: 4px solid blue; /* هنا اللون يتغير حسب اللون */
+  }
+</style>
 
 <script>
   document.querySelectorAll('.plus-btn').forEach((btn) => {
