@@ -49,7 +49,7 @@
 <div class="hotspot-grid">
   {% for block in section.blocks %}
     <div class="hotspot-item">
-      <img src="{{ block.settings.image | img_url: 'large' }}" alt="Hotspot Image" loading="lazy">
+      <img src="{{ block.settings.image | img_url: 'large' }}" alt="Hotspot Image" loading="lazy"  width="" height="">
       <button 
         class="hotspot-btn" 
         data-product-handle="{{ all_products[block.settings.product].handle }}"
