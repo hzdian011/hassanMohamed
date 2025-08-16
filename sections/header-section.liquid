@@ -147,6 +147,11 @@
           color: #FFF544;
         }
 
+        .gift-btn:hover::after {
+            color: #FFF; /* أبيض مع الخلفية السوداء */
+            transform: translateX(5px); /* حركة السهم لليمين */
+        }
+
         /* Responsive للموبايل */
         @media (max-width: 768px) {
           .gift-nav {
@@ -204,19 +209,32 @@
         text-transform: uppercase;
         cursor: pointer;
         transition: all 0.3s ease;
+        position: relative;
       }
+    /* السهم */
+    .gift-cta::after {
+        content: "\2192";
+        margin-left: 8px;
+        color: #FFF; /* أبيض مع الخلفية السوداء */
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
 
-      .gift-cta:hover {
+    .gift-cta:hover {
         background: #FFF;
         color: #000;
         border: 1.5px solid #000;
-      }
+    }
 
-      /* الصورة */
-      .gift-row3-right img {
+    .gift-cta:hover::after {
+        color: #000; /* أسود مع الخلفية البيضاء */
+        transform: translateX(5px); /* حركة السهم لليمين */
+    }
+    /* الصورة */
+    .gift-row3-right img {
         max-width: 100%;
         height: auto;
-      }
+    }
 
       /* Responsive */
       @media (max-width: 1024px) {
