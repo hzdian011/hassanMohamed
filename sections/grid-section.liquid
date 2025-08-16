@@ -216,6 +216,36 @@
     .color-btn.active {
     border-left: 4px solid blue;
     }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .image-wrapper {
+    position: relative;
+    }
+
+    .image-wrapper img {
+    width: 100%;
+    border-radius: 8px;
+    }
+
+    .plus-btn {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    }
+
 </style>
 
 <script>
