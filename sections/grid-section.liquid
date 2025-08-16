@@ -75,6 +75,7 @@
   </style>
 {% endcomment %}
 
+{% comment %} 2222222
 {% schema %}
 {
   "name": "Product Grid with plus",
@@ -198,4 +199,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-</script>
+</script> {% endcomment %}
+
+
+
+<!-- Button -->
+<button id="showModalBtn">Show Info</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Product Info</h2>
+    <p id="modalData">This is some static product info.</p>
+  </div>
+</div>
