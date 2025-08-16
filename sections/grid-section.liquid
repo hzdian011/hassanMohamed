@@ -1,113 +1,135 @@
-{% comment %} {% schema %}
+{% comment %}
+  {% schema %}
+  {
+    "name": "image products",
+    "max_blocks": 12,
+    "settings": [],
+    "blocks": [
+      {
+        "type": "image_block",
+        "name": "Image Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Choose Image"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          },
+          {
+            "type": "range",
+            "id": "button_top",
+            "label": "Button Top Position",
+            "min": 0,
+            "max": 100,
+            "default": 50,
+            "step": 1,
+            "unit": "%"
+          },
+          {
+            "type": "range",
+            "id": "button_left",
+            "label": "Button Left Position",
+            "min": 0,
+            "max": 100,
+            "default": 50,
+            "step": 1,
+            "unit": "%"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+
+  <div class="custom-image-grid">
+    {% for block in section.blocks %}
+      <div class="image-block" style="position: relative;">
+        <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Image Block" width="" height="">
+      </div>
+    {% endfor %}
+  </div>
+
+  <style>
+    .custom-image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .image-block img {
+      width: 100%;
+      display: block;
+    }
+
+    .image-button {
+      background-color: #000;
+      color: #fff;
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+{% endcomment %}
+
+{% schema %}
 {
-  "name": "image products",
-  "max_blocks": 12,
+  "name": "Product Grid with plus",
   "settings": [],
   "blocks": [
     {
-      "type": "image_block",
-      "name": "Image Block",
+      "type": "product",
+      "name": "product",
       "settings": [
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Choose Image"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text"
-        },
-        {
-          "type": "range",
-          "id": "button_top",
-          "label": "Button Top Position",
-          "min": 0,
-          "max": 100,
-          "default": 50,
-          "step": 1,
-          "unit": "%"
-        },
-        {
-          "type": "range",
-          "id": "button_left",
-          "label": "Button Left Position",
-          "min": 0,
-          "max": 100,
-          "default": 50,
-          "step": 1,
-          "unit": "%"
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
         }
       ]
     }
-  ]
+  ],
+  "max_blocks": 12
 }
 {% endschema %}
 
-<div class="custom-image-grid">
+<div class="products-grid">
   {% for block in section.blocks %}
-    <div class="image-block" style="position: relative;">
-      <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Image Block" width="" height="">
+    {% assign product = all_products[block.settings.product] %}
+    <div class="product-item">
+      <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title}}" width="" height="">
+      <button class="plus-btn" data-product-id="{{ product.id }}">+</button>
+
+      <div class="product-dialog" id="dialog-{{ product.id}}">
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.description | truncate: 150 }}</p>
+        <p>{{ product.price | money }}</p>
+        <button class="close-btn">X</button>
+      </div>
     </div>
   {% endfor %}
 </div>
 
 <style>
-  .custom-image-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  .product-dialog {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    z-index: 100;
   }
 
-  .image-block img {
-    width: 100%;
-    display: block;
+  .plus-btn {
+    cursor: pointer;
   }
 
-  .image-button {
-    background-color: #000;
-    color: #fff;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
+  .product-item {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
   }
-</style> {% endcomment %}
-
-
-{% schema %}
-    {
-        "name":"Product Grid with plus",
-        "settings": [],
-        "blocks": [
-            {
-            "type": "product",   
-            "name": "product",   
-            "settings": [
-                {
-                    "type": "product",
-                    "id": "product",
-                    "label": "Select Product"
-                }
-            ]
-            }
-        ],
-        "max_blocks": 12,
-    }
-{% endschema %}
-
-<div class="products-grid">
-    {% for block in section.blocks %}
-        {% assign product = all_products[block.settings.product] %}
-        <div class="product-item">
-            <img src="{{ product.featured_image | img_url: 'medium' }}" alt={{ product.title}} width="" height="">
-            <button class="plus-btn" data-product-id="{{ product.id }}">+</button>
-
-            <div class="product-dialog" id="dialog-{{ product.id}}">
-                <h3> {{ product.title }}</h3>
-                <p> {{ product.description | truncate: 150 }}</p>
-                <p> {{ product.price | money }}</p>
-                <button class="close-btn">X</button>
-            </div>
-        </div>
-    {% endfor %}
-</div>
+</style>
