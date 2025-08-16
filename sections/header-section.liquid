@@ -48,12 +48,11 @@
 }
 {% endschema %}
 
-
 <section>
   <!-- Raw 1 -->
   <nav class="gift-nav">
     <a class="gift-logo">{{ section.settings.nav_title }}</a>
-    <p class="gift-subtitle" >{{ section.settings.nav_subtitle }}</p>
+    <p class="gift-subtitle">{{ section.settings.nav_subtitle }}</p>
     <button class="gift-btn">{{ section.settings.nav_button }}</button>
   </nav>
 
@@ -81,3 +80,58 @@
     <p>{{ section.settings.footer_text }}</p>
   </div>
 </section>
+
+<style>
+      {% comment %} Nav style {% endcomment %}
+
+      .gift-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px;
+    gap: 360px;
+
+    width: 100%; /* بدل ما نحطها ثابتة */
+    max-width: 1440px;
+    height: 64px;
+
+    background: #F5F5F5;
+    margin: 0 auto; /* عشان يفضل في النص */
+  }
+
+  /* اللوجو */
+  .gift-logo {
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  /* النص */
+  .gift-subtitle {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* الزرار */
+  .gift-btn {
+    background: #FFF544;
+    border: 1.5px solid #000;
+    padding: 10px 20px;
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .gift-btn:hover {
+    background: #000;
+    color: #FFF544;
+  }
+</style>
