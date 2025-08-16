@@ -1,5 +1,5 @@
 .custom-btn {
-  background-color: #ff5a5f;
+  background-color: #000000;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -10,5 +10,5 @@
 }
 
 .custom-btn:hover {
-  background-color: #ff787f;
+  background-color: #FFF544;
 }
