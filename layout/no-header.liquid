@@ -7,7 +7,7 @@
     {{ content_for_layout }}
   </body>
   <style>
-            .no-header-layout {
+    .no-header-layout {
       margin: 0;
       padding: 0;
     }
@@ -16,6 +16,12 @@
       max-width: 100% !important;
       margin: 0 auto;
       padding: 0;
+    }
+
+    .no-header-layout .page-width {
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
   </style>
 </html>
