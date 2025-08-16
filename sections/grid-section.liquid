@@ -1,0 +1,13 @@
+<div class="custom-image-grid">
+  {% for block in section.blocks %}
+    <div class="image-block" style="position: relative;">
+      <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Image Block" width="" height="">
+      <a href="{{ block.settings.button_link }}" 
+         class="image-button"
+         style="position: absolute; top: {{ block.settings.button_top }}%; left: {{ block.settings.button_left }}%;">
+         {{ block.settings.button_text }}
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
