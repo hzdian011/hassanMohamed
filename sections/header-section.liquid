@@ -51,7 +51,7 @@
 <section>
   <!-- Raw 1 -->
   <nav class="gift-nav">
-    <a class="gift-logo">{{ section.settings.nav_title }}</a>
+    <div class="gift-logo">{{ section.settings.nav_title }}</div>
     <p class="gift-subtitle">{{ section.settings.nav_subtitle }}</p>
     <button class="gift-btn">{{ section.settings.nav_button }}</button>
   </nav>
@@ -82,22 +82,21 @@
 </section>
 
 <style>
-      {% comment %} Nav style {% endcomment %}
-
-      .gift-nav {
+        {% comment %} Nav style {% endcomment %}
+  /* Nav style */
+  .gift-nav {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between; /* يخلي العناصر تتوزع كويس */
     align-items: center;
     padding: 10px 50px;
-    gap: 360px;
-
-    width: 100%; /* بدل ما نحطها ثابتة */
+    gap: 20px; /* gap معقول مش كبير */
+    width: 100%;
     max-width: 1440px;
     height: 64px;
-
     background: #F5F5F5;
-    margin: 0 auto; /* عشان يفضل في النص */
+    margin: 0 auto;
+    flex-wrap: nowrap; /* امنع العناصر تنزل تحت بعض */
   }
 
   /* اللوجو */
@@ -106,6 +105,7 @@
     font-size: 18px;
     font-weight: 600;
     color: #000;
+    white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
   }
 
   /* النص */
@@ -116,6 +116,7 @@
     color: #000;
     margin: 0;
     text-align: center;
+    flex: 1; /* يخلي النص ياخد المساحة في النص */
   }
 
   /* الزرار */
@@ -133,5 +134,20 @@
   .gift-btn:hover {
     background: #000;
     color: #FFF544;
+  }
+
+  /* Responsive للموبايل */
+  @media (max-width: 768px) {
+    .gift-nav {
+      flex-direction: column;
+      height: auto;
+      gap: 10px;
+      padding: 20px;
+    }
+
+    .gift-subtitle {
+      text-align: center;
+      flex: unset;
+    }
   }
 </style>
