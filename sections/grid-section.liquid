@@ -226,9 +226,9 @@
   {% for block in section.blocks %}
     {% assign product = all_products[block.settings.product] %}
 
-    <div class="product-card"> 
-        <h3>{{ product.title }}</h3>
-        <button class="plus-btn" data-handle="{{ product.handle }}">+</button>
+    <div class="product-card">
+      <h3>{{ product.title }}</h3>
+      <button class="plus-btn" data-handle="{{ product.handle }}">+</button>
     </div>
   {% endfor %}
 </div>
@@ -242,21 +242,34 @@
   </div>
 </div>
 
+<script>
+  document.querySelectorAll('.plus-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const handle = btn.dataset.handle;
 
-<script> 
-    document.querySelectorAll(.plus-btn).forEach(btn =>{
-        btn.addEventListener('click', async ()=>{
-            //fetch products from shopify
-            const response = await fetch(`/products/${handle}.js`);
-            const product = await response.json();
+      // جلب بيانات المنتج من Shopify
+      const response = await fetch(`/products/${handle}.js`);
+      const product = await response.json();
 
-            //update the Modal
-            document.getElementById('modalTitle').textContent = product.title;
-            document.getElementById('modalPrice').textContent = (product.price / 100) + 'USD';
-            document.getElementById('modalDescription').textContent = product.description;
-        
-            //show the Modal
-            document.getElementById('myModal').style.display = 'block';
-        });
+      // تحديث محتوى الـ Modal
+      document.getElementById('modalTitle').textContent = product.title;
+      document.getElementById('modalPrice').textContent = product.price / 100 + ' USD';
+      document.getElementById('modalDescription').textContent = product.description;
+
+      // إظهار الـ Modal
+      document.getElementById('myModal').style.display = 'block';
     });
+  });
+
+  // غلق الـ Modal
+  document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('myModal').style.display = 'none';
+  });
+
+  // غلق عند الضغط خارج الـ Modal
+  window.addEventListener('click', (e) => {
+    if (e.target.id === 'myModal') {
+      document.getElementById('myModal').style.display = 'none';
+    }
+  });
 </script>
