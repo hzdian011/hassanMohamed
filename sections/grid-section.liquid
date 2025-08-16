@@ -236,11 +236,34 @@
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
+
+    <!-- صورة المنتج -->
+    <img id="modalImage" class="product-image" src="" alt="Product image" />
+
+    <!-- تفاصيل المنتج -->
     <h2 id="modalTitle"></h2>
-    <p id="modalPrice"></p>
+    <p id="modalPrice" class="price"></p>
     <p id="modalDescription"></p>
+
+    <!-- اختيار اللون -->
+    <div class="color-options">
+      <label>Color</label>
+      <div id="colorContainer"></div>
+    </div>
+
+    <!-- اختيار المقاس -->
+    <div class="size-options">
+      <label for="sizeSelect">Size</label>
+      <select id="sizeSelect">
+        <option>Choose your size</option>
+      </select>
+    </div>
+
+    <!-- زرار Add to Cart -->
+    <button id="addToCartBtn">ADD TO CART →</button>
   </div>
 </div>
+
 
 <script>
   document.querySelectorAll('.plus-btn').forEach((btn) => {
