@@ -1,209 +1,4 @@
-{% comment %}
-  {% schema %}
-  {
-    "name": "image products",
-    "max_blocks": 12,
-    "settings": [],
-    "blocks": [
-      {
-        "type": "image_block",
-        "name": "Image Block",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Choose Image"
-          },
-          {
-            "type": "text",
-            "id": "button_text",
-            "label": "Button Text"
-          },
-          {
-            "type": "range",
-            "id": "button_top",
-            "label": "Button Top Position",
-            "min": 0,
-            "max": 100,
-            "default": 50,
-            "step": 1,
-            "unit": "%"
-          },
-          {
-            "type": "range",
-            "id": "button_left",
-            "label": "Button Left Position",
-            "min": 0,
-            "max": 100,
-            "default": 50,
-            "step": 1,
-            "unit": "%"
-          }
-        ]
-      }
-    ]
-  }
-  {% endschema %}
-
-  <div class="custom-image-grid">
-    {% for block in section.blocks %}
-      <div class="image-block" style="position: relative;">
-        <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Image Block" width="" height="">
-      </div>
-    {% endfor %}
-  </div>
-
-  <style>
-    .custom-image-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .image-block img {
-      width: 100%;
-      display: block;
-    }
-
-    .image-button {
-      background-color: #000;
-      color: #fff;
-      padding: 5px 10px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
-{% endcomment %}
-
-{% comment %}
-  2222222
-  {% schema %}
-  {
-    "name": "Product Grid with plus",
-    "settings": [],
-    "blocks": [
-      {
-        "type": "product",
-        "name": "product",
-        "settings": [
-          {
-            "type": "product",
-            "id": "product",
-            "label": "Select Product"
-          }
-        ]
-      }
-    ],
-    "max_blocks": 12
-  }
-  {% endschema %}
-
-  <div class="products-grid">
-    {% for block in section.blocks %}
-      {% assign product = all_products[block.settings.product] %}
-      <div class="product-item">
-        <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title}}" width="" height="">
-        {% comment %} <button class="plus-btn" data-product-id="{{ product.id }}">+</button> {% endcomment %}
-        <button class="plus-btn" data-variant-id="{{ product.variants.first.id }}">+</button>
-
-
-        <div class="product-dialog" id="dialog-{{ product.id}}">
-          <h3>{{ product.title }}</h3>
-          <p>{{ product.description | truncate: 150 }}</p>
-          <p>{{ product.price | money }}</p>
-          <button class="close-btn">X</button>
-
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-
-  <style>
-    .product-dialog {
-      display: none;
-      position: absolute;
-      background: white;
-      border: 1px solid #ccc;
-      padding: 15px;
-      z-index: 100;
-    }
-
-    .plus-btn {
-      cursor: pointer;
-    }
-
-    .product-item {
-      position: relative;
-      display: inline-block;
-      margin: 10px;
-    }
-  </style>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.plus-btn').forEach((btn) => {
-        btn.addEventListener('click', function () {
-          const productId = this.dataset.productId;
-          const dialog = document.getElementById(`dialog-${productId}`);
-          dialog.style.display = 'block';
-        });
-      });
-
-      document.querySelectorAll('.close-btn').forEach((btn) => {
-        btn.addEventListener('click', function () {
-          this.parentElement.style.display = 'none';
-        });
-      });
-    });
-
-    btn.addEventListener('click', function () {
-    const variantId = this.dataset.variantId;
-
-    // فتح الـ dialog
-    const dialog = document.getElementById(`dialog-${variantId}`);
-    if(dialog) dialog.style.display = 'block';
-
-    // إضافة المنتج للعربة
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
-    })
-    .then(response => response.json())
-    .then(data => console.log('Added to cart:', data))
-    .catch(err => console.error(err));
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.plus-btn').forEach((btn) => {
-      btn.addEventListener('click', function () {
-        // نجيب الـ dialog اللي جنب الزرار
-        const dialog = this.parentElement.querySelector('.product-dialog');
-        if (dialog) dialog.style.display = 'block';
-
-        // إضافة المنتج للعربة
-        const variantId = this.dataset.variantId;
-        fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
-        })
-        .then(response => response.json())
-        .then(data => console.log('Added to cart:', data))
-        .catch(err => console.error(err));
-      });
-    });
-
-    document.querySelectorAll('.close-btn').forEach((btn) => {
-      btn.addEventListener('click', function () {
-        this.parentElement.style.display = 'none';
-      });
-    });
-  });
-
-
-  </script>
-{% endcomment %}
-
-{% schema %}
+{% comment %} {% schema %}
 {
   "name": "Products Grid",
   "blocks": [
@@ -284,39 +79,6 @@
   }
 </style>
 
-{% comment %}
-  <script>
-    document.querySelectorAll('.plus-btn').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const handle = btn.dataset.handle;
-
-        // جلب بيانات المنتج من Shopify
-        const response = await fetch(`/products/${handle}.js`);
-        const product = await response.json();
-
-        // تحديث محتوى الـ Modal
-        document.getElementById('modalTitle').textContent = product.title;
-        document.getElementById('modalPrice').textContent = product.price / 100 + ' USD';
-        document.getElementById('modalDescription').textContent = product.description;
-
-        // إظهار الـ Modal
-        document.getElementById('myModal').style.display = 'block';
-      });
-    });
-
-    // غلق الـ Modal
-    document.querySelector('.close').addEventListener('click', () => {
-      document.getElementById('myModal').style.display = 'none';
-    });
-
-    // غلق عند الضغط خارج الـ Modal
-    window.addEventListener('click', (e) => {
-      if (e.target.id === 'myModal') {
-        document.getElementById('myModal').style.display = 'none';
-      }
-    });
-  </script>
-{% endcomment %}
 <script>
   document.querySelectorAll('.plus-btn').forEach((btn) => {
     btn.addEventListener('click', async () => {
@@ -369,6 +131,238 @@
   });
 
   // غلق المودال
+  document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('myModal').style.display = 'none';
+  });
+</script> {% endcomment %}
+
+
+{% schema %}
+{
+  "name": "Products Grid",
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select a product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6
+}
+{% endschema %}
+
+<div class="products-grid">
+  {% for block in section.blocks %}
+    {% assign product = all_products[block.settings.product] %}
+    <div class="product-card">
+      <div class="image-wrapper">
+        <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}">
+        
+        <!-- زرار البلس -->
+        <button 
+          class="plus-btn" 
+          data-handle="{{ product.handle }}" 
+          style="top:50%; left:50%;">
+          +
+        </button>
+      </div>
+
+      <!-- التحكم في مكان زرار البلس -->
+      <div class="controls">
+        <label>X Position</label>
+        <input type="range" min="0" max="100" value="50" class="range-x" data-target="{{ product.handle }}">
+        
+        <label>Y Position</label>
+        <input type="range" min="0" max="100" value="50" class="range-y" data-target="{{ product.handle }}">
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- المودال -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <img id="modalImage" class="product-image" src="" alt="Product image">
+    <h2 id="modalTitle"></h2>
+    <p id="modalPrice"></p>
+    <p id="modalDescription"></p>
+
+    <div class="color-options">
+      <label>Color</label>
+      <div id="colorContainer"></div>
+    </div>
+
+    <div class="size-options">
+      <label for="sizeSelect">Size</label>
+      <select id="sizeSelect">
+        <option>Choose your size</option>
+      </select>
+    </div>
+
+    <button id="addToCartBtn">ADD TO CART →</button>
+  </div>
+</div>
+
+<style>
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.product-card {
+  text-align: center;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.image-wrapper img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.plus-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 50%;
+  border: 2px solid black;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+.controls label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  max-width: 500px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.color-options {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.color-btn {
+  padding: 8px 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.color-btn.active {
+  border-left: 4px solid blue;
+}
+</style>
+
+<script>
+  // تحريك البلس بالـ range
+  document.querySelectorAll('.range-x').forEach(input => {
+    input.addEventListener('input', () => {
+      const handle = input.dataset.target;
+      const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
+      btn.style.left = input.value + '%';
+    });
+  });
+
+  document.querySelectorAll('.range-y').forEach(input => {
+    input.addEventListener('input', () => {
+      const handle = input.dataset.target;
+      const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
+      btn.style.top = input.value + '%';
+    });
+  });
+
+  // فتح المودال عند الضغط على البلس
+  document.querySelectorAll('.plus-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const handle = btn.dataset.handle;
+      const response = await fetch(`/products/${handle}.js`);
+      const product = await response.json();
+
+      document.getElementById('modalTitle').textContent = product.title;
+      document.getElementById('modalPrice').textContent = (product.price / 100) + ' €';
+      document.getElementById('modalDescription').textContent = product.description;
+      document.getElementById('modalImage').src = product.images[0];
+
+      // بناء أزرار الألوان (لو فيه option اسمها Color)
+      const colorContainer = document.getElementById('colorContainer');
+      colorContainer.innerHTML = '';
+      const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
+      if (colorOption) {
+        colorOption.values.forEach((color, i) => {
+          const colorBtn = document.createElement('button');
+          colorBtn.textContent = color;
+          colorBtn.classList.add('color-btn');
+          if (i === 0) colorBtn.classList.add('active');
+          colorBtn.addEventListener('click', () => {
+            document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+            colorBtn.classList.add('active');
+            colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
+          });
+          colorContainer.appendChild(colorBtn);
+        });
+      }
+
+      // بناء المقاسات (لو فيه option اسمها Size)
+      const sizeSelect = document.getElementById('sizeSelect');
+      sizeSelect.innerHTML = '<option>Choose your size</option>';
+      product.variants.forEach(variant => {
+        let opt = document.createElement('option');
+        opt.value = variant.id;
+        opt.textContent = variant.option1;
+        sizeSelect.appendChild(opt);
+      });
+
+      document.getElementById('myModal').style.display = 'block';
+    });
+  });
+
+  // اغلاق المودال
   document.querySelector('.close').addEventListener('click', () => {
     document.getElementById('myModal').style.display = 'none';
   });
