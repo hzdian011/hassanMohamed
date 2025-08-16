@@ -1,5 +1,45 @@
-{{ 'cta-button.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'cta-button.css' | asset_url | stylesheet_tag }}
 
 <div class="my-section">
   {% render 'cta-button', text: 'Click Me' %}
-</div>
+</div> {% endcomment %}
+
+<a href="/collections/all" class="custom-btn">
+  <span>SHOP NOW</span>
+  <img src="{{ 'Arrow 1.svg' | asset_url }}" alt="arrow" class="arrow-icon">
+</a>
+
+<style>
+.custom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background-color: #ffeb3b; /* أصفر */
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-btn .arrow-icon {
+  width: 22px;
+  height: auto;
+  transition: transform 0.4s ease;
+}
+
+/* Hover Effect */
+.custom-btn:hover {
+  background-color: #000; /* أسود */
+  color: #fff;
+}
+
+.custom-btn:hover .arrow-icon {
+  transform: translateX(6px); /* slide effect */
+  filter: brightness(0) invert(1); /* يخلي السهم لونه أبيض */
+}
+</style>
