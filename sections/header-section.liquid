@@ -120,14 +120,25 @@
     padding: 5px;
   }
 
-  /* اللوجو */
+  {% comment %} /* اللوجو */
   .gift-logo {
     font-family: 'Jost', sans-serif;
     font-size: 18px;
     font-weight: 600;
     color: #000;
     white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
-  }
+  } {% endcomment %}
+
+  /* Logo */
+.gift-logo {
+  font-family: 'Jost', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+  text-align: center;
+  flex: 1;
+}
 
   /* النص */
   .gift-subtitle {
