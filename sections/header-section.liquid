@@ -83,333 +83,335 @@
 </section>
 
 <style>
-          {% comment %} Nav style {% endcomment %}
-            /* Nav style */
-            .gift-nav {
+            {% comment %} Nav style {% endcomment %}
+              /* Nav style */
+              .gift-nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between; /* يخلي العناصر تتوزع كويس */
+                align-items: center;
+                padding: 10px 50px;
+                gap: 20px; /* gap معقول مش كبير */
+                width: 100%;
+                max-width: 1440px;
+                height: 45px;
+                background: #F5F5F5;
+                margin: 0 auto;
+                flex-wrap: nowrap; /* امنع العناصر تنزل تحت بعض */
+              }
+
+              /* اللوجو */
+              .gift-logo {
+                font-family: 'Jost', sans-serif;
+                font-size: 18px;
+                font-weight: 600;
+                color: #000;
+                white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
+              }
+
+              /* النص */
+              .gift-subtitle {
+                font-family: 'Jost', sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                color: #000;
+                margin: 0;
+                text-align: center;
+                line-height: 1.25;
+                flex: 1; /* يخلي النص ياخد المساحة في النص */
+              }
+
+                {% comment %} .gift-btn {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                padding: 12px 30px;
+                background: #FFD700;
+                border: none;
+                color: #000;
+                font-family: 'Jost', sans-serif;
+                font-size: 16px;
+                text-transform: uppercase;
+                cursor: pointer;
+                overflow: hidden;
+                transition: color 0.3s ease, border-color 0.3s ease;
+                z-index: 1;
+              }
+
+              /* الخلفية اللي هتعمل slide */
+              .gift-btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%; /* تبدأ بره الزرار */
+                width: 100%;
+                height: 100%;
+                background: #000;
+                transition: all 0.4s ease; /* وقت حركة الخلفية */
+                z-index: -1;
+              }
+
+              /* النص */
+              .gift-btn span {
+                position: relative;
+                z-index: 2;
+              }
+
+              /* السهم */
+              .gift-btn svg {
+                position: relative;
+                z-index: 2;
+                opacity: 1;
+                transition: opacity 0.2s ease;
+              }
+
+              .gift-btn svg path {
+                stroke: #000;
+                fill: #000;
+                transition: stroke 0.3s ease, fill 0.3s ease;
+              }
+
+              /* Hover */
+              .gift-btn:hover {
+                color: #fff;
+                border-color: #000;
+              }
+
+              .gift-btn:hover::before {
+                left: 0; /* slide للخلفية */
+              }
+
+              /* عند بداية hover → السهم يختفي فورًا */
+              .gift-btn:hover svg {
+                opacity: 0;
+                transition-delay: 0s;
+              }
+
+              /* بعد ما يخلص الـ slide (0.4s) → السهم يرجع يظهر */
+              .gift-btn:hover svg {
+                opacity: 1;
+                transition-delay: 0.4s; /* متأخر بعد الحركة */
+              }
+
+              .gift-btn:hover svg path {
+                stroke: #fff;
+                fill: #fff;
+              } {% endcomment %}
+
+
+              .gift-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px 30px;
+    background: #FFD700; /* اللون الأساسي */
+    border: none;
+    color: #000;
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    z-index: 1;
+  }
+
+  /* الخلفية اللي هتعمل slide */
+  .gift-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* تبدأ بره */
+    width: 100%;
+    height: 100%;
+    background: #000; /* اللون عند hover */
+    transition: all 0.4s ease;
+    z-index: -1;
+  }
+
+  /* النص */
+  .gift-btn span {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* السهم */
+  .gift-btn svg {
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.2s ease; /* fade in/out ناعم */
+  }
+
+  .gift-btn svg path {
+    stroke: #000;
+    fill: #000;
+    transition: stroke 0.3s ease, fill 0.3s ease;
+  }
+
+  /* Hover */
+  .gift-btn:hover {
+    color: #fff;
+    border-color: #000;
+  }
+
+  .gift-btn:hover::before {
+    left: 0; /* slide للخلفية */
+  }
+
+  /* ✨ من هنا التحكم في fade للسهم ✨ */
+
+  /* لما يبدأ hover → السهم يختفي بنعومة مباشرة */
+  .gift-btn:hover svg {
+    opacity: 0;
+    transition-delay: 0s; /* يبدأ على طول */
+    transition-duration: 1s;
+  }
+
+  /* ولما يخلص الـ background slide (0.4s) → يرجع يظهر */
+  .gift-btn:hover svg {
+    opacity: 1;
+    transition-delay: 0.4s; /* يظهر متأخر */
+    transition-duration: 0.2s;
+  }
+
+  /* ألوان السهم بعد ما يرجع */
+  .gift-btn:hover svg path {
+      transition-delay: 0.4s; /* يظهر متأخر */
+    transition-duration: 0.2s;
+    stroke: #fff;
+    fill: #fff;
+  }
+
+
+              /* Responsive للموبايل */
+              @media (max-width: 768px) {
+                .gift-nav {
+                  flex-direction: column;
+                  height: auto;
+                  gap: 10px;
+                  padding: 20px;
+                }
+
+                .gift-subtitle {
+                  text-align: center;
+                  flex: unset;
+                }
+              }
+
+              {% comment %} Raw 3 left side and right side with image {% endcomment %}
+              /* Raw 3 Layout */
+            .gift-row3 {
               display: flex;
-              flex-direction: row;
-              justify-content: space-between; /* يخلي العناصر تتوزع كويس */
+              justify-content: space-between;
               align-items: center;
-              padding: 10px 50px;
-              gap: 20px; /* gap معقول مش كبير */
-              width: 100%;
               max-width: 1440px;
-              height: 45px;
-              background: #F5F5F5;
-              margin: 0 auto;
-              flex-wrap: nowrap; /* امنع العناصر تنزل تحت بعض */
+              padding: 0 0 0 50px;
+              gap: 40px;
             }
 
-            /* اللوجو */
-            .gift-logo {
+            /* النصوص */
+            .gift-title {
               font-family: 'Jost', sans-serif;
-              font-size: 18px;
-              font-weight: 600;
+              font-size: 70px;
+              font-weight: 500;
+              line-height: 100%;
               color: #000;
-              white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
+              margin-bottom: 20px;
             }
 
-            /* النص */
-            .gift-subtitle {
+            .gift-desc {
               font-family: 'Jost', sans-serif;
-              font-size: 16px;
+              font-size: 20px;
               font-weight: 400;
+              line-height: 140%;
+              max-width: 480px;
+              margin-bottom: 30px;
               color: #000;
-              margin: 0;
-              text-align: center;
-              line-height: 1.25;
-              flex: 1; /* يخلي النص ياخد المساحة في النص */
             }
 
-              {% comment %} .gift-btn {
-              position: relative;
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
-              gap: 20px;
-              padding: 12px 30px;
-              background: #FFD700;
+            /* زرار CTA */
+            .gift-cta {
+              background: #000;
+              color: #FFF;
               border: none;
-              color: #000;
+              padding: 14px 40px;
               font-family: 'Jost', sans-serif;
               font-size: 16px;
               text-transform: uppercase;
               cursor: pointer;
-              overflow: hidden;
-              transition: color 0.3s ease, border-color 0.3s ease;
-              z-index: 1;
-            }
-
-            /* الخلفية اللي هتعمل slide */
-            .gift-btn::before {
-              content: "";
-              position: absolute;
-              top: 0;
-              left: -100%; /* تبدأ بره الزرار */
-              width: 100%;
-              height: 100%;
-              background: #000;
-              transition: all 0.4s ease; /* وقت حركة الخلفية */
-              z-index: -1;
-            }
-
-            /* النص */
-            .gift-btn span {
+              transition: all 0.3s ease;
               position: relative;
-              z-index: 2;
             }
+          /* السهم */
+          .gift-cta::after {
+              content: "\2192";
+              margin-left: 8px;
+              color: #FFF; /* أبيض مع الخلفية السوداء */
+              display: inline-block;
+              transition: all 0.3s ease;
+          }
 
-            /* السهم */
-            .gift-btn svg {
-              position: relative;
-              z-index: 2;
-              opacity: 1;
-              transition: opacity 0.2s ease;
-            }
+          .gift-cta:hover {
+              background: #FFF;
+              color: #000;
+              border: 1.5px solid #000;
+          }
 
-            .gift-btn svg path {
-              stroke: #000;
-              fill: #000;
-              transition: stroke 0.3s ease, fill 0.3s ease;
-            }
+          .gift-cta:hover::after {
+              color: #000; /* أسود مع الخلفية البيضاء */
+              transform: translateX(5px); /* حركة السهم لليمين */
+          }
+          /* الصورة */
+          .gift-row3-right img {
+              max-width: 100%;
+              height: auto;
+          }
 
-            /* Hover */
-            .gift-btn:hover {
-              color: #fff;
-              border-color: #000;
-            }
-
-            .gift-btn:hover::before {
-              left: 0; /* slide للخلفية */
-            }
-
-            /* عند بداية hover → السهم يختفي فورًا */
-            .gift-btn:hover svg {
-              opacity: 0;
-              transition-delay: 0s;
-            }
-
-            /* بعد ما يخلص الـ slide (0.4s) → السهم يرجع يظهر */
-            .gift-btn:hover svg {
-              opacity: 1;
-              transition-delay: 0.4s; /* متأخر بعد الحركة */
-            }
-
-            .gift-btn:hover svg path {
-              stroke: #fff;
-              fill: #fff;
-            } {% endcomment %}
-
-
-            .gift-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 12px 30px;
-  background: #FFD700; /* اللون الأساسي */
-  border: none;
-  color: #000;
-  font-family: 'Jost', sans-serif;
-  font-size: 16px;
-  text-transform: uppercase;
-  cursor: pointer;
-  overflow: hidden;
-  transition: color 0.3s ease, border-color 0.3s ease;
-  z-index: 1;
-}
-
-/* الخلفية اللي هتعمل slide */
-.gift-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%; /* تبدأ بره */
-  width: 100%;
-  height: 100%;
-  background: #000; /* اللون عند hover */
-  transition: all 0.4s ease;
-  z-index: -1;
-}
-
-/* النص */
-.gift-btn span {
-  position: relative;
-  z-index: 2;
-}
-
-/* السهم */
-.gift-btn svg {
-  position: relative;
-  z-index: 2;
-  opacity: 1;
-  transition: opacity 0.2s ease; /* fade in/out ناعم */
-}
-
-.gift-btn svg path {
-  stroke: #000;
-  fill: #000;
-  transition: stroke 0.3s ease, fill 0.3s ease;
-}
-
-/* Hover */
-.gift-btn:hover {
-  color: #fff;
-  border-color: #000;
-}
-
-.gift-btn:hover::before {
-  left: 0; /* slide للخلفية */
-}
-
-/* ✨ من هنا التحكم في fade للسهم ✨ */
-
-/* لما يبدأ hover → السهم يختفي بنعومة مباشرة */
-.gift-btn:hover svg {
-  opacity: 0;
-  transition-delay: 0s; /* يبدأ على طول */
-  transition-duration: 1s;
-}
-
-/* ولما يخلص الـ background slide (0.4s) → يرجع يظهر */
-.gift-btn:hover svg {
-  opacity: 1;
-  transition-delay: 0.4s; /* يظهر متأخر */
-  transition-duration: 0.2s;
-}
-
-/* ألوان السهم بعد ما يرجع */
-.gift-btn:hover svg path {
-  stroke: #fff;
-  fill: #fff;
-}
-
-
-            /* Responsive للموبايل */
-            @media (max-width: 768px) {
-              .gift-nav {
+            /* Responsive */
+            @media (max-width: 1024px) {
+              .gift-row3 {
                 flex-direction: column;
-                height: auto;
-                gap: 10px;
-                padding: 20px;
-              }
-
-              .gift-subtitle {
                 text-align: center;
-                flex: unset;
+              }
+
+              .gift-desc {
+                margin: 0 auto 20px;
               }
             }
 
-            {% comment %} Raw 3 left side and right side with image {% endcomment %}
-            /* Raw 3 Layout */
-          .gift-row3 {
+            {% comment %} Raw 4 text at the footer of the section {% endcomment %}
+             /* Raw 4 */
+          .gift-row4 {
             display: flex;
-            justify-content: space-between;
+            flex-direction: row;
+            justify-content: center;
             align-items: center;
+            padding: 10px 50px;
+            gap: 375px;
+
+            width: 100%;
             max-width: 1440px;
-            padding: 0 0 0 50px;
-            gap: 40px;
+            height: 34px;
+            margin: 0 auto;
+
+            background: #F5F5F5;
           }
 
-          /* النصوص */
-          .gift-title {
+          .gift-footer {
             font-family: 'Jost', sans-serif;
-            font-size: 70px;
-            font-weight: 500;
-            line-height: 100%;
-            color: #000;
-            margin-bottom: 20px;
-          }
-
-          .gift-desc {
-            font-family: 'Jost', sans-serif;
-            font-size: 20px;
+            font-style: normal;
             font-weight: 400;
-            line-height: 140%;
-            max-width: 480px;
-            margin-bottom: 30px;
-            color: #000;
-          }
-
-          /* زرار CTA */
-          .gift-cta {
-            background: #000;
-            color: #FFF;
-            border: none;
-            padding: 14px 40px;
-            font-family: 'Jost', sans-serif;
             font-size: 16px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+            line-height: 13px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #000000;
+            margin: 0;
           }
-        /* السهم */
-        .gift-cta::after {
-            content: "\2192";
-            margin-left: 8px;
-            color: #FFF; /* أبيض مع الخلفية السوداء */
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .gift-cta:hover {
-            background: #FFF;
-            color: #000;
-            border: 1.5px solid #000;
-        }
-
-        .gift-cta:hover::after {
-            color: #000; /* أسود مع الخلفية البيضاء */
-            transform: translateX(5px); /* حركة السهم لليمين */
-        }
-        /* الصورة */
-        .gift-row3-right img {
-            max-width: 100%;
-            height: auto;
-        }
-
-          /* Responsive */
-          @media (max-width: 1024px) {
-            .gift-row3 {
-              flex-direction: column;
-              text-align: center;
-            }
-
-            .gift-desc {
-              margin: 0 auto 20px;
-            }
-          }
-
-          {% comment %} Raw 4 text at the footer of the section {% endcomment %}
-           /* Raw 4 */
-        .gift-row4 {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          padding: 10px 50px;
-          gap: 375px;
-
-          width: 100%;
-          max-width: 1440px;
-          height: 34px;
-          margin: 0 auto;
-
-          background: #F5F5F5;
-        }
-
-        .gift-footer {
-          font-family: 'Jost', sans-serif;
-          font-style: normal;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 13px;
-          display: flex;
-          align-items: center;
-          text-align: center;
-          color: #000000;
-          margin: 0;
-        }
 </style>
