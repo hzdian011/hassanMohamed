@@ -151,6 +151,30 @@
     line-height: 1.25;
     flex: 1;
   }
+  
+/* زرار CTA */
+.gift-btn {
+  margin-left: auto;
+}
+
+/* 📱 Responsive (موبايل) */
+@media (max-width: 768px) {
+  .burger-btn {
+    display: block; /* يظهر البورجر */
+  }
+
+  .gift-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    flex: unset;
+  }
+
+  .gift-subtitle,
+  .gift-btn {
+    display: none; /* يختفوا في الموبايل */
+  }
+}
 
   .gift-btn {
     position: relative;
