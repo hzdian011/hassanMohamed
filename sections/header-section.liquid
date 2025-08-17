@@ -135,20 +135,18 @@
         text-transform: uppercase;
         cursor: pointer;
         transition: all 0.3s ease;
-
         position: relative;
       }
-      .gift-btn svg {
-        fill: white;
+      .gift-btn svg path {
+        stroke: black; /* اللون الافتراضي */
+        transition: stroke 0.3s ease;
       }
-      .gift-btn:hover {
+     .gift-btn:hover {
         background: #000;
-        color:rgb(255, 255, 255);
+        color: #FFF;
       }
-
-      .gift-btn:hover::after {
-          color:rgb(255, 255, 255);
-          transform: translateX(5px); /* حركة السهم لليمين */
+      .gift-btn:hover svg path {
+        stroke: #FFF; /* يتحول للأبيض عند hover */
       }
 
       /* Responsive للموبايل */
