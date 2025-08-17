@@ -4,12 +4,6 @@
   "settings": [
     {
       "type": "text",
-      "id": "nav_title",
-      "label": "Navigation Title",
-      "default": "TISSO VISION"
-    },
-    {
-      "type": "text",
       "id": "nav_subtitle",
       "label": "Navigation Subtitle",
       "default": "Find the ideal gift for your loved ones."
@@ -51,7 +45,9 @@
 <section>
   <!-- Raw 1 -->
   <nav class="gift-nav">
-    <div class="gift-logo">{{ section.settings.nav_title }}</div>
+    <div class="gift-logo">
+      <img src="{{ 'brandLogo.svg' | asset_url }}" alt="Brand Logo" width="150" height="auto">
+    </div>    
     <p class="gift-subtitle">{{ section.settings.nav_subtitle }}</p>
     <button class="gift-btn">{{ section.settings.nav_button }}</button>
   </nav>
