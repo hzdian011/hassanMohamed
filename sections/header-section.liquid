@@ -43,25 +43,12 @@
 {% endschema %}
 
 <section>
-   <!-- Raw 1 -->
+  <!-- Raw 1 -->
   <nav class="gift-nav">
-    <!-- Burger Menu -->
-    <button class="burger-btn" aria-label="Menu">
-      <!-- SVG Burger -->
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M3 6H21M3 12H21M3 18H21" stroke="#000" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
-
-    <!-- Logo -->
     <div class="gift-logo">
-      <img src="{{ 'brandLogo.svg' | asset_url }}" alt="Brand Logo" width="120" height="auto">
+      <img src="{{ 'brandLogo.svg' | asset_url }}" alt="Brand Logo" width="150" height="auto">
     </div>
-
-    <!-- Subtitle -->
     <p class="gift-subtitle">{{ section.settings.nav_subtitle }}</p>
-
-    <!-- CTA Button -->
     <button class="gift-btn">
       {{ section.settings.nav_button }}
       <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,87 +83,125 @@
 </section>
 
 <style>
-  /* nav bar الأساسي */
-  .gift-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-    width: 100%;
-    max-width: 1440px;
-    height: 60px;
-    background: #F5F5F5;
-    margin: 0 auto;
-    position: relative;
-  }
+            {% comment %} Nav style {% endcomment %}
+              /* Nav style */
+              .gift-nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between; /* يخلي العناصر تتوزع كويس */
+                align-items: center;
+                padding: 10px 50px;
+                gap: 20px; /* gap معقول مش كبير */
+                width: 100%;
+                max-width: 1440px;
+                height: 45px;
+                background: #F5F5F5;
+                margin: 0 auto;
+                flex-wrap: nowrap; /* امنع العناصر تنزل تحت بعض */
+              }
 
-  /* Burger Button */
-  .burger-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: none; /* يختفي في الديسكتوب */
-    padding: 5px;
-  }
+              /* اللوجو */
+              .gift-logo {
+                font-family: 'Jost', sans-serif;
+                font-size: 18px;
+                font-weight: 600;
+                color: #000;
+                white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
+              }
 
-  {% comment %} /* اللوجو */
-  .gift-logo {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #000;
-    white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
-  } {% endcomment %}
+              /* النص */
+              .gift-subtitle {
+                font-family: 'Jost', sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                color: #000;
+                margin: 0;
+                text-align: center;
+                line-height: 1.25;
+                flex: 1; /* يخلي النص ياخد المساحة في النص */
+              }
 
-  /* Logo */
-.gift-logo {
-  font-family: 'Jost', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #000;
-  white-space: nowrap;
-  text-align: center;
-  flex: 1;
-}
+                {% comment %} .gift-btn {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                padding: 12px 30px;
+                background: #FFD700;
+                border: none;
+                color: #000;
+                font-family: 'Jost', sans-serif;
+                font-size: 16px;
+                text-transform: uppercase;
+                cursor: pointer;
+                overflow: hidden;
+                transition: color 0.3s ease, border-color 0.3s ease;
+                z-index: 1;
+              }
 
-  /* Subtitle */
-  .gift-subtitle {
-    font-family: 'Jost', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: #000;
-    margin: 0;
-    text-align: center;
-    line-height: 1.25;
-    flex: 1;
-  }
-  
-/* زرار CTA */
-.gift-btn {
-  margin-left: auto;
-}
+              /* الخلفية اللي هتعمل slide */
+              .gift-btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%; /* تبدأ بره الزرار */
+                width: 100%;
+                height: 100%;
+                background: #000;
+                transition: all 0.4s ease; /* وقت حركة الخلفية */
+                z-index: -1;
+              }
 
-/* 📱 Responsive (موبايل) */
-@media (max-width: 768px) {
-  .burger-btn {
-    display: block; /* يظهر البورجر */
-  }
+              /* النص */
+              .gift-btn span {
+                position: relative;
+                z-index: 2;
+              }
 
-  .gift-logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    flex: unset;
-  }
+              /* السهم */
+              .gift-btn svg {
+                position: relative;
+                z-index: 2;
+                opacity: 1;
+                transition: opacity 0.2s ease;
+              }
 
-  .gift-subtitle,
-  .gift-btn {
-    display: none; /* يختفوا في الموبايل */
-  }
-}
+              .gift-btn svg path {
+                stroke: #000;
+                fill: #000;
+                transition: stroke 0.3s ease, fill 0.3s ease;
+              }
 
-  .gift-btn {
+              /* Hover */
+              .gift-btn:hover {
+                color: #fff;
+                border-color: #000;
+              }
+
+              .gift-btn:hover::before {
+                left: 0; /* slide للخلفية */
+              }
+
+              /* عند بداية hover → السهم يختفي فورًا */
+              .gift-btn:hover svg {
+                opacity: 0;
+                transition-delay: 0s;
+              }
+
+              /* بعد ما يخلص الـ slide (0.4s) → السهم يرجع يظهر */
+              .gift-btn:hover svg {
+                opacity: 1;
+                transition-delay: 0.4s; /* متأخر بعد الحركة */
+              }
+
+              .gift-btn:hover svg path {
+                stroke: #fff;
+                fill: #fff;
+              } {% endcomment %}
+
+
+              .gift-btn {
     position: relative;
     display: inline-flex;
     align-items: center;
