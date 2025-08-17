@@ -134,20 +134,41 @@
         font-size: 16px;
         text-transform: uppercase;
         cursor: pointer;
-        /*transition: all 0.3s ease;*/
+        transition: all 0.3s ease;
         position: relative;
-
-        transition: background 0.3s ease, color 0.3s ease;
-         overflow: hidden;
+        overflow: hidden;
       }
       .gift-btn svg path {
         stroke: black; /* اللون الافتراضي */
         fill:black;
         transition: stroke 0.3s ease;
       }
+
      .gift-btn:hover {
         background: #000;
         color: #FFF;
+      }
+
+      .gift-btn::after{
+        content:"";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height:100%;
+        width:100%;
+        background-color: yellow;
+        z-index: -1;
+        transition: 0.3s ease all;
+        transform: scale(0,1);
+
+        transform-origin: top right;
+        transition: transform 50ms cubic-Bezier(0.86, 0, 0.07, 1);
+        transition-timing-function: cubic-Bezier(0.86, 0, 0.07, 1);
+      }
+
+      .gift-btn:hover::after {
+        transform: scale(1, 1);
+        transform-origin: top left;
       }
       .gift-btn:hover svg path {
         stroke: #FFF; /* يتحول للأبيض عند hover */
