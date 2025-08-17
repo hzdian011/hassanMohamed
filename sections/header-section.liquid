@@ -134,16 +134,9 @@
 
         position: relative;
       }
-
-      /* السهم */
-      {% comment %} .gift-btn::after {
-          content: "\2192"; /* Unicode Arrow → */
-          margin-left: 8px;
-          color: #000; /* أسود مع الخلفية الصفراء */
-          display: inline-block;
-          transition: all 0.3s ease;
-      } {% endcomment %}
-
+      .gift-btn svg {
+        fill: white; /* نخلي السهم لونه أبيض زي النص */
+      }
       .gift-btn:hover {
         background: #000;
         color: #FFF544;
