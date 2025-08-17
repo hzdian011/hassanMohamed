@@ -121,7 +121,7 @@
               flex: 1; /* يخلي النص ياخد المساحة في النص */
             }
 
-              .gift-btn {
+              {% comment %} .gift-btn {
               position: relative;
               display: inline-flex;
               align-items: center;
@@ -198,8 +198,92 @@
             .gift-btn:hover svg path {
               stroke: #fff;
               fill: #fff;
-            }
+            } {% endcomment %}
 
+
+            .gift-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 30px;
+  background: #FFD700; /* اللون الأساسي */
+  border: none;
+  color: #000;
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  z-index: 1;
+}
+
+/* الخلفية اللي هتعمل slide */
+.gift-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* تبدأ بره */
+  width: 100%;
+  height: 100%;
+  background: #000; /* اللون عند hover */
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+/* النص */
+.gift-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+/* السهم */
+.gift-btn svg {
+  position: relative;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.2s ease; /* fade in/out ناعم */
+}
+
+.gift-btn svg path {
+  stroke: #000;
+  fill: #000;
+  transition: stroke 0.3s ease, fill 0.3s ease;
+}
+
+/* Hover */
+.gift-btn:hover {
+  color: #fff;
+  border-color: #000;
+}
+
+.gift-btn:hover::before {
+  left: 0; /* slide للخلفية */
+}
+
+/* ✨ من هنا التحكم في fade للسهم ✨ */
+
+/* لما يبدأ hover → السهم يختفي بنعومة مباشرة */
+.gift-btn:hover svg {
+  opacity: 0;
+  transition-delay: 0s; /* يبدأ على طول */
+  transition-duration: 0.2s;
+}
+
+/* ولما يخلص الـ background slide (0.4s) → يرجع يظهر */
+.gift-btn:hover svg {
+  opacity: 1;
+  transition-delay: 0.4s; /* يظهر متأخر */
+  transition-duration: 0.2s;
+}
+
+/* ألوان السهم بعد ما يرجع */
+.gift-btn:hover svg path {
+  stroke: #fff;
+  fill: #fff;
+}
 
 
             /* Responsive للموبايل */
