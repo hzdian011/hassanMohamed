@@ -47,9 +47,14 @@
   <nav class="gift-nav">
     <div class="gift-logo">
       <img src="{{ 'brandLogo.svg' | asset_url }}" alt="Brand Logo" width="150" height="auto">
-    </div>    
+    </div>
     <p class="gift-subtitle">{{ section.settings.nav_subtitle }}</p>
-    <button class="gift-btn">{{ section.settings.nav_button }}</button>
+    <button class="gift-btn">
+      {{ section.settings.nav_button }}
+      <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z" fill="#333333"/>
+      </svg>
+    </button>
   </nav>
 
   <!-- Raw 2 -->
@@ -78,201 +83,201 @@
 </section>
 
 <style>
-      {% comment %} Nav style {% endcomment %}
-        /* Nav style */
-        .gift-nav {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between; /* يخلي العناصر تتوزع كويس */
-          align-items: center;
-          padding: 10px 50px;
-          gap: 20px; /* gap معقول مش كبير */
-          width: 100%;
-          max-width: 1440px;
-          height: 64px;
-          background: #F5F5F5;
-          margin: 0 auto;
-          flex-wrap: nowrap; /* امنع العناصر تنزل تحت بعض */
-        }
-
-        /* اللوجو */
-        .gift-logo {
-          font-family: 'Jost', sans-serif;
-          font-size: 18px;
-          font-weight: 600;
-          color: #000;
-          white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
-        }
-
-        /* النص */
-        .gift-subtitle {
-          font-family: 'Jost', sans-serif;
-          font-size: 16px;
-          font-weight: 400;
-          color: #000;
-          margin: 0;
-          text-align: center;
-          line-height: 1.25;
-          flex: 1; /* يخلي النص ياخد المساحة في النص */
-        }
-
-        /* الزرار */
-        .gift-btn {
-          background: #FFF544;
-          border: 1.5px solid #000;
-          padding: 12px 50px 12px 30px;
-          font-family: 'Jost', sans-serif;
-          font-size: 16px;
-          text-transform: uppercase;
-          cursor: pointer;
-          transition: all 0.3s ease;
-
-          position: relative;
-        }
-
-        /* السهم */
-        .gift-btn::after {
-            content: "\2192"; /* Unicode Arrow → */
-            margin-left: 8px;
-            color: #000; /* أسود مع الخلفية الصفراء */
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .gift-btn:hover {
-          background: #000;
-          color: #FFF544;
-        }
-
-        .gift-btn:hover::after {
-            color: #FFF; /* أبيض مع الخلفية السوداء */
-            transform: translateX(5px); /* حركة السهم لليمين */
-        }
-
-        /* Responsive للموبايل */
-        @media (max-width: 768px) {
-          .gift-nav {
-            flex-direction: column;
-            height: auto;
-            gap: 10px;
-            padding: 20px;
-          }
-
-          .gift-subtitle {
-            text-align: center;
-            flex: unset;
-          }
-        }
-
-        {% comment %} Raw 3 left side and right side with image {% endcomment %}
-        /* Raw 3 Layout */
-      .gift-row3 {
+    {% comment %} Nav style {% endcomment %}
+      /* Nav style */
+      .gift-nav {
         display: flex;
-        justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-between; /* يخلي العناصر تتوزع كويس */
         align-items: center;
+        padding: 10px 50px;
+        gap: 20px; /* gap معقول مش كبير */
+        width: 100%;
         max-width: 1440px;
-        padding: 0 0 0 50px;
-        gap: 40px;
+        height: 64px;
+        background: #F5F5F5;
+        margin: 0 auto;
+        flex-wrap: nowrap; /* امنع العناصر تنزل تحت بعض */
       }
 
-      /* النصوص */
-      .gift-title {
+      /* اللوجو */
+      .gift-logo {
         font-family: 'Jost', sans-serif;
-        font-size: 70px;
-        font-weight: 500;
-        line-height: 100%;
+        font-size: 18px;
+        font-weight: 600;
         color: #000;
-        margin-bottom: 20px;
+        white-space: nowrap; /* يمنع الكلمة تتكسر لسطرين */
       }
 
-      .gift-desc {
+      /* النص */
+      .gift-subtitle {
         font-family: 'Jost', sans-serif;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 400;
-        line-height: 140%;
-        max-width: 480px;
-        margin-bottom: 30px;
         color: #000;
+        margin: 0;
+        text-align: center;
+        line-height: 1.25;
+        flex: 1; /* يخلي النص ياخد المساحة في النص */
       }
 
-      /* زرار CTA */
-      .gift-cta {
-        background: #000;
-        color: #FFF;
-        border: none;
-        padding: 14px 40px;
+      /* الزرار */
+      .gift-btn {
+        background: #FFF544;
+        border: 1.5px solid #000;
+        padding: 12px 50px 12px 30px;
         font-family: 'Jost', sans-serif;
         font-size: 16px;
         text-transform: uppercase;
         cursor: pointer;
         transition: all 0.3s ease;
+
         position: relative;
       }
-    /* السهم */
-    .gift-cta::after {
-        content: "\2192";
-        margin-left: 8px;
-        color: #FFF; /* أبيض مع الخلفية السوداء */
-        display: inline-block;
-        transition: all 0.3s ease;
-    }
 
-    .gift-cta:hover {
-        background: #FFF;
-        color: #000;
-        border: 1.5px solid #000;
-    }
+      /* السهم */
+      {% comment %} .gift-btn::after {
+          content: "\2192"; /* Unicode Arrow → */
+          margin-left: 8px;
+          color: #000; /* أسود مع الخلفية الصفراء */
+          display: inline-block;
+          transition: all 0.3s ease;
+      } {% endcomment %}
 
-    .gift-cta:hover::after {
-        color: #000; /* أسود مع الخلفية البيضاء */
-        transform: translateX(5px); /* حركة السهم لليمين */
-    }
-    /* الصورة */
-    .gift-row3-right img {
-        max-width: 100%;
-        height: auto;
-    }
+      .gift-btn:hover {
+        background: #000;
+        color: #FFF544;
+      }
 
-      /* Responsive */
-      @media (max-width: 1024px) {
-        .gift-row3 {
+      .gift-btn:hover::after {
+          color: #FFF; /* أبيض مع الخلفية السوداء */
+          transform: translateX(5px); /* حركة السهم لليمين */
+      }
+
+      /* Responsive للموبايل */
+      @media (max-width: 768px) {
+        .gift-nav {
           flex-direction: column;
-          text-align: center;
+          height: auto;
+          gap: 10px;
+          padding: 20px;
         }
 
-        .gift-desc {
-          margin: 0 auto 20px;
+        .gift-subtitle {
+          text-align: center;
+          flex: unset;
         }
       }
 
-      {% comment %} Raw 4 text at the footer of the section {% endcomment %}
-       /* Raw 4 */
-    .gift-row4 {
+      {% comment %} Raw 3 left side and right side with image {% endcomment %}
+      /* Raw 3 Layout */
+    .gift-row3 {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      padding: 10px 50px;
-      gap: 375px;
-
-      width: 100%;
       max-width: 1440px;
-      height: 34px;
-      margin: 0 auto;
-
-      background: #F5F5F5;
+      padding: 0 0 0 50px;
+      gap: 40px;
     }
 
-    .gift-footer {
+    /* النصوص */
+    .gift-title {
       font-family: 'Jost', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 13px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: #000000;
-      margin: 0;
+      font-size: 70px;
+      font-weight: 500;
+      line-height: 100%;
+      color: #000;
+      margin-bottom: 20px;
     }
+
+    .gift-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 140%;
+      max-width: 480px;
+      margin-bottom: 30px;
+      color: #000;
+    }
+
+    /* زرار CTA */
+    .gift-cta {
+      background: #000;
+      color: #FFF;
+      border: none;
+      padding: 14px 40px;
+      font-family: 'Jost', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+  /* السهم */
+  .gift-cta::after {
+      content: "\2192";
+      margin-left: 8px;
+      color: #FFF; /* أبيض مع الخلفية السوداء */
+      display: inline-block;
+      transition: all 0.3s ease;
+  }
+
+  .gift-cta:hover {
+      background: #FFF;
+      color: #000;
+      border: 1.5px solid #000;
+  }
+
+  .gift-cta:hover::after {
+      color: #000; /* أسود مع الخلفية البيضاء */
+      transform: translateX(5px); /* حركة السهم لليمين */
+  }
+  /* الصورة */
+  .gift-row3-right img {
+      max-width: 100%;
+      height: auto;
+  }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .gift-row3 {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .gift-desc {
+        margin: 0 auto 20px;
+      }
+    }
+
+    {% comment %} Raw 4 text at the footer of the section {% endcomment %}
+     /* Raw 4 */
+  .gift-row4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px;
+    gap: 375px;
+
+    width: 100%;
+    max-width: 1440px;
+    height: 34px;
+    margin: 0 auto;
+
+    background: #F5F5F5;
+  }
+
+  .gift-footer {
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+  }
 </style>
