@@ -62,28 +62,28 @@
   <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
+      
+        <!-- image -->
+        <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
 
-      <!-- image -->
-      <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
+        <!-- details -->
+        <div class="modal-details">
+          <h2 id="modalTitle"></h2>
+          <p id="modalPrice"></p>
+          <p id="modalDescription"></p>
 
-      <!-- details -->
-      <div class="modal-details">
-        <h2 id="modalTitle"></h2>
-        <p id="modalPrice"></p>
-        <p id="modalDescription"></p>
+          <div class="color-options">
+            <label>Color</label>
+            <div id="colorContainer"></div>
+          </div>
 
-        <div class="color-options">
-          <label>Color</label>
-          <div id="colorContainer"></div>
+          <div class="size-options">
+            <label for="sizeSelect">Size</label>
+            <select id="sizeSelect">
+              <option>Choose your size</option>
+            </select>
+          </div>
         </div>
-
-        <div class="size-options">
-          <label for="sizeSelect">Size</label>
-          <select id="sizeSelect">
-            <option>Choose your size</option>
-          </select>
-        </div>
-      </div>
 
       <button id="addToCartBtn">ADD TO CART →</button>
     </div>
