@@ -125,6 +125,47 @@
 
 
 <style>
+  /*================= New =============== */
+  .modal-top {
+  display: flex;
+  align-items: flex-start; /* الصورة فوق والتفاصيل تبدأ جنبها */
+  gap: 15px; /* مسافة بين الصورة والتفاصيل */
+}
+
+.modal-top img.product-image {
+  width: 120px;   /* صغرها شوية عشان تسيب مساحة */
+  height: auto;
+  border-radius: 6px;
+  flex-shrink: 0; /* ما تتضغطش */
+}
+
+.basic-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.basic-details h2 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.basic-details p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+
+
+
+
+
+
+
+
+  /*================ ends ============== */
     .products-section {
       display: flex;
       flex-direction: column;
