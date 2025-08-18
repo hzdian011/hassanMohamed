@@ -358,16 +358,22 @@ if (colorOption) {
   });
 }
 
+  const sizeSelect = document.getElementById('sizeSelect');
+
+  // مسح أي مقاسات قديمة
+  sizeSelect.innerHTML = '<option>Choose your size</option>';
 
   const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
-if (sizeOption) {
-  sizeOption.values.forEach(size => {
-    let opt = document.createElement('option');
-    opt.value = size;
-    opt.textContent = size;
-    sizeSelect.appendChild(opt);
-  });
-}
+  if (sizeOption) {
+    sizeOption.values.forEach(size => {
+      let opt = document.createElement('option');
+      opt.value = size;
+      opt.textContent = size;
+      sizeSelect.appendChild(opt);
+    });
+  }
+
+
 
 
       document.getElementById('myModal').style.display = 'block';
