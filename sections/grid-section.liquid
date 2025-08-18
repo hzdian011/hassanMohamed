@@ -292,78 +292,12 @@
       document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
       document.getElementById('modalDescription').innerHTML  = product.description;
       document.getElementById('modalImage').src = product.images[0];
-
-      {% comment %} // بناء أزرار الألوان (لو فيه option اسمها Color)
-       const colorContainer = document.getElementById('colorContainer');
-      colorContainer.innerHTML = '';
-      const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
-      if (colorOption) {
-        colorOption.values.forEach((color, i) => {
-          const colorBtn = document.createElement('button');
-          colorBtn.textContent = color;
-          colorBtn.classList.add('color-btn');
-          if (i === 0) colorBtn.classList.add('active');
-          colorBtn.addEventListener('click', () => {
-            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
-            colorBtn.classList.add('active');
-            colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
-          });
-          colorContainer.appendChild(colorBtn);
-        });
-      } {% endcomment %}
-
-      // mapping لألوان CSS صالحة
-
-
   
-{% comment %} 
-const colorMap = {
-  'Red': '#FF0000',
-  'Blue': '#0000FF',
-  'Green': '#00FF00',
-  'Black': '#000000',
-  'White': '#FFFFFF',
-  'Yellow': '#FFFF00',
-  'Sky Blue': '#87CEEB',
-  'Light Pink': '#FFB6C1',
-  // ممكن تضيف باقي الألوان اللي عندك في المنتجات
-};
-
-// نجيب العنصر الحاوي للألوان
-const colorContainer = document.getElementById('colorContainer');
-if (!colorContainer || !product.options) return;
-
-colorContainer.innerHTML = ''; // نظف المحتوى القديم
-
-// نبحث عن خيار اللون
-const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
-
-if (colorOption) {
-  colorOption.values.forEach((color, i) => {
-    const colorBtn = document.createElement('button');
-    colorBtn.textContent = color;
-    colorBtn.classList.add('color-btn');
-    if (i === 0) colorBtn.classList.add('active');
-
-    colorBtn.addEventListener('click', () => {
-      // إزالة active و border من كل الأزرار
-      document.querySelectorAll('.color-btn').forEach(b => {
-        b.classList.remove('active');
-        b.style.borderLeft = 'none';
-      });
-
-      colorBtn.classList.add('active');
-      // نستخدم اللون من mapping أو نرجع للـ black كافتراضي
-      const cssColor = colorMap[color] || '#000';
-      colorBtn.style.borderLeft = `4px solid ${cssColor}`;
-    });
-
-    colorContainer.appendChild(colorBtn);
-  });
-} {% endcomment %}
 
 
 // 🟢 نجيب العنصر الحاوي للألوان
+
+// =============== colors =================
 const colorContainer = document.getElementById('colorContainer');
 colorContainer.innerHTML = ''; // نفضي المحتوى القديم
 
@@ -433,6 +367,38 @@ if (colorOption) {
       document.getElementById('myModal').style.display = 'block';
     });
   });
+
+  function openCartDrawer() {
+  fetch('/cart.js')
+    .then(res => res.json())
+    .then(cart => {
+      const cartItemsContainer = document.getElementById('cartItems');
+      cartItemsContainer.innerHTML = '';
+
+      cart.items.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.title}">
+          <div class="cart-item-details">
+            <h4>${item.product_title}</h4>
+            <p>${item.variant_title || ''}</p>
+            <p>Qty: ${item.quantity}</p>
+            <p>${(item.line_price / 100).toFixed(2)} €</p>
+          </div>
+        `;
+        cartItemsContainer.appendChild(div);
+      });
+
+      document.getElementById('cartDrawer').classList.add('active');
+    });
+}
+
+// إغلاق الكارت
+document.getElementById('closeCart').addEventListener('click', () => {
+  document.getElementById('cartDrawer').classList.remove('active');
+});
+
 
   // اغلاق المودال
   document.querySelector('.close').addEventListener('click', () => {
