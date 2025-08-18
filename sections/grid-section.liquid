@@ -351,8 +351,13 @@
     }
 
     .color-btn.active {
-      border-left: 4px solid blue;
+      background: #000 !important;   /* 🟢 الخلفية تبقى سوداء */
+      color: #fff !important;        /* 🟢 الكتابة تبقى بيضا */
+      border: 1px solid #000;
     }
+    {% comment %} .color-btn.active {
+      border-left: 4px solid blue;
+    } {% endcomment %}
 
     /* خيارات المقاس */
     .size-options {
