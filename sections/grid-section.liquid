@@ -290,7 +290,7 @@
 
       document.getElementById('modalTitle').textContent = product.title;
       document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
-      document.getElementById('modalDescription').textContent = product.description;
+      document.getElementById('modalDescription').innerHTML  = product.description;
       document.getElementById('modalImage').src = product.images[0];
 
       {% comment %} // بناء أزرار الألوان (لو فيه option اسمها Color)
