@@ -203,9 +203,15 @@
       box-sizing: border-box;
     }
 
+    .gift-row3 {
+      overflow: hidden;  /* قص الجزء الزيادة */
+    }
+
     .gift-row3 img {
-      object-fit: cover;
-      object-position: right 20%; /* تخليها تتحرك جوا الـ box بحيث تكشف أكتر من الشمال */
+      width: 120%;            /* تكبير الصورة */
+      max-width: none;
+      display: block;
+      transform: translateX(-20%); /* تزقها شويه ناحيه الشمال */
     }
     .gift-row3-left {
 
