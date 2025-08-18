@@ -180,11 +180,16 @@
       fill: #fff;
     }
 
-    /*=================== Row 4 ================== */
-    section > div img {
-      margin-left: auto; /* تزقها يمين */
-      display: block;    /* عشان margin يشتغل */
-    }
+    /*=================== Row 2 ================== */
+/* خصص للـ Raw 2 */
+section > div img {
+  width: 120%;         /* الصورة تكبر 20% زيادة */
+  max-width: none;     /* تمنع المتصفح من حصرها */
+  object-fit: cover;   /* تخليها تغطي المساحة */
+  object-position: left; /* تسيب الشمال ثابت وتكبر يمين */
+  display: block;
+}
+
 
     /* ================== Row 3 ================== */
     .gift-row3 {
