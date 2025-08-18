@@ -263,7 +263,7 @@
     cursor: pointer;
   }
 </style>
-{% comment %} 
+
 <script>
   // تحريك البلس بالـ range
   document.querySelectorAll('.range-x').forEach((input) => {
@@ -342,84 +342,5 @@
 
   document.querySelector('.close').addEventListener('click', () => {
     document.getElementById('myModal').style.display = 'none';
-  });
-</script> {% endcomment %}
-<script>
-  // فتح المودال عند الضغط على البلس
-  document.querySelectorAll('.plus-btn').forEach((btn) => {
-    btn.addEventListener('click', async () => {
-      const handle = btn.dataset.handle;
-      const response = await fetch(`/products/${handle}.js`);
-      const product = await response.json();
-
-      document.getElementById('modalTitle').textContent = product.title;
-      document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
-      document.getElementById('modalDescription').textContent = product.description;
-      document.getElementById('modalImage').src = product.images[0];
-
-      // عناصر DOM الخاصة بالاختيارات
-      const colorContainer = document.getElementById('colorContainer');
-      const sizeSelect = document.getElementById('sizeSelect');
-
-      // تنظيف القديم
-      colorContainer.innerHTML = '';
-      sizeSelect.innerHTML = '<option>Choose your size</option>';
-
-      // ✅ جمع كل الألوان من الـ variants
-      let colors = [];
-      product.variants.forEach((variant) => {
-        if (variant.option1 && !colors.includes(variant.option1)) {
-          colors.push(variant.option1);
-        }
-      });
-
-      // ✅ بناء أزرار الألوان
-      colors.forEach((color, i) => {
-        const colorBtn = document.createElement('button');
-        colorBtn.textContent = color;
-        colorBtn.classList.add('color-btn');
-        if (i === 0) colorBtn.classList.add('active');
-
-        // عند اختيار اللون → تحميل المقاسات الخاصة به
-        colorBtn.addEventListener('click', () => {
-          document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
-          colorBtn.classList.add('active');
-          colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
-
-          // بناء المقاسات لهذا اللون
-          sizeSelect.innerHTML = '<option>Choose your size</option>';
-          product.variants
-            .filter((variant) => variant.option1 === color)
-            .forEach((variant) => {
-              let opt = document.createElement('option');
-              opt.value = variant.id;
-              opt.textContent = variant.option2 || variant.title;
-              sizeSelect.appendChild(opt);
-            });
-        });
-
-        colorContainer.appendChild(colorBtn);
-      });
-
-      // ✅ تشغيل أول لون افتراضيًا
-      if (colors.length > 0) {
-        colorContainer.querySelector('.color-btn').click();
-      }
-
-      document.getElementById('myModal').style.display = 'block';
-    });
-  });
-
-  // اغلاق المودال
-  document.querySelector('.close').addEventListener('click', () => {
-    document.getElementById('myModal').style.display = 'none';
-  });
-
-  // يقفل لو ضغطت بره المودال
-  window.addEventListener('click', (e) => {
-    const modal = document.getElementById('myModal');
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
   });
 </script>
