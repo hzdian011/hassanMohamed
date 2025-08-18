@@ -112,15 +112,14 @@
 
       width: 100%;
       max-width: 100%; /* نفس عرض الـ grid */
-      max-width: none;
-      {% comment %} margin: 0 auto;   /* عشان يبقى aligned مع grid */ {% endcomment %}
+      margin: 0 auto;   /* عشان يبقى aligned مع grid */
     }
 
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 15px;
-      max-width: 1000px;
+      max-width: 100%;
       margin: auto;
     }
 
