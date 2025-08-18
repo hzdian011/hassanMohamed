@@ -295,7 +295,7 @@
       document.getElementById('modalImage').src = product.images[0];
 
       // بناء أزرار الألوان (لو فيه option اسمها Color)
-      const colorContainer = document.getElementById('colorContainer');
+      {% comment %} const colorContainer = document.getElementById('colorContainer');
       colorContainer.innerHTML = '';
       const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
       if (colorOption) {
@@ -311,7 +311,40 @@
           });
           colorContainer.appendChild(colorBtn);
         });
+      } {% endcomment %}
+
+
+      // بناء أزرار الألوان من الـ variants
+      const colorContainer = document.getElementById('colorContainer');
+      colorContainer.innerHTML = '';
+
+      let colors = [];
+
+      // لو الـ product فيه option اسمها Color
+      if (product.options.includes("Color")) {
+        product.variants.forEach((variant) => {
+          const color = variant.option1; // بافتراض إن option1 هي Color
+          if (color && !colors.includes(color)) {
+            colors.push(color);
+          }
+        });
+
+        colors.forEach((color, i) => {
+          const colorBtn = document.createElement('button');
+          colorBtn.textContent = color;
+          colorBtn.classList.add('color-btn');
+          if (i === 0) colorBtn.classList.add('active');
+
+          colorBtn.addEventListener('click', () => {
+            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+            colorBtn.classList.add('active');
+            colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
+          });
+
+          colorContainer.appendChild(colorBtn);
+        });
       }
+
 
       // بناء المقاسات (لو فيه option اسمها Size)
       const sizeSelect = document.getElementById('sizeSelect');
