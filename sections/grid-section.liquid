@@ -368,66 +368,7 @@ if (colorOption) {
     });
   });
 
-  function openCartDrawer() {
-  fetch('/cart.js')
-    .then(res => res.json())
-    .then(cart => {
-      const cartItemsContainer = document.getElementById('cartItems');
-      cartItemsContainer.innerHTML = '';
-
-      cart.items.forEach(item => {
-        const div = document.createElement('div');
-        div.classList.add('cart-item');
-        div.innerHTML = `
-          <img src="${item.image}" alt="${item.title}">
-          <div class="cart-item-details">
-            <h4>${item.product_title}</h4>
-            <p>${item.variant_title || ''}</p>
-            <p>Qty: ${item.quantity}</p>
-            <p>${(item.line_price / 100).toFixed(2)} €</p>
-          </div>
-        `;
-        cartItemsContainer.appendChild(div);
-      });
-
-      document.getElementById('cartDrawer').classList.add('active');
-    });
-}
-
-
-  document.getElementById('addToCartBtn').addEventListener('click', () => {
-  const selectedSize = document.getElementById('sizeSelect').value;
-  const selectedColorBtn = document.querySelector('.color-btn.active');
-  const selectedColor = selectedColorBtn ? selectedColorBtn.textContent : null;
-
-  // نحدد الـ variant ID بناءً على الـ color + size
-  const selectedVariant = product.variants.find(v => {
-    return (!selectedColor || v.options.includes(selectedColor)) &&
-           (!selectedSize || v.options.includes(selectedSize));
-  });
-
-  if (!selectedVariant) {
-    alert("Please select options");
-    return;
-  }
-
-  // إضافة للـ cart
-  fetch('/cart/add.js', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ id: selectedVariant.id, quantity: 1 })
-  }).then(res => res.json())
-    .then(() => {
-      openCartDrawer();
-      document.getElementById('myModal').style.display = 'none';
-    });
-});
-
-// إغلاق الكارت
-document.getElementById('closeCart').addEventListener('click', () => {
-  document.getElementById('cartDrawer').classList.remove('active');
-});
-
+  
 
   // اغلاق المودال
   document.querySelector('.close').addEventListener('click', () => {
