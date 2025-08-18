@@ -133,10 +133,12 @@
 }
 
 .modal-top img.product-image {
-  width: 120px;   /* صغرها شوية عشان تسيب مساحة */
+  width: 160px;   /* 🟢 زود العرض */
   height: auto;
-  {% comment %} border-radius: 6px; {% endcomment %}
-  flex-shrink: 0; /* ما تتضغطش */
+  max-height: 220px; /* 🟢 الطول أكبر */
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 6px;
 }
 
 .basic-details {
