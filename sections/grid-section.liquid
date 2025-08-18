@@ -111,9 +111,11 @@
     }
 
     .products-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px; /* المسافة بين الكروت */
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .product-card {
