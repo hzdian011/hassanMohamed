@@ -181,10 +181,15 @@
     }
 
     /*=================== Row 4 ================== */
-    section > div img {
-      margin-left: auto; /* تزقها يمين */
-      display: block;    /* عشان margin يشتغل */
-    }
+ section > div {
+  display: flex;
+  justify-content: flex-start; /* يبدأ من الشمال */
+}
+
+section > div img {
+  flex-grow: 1; /* يكبر ناحية اليمين */
+  max-width: 80%; /* عشان ما يتفشّش زيادة */
+}
 
     /* ================== Row 3 ================== */
     .gift-row3 {
