@@ -315,35 +315,42 @@
 
 
       // بناء أزرار الألوان من الـ variants
-      const colorContainer = document.getElementById('colorContainer');
-      colorContainer.innerHTML = '';
+// بناء أزرار الألوان من الـ variants
+const colorContainer = document.getElementById('colorContainer');
+colorContainer.innerHTML = '';
 
-      let colors = [];
+let colors = [];
 
-      // لو الـ product فيه option اسمها Color
-      if (product.options.includes("Color")) {
-        product.variants.forEach((variant) => {
-          const color = variant.option1; // بافتراض إن option1 هي Color
-          if (color && !colors.includes(color)) {
-            colors.push(color);
-          }
-        });
+// نحدد مكان الـ "Color" option (هو رقم كام في options)
+const colorIndex = product.options.findIndex(
+  (opt) => opt.toLowerCase() === "color"
+);
 
-        colors.forEach((color, i) => {
-          const colorBtn = document.createElement('button');
-          colorBtn.textContent = color;
-          colorBtn.classList.add('color-btn');
-          if (i === 0) colorBtn.classList.add('active');
+if (colorIndex !== -1) {
+  product.variants.forEach((variant) => {
+    // ناخد اللون من الـ option الصح
+    const color = variant[`option${colorIndex + 1}`];
+    if (color && !colors.includes(color)) {
+      colors.push(color);
+    }
+  });
 
-          colorBtn.addEventListener('click', () => {
-            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
-            colorBtn.classList.add('active');
-            colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
-          });
+  colors.forEach((color, i) => {
+    const colorBtn = document.createElement('button');
+    colorBtn.textContent = color;
+    colorBtn.classList.add('color-btn');
+    if (i === 0) colorBtn.classList.add('active');
 
-          colorContainer.appendChild(colorBtn);
-        });
-      }
+    colorBtn.addEventListener('click', () => {
+      document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+      colorBtn.classList.add('active');
+      colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
+    });
+
+    colorContainer.appendChild(colorBtn);
+  });
+}
+
 
 
       // بناء المقاسات (لو فيه option اسمها Size)
