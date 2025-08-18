@@ -295,7 +295,7 @@
       document.getElementById('modalImage').src = product.images[0];
 
       // بناء أزرار الألوان (لو فيه option اسمها Color)
-      {% comment %} const colorContainer = document.getElementById('colorContainer');
+       const colorContainer = document.getElementById('colorContainer');
       colorContainer.innerHTML = '';
       const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
       if (colorOption) {
@@ -311,45 +311,7 @@
           });
           colorContainer.appendChild(colorBtn);
         });
-      } {% endcomment %}
-
-
-      // بناء أزرار الألوان من الـ variants
-// بناء أزرار الألوان من الـ variants
-const colorContainer = document.getElementById('colorContainer');
-colorContainer.innerHTML = '';
-
-let colors = [];
-
-// نحدد مكان الـ "Color" option (هو رقم كام في options)
-const colorIndex = product.options.findIndex(
-  (opt) => opt.toLowerCase() === "color"
-);
-
-if (colorIndex !== -1) {
-  product.variants.forEach((variant) => {
-    // ناخد اللون من الـ option الصح
-    const color = variant[`option${colorIndex + 1}`];
-    if (color && !colors.includes(color)) {
-      colors.push(color);
-    }
-  });
-
-  colors.forEach((color, i) => {
-    const colorBtn = document.createElement('button');
-    colorBtn.textContent = color;
-    colorBtn.classList.add('color-btn');
-    if (i === 0) colorBtn.classList.add('active');
-
-    colorBtn.addEventListener('click', () => {
-      document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
-      colorBtn.classList.add('active');
-      colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
-    });
-
-    colorContainer.appendChild(colorBtn);
-  });
-}
+      }
 
 
 
