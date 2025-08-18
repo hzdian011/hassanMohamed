@@ -394,6 +394,35 @@ if (colorOption) {
     });
 }
 
+
+  document.getElementById('addToCartBtn').addEventListener('click', () => {
+  const selectedSize = document.getElementById('sizeSelect').value;
+  const selectedColorBtn = document.querySelector('.color-btn.active');
+  const selectedColor = selectedColorBtn ? selectedColorBtn.textContent : null;
+
+  // نحدد الـ variant ID بناءً على الـ color + size
+  const selectedVariant = product.variants.find(v => {
+    return (!selectedColor || v.options.includes(selectedColor)) &&
+           (!selectedSize || v.options.includes(selectedSize));
+  });
+
+  if (!selectedVariant) {
+    alert("Please select options");
+    return;
+  }
+
+  // إضافة للـ cart
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ id: selectedVariant.id, quantity: 1 })
+  }).then(res => res.json())
+    .then(() => {
+      openCartDrawer();
+      document.getElementById('myModal').style.display = 'none';
+    });
+});
+
 // إغلاق الكارت
 document.getElementById('closeCart').addEventListener('click', () => {
   document.getElementById('cartDrawer').classList.remove('active');
