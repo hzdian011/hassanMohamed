@@ -91,314 +91,318 @@
 </section>
 
 <style>
-  .products-section {
-    padding: 80px 50px 50px 50px;
-    max-width: 1400px;
-    margin: auto;
+    .products-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px; /* مسافة بين العنوان والـ grid */
+      max-width: 1337px;
+      margin: 0 auto;
+    }
+
+
+    .section-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: left; /* خلي العنوان يبدأ من أول الـ grid */
   }
 
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-  .section-title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  text-align: left; /* خلي العنوان يبدأ من أول الـ grid */
-}
+    .product-card {
+      text-align: center;
+    }
 
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    max-width: 1000px;
-    margin: auto;
-  }
+    .image-wrapper {
+      position: relative;
+      display: inline-block;
+    }
 
-  .product-card {
-    text-align: center;
-  }
-
-  .image-wrapper {
-    position: relative;
-    display: inline-block;
-  }
-
-  .image-wrapper img {
-  width: 100%;
-  height: 400px; /* زود الطول */
-  object-fit: cover; /* يخلي الصورة تملى المربع */
-}
-
-  .controls {
-    margin-top: 10px;
-  }
-
-  .controls label {
-    display: block;
-    font-size: 12px;
-    margin-bottom: 2px;
-  }
-
-  /* المودال */
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-  }
-
-  /* محتوى المودال */
-  .modal-content {
-    background: #fff;
-    margin: 5% auto;
-    padding: 20px;
-    width: 311px;          /* زي التصميم */
-    border-radius: 10px;
-    position: relative;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
-
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    font-family: Arial, sans-serif;
-  }
-
-  /* زر الإغلاق */
-  .close {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-
-  /* صورة المنتج */
-  .modal-content img.product-image {
+    .image-wrapper img {
     width: 100%;
-    height: auto;
-    border-radius: 6px;
+    height: 400px; /* زود الطول */
+    object-fit: cover; /* يخلي الصورة تملى المربع */
   }
 
-  /* تفاصيل المنتج */
-  .modal-details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+    .controls {
+      margin-top: 10px;
+    }
 
-  .modal-details h2 {
-    font-size: 16px;
-    margin: 0;
-    font-weight: normal;
-  }
+    .controls label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
 
-  .modal-details p {
-    margin: 0;
-    font-size: 14px;
-    color: #333;
-  }
+    /* المودال */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
 
-  /* خيارات الألوان */
-  .color-options {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+    /* محتوى المودال */
+    .modal-content {
+      background: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      width: 311px;          /* زي التصميم */
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
 
-  .color-options label {
-    font-size: 14px;
-    font-weight: bold;
-  }
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      font-family: Arial, sans-serif;
+    }
 
-  #colorContainer {
-    display: flex;
-    gap: 10px;
-  }
+    /* زر الإغلاق */
+    .close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
 
-  .color-btn {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #000;
-    background: #fff;
-    cursor: pointer;
-    font-weight: bold;
-  }
+    /* صورة المنتج */
+    .modal-content img.product-image {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
 
-  .color-btn.active {
-    border-left: 4px solid blue;
-  }
+    /* تفاصيل المنتج */
+    .modal-details {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-  /* خيارات المقاس */
-  .size-options {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+    .modal-details h2 {
+      font-size: 16px;
+      margin: 0;
+      font-weight: normal;
+    }
 
-  .size-options label {
-    font-size: 14px;
-    font-weight: bold;
-  }
+    .modal-details p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
 
-  .size-options select {
-    padding: 8px;
-    border: 1px solid #000;
-    cursor: pointer;
-  }
+    /* خيارات الألوان */
+    .color-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-  /* زرار الكارت */
-  #addToCartBtn {
-    background: #000;
-    color: #fff;
-    border: none;
-    padding: 14px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 2px;
-    margin-top: auto;
-    width: 100%;
-  }
+    .color-options label {
+      font-size: 14px;
+      font-weight: bold;
+    }
 
-  .image-wrapper img {
-    width: 100%;
-  }
+    #colorContainer {
+      display: flex;
+      gap: 10px;
+    }
 
-  .plus-btn {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    background: white;
-    border-radius: 50%;
-    border:none;
-    width: 25px;
-    height: 25px;
-    font-size: 15px;
-    cursor: pointer;
-  }
+    .color-btn {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #000;
+      background: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .color-btn.active {
+      border-left: 4px solid blue;
+    }
+
+    /* خيارات المقاس */
+    .size-options {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .size-options label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .size-options select {
+      padding: 8px;
+      border: 1px solid #000;
+      cursor: pointer;
+    }
+
+    /* زرار الكارت */
+    #addToCartBtn {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 2px;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+    }
+
+    .plus-btn {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 50%;
+      border:none;
+      width: 25px;
+      height: 25px;
+      font-size: 15px;
+      cursor: pointer;
+    }
 </style>
-{% comment %} 
-<script>
-    // تحريك البلس بالـ range
-    document.querySelectorAll('.range-x').forEach((input) => {
-      input.addEventListener('input', () => {
-        const handle = input.dataset.target;
-        const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
-        btn.style.left = input.value + '%';
+{% comment %}
+  <script>
+      // تحريك البلس بالـ range
+      document.querySelectorAll('.range-x').forEach((input) => {
+        input.addEventListener('input', () => {
+          const handle = input.dataset.target;
+          const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
+          btn.style.left = input.value + '%';
+        });
       });
-    });
 
-    document.querySelectorAll('.range-y').forEach((input) => {
-      input.addEventListener('input', () => {
-        const handle = input.dataset.target;
-        const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
-        btn.style.top = input.value + '%';
+      document.querySelectorAll('.range-y').forEach((input) => {
+        input.addEventListener('input', () => {
+          const handle = input.dataset.target;
+          const btn = document.querySelector(`.plus-btn[data-handle="${handle}"]`);
+          btn.style.top = input.value + '%';
+        });
       });
-    });
 
-    // فتح المودال عند الضغط على البلس
-    document.querySelectorAll('.plus-btn').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const handle = btn.dataset.handle;
-        const response = await fetch(`/products/${handle}.js`);
-        const product = await response.json();
+      // فتح المودال عند الضغط على البلس
+      document.querySelectorAll('.plus-btn').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const handle = btn.dataset.handle;
+          const response = await fetch(`/products/${handle}.js`);
+          const product = await response.json();
 
-        document.getElementById('modalTitle').textContent = product.title;
-        document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
-        document.getElementById('modalDescription').innerHTML  = product.description;
-        document.getElementById('modalImage').src = product.images[0];
-    
+          document.getElementById('modalTitle').textContent = product.title;
+          document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
+          document.getElementById('modalDescription').innerHTML  = product.description;
+          document.getElementById('modalImage').src = product.images[0];
 
 
-  // 🟢 نجيب العنصر الحاوي للألوان
 
-  // =============== colors =================
-  const colorContainer = document.getElementById('colorContainer');
-  colorContainer.innerHTML = ''; // نفضي المحتوى القديم
+    // 🟢 نجيب العنصر الحاوي للألوان
 
-  // 🟢 جدول ألوان للتطابق
-  const colorMap = {
-    'red': '#FF0000',
-    'blue': '#0000FF',
-    'green': '#00FF00',
-    'black': '#000000',
-    'white': '#FFFFFF',
-    'yellow': '#FFFF00',
-    'sky blue': '#87CEEB',
-    'light pink': '#FFB6C1',
-    // زود باقي الألوان اللي عندك في المنتجات
-  };
+    // =============== colors =================
+    const colorContainer = document.getElementById('colorContainer');
+    colorContainer.innerHTML = ''; // نفضي المحتوى القديم
 
-  // 🟢 نجيب خيار اللون من Shopify
-  const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
+    // 🟢 جدول ألوان للتطابق
+    const colorMap = {
+      'red': '#FF0000',
+      'blue': '#0000FF',
+      'green': '#00FF00',
+      'black': '#000000',
+      'white': '#FFFFFF',
+      'yellow': '#FFFF00',
+      'sky blue': '#87CEEB',
+      'light pink': '#FFB6C1',
+      // زود باقي الألوان اللي عندك في المنتجات
+    };
 
-  if (colorOption) {
-    colorOption.values.forEach((color, i) => {
-      const colorBtn = document.createElement('button');
-      colorBtn.textContent = color;
-      colorBtn.classList.add('color-btn');
-      if (i === 0) colorBtn.classList.add('active');
+    // 🟢 نجيب خيار اللون من Shopify
+    const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
 
-      // 🟢 نحول الاسم للـ lowercase ونشيل أي مسافات
-      const normalizedColor = color.trim().toLowerCase();
-      const cssColor = colorMap[normalizedColor] || '#000'; // fallback أسود لو مش موجود
+    if (colorOption) {
+      colorOption.values.forEach((color, i) => {
+        const colorBtn = document.createElement('button');
+        colorBtn.textContent = color;
+        colorBtn.classList.add('color-btn');
+        if (i === 0) colorBtn.classList.add('active');
 
-      colorBtn.addEventListener('click', () => {
-        document.querySelectorAll('.color-btn').forEach(b => {
-          b.classList.remove('active');
-          b.style.borderLeft = 'none';
+        // 🟢 نحول الاسم للـ lowercase ونشيل أي مسافات
+        const normalizedColor = color.trim().toLowerCase();
+        const cssColor = colorMap[normalizedColor] || '#000'; // fallback أسود لو مش موجود
+
+        colorBtn.addEventListener('click', () => {
+          document.querySelectorAll('.color-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.borderLeft = 'none';
+          });
+
+          colorBtn.classList.add('active');
+          colorBtn.style.borderLeft = `4px solid ${cssColor}`;
         });
 
-        colorBtn.classList.add('active');
-        colorBtn.style.borderLeft = `4px solid ${cssColor}`;
-      });
-
-      colorContainer.appendChild(colorBtn);
-    });
-  }
-
-
-
-
-  // ===================== size ============================
-    const sizeSelect = document.getElementById('sizeSelect');
-
-    // مسح أي مقاسات قديمة
-    sizeSelect.innerHTML = '<option>Choose your size</option>';
-
-    const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
-    if (sizeOption) {
-      sizeOption.values.forEach(size => {
-        let opt = document.createElement('option');
-        opt.value = size;
-        opt.textContent = size;
-        sizeSelect.appendChild(opt);
+        colorContainer.appendChild(colorBtn);
       });
     }
 
 
 
 
-        document.getElementById('myModal').style.display = 'block';
-      });
-    });
+    // ===================== size ============================
+      const sizeSelect = document.getElementById('sizeSelect');
 
-    
+      // مسح أي مقاسات قديمة
+      sizeSelect.innerHTML = '<option>Choose your size</option>';
 
-    // اغلاق المودال
-    document.querySelector('.close').addEventListener('click', () => {
-      document.getElementById('myModal').style.display = 'none';
-    });
-
-    // يقفل لو ضغطت بره المودال
-    window.addEventListener('click', (e) => {
-      const modal = document.getElementById('myModal');
-      if (e.target === modal) {
-        modal.style.display = 'none';
+      const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
+      if (sizeOption) {
+        sizeOption.values.forEach(size => {
+          let opt = document.createElement('option');
+          opt.value = size;
+          opt.textContent = size;
+          sizeSelect.appendChild(opt);
+        });
       }
-    });
 
-    document.querySelector('.close').addEventListener('click', () => {
-      document.getElementById('myModal').style.display = 'none';
-    });
-</script> {% endcomment %}
+
+
+
+          document.getElementById('myModal').style.display = 'block';
+        });
+      });
+
+
+
+      // اغلاق المودال
+      document.querySelector('.close').addEventListener('click', () => {
+        document.getElementById('myModal').style.display = 'none';
+      });
+
+      // يقفل لو ضغطت بره المودال
+      window.addEventListener('click', (e) => {
+        const modal = document.getElementById('myModal');
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+
+      document.querySelector('.close').addEventListener('click', () => {
+        document.getElementById('myModal').style.display = 'none';
+      });
+  </script>
+{% endcomment %}
 <script>
   let currentProduct = null; // 🟢 هنخزن فيه المنتج المفتوح من المودال
 
@@ -440,17 +444,17 @@
       colorContainer.innerHTML = '';
 
       const colorMap = {
-        'red': '#FF0000',
-        'blue': '#0000FF',
-        'green': '#00FF00',
-        'black': '#000000',
-        'white': '#FFFFFF',
-        'yellow': '#FFFF00',
+        red: '#FF0000',
+        blue: '#0000FF',
+        green: '#00FF00',
+        black: '#000000',
+        white: '#FFFFFF',
+        yellow: '#FFFF00',
         'sky blue': '#87CEEB',
         'light pink': '#FFB6C1',
       };
 
-      const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
+      const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
 
       if (colorOption) {
         colorOption.values.forEach((color, i) => {
@@ -463,7 +467,7 @@
           const cssColor = colorMap[normalizedColor] || '#000';
 
           colorBtn.addEventListener('click', () => {
-            document.querySelectorAll('.color-btn').forEach(b => {
+            document.querySelectorAll('.color-btn').forEach((b) => {
               b.classList.remove('active');
               b.style.borderLeft = 'none';
             });
@@ -480,9 +484,9 @@
       const sizeSelect = document.getElementById('sizeSelect');
       sizeSelect.innerHTML = '<option>Choose your size</option>';
 
-      const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
+      const sizeOption = product.options.find((opt) => opt.name.toLowerCase() === 'size');
       if (sizeOption) {
-        sizeOption.values.forEach(size => {
+        sizeOption.values.forEach((size) => {
           let opt = document.createElement('option');
           opt.value = size;
           opt.textContent = size;
@@ -498,12 +502,12 @@
   // 🛒 فتح الكارت
   function openCartDrawer() {
     fetch('/cart.js')
-      .then(res => res.json())
-      .then(cart => {
+      .then((res) => res.json())
+      .then((cart) => {
         const cartItemsContainer = document.getElementById('cartItems');
         cartItemsContainer.innerHTML = '';
 
-        cart.items.forEach(item => {
+        cart.items.forEach((item) => {
           const div = document.createElement('div');
           div.classList.add('cart-item');
           div.innerHTML = `
@@ -525,7 +529,7 @@
   // زرار إضافة للكارت
   document.getElementById('addToCartBtn').addEventListener('click', () => {
     if (!currentProduct) {
-      alert("No product selected");
+      alert('No product selected');
       return;
     }
 
@@ -534,22 +538,24 @@
     const selectedColor = selectedColorBtn ? selectedColorBtn.textContent : null;
 
     // نحدد الـ variant ID
-    const selectedVariant = currentProduct.variants.find(v => {
-      return (!selectedColor || v.options.includes(selectedColor)) &&
-             (!selectedSize || v.options.includes(selectedSize));
+    const selectedVariant = currentProduct.variants.find((v) => {
+      return (
+        (!selectedColor || v.options.includes(selectedColor)) && (!selectedSize || v.options.includes(selectedSize))
+      );
     });
 
     if (!selectedVariant) {
-      alert("Please select options");
+      alert('Please select options');
       return;
     }
 
     // إضافة للـ cart
     fetch('/cart/add.js', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ id: selectedVariant.id, quantity: 1 })
-    }).then(res => res.json())
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+    })
+      .then((res) => res.json())
       .then(() => {
         openCartDrawer();
         document.getElementById('myModal').style.display = 'none';
