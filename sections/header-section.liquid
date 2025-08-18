@@ -227,67 +227,6 @@
       stroke: #fff;
       fill: #fff;
     }
-    /*============= Nav Mobile =================*/
-    {% comment %} /* Burger Button */
-.burger-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: #000;
-}
-
-/* Mobile Menu مخفي افتراضي */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  background: #f5f5f5;
-  padding: 15px;
-  animation: slideDown 0.3s ease;
-}
-
-/* لما تتفتح */
-.mobile-menu.open {
-  display: flex;
-}
-
-/* Animation */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .gift-subtitle,
-  .gift-btn {
-    display: none; /* نخفي بتوع الديسكتوب */
-  }
-  .burger-btn {
-    display: block; /* نظهر البورجر */
-  }
-  .gift-nav {
-    justify-content: center;
-    position: relative;
-  }
-  .gift-logo {
-    margin: 0 auto;
-  }
-  .burger-btn {
-    position: absolute;
-    left: 20px;
-  }
-} {% endcomment %}
-
 
 /* افتراضي (ديسكتوب) */
 .nav-links {
