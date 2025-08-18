@@ -313,6 +313,12 @@
       } {% endcomment %}
 
       // mapping لألوان CSS صالحة
+
+
+// 🟢 نجيب العنصر الحاوي للألوان
+const colorContainer = document.getElementById('colorContainer');
+colorContainer.innerHTML = ''; // نفضي المحتوى القديم
+
 const colorMap = {
   'Red': '#FF0000',
   'Blue': '#0000FF',
