@@ -315,10 +315,8 @@
       // mapping لألوان CSS صالحة
 
 
-// 🟢 نجيب العنصر الحاوي للألوان
-const colorContainer = document.getElementById('colorContainer');
-colorContainer.innerHTML = ''; // نفضي المحتوى القديم
-
+  
+{% comment %} 
 const colorMap = {
   'Red': '#FF0000',
   'Blue': '#0000FF',
@@ -362,8 +360,58 @@ if (colorOption) {
 
     colorContainer.appendChild(colorBtn);
   });
+} {% endcomment %}
+
+
+// 🟢 نجيب العنصر الحاوي للألوان
+const colorContainer = document.getElementById('colorContainer');
+colorContainer.innerHTML = ''; // نفضي المحتوى القديم
+
+// 🟢 جدول ألوان للتطابق
+const colorMap = {
+  'red': '#FF0000',
+  'blue': '#0000FF',
+  'green': '#00FF00',
+  'black': '#000000',
+  'white': '#FFFFFF',
+  'yellow': '#FFFF00',
+  'sky blue': '#87CEEB',
+  'light pink': '#FFB6C1',
+  // زود باقي الألوان اللي عندك في المنتجات
+};
+
+// 🟢 نجيب خيار اللون من Shopify
+const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
+
+if (colorOption) {
+  colorOption.values.forEach((color, i) => {
+    const colorBtn = document.createElement('button');
+    colorBtn.textContent = color;
+    colorBtn.classList.add('color-btn');
+    if (i === 0) colorBtn.classList.add('active');
+
+    // 🟢 نحول الاسم للـ lowercase ونشيل أي مسافات
+    const normalizedColor = color.trim().toLowerCase();
+    const cssColor = colorMap[normalizedColor] || '#000'; // fallback أسود لو مش موجود
+
+    colorBtn.addEventListener('click', () => {
+      document.querySelectorAll('.color-btn').forEach(b => {
+        b.classList.remove('active');
+        b.style.borderLeft = 'none';
+      });
+
+      colorBtn.classList.add('active');
+      colorBtn.style.borderLeft = `4px solid ${cssColor}`;
+    });
+
+    colorContainer.appendChild(colorBtn);
+  });
 }
 
+
+
+
+// ===================== size ============================
   const sizeSelect = document.getElementById('sizeSelect');
 
   // مسح أي مقاسات قديمة
