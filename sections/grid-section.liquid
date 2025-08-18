@@ -360,17 +360,29 @@ if (colorOption) {
 }
 
 
+  const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
+if (sizeOption) {
+  sizeOption.values.forEach(size => {
+    let opt = document.createElement('option');
+    opt.value = size;
+    opt.textContent = size;
+    sizeSelect.appendChild(opt);
+  });
+}
+
 
 
       // بناء المقاسات (لو فيه option اسمها Size)
-      const sizeSelect = document.getElementById('sizeSelect');
-      sizeSelect.innerHTML = '<option>Choose your size</option>';
-      product.variants.forEach((variant) => {
-        let opt = document.createElement('option');
-        opt.value = variant.id;
-        opt.textContent = variant.option1;
-        sizeSelect.appendChild(opt);
-      });
+ const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
+if (sizeOption) {
+  sizeOption.values.forEach(size => {
+    let opt = document.createElement('option');
+    opt.value = size;
+    opt.textContent = size;
+    sizeSelect.appendChild(opt);
+  });
+}
+
 
       document.getElementById('myModal').style.display = 'block';
     });
