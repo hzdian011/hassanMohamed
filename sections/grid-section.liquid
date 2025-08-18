@@ -373,7 +373,7 @@ if (sizeOption) {
 
 
       // بناء المقاسات (لو فيه option اسمها Size)
- const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
+ {% comment %} const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
 if (sizeOption) {
   sizeOption.values.forEach(size => {
     let opt = document.createElement('option');
@@ -381,7 +381,7 @@ if (sizeOption) {
     opt.textContent = size;
     sizeSelect.appendChild(opt);
   });
-}
+} {% endcomment %}
 
 
       document.getElementById('myModal').style.display = 'block';
