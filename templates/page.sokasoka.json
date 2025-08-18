@@ -12,7 +12,6 @@
   "sections": {
     "header": {
       "type": "header-section",
-      "disabled": true,
       "settings": {
         "nav_subtitle": "Find the ideal gift for your loved ones.",
         "nav_button": "Choose Gift",
@@ -25,62 +24,62 @@
     "grid": {
       "type": "grid-section",
       "blocks": {
-        "product_KqUGp3": {
+        "product_6B9rEH": {
           "type": "product",
           "settings": {
-            "product": "black-leather-bag",
-            "pos_x": 54,
-            "pos_y": 60
+            "product": "led-high-tops",
+            "pos_x": 50,
+            "pos_y": 50
           }
         },
-        "product_m9eyKU": {
+        "product_cQiFwp": {
           "type": "product",
           "settings": {
-            "product": "blue-silk-tuxedo",
-            "pos_x": 74,
-            "pos_y": 53
+            "product": "dark-winter-jacket",
+            "pos_x": 50,
+            "pos_y": 50
           }
         },
-        "product_84JnzK": {
-          "type": "product",
-          "settings": {
-            "product": "chequered-red-shirt",
-            "pos_x": 58,
-            "pos_y": 20
-          }
-        },
-        "product_aWzEUK": {
+        "product_39FNFX": {
           "type": "product",
           "settings": {
             "product": "classic-leather-jacket",
-            "pos_x": 70,
-            "pos_y": 25
-          }
-        },
-        "product_McxKeb": {
-          "type": "product",
-          "settings": {
-            "product": "classic-varsity-top",
             "pos_x": 50,
-            "pos_y": 30
+            "pos_y": 50
           }
         },
-        "product_WbPFNj": {
+        "product_D49PUE": {
           "type": "product",
           "settings": {
-            "product": "dark-denim-top",
-            "pos_x": 70,
-            "pos_y": 40
+            "product": "red-sports-tee",
+            "pos_x": 50,
+            "pos_y": 50
+          }
+        },
+        "product_pQEnRH": {
+          "type": "product",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "pos_x": 50,
+            "pos_y": 50
+          }
+        },
+        "product_H9P9Jq": {
+          "type": "product",
+          "settings": {
+            "product": "black-leather-bag",
+            "pos_x": 50,
+            "pos_y": 50
           }
         }
       },
       "block_order": [
-        "product_KqUGp3",
-        "product_m9eyKU",
-        "product_84JnzK",
-        "product_aWzEUK",
-        "product_McxKeb",
-        "product_WbPFNj"
+        "product_6B9rEH",
+        "product_cQiFwp",
+        "product_39FNFX",
+        "product_D49PUE",
+        "product_pQEnRH",
+        "product_H9P9Jq"
       ],
       "settings": {}
     }
