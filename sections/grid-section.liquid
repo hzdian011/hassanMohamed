@@ -35,60 +35,59 @@
 {% endschema %}
 
 <section class="products-section">
-    <!-- Title -->
-    <h2 class="section-title">Tisso vision in the wild</h2>
+  <!-- Title -->
+  <h2 class="section-title">Tisso vision in the wild</h2>
 
-
-    <div class="products-grid">
+  <div class="products-grid">
     {% for block in section.blocks %}
-        {% assign product = all_products[block.settings.product] %}
-        <div class="product-card">
+      {% assign product = all_products[block.settings.product] %}
+      <div class="product-card">
         <div class="image-wrapper">
-            <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" width="" height="">
+          <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" width="" height="">
 
-            <!-- زرار البلس -->
-            <button
+          <!-- زرار البلس -->
+          <button
             class="plus-btn"
             data-handle="{{ product.handle }}"
             style="top:{{ block.settings.pos_y }}%; left:{{ block.settings.pos_x }}%;"
-            >
+          >
             +
-            </button>
+          </button>
         </div>
-        </div>
+      </div>
     {% endfor %}
-    </div>
+  </div>
 
-    <!-- المودال -->
-    <div id="myModal" class="modal">
+  <!-- المودال -->
+  <div id="myModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+      <span class="close">&times;</span>
 
-        <!-- image -->
-        <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
+      <!-- image -->
+      <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
 
-        <div class="modal-details">
+      <div class="modal-details">
         <!-- details -->
         <h2 id="modalTitle"></h2>
         <p id="modalPrice"></p>
         <p id="modalDescription"></p>
 
         <div class="color-options">
-            <label>Color</label>
-            <div id="colorContainer"></div>
+          <label>Color</label>
+          <div id="colorContainer"></div>
         </div>
 
         <div class="size-options">
-            <label for="sizeSelect">Size</label>
-            <select id="sizeSelect">
+          <label for="sizeSelect">Size</label>
+          <select id="sizeSelect">
             <option>Choose your size</option>
-            </select>
+          </select>
         </div>
-        </div>
+      </div>
 
-        <button id="addToCartBtn">ADD TO CART →</button>
+      <button id="addToCartBtn">ADD TO CART →</button>
     </div>
-    </div>
+  </div>
 </section>
 
 <style>
@@ -326,38 +325,37 @@ const colorMap = {
   // ممكن تضيف باقي الألوان اللي عندك في المنتجات
 };
 
-// ---------------------- Colors ----------------------
+// نجيب العنصر الحاوي للألوان
 const colorContainer = document.getElementById('colorContainer');
-colorContainer.innerHTML = ''; 
+if (!colorContainer || !product.options) return;
 
-if (product.options) {
-  const colorOptionIndex = product.options.findIndex(opt => opt.name.toLowerCase() === 'color');
+colorContainer.innerHTML = ''; // نظف المحتوى القديم
 
-  if (colorOptionIndex !== -1) {
-    const uniqueColors = [...new Set(product.variants.map(v => v.options[colorOptionIndex]))];
+// نبحث عن خيار اللون
+const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
 
-    uniqueColors.forEach((color, i) => {
-      const colorBtn = document.createElement('button');
-      colorBtn.textContent = color;
-      colorBtn.classList.add('color-btn');
-      if (i === 0) colorBtn.classList.add('active');
+if (colorOption) {
+  colorOption.values.forEach((color, i) => {
+    const colorBtn = document.createElement('button');
+    colorBtn.textContent = color;
+    colorBtn.classList.add('color-btn');
+    if (i === 0) colorBtn.classList.add('active');
 
-      // نخلي border بنفس اللون لو متعرف في الـ colorMap
-      const cssColor = colorMap[color] || '#000';
-      if (i === 0) colorBtn.style.borderLeft = `4px solid ${cssColor}`;
-
-      colorBtn.addEventListener('click', () => {
-        document.querySelectorAll('.color-btn').forEach(b => {
-          b.classList.remove('active');
-          b.style.borderLeft = 'none';
-        });
-        colorBtn.classList.add('active');
-        colorBtn.style.borderLeft = `4px solid ${cssColor}`;
+    colorBtn.addEventListener('click', () => {
+      // إزالة active و border من كل الأزرار
+      document.querySelectorAll('.color-btn').forEach(b => {
+        b.classList.remove('active');
+        b.style.borderLeft = 'none';
       });
 
-      colorContainer.appendChild(colorBtn);
+      colorBtn.classList.add('active');
+      // نستخدم اللون من mapping أو نرجع للـ black كافتراضي
+      const cssColor = colorMap[color] || '#000';
+      colorBtn.style.borderLeft = `4px solid ${cssColor}`;
     });
-  }
+
+    colorContainer.appendChild(colorBtn);
+  });
 }
 
 
@@ -370,19 +368,6 @@ if (sizeOption) {
     sizeSelect.appendChild(opt);
   });
 }
-
-
-
-      // بناء المقاسات (لو فيه option اسمها Size)
- {% comment %} const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
-if (sizeOption) {
-  sizeOption.values.forEach(size => {
-    let opt = document.createElement('option');
-    opt.value = size;
-    opt.textContent = size;
-    sizeSelect.appendChild(opt);
-  });
-} {% endcomment %}
 
 
       document.getElementById('myModal').style.display = 'block';
