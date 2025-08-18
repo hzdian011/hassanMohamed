@@ -12,7 +12,6 @@
   "sections": {
     "header": {
       "type": "header-section",
-      "disabled": true,
       "settings": {
         "nav_subtitle": "Find the ideal gift for your loved ones.",
         "nav_button": "Choose Gift",
@@ -24,7 +23,19 @@
     },
     "grid": {
       "type": "grid-section",
-      "disabled": true,
+      "blocks": {
+        "product_q3T3da": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "pos_x": 50,
+            "pos_y": 50
+          }
+        }
+      },
+      "block_order": [
+        "product_q3T3da"
+      ],
       "settings": {}
     }
   },
