@@ -349,7 +349,7 @@ if (colorOptionIndex !== -1) {
 }
 
 
-      // بناء المقاسات (لو فيه option اسمها Size)
+      {% comment %} // بناء المقاسات (لو فيه option اسمها Size)
       const sizeSelect = document.getElementById('sizeSelect');
       sizeSelect.innerHTML = '<option>Choose your size</option>';
       product.variants.forEach((variant) => {
@@ -361,7 +361,26 @@ if (colorOptionIndex !== -1) {
 
       document.getElementById('myModal').style.display = 'block';
     });
+  }); {% endcomment %}
+
+
+  // ---------------------- Sizes ----------------------
+const sizeSelect = document.getElementById('sizeSelect');
+sizeSelect.innerHTML = '<option>Choose your size</option>';
+
+// نجيب index بتاع الـ Size option
+const sizeOptionIndex = product.options.findIndex(opt => opt.name.toLowerCase() === 'size');
+
+if (sizeOptionIndex !== -1) {
+  const uniqueSizes = [...new Set(product.variants.map(v => v.options[sizeOptionIndex]))];
+
+  uniqueSizes.forEach(size => {
+    let opt = document.createElement('option');
+    opt.value = size;
+    opt.textContent = size;
+    sizeSelect.appendChild(opt);
   });
+}
 
   // اغلاق المودال
   document.querySelector('.close').addEventListener('click', () => {
