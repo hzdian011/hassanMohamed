@@ -43,7 +43,7 @@
       {% assign product = all_products[block.settings.product] %}
       <div class="product-card">
         <div class="image-wrapper">
-          <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}">
+          <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" width="" height="">
 
           <!-- plus button -->
           <button
@@ -65,7 +65,7 @@
 
       <div class="modal-top">
         <!-- image -->
-        <img id="modalImage" class="product-image" src="" alt="Product image">
+        <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
 
         <!-- basic details -->
         <div class="basic-details">
