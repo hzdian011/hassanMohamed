@@ -1131,6 +1131,13 @@
     document.getElementById('myModal').style.display = 'none';
   });
 
+  // Close model ESC
+  window.addEventListener('keydown', (e) => {
+  if (e.key === "Escape") {
+    document.getElementById('myModal').style.display = 'none';
+  }
+});
+
   window.addEventListener('click', (e) => {
     const modal = document.getElementById('myModal');
     if (e.target === modal) {
