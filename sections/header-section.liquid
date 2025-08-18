@@ -1,4 +1,4 @@
-{% schema %}
+{% comment %} {% schema %}
 {
   "name": "Gift Section",
   "settings": [
@@ -494,4 +494,218 @@
     burgerBtn.textContent = burgerBtn.textContent === "☰" ? "✖" : "☰";
   });
 
+</script> {% endcomment %}
+
+
+{% schema %}
+{
+  "name": "Gift Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "nav_subtitle",
+      "label": "Navigation Subtitle",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "nav_button",
+      "label": "Navigation Button",
+      "default": "Choose Gift"
+    },
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Left Title",
+      "default": "The Gift Guid"
+    },
+    {
+      "type": "text",
+      "id": "left_text",
+      "label": "Left Text",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+      "type": "text",
+      "id": "left_button",
+      "label": "Left Button",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    }
+  ]
+}
+{% endschema %}
+
+<section>
+
+  <!-- ========== Nav ========== -->
+  <nav class="gift-nav">
+    <!-- Burger Menu -->
+    <button class="burger-btn" id="burger-btn">☰</button>
+
+    <!-- Logo -->
+    <div class="gift-logo">
+      <img src="{{ 'brandLogo.svg' | asset_url }}" alt="Brand Logo" width="150">
+    </div>
+
+    <!-- Subtitle في النص -->
+    <p class="gift-subtitle">{{ section.settings.nav_subtitle }}</p>
+
+    <!-- زرار الناف -->
+    <div class="nav-links">
+      <button class="gift-btn">
+        {{ section.settings.nav_button }}
+        <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z" fill="#333333"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <p class="gift-subtitle">{{ section.settings.nav_subtitle }}</p>
+      <button class="gift-btn">{{ section.settings.nav_button }}</button>
+    </div>
+  </nav>
+
+  <!-- ========== Row 2 ========== -->
+  <div class="gift-row2">
+    <img src="{{ 'gifts-upper.svg' | asset_url }}">
+  </div>
+
+  <!-- ========== Row 3 ========== -->
+  <div class="gift-row3">
+    <!-- Left Side -->
+    <div class="gift-row3-left">
+      <h3 class="gift-title">{{ section.settings.left_title }}</h3>
+      <p class="gift-desc">{{ section.settings.left_text }}</p>
+      <button class="gift-cta">{{ section.settings.left_button }}</button>
+    </div>
+
+    <!-- Right Side -->
+    <div class="gift-row3-right">
+      <img src="{{ 'gifts-right.svg' | asset_url }}" alt="Gift Image">
+    </div>
+  </div>
+
+  <!-- ========== Row 4 ========== -->
+  <div class="gift-row4" style="margin-top: -3px">
+    <p class="gift-footer">{{ section.settings.footer_text }}</p>
+  </div>
+
+</section>
+
+<style>
+/* ================== General ================== */
+section { overflow-x: hidden; width: 100%; box-sizing: border-box; }
+
+/* ================== Nav ================== */
+.gift-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
+  background: #F5F5F5;
+  position: relative;
+}
+
+.gift-logo { flex: 1; }
+.gift-subtitle {
+  flex: 1;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+}
+.nav-links { flex: 1; display: flex; justify-content: flex-end; }
+
+/* زرار */
+.gift-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 30px;
+  background: #FFD700;
+  border: none;
+  color: #000;
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+.gift-btn::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: #000;
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+.gift-btn:hover { color: #fff; }
+.gift-btn:hover::before { left: 0; }
+
+/* Burger Button */
+.burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #000;
+  position: absolute;
+  left: 20px;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background: #f5f5f5;
+  padding: 15px;
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+.mobile-menu.open {
+  display: flex;
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gift-subtitle, .nav-links { display: none; }
+  .burger-btn { display: block; }
+}
+
+</style>
+
+<script>
+const burgerBtn = document.getElementById("burger-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
+burgerBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("open");
+
+  // تبديل شكل البورجر
+  burgerBtn.textContent = mobileMenu.classList.contains("open") ? "✖" : "☰";
+});
 </script>
