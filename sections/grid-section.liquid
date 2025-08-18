@@ -698,10 +698,10 @@
     <div class="modal-content">
       {% comment %} <span class="close">&times</span>#samah {% endcomment %}
       <span class="close">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="closeFromSvg">
             <path d="M5.0376 4.94354L13.5229 13.4288" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
             <path d="M5.0376 13.4285L13.5229 4.94325" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
-            </svg>
+            </svg> 
       </span>
 
       <div class="modal-top">
@@ -1127,7 +1127,7 @@
   });
 
   // Close modal
-  document.querySelector('.close').addEventListener('click', () => {
+  document.querySelector('.closeFromSvg').addEventListener('click', () => {
     document.getElementById('myModal').style.display = 'none';
   });
 
@@ -1138,3 +1138,4 @@
     }
   });
 </script>
+}
