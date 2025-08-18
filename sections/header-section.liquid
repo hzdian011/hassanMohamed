@@ -58,7 +58,7 @@
   </nav>
 
   <!-- Raw 2 -->
-  <div>
+  <div class="gift-row2">
     <img src="{{ 'gifts-upper.svg' | asset_url }}" width="" height="">
   </div>
 
@@ -181,14 +181,14 @@
     }
 
     /*=================== Row 2 ================== */
-/* خصص للـ Raw 2 */
-section > div img {
-  width: 100%;         /* الصورة تكبر 20% زيادة */
-  max-width: none;     /* تمنع المتصفح من حصرها */
-  object-fit: cover;   /* تخليها تغطي المساحة */
-  object-position: left; /* تسيب الشمال ثابت وتكبر يمين */
-  display: block;
-}
+    /* خصص للـ Raw 2 */
+    .gift-row2 img  {
+      width: 100%;         /* الصورة تكبر 20% زيادة */
+      max-width: none;     /* تمنع المتصفح من حصرها */
+      object-fit: cover;   /* تخليها تغطي المساحة */
+      object-position: left; /* تسيب الشمال ثابت وتكبر يمين */
+      display: block;
+    }
 
 
     /* ================== Row 3 ================== */
