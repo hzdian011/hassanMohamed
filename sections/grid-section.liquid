@@ -104,12 +104,24 @@
             <div id="colorContainer"></div>
           </div>
 
-          <div class="size-options">
+          {% comment %} <div class="size-options">
             <label for="sizeSelect">Size</label>
             <select id="sizeSelect">
               <option>Choose your size</option>
             </select>
+          </div> {% endcomment %}
+
+          <div class="size-options">
+            <label>Size</label>
+            <div class="custom-dropdown">
+              <button id="sizeDropdownBtn" class="dropdown-btn">
+                Choose your size
+                <span class="chevron">&#9662;</span>
+              </button>
+              <div id="sizeDropdownList" class="dropdown-list"></div>
           </div>
+</div>
+
       </div>
 
 
