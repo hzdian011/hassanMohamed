@@ -294,10 +294,45 @@
       document.getElementById('modalDescription').textContent = product.description;
       document.getElementById('modalImage').src = product.images[0];
 
+      {% comment %} // بناء أزرار الألوان (لو فيه option اسمها Color)
+       const colorContainer = document.getElementById('colorContainer');
+      colorContainer.innerHTML = '';
+      const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
+      if (colorOption) {
+        colorOption.values.forEach((color, i) => {
+          const colorBtn = document.createElement('button');
+          colorBtn.textContent = color;
+          colorBtn.classList.add('color-btn');
+          if (i === 0) colorBtn.classList.add('active');
+          colorBtn.addEventListener('click', () => {
+            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+            colorBtn.classList.add('active');
+            colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
+          });
+          colorContainer.appendChild(colorBtn);
+        });
+      } {% endcomment %}
+
+      // mapping لألوان CSS صالحة
+const colorMap = {
+  'Red': '#FF0000',
+  'Blue': '#0000FF',
+  'Green': '#00FF00',
+  'Black': '#000000',
+  'White': '#FFFFFF',
+  'Yellow': '#FFFF00',
+  'Sky Blue': '#87CEEB',
+  'Light Pink': '#FFB6C1',
+  // ممكن تضيف باقي الألوان اللي عندك في المنتجات
+};
+
+// نجيب العنصر الحاوي للألوان
 const colorContainer = document.getElementById('colorContainer');
 if (!colorContainer || !product.options) return;
 
-colorContainer.innerHTML = '';
+colorContainer.innerHTML = ''; // نظف المحتوى القديم
+
+// نبحث عن خيار اللون
 const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
 
 if (colorOption) {
@@ -306,14 +341,18 @@ if (colorOption) {
     colorBtn.textContent = color;
     colorBtn.classList.add('color-btn');
     if (i === 0) colorBtn.classList.add('active');
-    
+
     colorBtn.addEventListener('click', () => {
-      document.querySelectorAll('.color-btn').forEach((b) => {
+      // إزالة active و border من كل الأزرار
+      document.querySelectorAll('.color-btn').forEach(b => {
         b.classList.remove('active');
         b.style.borderLeft = 'none';
       });
+
       colorBtn.classList.add('active');
-      colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
+      // نستخدم اللون من mapping أو نرجع للـ black كافتراضي
+      const cssColor = colorMap[color] || '#000';
+      colorBtn.style.borderLeft = `4px solid ${cssColor}`;
     });
 
     colorContainer.appendChild(colorBtn);
