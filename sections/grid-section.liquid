@@ -313,34 +313,45 @@
         });
       } {% endcomment %}
 
+      // mapping لألوان CSS صالحة
+const colorMap = {
+  'Red': '#FF0000',
+  'Blue': '#0000FF',
+  'Green': '#00FF00',
+  'Black': '#000000',
+  'White': '#FFFFFF',
+  'Yellow': '#FFFF00',
+  'Sky Blue': '#87CEEB',
+  'Light Pink': '#FFB6C1',
+  // ممكن تضيف باقي الألوان اللي عندك في المنتجات
+};
 
-
-// ---------------------- Colors ----------------------
+// نجيب العنصر الحاوي للألوان
 const colorContainer = document.getElementById('colorContainer');
-colorContainer.innerHTML = ''; 
+if (!colorContainer || !product.options) return;
 
-// نجيب خيار اللون من الـ product
-const colorOptionIndex = product.options.findIndex(opt => opt.name.toLowerCase() === 'color');
+colorContainer.innerHTML = ''; // نظف المحتوى القديم
 
-if (colorOptionIndex !== -1) {
-  const uniqueColors = [...new Set(product.variants.map(v => v.options[colorOptionIndex]))];
+// نبحث عن خيار اللون
+const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
 
-  uniqueColors.forEach((color, i) => {
+if (colorOption) {
+  colorOption.values.forEach((color, i) => {
     const colorBtn = document.createElement('button');
     colorBtn.textContent = color;
     colorBtn.classList.add('color-btn');
     if (i === 0) colorBtn.classList.add('active');
 
-    // نخلي الborder بلون فعلي من colorMap أو default
-    const cssColor = colorMap[color] || '#000';
-    if (i === 0) colorBtn.style.borderLeft = `4px solid ${cssColor}`;
-
     colorBtn.addEventListener('click', () => {
+      // إزالة active و border من كل الأزرار
       document.querySelectorAll('.color-btn').forEach(b => {
         b.classList.remove('active');
         b.style.borderLeft = 'none';
       });
+
       colorBtn.classList.add('active');
+      // نستخدم اللون من mapping أو نرجع للـ black كافتراضي
+      const cssColor = colorMap[color] || '#000';
       colorBtn.style.borderLeft = `4px solid ${cssColor}`;
     });
 
@@ -349,7 +360,9 @@ if (colorOptionIndex !== -1) {
 }
 
 
-      {% comment %} // بناء المقاسات (لو فيه option اسمها Size)
+
+
+      // بناء المقاسات (لو فيه option اسمها Size)
       const sizeSelect = document.getElementById('sizeSelect');
       sizeSelect.innerHTML = '<option>Choose your size</option>';
       product.variants.forEach((variant) => {
@@ -361,26 +374,7 @@ if (colorOptionIndex !== -1) {
 
       document.getElementById('myModal').style.display = 'block';
     });
-  }); {% endcomment %}
-
-
-  // ---------------------- Sizes ----------------------
-const sizeSelect = document.getElementById('sizeSelect');
-sizeSelect.innerHTML = '<option>Choose your size</option>';
-
-// نجيب index بتاع الـ Size option
-const sizeOptionIndex = product.options.findIndex(opt => opt.name.toLowerCase() === 'size');
-
-if (sizeOptionIndex !== -1) {
-  const uniqueSizes = [...new Set(product.variants.map(v => v.options[sizeOptionIndex]))];
-
-  uniqueSizes.forEach(size => {
-    let opt = document.createElement('option');
-    opt.value = size;
-    opt.textContent = size;
-    sizeSelect.appendChild(opt);
   });
-}
 
   // اغلاق المودال
   document.querySelector('.close').addEventListener('click', () => {
