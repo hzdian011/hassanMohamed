@@ -63,7 +63,7 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       
-        <!-- image -->
+        {% comment %} <!-- image -->
         <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
 
         <!-- details -->
@@ -83,7 +83,35 @@
               <option>Choose your size</option>
             </select>
           </div>
+        </div> {% endcomment %}
+
+      <div class="modal-top">
+          <!-- الصورة -->
+          <img id="modalImage" class="product-image" src="" alt="Product image" width="" height="">
+
+          <!-- التفاصيل الأساسية -->
+          <div class="basic-details">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <p id="modalPrice"></p>
+          </div>
         </div>
+
+        <!-- باقي التفاصيل -->
+        <div class="modal-details">
+          <div class="color-options">
+            <label>Color</label>
+            <div id="colorContainer"></div>
+          </div>
+
+          <div class="size-options">
+            <label for="sizeSelect">Size</label>
+            <select id="sizeSelect">
+              <option>Choose your size</option>
+            </select>
+          </div>
+      </div>
+
 
       <button id="addToCartBtn">ADD TO CART →</button>
     </div>
