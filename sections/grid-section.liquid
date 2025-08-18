@@ -654,7 +654,7 @@
 
           <!-- plus button -->
           <button
-            {% comment %} class="plus-btn" {% endcomment %}
+            class="plus-btn"
             data-handle="{{ product.handle }}"
             style="top:{{ block.settings.pos_y }}%; left:{{ block.settings.pos_x }}%;"
           >
@@ -677,7 +677,7 @@
                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5_3060" result="shape"/>
                 </filter>
                 </defs>
-              </svg>
+            </svg>
           </button>
         </div>
       </div>
@@ -993,14 +993,17 @@
 .plus-btn {
   position: absolute;
   transform: translate(-50%, -50%);
-  background: white;
-  border-radius: 50%;
+  background: transparent;
   border: none;
+  cursor: pointer;
+  {% comment %} border-radius: 50%;
   width: 25px;
   height: 25px;
-  font-size: 15px;
-  cursor: pointer;
+  font-size: 15px; {% endcomment %}
+  padding:0;
 }
+
+
 </style>
 
 <script>
