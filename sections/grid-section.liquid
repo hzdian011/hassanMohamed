@@ -294,24 +294,41 @@
       document.getElementById('modalDescription').textContent = product.description;
       document.getElementById('modalImage').src = product.images[0];
 
-      // بناء أزرار الألوان (لو فيه option اسمها Color)
-       const colorContainer = document.getElementById('colorContainer');
-      colorContainer.innerHTML = '';
-      const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
-      if (colorOption) {
-        colorOption.values.forEach((color, i) => {
-          const colorBtn = document.createElement('button');
-          colorBtn.textContent = color;
-          colorBtn.classList.add('color-btn');
-          if (i === 0) colorBtn.classList.add('active');
-          colorBtn.addEventListener('click', () => {
-            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
-            colorBtn.classList.add('active');
-            colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
-          });
-          colorContainer.appendChild(colorBtn);
-        });
-      }
+// بناء أزرار الألوان من الـ variants
+const colorContainer = document.getElementById('colorContainer');
+colorContainer.innerHTML = '';
+
+let colors = [];
+
+// نجيب الـ index بتاع الـ Color من الـ options
+const colorIndex = product.options.findIndex(
+  (opt) => opt.toLowerCase() === "color"
+);
+
+if (colorIndex !== -1) {
+  product.variants.forEach((variant) => {
+    const color = variant[`option${colorIndex + 1}`]; // +1 عشان option1 مش option0
+    if (color && !colors.includes(color)) {
+      colors.push(color);
+    }
+  });
+
+  colors.forEach((color, i) => {
+    const colorBtn = document.createElement('button');
+    colorBtn.textContent = color;
+    colorBtn.classList.add('color-btn');
+    if (i === 0) colorBtn.classList.add('active');
+
+    colorBtn.addEventListener('click', () => {
+      document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+      colorBtn.classList.add('active');
+      colorBtn.style.borderLeft = `4px solid ${color.toLowerCase()}`;
+    });
+
+    colorContainer.appendChild(colorBtn);
+  });
+}
+
 
 
 
