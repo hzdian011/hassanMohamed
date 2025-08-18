@@ -24,20 +24,20 @@
     "grid": {
       "type": "grid-section",
       "blocks": {
-        "product_6B9rEH": {
-          "type": "product",
-          "settings": {
-            "product": "led-high-tops",
-            "pos_x": 50,
-            "pos_y": 50
-          }
-        },
         "product_cQiFwp": {
           "type": "product",
           "settings": {
             "product": "dark-winter-jacket",
             "pos_x": 50,
             "pos_y": 50
+          }
+        },
+        "product_hC3fQK": {
+          "type": "product",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "pos_x": 77,
+            "pos_y": 58
           }
         },
         "product_39FNFX": {
@@ -74,8 +74,8 @@
         }
       },
       "block_order": [
-        "product_6B9rEH",
         "product_cQiFwp",
+        "product_hC3fQK",
         "product_39FNFX",
         "product_D49PUE",
         "product_pQEnRH",
