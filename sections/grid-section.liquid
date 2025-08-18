@@ -865,6 +865,21 @@
   font-size: 14px;
   color: #333333;
 }
+.color-options .color-swatch {
+  width: 40px;   /* كانت 30px زودناها */
+  height: 40px;  /* كانت 30px */
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  transition: transform 0.2s, border 0.2s;
+}
+
+.color-options .color-swatch:hover {
+  transform: scale(1.15);
+  border-color: #000;
+}
+
 
 #colorContainer {
   display: flex;
