@@ -326,37 +326,38 @@ const colorMap = {
   // ممكن تضيف باقي الألوان اللي عندك في المنتجات
 };
 
-// نجيب العنصر الحاوي للألوان
+// ---------------------- Colors ----------------------
 const colorContainer = document.getElementById('colorContainer');
-if (!colorContainer || !product.options) return;
+colorContainer.innerHTML = ''; 
 
-colorContainer.innerHTML = ''; // نظف المحتوى القديم
+if (product.options) {
+  const colorOptionIndex = product.options.findIndex(opt => opt.name.toLowerCase() === 'color');
 
-// نبحث عن خيار اللون
-const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
+  if (colorOptionIndex !== -1) {
+    const uniqueColors = [...new Set(product.variants.map(v => v.options[colorOptionIndex]))];
 
-if (colorOption) {
-  colorOption.values.forEach((color, i) => {
-    const colorBtn = document.createElement('button');
-    colorBtn.textContent = color;
-    colorBtn.classList.add('color-btn');
-    if (i === 0) colorBtn.classList.add('active');
+    uniqueColors.forEach((color, i) => {
+      const colorBtn = document.createElement('button');
+      colorBtn.textContent = color;
+      colorBtn.classList.add('color-btn');
+      if (i === 0) colorBtn.classList.add('active');
 
-    colorBtn.addEventListener('click', () => {
-      // إزالة active و border من كل الأزرار
-      document.querySelectorAll('.color-btn').forEach(b => {
-        b.classList.remove('active');
-        b.style.borderLeft = 'none';
+      // نخلي border بنفس اللون لو متعرف في الـ colorMap
+      const cssColor = colorMap[color] || '#000';
+      if (i === 0) colorBtn.style.borderLeft = `4px solid ${cssColor}`;
+
+      colorBtn.addEventListener('click', () => {
+        document.querySelectorAll('.color-btn').forEach(b => {
+          b.classList.remove('active');
+          b.style.borderLeft = 'none';
+        });
+        colorBtn.classList.add('active');
+        colorBtn.style.borderLeft = `4px solid ${cssColor}`;
       });
 
-      colorBtn.classList.add('active');
-      // نستخدم اللون من mapping أو نرجع للـ black كافتراضي
-      const cssColor = colorMap[color] || '#000';
-      colorBtn.style.borderLeft = `4px solid ${cssColor}`;
+      colorContainer.appendChild(colorBtn);
     });
-
-    colorContainer.appendChild(colorBtn);
-  });
+  }
 }
 
 
