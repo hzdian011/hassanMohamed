@@ -208,23 +208,11 @@
   .color-options { display: flex; flex-direction: column; gap: 8px; }
   .color-options label { font-family: 'Jost', sans-serif; font-weight: 400; font-size: 15px; color: #333; }
   #colorContainer { display: flex; }
-  {% comment %} .color-btn { 
-    flex: 1; 
-    padding: 12px; 
-    border: 1px solid #000; 
-    background: #fff; 
-    cursor: pointer; 
-    text-align: start; 
-    transition: all 0.2s ease; 
-    font-family: 'Jost', sans-serif; 
-    font-size: 18px; 
-    text-transform: capitalize; 
-  } {% endcomment %}
-
+  
   .color-btn {
-    position: relative; /* مهم علشان الـ ::before يتثبت */
+    position: relative; 
     flex: 1;
-    padding: 12px 12px 12px 20px; /* padding left أكبر شوية عشان يبان الشريط */
+    padding: 12px 12px 12px 20px;
     border: 1px solid #000;
     border-right: none;
     background: #fff;
@@ -242,20 +230,10 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 6px; /* عرض الشريط */
-    background-color: var(--color); /* هنحط اللون هنا بالـ JS */
-    border-right: 1px solid #000; /* optional للفصل */
-    
-    {% comment %} border-top-left-radius: 2px; {% endcomment %}
-    {% comment %} border-bottom-left-radius: 2px; {% endcomment %}
+    width: 6px; 
+    background-color: var(--color);
+    border-right: 1px solid #000; 
   }
-
-  {% comment %} .color-btn.active { 
-    background: #000; 
-    color: #fff; 
-    border: 1px solid #000; 
-    transition: all 0.6s ease-in-out; 
-  } {% endcomment %}
   .color-btn.active {
     background: #000;
     color: #fff;
