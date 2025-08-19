@@ -1035,8 +1035,21 @@
 
       position: relative;
       display: flex;
-      align-items: center;   /* يوسط النص والسهم عموديًا */
       justify-content: center; /* يفضلوا في النص أفقيًا */
+      align-items: center;   /* يوسط النص والسهم عموديًا */
+  }
+
+  #addToCartBtn .addToCartBtn-text {
+    position: absolute; /* يفضل ثابت في النص */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #addToCartBtn .addToCartBtn-icon {
+    margin-left: auto;  /* يخلي السهم يروح لأقصى يمين */
+    display: flex;
+    align-items: center;
+    padding-right: 10px; /* تتحكم هنا في المسافة عن الطرف */
   }
 
   #addToCartBtn svg {
