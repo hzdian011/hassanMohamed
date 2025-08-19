@@ -995,29 +995,11 @@
   }
 
 
-  {% comment %} .dropdown-list {
+  .dropdown-list {
     display: none;
     flex-direction: column;
     border: 1px solid #000;
-  } {% endcomment %}
-
-
-  .dropdown-list {
-  display: flex;
-  flex-direction: column;
-  margin-top: 8px;
-  border: 1px solid #000;
-  overflow: hidden;              /* علشان العناصر متطلعش بره */
-  max-height: 0;                 /* مقفول في الأول */
-  opacity: 0;                    /* شفاف في الأول */
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-}
-
-.dropdown-list.show {
-  max-height: 500px;             /* قيمة كافية لعرض كل العناصر */
-  opacity: 1;
-}
-
+  }
 
   .dropdown-list button {
     padding: 10px;
