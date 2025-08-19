@@ -211,7 +211,17 @@
   .color-btn { flex: 1; padding: 12px; border: 1px solid #000; background: #fff; cursor: pointer; text-align: start; transition: all 0.2s ease; font-family: 'Jost', sans-serif; font-size: 18px; text-transform: capitalize; }
   .color-btn.active { background: #000; color: #fff; border: 1px solid #000; transition: all 0.6s ease-in-out; }
 
-/* ========== Sizes ========== */
+  {% comment %} /* ========== Sizes ========== */
+  .size-options { display: flex; flex-direction: column; gap: 5px; }
+  .size-options label { font-family: 'Jost', sans-serif; font-size: 15px; color: #333; }
+  .dropdown-btn { padding: 12px 35px 12px 12px; border: 1px solid #000; cursor: pointer; width: 100%; text-align: left; background: #fff; font-size: 18px; position: relative; }
+  .dropdown-btn svg { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; pointer-events: none; }
+  .dropdown-btn.active svg { transform: translateY(-50%) rotate(180deg); }
+  .dropdown-list { display: none; flex-direction: column; border: 1px solid #000; }
+  .dropdown-list button { padding: 10px; border: none; background: #fff; cursor: pointer; text-align: left; }
+  .dropdown-list button:hover { background: #f0f0f0; } {% endcomment %}
+
+  /* ========== Sizes ========== */
   .size-options {
     display: flex;
     flex-direction: column;
@@ -242,8 +252,7 @@
     justify-content: center;
     border-left: 1px solid #000;
     padding-left: 12px;
-    height: 100%;
-    align-self: stretch;
+    align-self: stretch;   /* يخلي الـ span ياخد نفس ارتفاع الزرار */
   }
 
   .dropdown-btn svg {
