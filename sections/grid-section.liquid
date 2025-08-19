@@ -235,15 +235,18 @@
   }
 
   .dropdown-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px;               /* مسافة موحدة من كل الاتجاهات */
-    border: 1px solid #000;
-    cursor: pointer;
-    width: 100%;
-    background: #fff;
-    font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #000;
+  cursor: pointer;
+  width: 100%;
+  background: #fff;
+  font-size: 18px;
+  }
+
+  .dropdown-btn .label {
+    padding: 12px; /* هوامش للنص بس */
   }
 
   .dropdown-btn .chevron {
@@ -251,8 +254,8 @@
     align-items: center;
     justify-content: center;
     border-left: 1px solid #000;
-    align-self: stretch;          /* ياخد ارتفاع الزرار كله */
-    padding: 0 12px;              /* padding أفقي فقط */
+    align-self: stretch;   /* يخليها بنفس ارتفاع الزرار */
+    padding: 0 12px;       /* بس padding أفقي */
   }
 
   .dropdown-btn svg {
