@@ -176,6 +176,7 @@
   </div>
 </section>
 {{ 'grid-style.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'grid-script.js' | asset_url }}" defer></script>
 
 
 <!-- ===================== STYLES ===================== -->
@@ -527,7 +528,7 @@
   .plus-btn { position: absolute; transform: translate(-50%, -50%); background: transparent; border: none; cursor: pointer; padding:0; }
   .plus-icon { width: 30px; height: 30px; color: white; }
 </style> {% endcomment %}
-
+{% comment %} 
 <script>
   // ==============================
   // Global Variables
@@ -756,4 +757,4 @@
       modal.style.display = 'none';
     }
   });
-</script>
+</script> {% endcomment %}
