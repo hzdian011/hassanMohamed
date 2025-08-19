@@ -51,6 +51,7 @@
         justify-content: center;
         gap: 20px;
         padding: 12px 30px;
+        margin: 35px 0 0 0; /*#606*/
         background: #FFD700;
         border: none;
         color: #000;
