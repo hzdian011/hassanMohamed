@@ -510,6 +510,10 @@
                 } else if (i < prevIndex) {
                   colorBtn.style.animation = "slideLeft 0.4s ease";
                 }
+              // امسح الـ animation بعد ما تخلص عشان تتكرر تاني بعدين
+              colorBtn.addEventListener("animationend", () => {
+                colorBtn.style.animation = "";
+              }, { once: true });
             });
 
             colorContainer.appendChild(colorBtn);
