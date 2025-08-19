@@ -235,11 +235,30 @@
     text-transform: capitalize;
   }
 
-  .color-btn.active { 
+  .color-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px; /* عرض الشريط */
+    background-color: var(--color); /* هنحط اللون هنا بالـ JS */
+    border-right: 1px solid #000; /* optional للفصل */
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  {% comment %} .color-btn.active { 
     background: #000; 
     color: #fff; 
     border: 1px solid #000; 
     transition: all 0.6s ease-in-out; 
+  } {% endcomment %}
+  .color-btn.active {
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    transition: all 0.6s ease-in-out;
   }
 
   /* ========== Sizes ========== */
