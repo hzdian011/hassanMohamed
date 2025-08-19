@@ -225,14 +225,14 @@
   }
 
   .dropdown-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #000;
-  cursor: pointer;
-  width: 100%;
-  background: #fff;
-  font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #000;
+    cursor: pointer;
+    width: 100%;
+    background: #fff;
+    font-size: 16px;
   }
 
   .dropdown-btn .label {
@@ -258,13 +258,32 @@
     transform: rotate(180deg);
   }
 
-  .dropdown-list {
+  {% comment %} .dropdown-list {
     display: none;
     flex-direction: column;
     border: 1px solid #000;
+  } {% endcomment %}
+  .dropdown-list {
+    position: absolute;          /* يفتح فوق الزرار */
+    top: 100%;                   /* يبدأ من تحت الزرار */
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    border: 1px solid #000;
+    background: #fff;
+    max-height: 150px;           /* ارتفاع يعرض 3 عناصر تقريباً */
+    overflow-y: auto;            /* scroll داخلي */
+    scrollbar-width: none;       /* إخفاء الاسكرول (Firefox) */
+    -ms-overflow-style: none;    /* إخفاء الاسكرول (IE/Edge) */
   }
 
-  .dropdown-list button {
+  .dropdown-list::-webkit-scrollbar {
+    display: none;               /* إخفاء الاسكرول (Chrome/Safari) */
+  }
+
+  {% comment %} .dropdown-list button {
     padding: 10px;
     border: none;
     background: #fff;
@@ -274,6 +293,21 @@
 
   .dropdown-list button:hover {
     background: #f0f0f0;
+  } {% endcomment %}
+
+  .dropdown-list button {
+    padding: 12px;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    transition: background-color 0.4s ease, color 0.4s ease; /* تأثير ناعم */
+  }
+
+  .dropdown-list button:hover {
+    background: #000;
+    color: #fff;
   }
 
   /* ========== Add to Cart ========== */
