@@ -224,7 +224,7 @@
     color: #333;
   }
 
-  .dropdown-btn {
+  {% comment %} .dropdown-btn {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -234,7 +234,19 @@
     background: #fff;
     font-size: 16px;
     Position:relative;
-  }
+  } {% endcomment %}
+
+  .dropdown-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #000;
+    cursor: pointer;
+    width: 100%;
+    background: #fff;
+    font-size: 16px;
+}
 
   .dropdown-btn .label {
     padding: 12px; 
@@ -259,23 +271,34 @@
     transform: rotate(180deg);
   }
 
+  /* القائمة */
   .dropdown-list {
+    position: absolute;   /* تطلع فوق الزرار مش تزقه */
     top: 100%;      
     left: 0;
     right: 0;
-    z-index: 9999;        /* أعلى من المودال */
-    display: none;
+    z-index: 9999;
+
+    display: flex;
     flex-direction: column;
     border: 1px solid #000;
     background: #fff;
 
-    max-height: calc(3 * 40px); /* ارتفاع 3 عناصر فقط (48px لكل عنصر) */
+    max-height: 0;         /* مخفية في الأول */
+    overflow: hidden;      /* ميبانش اللي جوة */
+    opacity: 0;
+    transform: translateY(-5px); /* تبقى طالعة من فوق شوية */
+    transition: all 0.3s ease;   /* الانيميشن */
+  }
+  /* لما تبقى مفتوحة */
+  .dropdown-list.open {
+    max-height: 150px;   /* 3 عناصر بس */
+    opacity: 1;
+    transform: translateY(0);
     overflow-y: auto;
-
-    scrollbar-width: none; 
-    -ms-overflow-style: none;
   }
 
+  /* اخفاء الـ scrollbar */
   .dropdown-list::-webkit-scrollbar {
     display: none;
   }
