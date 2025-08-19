@@ -948,12 +948,6 @@
 
   #colorContainer {
     display: flex;
-
-      
-    position: relative; /* علشان highlight يتحرك جوه */
-    border: 1px solid #000;
-    border-radius: 8px;
-    overflow: hidden;
   }
 
   .color-btn {
@@ -965,9 +959,6 @@
     transition: all 0.2s ease;
     text-align:start;
 
-      z-index: 2; /* فوق الـ highlight */
-
-
     font-family: 'Jost', sans-serif;
     font-weight: 400;
     font-size: 18px;
@@ -977,17 +968,6 @@
     color: #000000;
 
   }
-
-  .highlight {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;   /* هتتظبط بالديناميك */
-  height: 100%;
-  background: #000;
-  transition: all 0.3s ease;
-  z-index: 1;
-}
 
   .color-btn.active {
     background: #000 !important;
@@ -1129,45 +1109,23 @@
       const colorContainer = document.getElementById('colorContainer');
       colorContainer.innerHTML = '';
 
-      // نضيف highlight div
-      const highlight = document.createElement('div');
-      highlight.classList.add('highlight');
-      colorContainer.appendChild(highlight);
-
-
       const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
 
       if (colorOption) {
-  colorOption.values.forEach((color, i) => {
-    const colorBtn = document.createElement('button');
-    colorBtn.textContent = color;
-    colorBtn.classList.add('color-btn');
+        colorOption.values.forEach((color, i) => {
+          const colorBtn = document.createElement('button');
+          colorBtn.textContent = color;
+          colorBtn.classList.add('color-btn');
+          if (i === 0) colorBtn.classList.add('active');
 
-    // أول زرار (default)
-    if (i === 0) {
-      highlight.style.width = (100 / colorOption.values.length) + "%";
-      highlight.style.left = "0%";
-      colorBtn.style.color = "#fff"; // النص أبيض
-    }
+          colorBtn.addEventListener('click', () => {
+            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+            colorBtn.classList.add('active');
+          });
 
-    colorBtn.addEventListener('click', () => {
-      const btns = document.querySelectorAll('.color-btn');
-
-      // رجّع كل الأزرار للنص الأسود
-      btns.forEach(b => b.style.color = "#000");
-
-      // خلّي النص أبيض للزرار المختار
-      colorBtn.style.color = "#fff";
-
-      // حرّك highlight تحت الزرار المختار
-      highlight.style.width = (100 / btns.length) + "%";
-      highlight.style.left = (i * (100 / btns.length)) + "%";
-    });
-
-    colorContainer.appendChild(colorBtn);
-  });
-}
-
+          colorContainer.appendChild(colorBtn);
+        });
+      }
        
 
       // sizes dropdown
