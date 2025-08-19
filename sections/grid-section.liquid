@@ -259,54 +259,26 @@
     transform: rotate(180deg);
   }
 
-  {% comment %} .dropdown-list {
+  .dropdown-list {
+    top: 100%;      
+    left: 0;
+    right: 0;
+    z-index: 9999;        /* أعلى من المودال */
     display: none;
     flex-direction: column;
     border: 1px solid #000;
-  } {% endcomment %}
-.dropdown-list {
-  top: 100%;      
-  left: 0;
-  right: 0;
-  z-index: 9999;        /* أعلى من المودال */
-  display: none;
-  flex-direction: column;
-  border: 1px solid #000;
-  background: #fff;
-
-  max-height: calc(3 * 40px); /* ارتفاع 3 عناصر فقط (48px لكل عنصر) */
-  overflow-y: auto;
-
-  scrollbar-width: none; 
-  -ms-overflow-style: none;
-}
-
-.dropdown-list::-webkit-scrollbar {
-  display: none;
-}
-
-  {% comment %} .dropdown-list button {
-    padding: 10px;
-    border: none;
     background: #fff;
-    cursor: pointer;
-    text-align: left;
+
+    max-height: calc(3 * 40px); /* ارتفاع 3 عناصر فقط (48px لكل عنصر) */
+    overflow-y: auto;
+
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
   }
 
-  .dropdown-list button:hover {
-    background: #f0f0f0;
-  } {% endcomment %}
-
-  {% comment %} .dropdown-list button {
-    padding: 12px;
-    border: none;
-    background: #fff;
-    cursor: pointer;
-    text-align: left;
-    font-size: 16px;
-    transition: background-color 0.4s ease, color 0.4s ease; /* تأثير ناعم */
-  } {% endcomment %}
-
+  .dropdown-list::-webkit-scrollbar {
+    display: none;
+  }
   
   .dropdown-list button {
     padding: 12px;
