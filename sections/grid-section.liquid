@@ -1055,11 +1055,11 @@
   }
 
   #addToCartBtn .addToCartBtn-icon {
-    margin-left: auto;  /* يخلي السهم يروح لأقصى يمين */
-    display: flex;
-    align-items: center;
-    padding-right: 10px; /* تتحكم هنا في المسافة عن الطرف */
-  }
+    position: absolute;
+    right: 15px;   /* تتحكم هنا في بعد السهم عن الحافة */
+    top: 50%;
+    transform: translateY(-50%); /* يتوسطن عمودي */
+}
 {% comment %} 
   #addToCartBtn svg {
     transform: none; 
