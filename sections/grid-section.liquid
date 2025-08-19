@@ -229,10 +229,24 @@
     gap: 30px; 
     max-width: 1337px; 
     margin: 0 auto; 
+    padding: 0 50px;
     {% comment %} padding: 80px 50px 50px; /* زودنا 50px يمين وشمال */ {% endcomment %}
     overflow-y: hidden; 
-    width:100%;
 }
+
+  /* تابلت */
+  @media (max-width: 1024px) {
+    .products-section {
+      padding: 0 30px;
+    }
+  }
+
+  /* موبايل */
+  @media (max-width: 768px) {
+    .products-section {
+      padding: 0 15px;
+    }
+  }
 
   {% comment %} .section-title { 
     font-family: 'Lustria', serif; 
