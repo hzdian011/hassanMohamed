@@ -18,7 +18,7 @@
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       return await res.json();
     } catch (error) {
-      console.error(`❌ Fetch failed: ${url}`, error);
+      console.error(`Fetch failed: ${url}`, error);
       throw error;
     }
   }
@@ -68,7 +68,7 @@
 
       document.getElementById("cartDrawer").classList.add("active");
     } catch (err) {
-      console.error("❌ Error opening cart drawer:", err);
+      console.error("Error opening cart drawer:", err);
     }
   }
 
@@ -183,7 +183,7 @@
       renderProductModal(product);
       openModal();
     } catch (err) {
-      console.error("❌ Error opening product modal:", err);
+      console.error("Error opening product modal:", err);
     }
   }
 
@@ -224,7 +224,7 @@
         closeModal();
         openCartDrawer();
       })
-      .catch((err) => console.error("❌ Error adding to cart:", err));
+      .catch((err) => console.error("Error adding to cart:", err));
   }
 
   // ==============================
