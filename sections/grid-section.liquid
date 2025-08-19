@@ -225,8 +225,13 @@
     font-family: 'Jost', sans-serif;
     font-size: 18px;
     border: none;
+    outline: none;
+    border: 1px solid #000;
     z-index: 2; /* فوق الـ slider */
     transition: color 0.3s ease;
+  }
+  .color-btn:focus {
+    outline: none; /* يمنع الـ focus الأزرق */
   }
 
   .color-btn::before {
@@ -242,7 +247,6 @@
   .color-btn.active {
     background: #000;
     color: #fff;
-    border: 1px solid #000;
     transition: all 0.6s ease-in-out;
   }
 
@@ -257,7 +261,20 @@
     transition: transform 0.4s ease;
     z-index: 1; /* تحت الأزرار */
   }
-  
+
+  /* Animation يمين */
+  @keyframes slideRight {
+    0%   { transform: translateX(0); }
+    40%  { transform: translateX(8px); }   /* يتحرك يمين */
+    100% { transform: translateX(0); }     /* يرجع مكانه */
+  }
+
+  /* Animation شمال */
+  @keyframes slideLeft {
+    0%   { transform: translateX(0); }
+    40%  { transform: translateX(-8px); }  /* يتحرك شمال */
+    100% { transform: translateX(0); }
+  }
 
   /* ========== Sizes ========== */
   .size-options {
@@ -483,11 +500,25 @@
             if (i === 0) colorBtn.classList.add('active'); // First color default
 
             colorBtn.addEventListener('click', () => {
+              const prevIndex = [...document.querySelectorAll('.color-btn')].findIndex(b => b.classList.contains('active'));
+              
               document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
               colorBtn.classList.add('active');
 
                // حرك الخلفية السودا حسب index
                 indicator.style.transform = `translateX(${i * 100}%)`;
+
+              // لو اللون Black ندي slide effect
+                if (color.toLowerCase() === "black") {
+                  if (i > prevIndex) {
+                    colorBtn.style.animation = "slideRight 0.4s ease";
+                  } 
+                  // ممكن تزود slideLeft برضه لو عايز
+                }
+              // امسح الـ animation بعد ما تخلص عشان تتكرر تاني بعدين
+              colorBtn.addEventListener("animationend", () => {
+                colorBtn.style.animation = "";
+              }, { once: true });
             });
 
             colorContainer.appendChild(colorBtn);
