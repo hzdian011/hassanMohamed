@@ -208,7 +208,7 @@
   .color-options { display: flex; flex-direction: column; gap: 8px; }
   .color-options label { font-family: 'Jost', sans-serif; font-weight: 400; font-size: 15px; color: #333; }
   #colorContainer { display: flex; }
-  .color-btn { 
+  {% comment %} .color-btn { 
     flex: 1; 
     padding: 12px; 
     border: 1px solid #000; 
@@ -219,8 +219,21 @@
     font-family: 'Jost', sans-serif; 
     font-size: 18px; 
     text-transform: capitalize; 
+  } {% endcomment %}
+
+  .color-btn {
+    position: relative; /* مهم علشان الـ ::before يتثبت */
+    flex: 1;
+    padding: 12px 12px 12px 20px; /* padding left أكبر شوية عشان يبان الشريط */
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+    text-align: start;
+    transition: all 0.2s ease;
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
   }
-  
+
   .color-btn.active { 
     background: #000; 
     color: #fff; 
