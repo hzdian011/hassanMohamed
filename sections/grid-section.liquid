@@ -955,7 +955,7 @@
     {% comment %} gap: 10px; {% endcomment %}
   } 
 
-  .color-btn {
+  {% comment %} .color-btn {
     flex: 1;
     padding: 12px;
     border: 1px solid #000;
@@ -972,6 +972,16 @@
     text-transform: capitalize;
     color: #000000;
 
+  } {% endcomment %}
+
+  .color-btn {
+    position: relative;
+    z-index: 1; /* عشان يكون فوق المستطيل */
+    padding: 12px 20px;
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
   }
 
   .color-btn.active {
