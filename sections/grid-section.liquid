@@ -233,11 +233,78 @@
   overflow-y: hidden; 
 }
 
-  .section-title { font-family: 'Lustria', serif; font-weight: 400; font-size: 36px; line-height: 120%; color: #000; margin: 0 auto; }
-  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 0; }
-  .product-card { text-align: center; width: 100%; height: 100%; }
-  .image-wrapper { position: relative; display: inline-block; width: 100%; height: 100%; }
-  .image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  {% comment %} .section-title { 
+    font-family: 'Lustria', serif; 
+    font-weight: 400; 
+    font-size: 36px; 
+    line-height: 120%; 
+    color: #000; 
+    margin: 0 auto; 
+  } {% endcomment %}
+
+  /* Title responsive */
+  .section-title { 
+    font-family: 'Lustria', serif; 
+    font-weight: 400; 
+    font-size: 36px; 
+    line-height: 120%; 
+    color: #000; 
+    margin: 0; 
+    text-align: left; /* افتراضي: شمال */
+  }
+  {% comment %} .products-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; margin: 0; 
+  } {% endcomment %}
+  /* Grid responsive */
+  .products-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); /* 3 أعمدة في الشاشات الكبيرة */
+    gap: 15px; 
+    margin: 0; 
+  }
+
+  {% comment %} .product-card { 
+    text-align: center; 
+    width: 100%; 
+    height: 100%; 
+  } {% endcomment %}
+
+  /* Card structure */
+  .product-card { 
+    text-align: center; 
+    width: 100%; 
+    height: 100%; 
+  }
+  {% comment %} .image-wrapper { 
+    position: relative; 
+    display: inline-block; 
+    width: 100%; 
+    height: 100%; 
+  } {% endcomment %}
+
+  /* Image wrapper */
+    .image-wrapper { 
+      position: relative; 
+      display: inline-block; 
+      width: 100%; 
+      height: 100%; 
+    }
+
+  {% comment %} .image-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+  } {% endcomment %}
+  /* Product images */
+  .image-wrapper img { 
+    width: 100%; 
+    height: 420px; /* خليها أطول من الأول */
+    object-fit: cover; 
+    display: block; 
+  }
 
   /* ========== Modal Base ========== */
   .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
