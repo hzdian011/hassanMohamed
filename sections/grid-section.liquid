@@ -474,6 +474,10 @@
             const colorBtn = document.createElement('button');
             colorBtn.textContent = color;
             colorBtn.classList.add('color-btn');
+
+            // حط الـ CSS variable باللون
+            colorBtn.style.setProperty('--color', color.toLowerCase());
+            
             if (i === 0) colorBtn.classList.add('active'); // First color default
 
             colorBtn.addEventListener('click', () => {
