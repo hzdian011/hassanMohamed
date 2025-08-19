@@ -330,7 +330,7 @@
   .plus-icon { width: 30px; height: 30px; color: white; }
 </style>
 
-<script>
+{% comment %} <script>
   // ==============================
   // Global Variables
   // ==============================
@@ -457,6 +457,207 @@
       list.style.display = 'flex';
       btn.classList.add('active');
     }
+  });
+
+  // ==============================
+  // Add Product to Cart
+  // ==============================
+  document.getElementById('addToCartBtn').addEventListener('click', () => {
+    if (!currentProduct) {
+      alert('No product selected');
+      return;
+    }
+
+    // Get selected color
+    const selectedColorBtn = document.querySelector('.color-btn.active');
+    const selectedColor = selectedColorBtn ? selectedColorBtn.textContent : null;
+
+    // Get selected size
+    const selectedSize =
+      document.getElementById('sizeDropdownBtn').textContent !== 'Choose your size'
+        ? document.getElementById('sizeDropdownBtn').textContent
+        : null;
+
+    // Find correct variant
+    const selectedVariant = currentProduct.variants.find((v) => {
+      return (
+        (!selectedColor || v.options.includes(selectedColor)) &&
+        (!selectedSize || v.options.includes(selectedSize))
+      );
+    });
+
+    if (!selectedVariant) {
+      alert('Please select options');
+      return;
+    }
+
+    // Add product to cart
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        document.getElementById('myModal').style.display = 'none';
+        openCartDrawer(); // افتح الكارت drawer بعد الإضافة
+      })
+      .catch(err => console.error('Error adding to cart:', err));
+  });
+
+  // ==============================
+  // Close Modal Events
+  // ==============================
+
+  // Close modal with X button
+  document.querySelector('.closeFromSvg').addEventListener('click', () => {
+    document.getElementById('myModal').style.display = 'none';
+  });
+
+  // Close modal with ESC key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.getElementById('myModal').style.display = 'none';
+    }
+  });
+
+  // Close modal when clicking outside
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('myModal');
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+</script> {% endcomment %}
+
+<script>
+  // ==============================
+  // Global Variables
+  // ==============================
+  let currentProduct = null;
+
+  // ==============================
+  // Utility: Open & Render Cart Drawer
+  // ==============================
+  async function openCartDrawer() {
+    try {
+      const res = await fetch('/cart.js');
+      const cart = await res.json();
+
+      const cartItemsContainer = document.getElementById('cartItems');
+      cartItemsContainer.innerHTML = '';
+
+      cart.items.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.product_title}" />
+          <div class="cart-item-details">
+            <h4>${item.product_title}</h4>
+            <p>Qty: ${item.quantity}</p>
+            <p>${(item.price / 100).toFixed(2)} €</p>
+          </div>
+        `;
+        cartItemsContainer.appendChild(div);
+      });
+
+      document.getElementById('cartDrawer').classList.add('active');
+    } catch (err) {
+      console.error('Error opening cart drawer:', err);
+    }
+  }
+
+  // ==============================
+  // Close Cart Drawer
+  // ==============================
+  document.getElementById('closeCart').addEventListener('click', () => {
+    document.getElementById('cartDrawer').classList.remove('active');
+  });
+
+  // ==============================
+  // Open Modal on Product Click
+  // ==============================
+  document.querySelectorAll('.plus-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      try {
+        const handle = btn.dataset.handle;
+
+        // Fetch product data
+        const response = await fetch(`/products/${handle}.js`);
+        const product = await response.json();
+        currentProduct = product;
+
+        // Fill modal with product data
+        document.getElementById('modalTitle').textContent = product.title;
+        document.getElementById('modalPrice').textContent = (product.price / 100).toFixed(2) + ' €';
+        document.getElementById('modalDescription').innerHTML = product.description;
+        document.getElementById('modalImage').src = product.images[0];
+
+        // ------------------------------
+        // Colors Section
+        // ------------------------------
+        const colorContainer = document.getElementById('colorContainer');
+        colorContainer.innerHTML = '';
+
+        const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
+        if (colorOption) {
+          colorOption.values.forEach((color, i) => {
+            const colorBtn = document.createElement('button');
+            colorBtn.textContent = color;
+            colorBtn.classList.add('color-btn');
+            if (i === 0) colorBtn.classList.add('active'); // First color default
+
+            colorBtn.addEventListener('click', () => {
+              document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+              colorBtn.classList.add('active');
+            });
+
+            colorContainer.appendChild(colorBtn);
+          });
+        }
+
+        // ------------------------------
+        // Sizes Dropdown Section
+        // ------------------------------
+        const dropdownList = document.getElementById('sizeDropdownList');
+        dropdownList.innerHTML = '';
+
+        const sizeOption = product.options.find(opt => opt.name.toLowerCase() === 'size');
+        if (sizeOption) {
+          sizeOption.values.forEach((size) => {
+            const btn = document.createElement('button');
+            btn.textContent = size;
+
+            btn.addEventListener('click', () => {
+              document.getElementById('sizeDropdownBtn').textContent = size;
+              dropdownList.classList.remove('open');
+              document.getElementById('sizeDropdownBtn').classList.remove('active');
+            });
+
+            dropdownList.appendChild(btn);
+          });
+        }
+
+        // Show modal
+        document.getElementById('myModal').style.display = 'block';
+      } catch (err) {
+        console.error('Error opening modal:', err);
+      }
+    });
+  });
+
+  // ==============================
+  // Toggle Size Dropdown
+  // ==============================
+  document.getElementById('sizeDropdownBtn').addEventListener('click', () => {
+    const list = document.getElementById('sizeDropdownList');
+    const btn = document.getElementById('sizeDropdownBtn');
+
+    list.classList.toggle('open');
+    btn.classList.toggle('active');
   });
 
   // ==============================
