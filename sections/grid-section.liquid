@@ -264,25 +264,25 @@
     flex-direction: column;
     border: 1px solid #000;
   } {% endcomment %}
-  .dropdown-list {
-    position: absolute;          /* يفتح فوق الزرار */
-    top: 100%;                   /* يبدأ من تحت الزرار */
-    left: 0;
-    right: 0;
-    z-index: 10;
-    display: none;
-    flex-direction: column;
-    border: 1px solid #000;
-    background: #fff;
-    max-height: 150px;           /* ارتفاع يعرض 3 عناصر تقريباً */
-    overflow-y: auto;            /* scroll داخلي */
-    scrollbar-width: none;       /* إخفاء الاسكرول (Firefox) */
-    -ms-overflow-style: none;    /* إخفاء الاسكرول (IE/Edge) */
-  }
+.dropdown-list {
+  position: absolute;
+  top: 100%;      
+  left: 0;
+  right: 0;
+  z-index: 9999;        /* أعلى من المودال */
+  display: none;
+  flex-direction: column;
+  border: 1px solid #000;
+  background: #fff;
+  max-height: 150px;    /* يعرض 3 عناصر فقط */
+  overflow-y: auto;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
 
-  .dropdown-list::-webkit-scrollbar {
-    display: none;               /* إخفاء الاسكرول (Chrome/Safari) */
-  }
+.dropdown-list::-webkit-scrollbar {
+  display: none;
+}
 
   {% comment %} .dropdown-list button {
     padding: 10px;
