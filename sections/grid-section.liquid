@@ -276,7 +276,7 @@
 
   max-height: calc(3 * 48px); /* ارتفاع 3 عناصر فقط (48px لكل عنصر) */
   overflow-y: auto;
-  
+
   scrollbar-width: none; 
   -ms-overflow-style: none;
 }
@@ -297,7 +297,7 @@
     background: #f0f0f0;
   } {% endcomment %}
 
-  .dropdown-list button {
+  {% comment %} .dropdown-list button {
     padding: 12px;
     border: none;
     background: #fff;
@@ -305,6 +305,18 @@
     text-align: left;
     font-size: 16px;
     transition: background-color 0.4s ease, color 0.4s ease; /* تأثير ناعم */
+  } {% endcomment %}
+
+  
+  .dropdown-list button {
+    padding: 12px;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    height: 48px; /* لازم تثبت ارتفاع العنصر عشان الحسابات تزبط */
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   .dropdown-list button:hover {
