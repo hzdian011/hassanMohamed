@@ -258,6 +258,20 @@
     z-index: 1; /* تحت الأزرار */
   }
 
+  /* Animation يمين */
+  @keyframes slideRight {
+    0%   { transform: translateX(0); }
+    40%  { transform: translateX(8px); }   /* يتحرك يمين */
+    100% { transform: translateX(0); }     /* يرجع مكانه */
+  }
+
+  /* Animation شمال */
+  @keyframes slideLeft {
+    0%   { transform: translateX(0); }
+    40%  { transform: translateX(-8px); }  /* يتحرك شمال */
+    100% { transform: translateX(0); }
+  }
+
   /* ========== Sizes ========== */
   .size-options {
     display: flex;
