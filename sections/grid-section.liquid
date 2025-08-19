@@ -949,7 +949,7 @@
   #colorContainer {
     display: flex;
   }
-{% comment %} 
+
   .color-btn {
     flex: 1;
     padding: 12px;
@@ -974,58 +974,7 @@
     color: #fff !important;
     border: 1px solid #000;
     transition: all 0.6s ease-in-out; /* بدل ما كان transform + border */
-  } {% endcomment %}
-
-  .color-btn {
-  position: relative;
-  overflow: hidden;
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #000;
-  background: #fff;
-  cursor: pointer;
-  text-align: start;
-
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
-  letter-spacing: -0.02em;
-  text-transform: capitalize;
-  color: #000;
-  transition: color 0.3s ease-in-out, border 0.3s ease-in-out;
-}
-
-/* الطبقة اللي هتزحف من الشمال لليمين */
-.color-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;              /* تبدأ من 0 */
-  height: 100%;
-  background: #000;        /* اللون اللي يملأ */
-  transition: width 0.5s ease-in-out;
-  z-index: 0;
-}
-
-/* لما يبقى Active الزرار يتملأ */
-.color-btn.active::before {
-  width: 100%;             /* يتمدد لليمين */
-}
-
-/* عشان النص يبقى فوق الطبقة */
-.color-btn span {
-  position: relative;
-  z-index: 1;
-}
-
-/* اللون يتحول للأبيض تدريجيًا */
-.color-btn.active {
-  color: #fff;
-  border-color: #000;
-}
-
+  }
 
   /*================= Size Options =============== */
   .size-options {
