@@ -207,9 +207,17 @@
   /* ========== Colors ========== */
   .color-options { display: flex; flex-direction: column; gap: 8px; }
   .color-options label { font-family: 'Jost', sans-serif; font-weight: 400; font-size: 15px; color: #333; }
-  #colorContainer { display: flex; }
-  
-  .color-btn {
+  {% comment %} #colorContainer { 
+    display: flex; 
+  } {% endcomment %}
+
+  #colorContainer {
+    display: flex;
+    position: relative;
+    border: 1px solid #000;
+    overflow: hidden;
+  }
+  {% comment %} .color-btn {
     position: relative; 
     flex: 1;
     padding: 12px 12px 12px 20px;
@@ -222,6 +230,19 @@
     font-family: 'Jost', sans-serif;
     font-size: 18px;
     text-transform: capitalize;
+  } {% endcomment %}
+  .color-btn {
+    position: relative;
+    flex: 1;
+    padding: 12px 20px;
+    background: transparent;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    border: none;
+    z-index: 2; /* فوق الـ slider */
+    transition: color 0.3s ease;
   }
 
   .color-btn::before {
