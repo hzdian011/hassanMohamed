@@ -496,11 +496,20 @@
             if (i === 0) colorBtn.classList.add('active'); // First color default
 
             colorBtn.addEventListener('click', () => {
+              const prevIndex = [...document.querySelectorAll('.color-btn')].findIndex(b => b.classList.contains('active'));
+              
               document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
               colorBtn.classList.add('active');
 
                // حرك الخلفية السودا حسب index
                 indicator.style.transform = `translateX(${i * 100}%)`;
+
+              // حدد الاتجاه يمين/شمال وطبّق animation
+                if (i > prevIndex) {
+                  colorBtn.style.animation = "slideRight 0.4s ease";
+                } else if (i < prevIndex) {
+                  colorBtn.style.animation = "slideLeft 0.4s ease";
+                }
             });
 
             colorContainer.appendChild(colorBtn);
