@@ -948,13 +948,20 @@
 
   #colorContainer {
     display: flex;
+        background: linear-gradient(to right, #000 0%, #000 100%);
+    background-size: 0% 100%; /* في الأول مفيش لون */
+      background-repeat: no-repeat;
+background-position: left center;
+  transition: background-size 0.5s ease-in-out, color 0.3s ease-in-out;
   }
 
   .color-btn {
     flex: 1;
     padding: 12px;
     border: 1px solid #000;
-    background: #fff;
+    {% comment %} background: #fff; {% endcomment %}
+
+
     cursor: pointer;
     transition: all 0.2s ease;
     text-align:start;
@@ -970,6 +977,7 @@
   }
 
   .color-btn.active {
+    background-size: 100% 100%; 
     background: #000 !important;
     color: #fff !important;
     border: 1px solid #000;
