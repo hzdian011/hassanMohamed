@@ -935,7 +935,9 @@
     margin-right: 10px;
     cursor: pointer;
     border: 2px solid #ddd;
-    transition: transform 0.2s, border 0.2s;
+    {% comment %} transition: transform 0.2s, border 0.2s; {% endcomment %}
+    transition: all 0.3s ease-in-out; /* بدل ما كان transform + border */
+
   }
 
   .color-options .color-swatch:hover {
@@ -1089,8 +1091,8 @@
   let currentProduct = null;
 
   // Open modal when clicking plus
-  document.querySelectorAll('.plus-btn').forEach((btn) => {
-    btn.addEventListener('click', async () => {
+      document.querySelectorAll('.plus-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
       const handle = btn.dataset.handle;
       const response = await fetch(`/products/${handle}.js`);
       const product = await response.json();
