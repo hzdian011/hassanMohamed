@@ -482,20 +482,31 @@
         colorContainer.innerHTML = '';
 
         const colorOption = product.options.find(opt => opt.name.toLowerCase() === 'color');
+
         if (colorOption) {
+          colorContainer.style.setProperty('--count', colorOption.values.length);
+
+          // indicator
+          const indicator = document.createElement('div');
+          indicator.classList.add('color-indicator');
+          colorContainer.appendChild(indicator);
+
           colorOption.values.forEach((color, i) => {
             const colorBtn = document.createElement('button');
             colorBtn.textContent = color;
             colorBtn.classList.add('color-btn');
+            if (i === 0) colorBtn.classList.add('active'); // First color default
 
             // حط الـ CSS variable باللون
-            colorBtn.style.setProperty('--color', color.toLowerCase());
+            {% comment %} colorBtn.style.setProperty('--color', color.toLowerCase()); {% endcomment %}
 
-            if (i === 0) colorBtn.classList.add('active'); // First color default
 
             colorBtn.addEventListener('click', () => {
               document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
               colorBtn.classList.add('active');
+
+               // حرك الخلفية السودا حسب index
+                indicator.style.transform = `translateX(${i * 100}%)`;
             });
 
             colorContainer.appendChild(colorBtn);
