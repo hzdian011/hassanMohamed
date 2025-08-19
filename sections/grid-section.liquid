@@ -225,8 +225,12 @@
     font-family: 'Jost', sans-serif;
     font-size: 18px;
     border: none;
+    outline: none;
     z-index: 2; /* فوق الـ slider */
     transition: color 0.3s ease;
+  }
+  .color-btn:focus {
+    outline: none; /* يمنع الـ focus الأزرق */
   }
 
   .color-btn::before {
