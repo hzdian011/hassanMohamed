@@ -207,9 +207,6 @@
   /* ========== Colors ========== */
   .color-options { display: flex; flex-direction: column; gap: 8px; }
   .color-options label { font-family: 'Jost', sans-serif; font-weight: 400; font-size: 15px; color: #333; }
-  {% comment %} #colorContainer { 
-    display: flex; 
-  } {% endcomment %}
 
   #colorContainer {
     display: flex;
@@ -217,20 +214,7 @@
     border: 1px solid #000;
     overflow: hidden;
   }
-  {% comment %} .color-btn {
-    position: relative; 
-    flex: 1;
-    padding: 12px 12px 12px 20px;
-    border: 1px solid #000;
-    border-right: none;
-    background: #fff;
-    cursor: pointer;
-    text-align: start;
-    transition: all 0.2s ease;
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    text-transform: capitalize;
-  } {% endcomment %}
+
   .color-btn {
     position: relative;
     flex: 1;
@@ -496,10 +480,6 @@
             colorBtn.textContent = color;
             colorBtn.classList.add('color-btn');
             if (i === 0) colorBtn.classList.add('active'); // First color default
-
-            // حط الـ CSS variable باللون
-            {% comment %} colorBtn.style.setProperty('--color', color.toLowerCase()); {% endcomment %}
-
 
             colorBtn.addEventListener('click', () => {
               document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
