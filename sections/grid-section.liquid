@@ -211,7 +211,7 @@
   }
 
   /* ========== Section Layout ========== */
-  .products-section { 
+  {% comment %} .products-section { 
     display: flex; 
     flex-direction: column; 
     align-items: flex-start; 
@@ -220,7 +220,19 @@
     margin: 0 auto; 
     padding: 80px 0 50px; 
     overflow-y: hidden; 
-  }
+  } {% endcomment %}
+
+  .products-section { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
+  gap: 30px; 
+  max-width: 1337px; 
+  margin: 0 auto; 
+  padding: 80px 50px 50px; /* زودنا 50px يمين وشمال */
+  overflow-y: hidden; 
+}
+
   .section-title { font-family: 'Lustria', serif; font-weight: 400; font-size: 36px; line-height: 120%; color: #000; margin: 0 auto; }
   .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 0; }
   .product-card { text-align: center; width: 100%; height: 100%; }
