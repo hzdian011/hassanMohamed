@@ -224,18 +224,6 @@
     color: #333;
   }
 
-  {% comment %} .dropdown-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #000;
-    cursor: pointer;
-    width: 100%;
-    background: #fff;
-    font-size: 16px;
-    Position:relative;
-  } {% endcomment %}
-
   .dropdown-btn {
     position: relative;
     display: flex;
@@ -299,7 +287,7 @@
   }
   /* لما تبقى مفتوحة */
   .dropdown-list.open {
-    max-height: 150px;   /* 3 عناصر بس */
+    max-height: 130px;   /* 3 عناصر بس */
     opacity: 1;
     transform: translateY(0);
     overflow-y: auto;
@@ -317,8 +305,7 @@
     cursor: pointer;
     text-align: center;
     font-size: 16px;
-    height: 48px; /* لازم تثبت ارتفاع العنصر عشان الحسابات تزبط */
-    {% comment %} transition: background-color 0.5s ease, color 0.5s ease; {% endcomment %}
+    height: 48px; 
     transition: background-color 0.4s ease-in-out, color 0.4s ease;
   }
 
