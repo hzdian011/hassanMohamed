@@ -244,8 +244,8 @@
     width: 6px; /* عرض الشريط */
     background-color: var(--color); /* هنحط اللون هنا بالـ JS */
     border-right: 1px solid #000; /* optional للفصل */
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    {% comment %} border-top-left-radius: 2px; {% endcomment %}
+    {% comment %} border-bottom-left-radius: 2px; {% endcomment %}
   }
 
   {% comment %} .color-btn.active { 
@@ -477,7 +477,7 @@
 
             // حط الـ CSS variable باللون
             colorBtn.style.setProperty('--color', color.toLowerCase());
-            
+
             if (i === 0) colorBtn.classList.add('active'); // First color default
 
             colorBtn.addEventListener('click', () => {
