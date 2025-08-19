@@ -946,9 +946,14 @@
   }
 
 
-  #colorContainer {
+  {% comment %} #colorContainer {
     display: flex;
-  }
+  } {% endcomment %}
+   #colorContainer {
+    position: relative;
+    display: flex;
+    gap: 10px;
+  } 
 
   .color-btn {
     flex: 1;
