@@ -238,7 +238,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px;
+    padding: 12px;               /* مسافة موحدة من كل الاتجاهات */
     border: 1px solid #000;
     cursor: pointer;
     width: 100%;
@@ -251,8 +251,8 @@
     align-items: center;
     justify-content: center;
     border-left: 1px solid #000;
-    padding-left: 12px;
-    align-self: stretch;   /* يخلي الـ span ياخد نفس ارتفاع الزرار */
+    align-self: stretch;          /* ياخد ارتفاع الزرار كله */
+    padding: 0 12px;              /* padding أفقي فقط */
   }
 
   .dropdown-btn svg {
