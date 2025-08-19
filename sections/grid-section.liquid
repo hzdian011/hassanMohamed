@@ -722,7 +722,7 @@
   .plus-btn { position: absolute; transform: translate(-50%, -50%); background: transparent; border: none; cursor: pointer; padding:0; }
   .plus-icon { width: 30px; height: 30px; color: white; }
 </style>
-
+{% comment %} 
 <script>
   let currentProduct = null;
 
@@ -848,6 +848,172 @@
     }
   });
 
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('myModal');
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+</script> {% endcomment %}
+<script>
+  // ==============================
+  // Global Variables
+  // ==============================
+  let currentProduct = null;
+
+  // ==============================
+  // Open Modal on Product Click
+  // ==============================
+  document.querySelectorAll('.plus-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const handle = btn.dataset.handle;
+
+      // Fetch product data
+      const response = await fetch(`/products/${handle}.js`);
+      const product = await response.json();
+      currentProduct = product;
+
+      // Fill modal with product data
+      document.getElementById('modalTitle').textContent = product.title;
+      document.getElementById('modalPrice').textContent = product.price / 100 + ' €';
+      document.getElementById('modalDescription').innerHTML = product.description;
+      document.getElementById('modalImage').src = product.images[0];
+
+      // ------------------------------
+      // Colors Section
+      // ------------------------------
+      const colorContainer = document.getElementById('colorContainer');
+      colorContainer.innerHTML = '';
+
+      const colorOption = product.options.find((opt) => opt.name.toLowerCase() === 'color');
+
+      if (colorOption) {
+        colorOption.values.forEach((color, i) => {
+          const colorBtn = document.createElement('button');
+          colorBtn.textContent = color;
+          colorBtn.classList.add('color-btn');
+          if (i === 0) colorBtn.classList.add('active'); // First color is active by default
+
+          // Switch active color
+          colorBtn.addEventListener('click', () => {
+            document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+            colorBtn.classList.add('active');
+          });
+
+          colorContainer.appendChild(colorBtn);
+        });
+      }
+
+      // ------------------------------
+      // Sizes Dropdown Section
+      // ------------------------------
+      const dropdownList = document.getElementById('sizeDropdownList');
+      dropdownList.innerHTML = '';
+
+      const sizeOption = product.options.find((opt) => opt.name.toLowerCase() === 'size');
+
+      if (sizeOption) {
+        sizeOption.values.forEach((size) => {
+          const btn = document.createElement('button');
+          btn.textContent = size;
+
+          btn.addEventListener('click', () => {
+            document.getElementById('sizeDropdownBtn').textContent = size;
+            dropdownList.style.display = 'none';
+          });
+
+          dropdownList.appendChild(btn);
+        });
+      }
+
+      // Show modal
+      document.getElementById('myModal').style.display = 'block';
+    });
+  });
+
+  // ==============================
+  // Toggle Size Dropdown
+  // ==============================
+  document.getElementById('sizeDropdownBtn').addEventListener('click', () => {
+    const list = document.getElementById('sizeDropdownList');
+    const btn = document.getElementById('sizeDropdownBtn');
+
+    if (list.style.display === 'flex') {
+      list.style.display = 'none';
+      btn.classList.remove('active');
+    } else {
+      list.style.display = 'flex';
+      btn.classList.add('active');
+    }
+
+    // Old approach (kept for reference):
+    // list.style.display = list.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // ==============================
+  // Add Product to Cart
+  // ==============================
+  document.getElementById('addToCartBtn').addEventListener('click', () => {
+    if (!currentProduct) {
+      alert('No product selected');
+      return;
+    }
+
+    // Get selected color
+    const selectedColorBtn = document.querySelector('.color-btn.active');
+    const selectedColor = selectedColorBtn ? selectedColorBtn.textContent : null;
+
+    // Get selected size
+    const selectedSize =
+      document.getElementById('sizeDropdownBtn').textContent !== 'Choose your size'
+        ? document.getElementById('sizeDropdownBtn').textContent
+        : null;
+
+    // Find correct variant
+    const selectedVariant = currentProduct.variants.find((v) => {
+      return (
+        (!selectedColor || v.options.includes(selectedColor)) &&
+        (!selectedSize || v.options.includes(selectedSize))
+      );
+    });
+
+    if (!selectedVariant) {
+      alert('Please select options');
+      return;
+    }
+
+    // Add product to cart
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        document.getElementById('myModal').style.display = 'none';
+      });
+  });
+
+  // ==============================
+  // Close Modal Events
+  // ==============================
+
+  // Close modal with X button
+  document.querySelector('.closeFromSvg').addEventListener('click', () => {
+    document.getElementById('myModal').style.display = 'none';
+  });
+
+  // Close modal with ESC key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.getElementById('myModal').style.display = 'none';
+    }
+  });
+
+  // Close modal when clicking outside
   window.addEventListener('click', (e) => {
     const modal = document.getElementById('myModal');
     if (e.target === modal) {
