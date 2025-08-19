@@ -1110,7 +1110,16 @@
   // Toggle size dropdown
   document.getElementById('sizeDropdownBtn').addEventListener('click', () => {
     const list = document.getElementById('sizeDropdownList');
-    list.style.display = list.style.display === 'flex' ? 'none' : 'flex';
+    const btn = document.getElementById('sizeDropdownBtn');
+    if (list.style.display === 'flex') {
+      list.style.display = 'none';
+      btn.classList.remove('active');
+    } else {
+      list.style.display = 'flex';
+      btn.classList.add('active');
+    }
+
+    {% comment %} list.style.display = list.style.display === 'flex' ? 'none' : 'flex'; {% endcomment %}
   });
 
   // Add to cart
