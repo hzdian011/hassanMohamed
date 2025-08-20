@@ -205,7 +205,7 @@
 
       .gift-row3 img {
         object-fit: cover;
-        object-position: right 20%; /* تخليها تتحرك جوا الـ box بحيث تكشف أكتر من الشمال */
+        object-position: right -20%; /* تخليها تتحرك جوا الـ box بحيث تكشف أكتر من الشمال */
       }
       .gift-row3-left {
 
