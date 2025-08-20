@@ -137,7 +137,7 @@
 /* بعد ما الخلفية تتحرك → السهم يظهر أبيض */
 .gift-btn:hover svg {
   opacity: 1;
-  transition: opacity 0.3s ease;  /* انسيابية الظهور */
+  transition: opacity 0.9s ease;  /* انسيابية الظهور */
   transition-delay: 1s;      
 }
 
