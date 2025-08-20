@@ -218,6 +218,24 @@
         line-height: 100%;
         color: #000;
         margin-bottom: 20px;
+        position: absolute;
+        left: 4.65%;
+        right: 63.47%;
+        top: 55.69%;
+        bottom: 36.33%;
+
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 70px;
+        line-height: 100%;
+        /* identical to box height, or 70px */
+        display: flex;
+        align-items: center;
+
+        color: #000000;
+
+
       }
       .gift-desc {
         font-family: 'Jost', sans-serif;
