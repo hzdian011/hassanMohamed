@@ -329,3 +329,6 @@ section {
   }
   .gift-row3-right { grid-area: row4; }
 }
+.mobile-img {
+  display: none;
+}
