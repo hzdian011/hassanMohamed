@@ -488,9 +488,9 @@ section {
   .gift-content {
     grid-template-areas:
       "row1"
-      "row4"
       "row3"
       "row2"
+      "row4"
       "row5";
   }
 }
