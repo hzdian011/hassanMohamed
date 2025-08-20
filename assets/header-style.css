@@ -503,3 +503,39 @@ section {
       "row5";
   }
 }
+/* =========================================================
+   Mobile Adjustments
+   ========================================================= */
+@media (max-width: 768px) {
+  /* 1- إخفاء صورة Row2 */
+  .gift-row2 {
+    display: none;
+  }
+
+  /* 2- إظهار الصورة right آخر السيكشن قبل الفوتر */
+  .gift-row3-right {
+    display: block !important;
+    order: 3; /* يخليها بعد النص */
+    margin: 20px auto 0;
+    justify-content: center;
+  }
+  .gift-row3-right img {
+    width: 100%;
+    max-width: 400px; /* عشان تبقى مناسبة للموبايل */
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* ترتيب الجريد بحيث الصورة تيجي قبل الفوتر */
+  .gift-content {
+    grid-template-areas:
+      "row1"
+      "row3"
+      "row2"
+      "row4"
+      "row5";
+  }
+  .gift-row3-right {
+    grid-area: row4; /* نديها نفس مكان قبل الفوتر */
+  }
+}
