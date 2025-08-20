@@ -511,18 +511,46 @@ section {
   .gift-row2 {
     display: none;
   }
+  /* ترتيب النص والصورة */
+  .gift-row3 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 15px;
+    gap: 20px; /* المسافة بين العناصر */
+  }
+  
+  .gift-row3-left {
+    align-items: center;
+    text-align: center;
+    gap: 10px; /* مسافة أصغر بين العناصر */
+  }
+
+    .gift-title {
+    font-size: 28px;
+    margin: 0;
+  }
+
+  
+  .gift-desc {
+    font-size: 16px;
+    margin: 0 0 10px 0; /* تقليل المسافة */
+    max-width: 90%;
+  }
 
   /* 2- إظهار الصورة right آخر السيكشن قبل الفوتر */
   .gift-row3-right {
-    display: block !important;
-    order: 3; /* يخليها بعد النص */
-    margin: 20px auto 0;
+    order: 3;
+    width: 100%;
+    margin: 10px 0 0;
+    display: flex;
     justify-content: center;
   }
   .gift-row3-right img {
-    width: 100%;
-    max-width: 400px; /* عشان تبقى مناسبة للموبايل */
-    margin: 0 auto;
+    width: 100%; /* تاخد العرض كله */
+    max-width: none; /* نلغي الحد */
+    height: auto;
+    margin: 0;
     display: block;
   }
 
