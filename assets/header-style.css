@@ -205,12 +205,9 @@
 
       .gift-row3 img {
         object-fit: cover;
-        object-position: right -20%; /* تخليها تتحرك جوا الـ box بحيث تكشف أكتر من الشمال */
-        transform: translateX(-50px)
+        object-position: right 20%; /* تخليها تتحرك جوا الـ box بحيث تكشف أكتر من الشمال */
       }
-      .gift-row3-left {
-
-      }
+      
 
       .gift-title {
         font-family: 'Jost', sans-serif;
@@ -261,16 +258,9 @@
         color: #000;
         transform: translateX(5px);
       }
-      .gift-row3-right {
-        position: relative;
-        overflow: hidden; /* يخلي الزيادة تتقص وميبقاش في scroll */
-      }
-
       .gift-row3-right img {
-          width: 120%;  /* تزود العرض شوية عشان تغطي الفراغ */
-  height: 100%;
-  object-fit: cover;
-  transform: translateX(-50px)
+        max-width: 110%;
+        height: auto;
       }
 
       /* ================== Row 4 ================== */
