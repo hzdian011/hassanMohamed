@@ -482,10 +482,8 @@ section {
     font-size: 16px;
   }
 }
-.gift-content {
-  display: flex;
-  flex-direction: column;
-}
+
+
 /* 🔽 حط الكود الجديد هنا */
 .gift-content {
   display: grid;
