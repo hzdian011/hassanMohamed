@@ -373,6 +373,7 @@ section {
   height: 402px;
   object-fit: contain;
   position: relative; /* رجّعها relative عشان ما تطيرش */
+  overflow:hidden;
 }
 
 
