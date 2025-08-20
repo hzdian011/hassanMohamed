@@ -411,13 +411,72 @@ section {
     padding: 10px 20px;
     gap: 10px;
   }
-  .gift-row3 {
+  /* .gift-row3 {
     flex-direction: column;
     text-align: center;
     padding: 20px;
   }
   .gift-desc {
     margin: 0 auto 20px;
+  } */
+
+   .gift-row3 {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+  }
+
+  .gift-row3-left {
+    order: 1; /* النصوص الأول */
+    align-items: center;
+    text-align: center;
+  }
+
+  .gift-title {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .gift-desc {
+    font-size: 16px;
+    margin: 10px auto 20px;
+    text-align: center;
+  }
+
+  /* الصورة تبقى تحت النصوص */
+  .gift-row3-right {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .gift-row3-right img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  /* البوتون فوق الصورة في الثلث الأخير */
+  .gift-row3-right::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 30%; /* الثلث الأخير */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .gift-cta {
+    position: absolute;
+    bottom: 30%; /* ينزل للثلث الأخير */
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
