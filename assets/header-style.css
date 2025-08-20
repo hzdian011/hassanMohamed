@@ -370,6 +370,13 @@ section {
     transform: translateY(20px);    /* نزول لتحت */
   }
 
+  /* اخفاء الصورة في الموبايل */
+@media (max-width: 768px) {
+  .gift-row3-right img {
+    display: none;
+  }
+}
+
 /* ================== Row 4 ================== */
 .gift-row4 {
   display: flex;
