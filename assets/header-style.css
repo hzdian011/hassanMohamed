@@ -121,7 +121,8 @@
 
 /* ================== Arrow animation ================== */
 .gift-btn:hover svg {
-  animation: hideShowArrow 2s forwards;
+  /* animation: hideShowArrow 2s forwards; */
+  animation: hideShowArrow 2s 2s steps(1, end) forwards;;
 }
 
 .gift-btn:hover svg path {
