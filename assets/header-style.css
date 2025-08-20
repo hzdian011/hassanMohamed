@@ -233,13 +233,19 @@ section {
   .gift-row3-left  {align-items:center}
   .gift-row2 { position: relative; margin-top: 20px; }
   .gift-row2 img {display:none; }
-  .gift-cta {
+    .gift-row2 .gift-cta {
+      position: absolute;
+      bottom: 20px;   /* يبعد 20px عن أسفل الصورة */
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  /* .gift-cta {
     position: relative;
     bottom: -160px;
     left: 29%;
     transform: translateX(-50%);
     margin: 0;
-  }
+  } */
   .gift-row3 {
     flex-direction: column;
     align-items: center;
