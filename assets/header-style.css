@@ -419,37 +419,18 @@ section {
   .gift-desc {
     margin: 0 auto 20px;
   } */
+   /* نخفي صورة row3 */
   .gift-row3-right {
     display: none;
   }
 
-  /* نخلي row2 تاخد مكانها أسفل النصوص */
-  .gift-row2 {
-    position: relative;
-    margin-top: 20px;
-  }
-
-  .gift-row2 img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  /* نخلي البوتون فوق صورة row2 */
-  .gift-cta {
-    position: absolute;
-    bottom: 30%;   /* يتحط في الثلث الأخير */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;    /* يفضل فوق الصورة */
-  }
-
-  /* نوسّط النصوص في row3 */
+  /* نجهز النصوص */
   .gift-row3 {
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 20px;
+    position: relative;
   }
 
   .gift-row3-left {
@@ -466,6 +447,29 @@ section {
     font-size: 16px;
     margin: 10px auto 20px;
     text-align: center;
+  }
+
+  /* نخلّي صورة row2 جوه row3 تحت النصوص */
+  .gift-row2 {
+    order: 2;
+    width: 100%;
+    position: relative; /* عشان نقدر نثبت الزر فوقها */
+    margin-top: 20px;
+  }
+
+  .gift-row2 img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* الزر يركب على الصورة */
+  .gift-cta {
+    position: absolute;
+    bottom: 30%;   /* الثلث الأخير */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
   }
   
 }
