@@ -317,8 +317,6 @@ section {
     object-position: center; /* تظبط الكروب من النص */
     margin: 0;             /* نشيل أي padding أو margin */
     padding: 0;
-
-    z-index: 2;
   }
   .gift-row3 { 
     padding: 0;
