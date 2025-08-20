@@ -127,7 +127,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: start;
+  align-items: center;
   gap: 20px;
 }
 .gift-title {
