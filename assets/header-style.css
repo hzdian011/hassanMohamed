@@ -432,8 +432,8 @@ section {
     transform: none; */
 
     position: relative;
-    bottom: 20px; /* المسافة من تحت */
-    left: 50%;
+    bottom: -160px; /* المسافة من تحت */
+    left: 22%;
     transform: translateX(-50%);
     margin: 0; /* نلغي المارجن القديم */
   }
