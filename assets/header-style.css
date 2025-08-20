@@ -325,6 +325,16 @@ section {
   .gift-row3 { 
     padding: 0;
     margin: 0;
+    position: relative;
+    overflow: hidden; /* يمنع الصورة تكسر على الفوتر */
+    width: 100%;
+    height: auto; /* أو حط ارتفاع ثابت لو عايز */
   }
+  
+.gift-row3 .mobile-img {
+  width: 100%;
+  transform: scale(2.2) translate(45px, 46px);
+  transform-origin: center; /* يخلي التكبير من النص */
+}
 }
 
