@@ -46,7 +46,6 @@
 /* ======================= 
 *  =======================
 */
-
 /* ================== Gift Button ================== */
 .gift-btn {
   position: relative;
@@ -68,7 +67,7 @@
   z-index: 0;
 }
 
-/* Background overlay */
+/* ================== Background overlay ================== */
 .gift-btn::before {
   content: "";
   position: absolute;
@@ -77,7 +76,7 @@
   width: 100%;
   height: 100%;
   background: #000;
-  opacity: 0; /* تبدأ مختفية */
+  opacity: 0; 
   transition: all 0.3s ease;  
   transition-delay: 0s;   
   z-index: -1;
@@ -86,18 +85,17 @@
 /* Hover in */
 .gift-btn:hover::before {
   left: 0;
-  opacity: 1; /* تظهر */
-  transition-delay: 0.25s; /* تبدأ بعد ربع ثانية */
+  opacity: 1;
+  transition-delay: 0.25s;
 }
 
 /* Hover out */
 .gift-btn:not(:hover)::before {
-  opacity: 0.1; /* تختفي تدريجياً */
-  transition-delay: 0s; /* بدون تأخير */
+  opacity: 0.1;
+  transition-delay: 0s;
 }
 
-
-/* SVG default */
+/* ================== SVG default ================== */
 .gift-btn svg {
   position: relative;
   z-index: 1;
@@ -108,10 +106,9 @@
 .gift-btn svg path {
   stroke: #000;
   fill: #000;
-  /* transition: stroke 0.3s ease, fill 0.3s ease; */
 }
 
-/* Hover state */
+/* ================== Hover state ================== */
 .gift-btn:hover {
   color: #fff;
   border-color: #000;
@@ -122,24 +119,24 @@
   transition-delay: 0s;
 }
 
-/* أول ما أعمل hover → السهم يختفي */
+/* ================== Arrow animation ================== */
 .gift-btn:hover svg {
-  opacity: 0;
-  transition-delay: opacity  0s;
+  animation: hideShowArrow 2s forwards;
 }
 
-/* يتغير اللون وهو مختفي */
 .gift-btn:hover svg path {
   stroke: #fff;
   fill: #fff;
 }
 
-/* بعد ما الخلفية تتحرك → السهم يظهر أبيض */
-.gift-btn:hover svg {
-  opacity: 1;
-  transition: opacity 0.9s ease;  /* انسيابية الظهور */
-  transition-delay: 1s;      
+/* Keyframes for arrow */
+@keyframes hideShowArrow {
+  0%   { opacity: 1; }
+  10%  { opacity: 0; }   /* يختفي بسرعة */
+  60%  { opacity: 0; }   /* يفضل مختفي ثانية */
+  100% { opacity: 1; }   /* يرجع يظهر */
 }
+
 
 
 
