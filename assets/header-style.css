@@ -469,6 +469,8 @@ section {
   .gift-desc {
     font-size: 16px;
   }
+  .desktop-desc { display: block; }
+  .mobile-desc { display: none; }
 }
 
 /* =========================================================
