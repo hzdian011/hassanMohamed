@@ -113,49 +113,59 @@
     display: none;
   }
 
-  /* موبايل */
-  @media (max-width: 768px) {
-    .burger-btn {
-      display: block;
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: #000;
-      position: absolute;
-      left: 20px;
-    }
-
-    .gift-nav {
-      justify-content: center;
-      position: relative;
-    }
-    .gift-logo {
-      margin: 0 auto;
-    }
-
-    /* نخفي اللينكات */
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      background: #f2f2f2; /*#606*/
-      padding: 15px;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-    }
-
-    /* نفتحها */
-    .nav-links.open {
-      display: flex;
-      max-height: 300px; /* حسب محتوى المنيو */
-      opacity: 1;
-      padding: 15px;
-    }
+ /* موبايل */
+@media (max-width: 768px) {
+  .burger-btn {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
   }
+
+  .gift-nav {
+    justify-content: center;
+    position: relative;
+  }
+
+  /* منيو الموبايل */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: #f2f2f2;
+    padding: 15px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.open {
+    display: flex;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15); /* ✅ Box shadow */
+  }
+
+  /* ✅ ترتيب الـ subtitle و الـ button تحت بعض */
+  .nav-links .gift-subtitle {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .nav-links .gift-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 
       /*=================== Row 2 ================== */
       /* خصص للـ Raw 2 */
