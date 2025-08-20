@@ -261,6 +261,11 @@
         color: #000;
         transform: translateX(5px);
       }
+      .gift-row3-right {
+        position: relative;
+        overflow: hidden; /* يخلي الزيادة تتقص وميبقاش في scroll */
+      }
+
       .gift-row3-right img {
         max-width: 100%;
         height: auto;
