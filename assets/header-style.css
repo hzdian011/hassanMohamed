@@ -475,6 +475,17 @@ section {
 }
 
 @media (max-width: 768px) {
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+  .gift-row2 {
+    order: 3; /* آخر عنصر */
+    margin-top: 20px;
+  }
+  .gift-row3 {
+    order: 2;
+  }
   .gift-subtitle,
   .gift-btn {
     display: block;
