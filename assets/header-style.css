@@ -369,10 +369,10 @@ section {
 }
 
 .gift-row3-right img {
-width: 100%; /* خليها تاخد عرض الكونتينر */
-  height: auto; /* تحافظ على التناسق */
-  object-fit: cover; /* تعمل كروب وتمديد */
-  object-position: right center; /* تفضل لازقة ناحية اليمين */
+  width: 120%;  /* تزود العرض */
+  height: auto;
+  transform: translateX(-20%); /* ترجّعها يمين بحيث تفضل لازقة */
+  object-fit: fill; /* يخليها تتمدد حتى لو اتشوّهت 
 }
 
 
