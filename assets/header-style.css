@@ -261,7 +261,7 @@
       .gift-row3-right img {
         max-width: 110%;
         height: auto;
-        translateX(-50px);
+        transform: translateX(-50px);
       }
 
       /* ================== Row 4 ================== */
