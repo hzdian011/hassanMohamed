@@ -48,7 +48,6 @@
 */
 
 /* ================== Gift Button ================== */
-/* ================== Gift Button ================== */
 .gift-btn {
   position: relative;
   display: inline-flex;
@@ -79,25 +78,26 @@
   height: 100%;
   background: #000;
   opacity: 0; /* تبدأ مختفية */
-  transition: all 0.3s ease;
-  transition-delay: 0s;
+  transition: all 0.3s ease;  
+  transition-delay: 0s;   
   z-index: -1;
 }
 
 /* Hover in */
 .gift-btn:hover::before {
   left: 0;
-  opacity: 1;
-  transition-delay: 0.25s;
+  opacity: 1; /* تظهر */
+  transition-delay: 0.25s; /* تبدأ بعد ربع ثانية */
 }
 
 /* Hover out */
 .gift-btn:not(:hover)::before {
-  opacity: 0.1;
-  transition-delay: 0s;
+  opacity: 0.1; /* تختفي تدريجياً */
+  transition-delay: 0s; /* بدون تأخير */
 }
 
-/* SVG (السهم) */
+
+/* SVG default */
 .gift-btn svg {
   position: relative;
   z-index: 1;
@@ -108,7 +108,7 @@
 .gift-btn svg path {
   stroke: #000;
   fill: #000;
-  /* ✨ شيلنا أي transition عشان يغيّر لونه لحظياً */
+  /* transition: stroke 0.3s ease, fill 0.3s ease; */
 }
 
 /* Hover state */
@@ -117,10 +117,15 @@
   border-color: #000;
 }
 
+.gift-btn:hover::before {
+  left: 0;
+  transition-delay: 0s;
+}
+
 /* أول ما أعمل hover → السهم يختفي */
 .gift-btn:hover svg {
   opacity: 0;
-  transition: opacity 0s; /* يختفي لحظياً */
+  transition-delay: 0s;
 }
 
 /* يتغير اللون وهو مختفي */
@@ -132,9 +137,8 @@
 /* بعد ما الخلفية تتحرك → السهم يظهر أبيض */
 .gift-btn:hover svg {
   opacity: 1;
-  transition-delay: 0.8s; /* ✨ يظهر بعد الانيميشن */
+  transition-delay: 0.8s; /* ✨ يظهر بعد انتهاء الانيميشن */
 }
-
 
 
 
