@@ -23,36 +23,3 @@ burgerBtn.addEventListener("click", () => {
 });
 
 
-const btn = document.querySelector('.gift-btn');
-const arrow = btn.querySelector('.arrow-icon');
-const bgDuration = 600; // زمن حركة الخلفية (لازم يساوي transition بتاع ::before)
-
-btn.addEventListener('mouseenter', () => {
-  // 1- اختفاء السهم لحظياً
-  arrow.classList.add('hidden');
-  arrow.classList.remove('black-arrow');
-
-  // 2- تفعيل الخلفية
-  btn.classList.add('hovering');
-
-  // 3- بعد انتهاء الخلفية يظهر أبيض
-  setTimeout(() => {
-    arrow.classList.remove('hidden');
-    arrow.classList.add('white-arrow');
-  }, bgDuration);
-});
-
-btn.addEventListener('mouseleave', () => {
-  // 4- اختفاء السهم لحظياً
-  arrow.classList.add('hidden');
-  arrow.classList.remove('white-arrow');
-
-  // 5- الخلفية ترجع
-  btn.classList.remove('hovering');
-
-  // 6- بعد انتهاء الخلفية يظهر أسود
-  setTimeout(() => {
-    arrow.classList.remove('hidden');
-    arrow.classList.add('black-arrow');
-  }, bgDuration);
-});
