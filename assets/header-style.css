@@ -106,7 +106,7 @@
 
 .gift-btn:hover svg {
   opacity: 0;
-  transition-delay: 0.2s; /* ✨ يختفي بعد ما الخلفية تبدأ */
+  transition-delay: 0s; /* ✨ يختفي بعد ما الخلفية تبدأ */
 }
 
 .gift-btn:hover svg path {
