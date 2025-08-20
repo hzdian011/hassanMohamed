@@ -433,7 +433,7 @@ section {
 
     position: relative;
     bottom: -160px; /* المسافة من تحت */
-    left: 22%;
+    left: 29%;
     transform: translateX(-50%);
     margin: 0; /* نلغي المارجن القديم */
   }
