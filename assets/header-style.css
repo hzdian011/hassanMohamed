@@ -7,42 +7,43 @@
     box-sizing: border-box;
   }
 
-  /* ================== Nav ================== */
-  .gift-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 50px;
-    width: 100%;
-    box-sizing: border-box;
-    background: #F7F7F7; /*#606*/
-    flex-wrap: nowrap;
-  }
+/* ================== Nav ================== */
+.gift-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  width: 100%;
+  box-sizing: border-box;
+  background: #F7F7F7; /*#606*/
+  flex-wrap: nowrap;
+}
 
-  .gift-logo {
-    font-family: 'Jost', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #000;
-    white-space: nowrap;
-  }
+.gift-logo {
+  font-family: 'Jost', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+}
 
-  .gift-subtitle {
-    font-family: 'Jost', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: #000;
-    margin: 0;
-    text-align: center;
-    line-height: 1.25;
-    flex: 1;
+.gift-subtitle {
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+  text-align: center;
+  line-height: 1.25;
+  flex: 1;
 
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+/* nav button */
 .gift-btn {
   position: relative;
   display: inline-flex;
@@ -83,7 +84,7 @@
   z-index: 1;
   opacity: 1;
   transition: opacity 0.4s ease;
-  transition-delay: 0.6s; /* ✨ يظهر بشكل متأخر عند الرجوع */
+  /* transition-delay: 0.6s;  ✨ يظهر بشكل متأخر عند الرجوع */
 }
 
 .gift-btn svg path {
