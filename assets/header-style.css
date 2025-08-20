@@ -437,11 +437,11 @@ section {
 
   /* نخلي البوتون فوق صورة row2 */
   .gift-cta {
-    position: absolute;
-    bottom: 30%;   /* يتحط في الثلث الأخير */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;    /* يفضل فوق الصورة */
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 20px; /* مسافة بين النص والصورة */
   }
 
   /* نوسّط النصوص في row3 */
