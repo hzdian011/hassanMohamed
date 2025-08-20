@@ -256,7 +256,7 @@ section {
 /* Mobile */
 @media (max-width: 1024px) {
   .gift-row2 { position: relative; margin-top: 20px; }
-  .gift-row2 img { width: 100%; height: auto; }
+  .gift-row2 img {display:none; }
   .gift-cta {
     position: relative;
     bottom: -160px;
