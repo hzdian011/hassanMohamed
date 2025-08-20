@@ -362,20 +362,19 @@ section {
   height: auto;
 } */
 .gift-row3-right {
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  overflow: hidden; /* قص الزيادة */
+  position: relative;  /* الأب لازم يكون relative */
+  width: 100%;
   height: 100%;
+  overflow: hidden;    /* عشان الزيادة تتقص */
 }
 
 .gift-row3-right img {
-  height: 100%;          /* يتمدد على الطول */
-  width: 120%;           /* 🟡 نكبر العرض شوية (جرب 120% أو أكتر حسب ما تحب) */
-  object-fit: cover;     
-  object-position: left top; /* 🟡 ثابت من الشمال لفوق */
-  display: block;
+  position: absolute;
+  top: 0;          /* ممكن تغيرها حسب Figma */
+  left: -30%;      /* تبدأ من قبل النص من الشمال */
+  width: 160%;     /* تمتد لحد آخر الشاشة يمين */
+  height: 100%;
+  object-fit: cover;
 }
 
 
