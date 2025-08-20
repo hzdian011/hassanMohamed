@@ -502,12 +502,35 @@ section {
 .gift-footer   { grid-area: row5; }
 
 @media (max-width: 768px) {
-  .gift-content {
+.gift-content {
     grid-template-areas:
-      "row1"
-      "row4"
-      "row3"
-      "row2"
-      "row5";
+      "row1"   /* nav */
+      "row3"   /* title + desc + CTA */
+      "row2"   /* upper image */
+      "row4"   /* footer background */
+      "row5";  /* footer text */
+  }
+   /* نخلي row3 بس يعرض اليسار (title + desc) */
+  .gift-row3 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .gift-row3-left {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* زرار Shop Now يظهر تحت النص */
+  .gift-cta {
+    margin-top: 20px;
+  }
+
+  /* الصورة في row2 تظهر بشكل طبيعي */
+  .gift-row2 img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
