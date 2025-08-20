@@ -227,19 +227,6 @@ section {
     margin-left: auto;
     transform: translateX(10px);
   }
-
-    .gift-row2 {
-    position: relative;
-    overflow-x: hidden; /* مهم علشان مفيش scroll */
-  }
-
-  .gift-row2 img {
-    width: 120%;        /* أكبر من الشاشة شوية */
-    height: auto;
-    object-fit: cover;  /* يقطع يمين وشمال */
-    object-position: center; /* نحدد نقطة التركيز */
-    transform: translateX(-10%); /* نوسّط بعد التكبير */
-  }
 }
 
 /* =========================================================
