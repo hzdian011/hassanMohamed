@@ -43,7 +43,7 @@
         transform: translateX(-50%);
       }
 
-     /* Button style */
+/* Button style */
 .gift-btn {
   position: relative;
   display: inline-flex;
@@ -81,24 +81,27 @@
   z-index: 2;
   opacity: 1;
   transition: opacity 0.3s ease;
-  transition-delay: 0.4s; /* ✅ يظهر بعد ما الخلفية تخلص */
+  transition-delay: 0.4s; /* يظهر بعد الخلفية */
 }
 
 .gift-btn svg path {
   stroke: #000;
   fill: #000;
   transition: stroke 0.3s ease, fill 0.3s ease;
+  transition-delay: 0s; /* مبدئياً بدون تأخير */
 }
 
-.gift-btn:hover {
-  color: #fff;
-  border-color: #000;
+.gift-btn:hover svg {
+  opacity: 0;
+  transition-delay: 0s; /* يختفي مباشرة */
 }
 
-.gift-btn:hover::before {
-  left: 0;
-  transition-delay: 0s; /* ✅ يبدأ فورًا عند الـ hover */
+.gift-btn:hover svg path {
+  stroke: #fff;
+  fill: #fff;
+  transition-delay: 0.4s; /* ✅ يتغير للون الأبيض وقت ما يرجع يظهر */
 }
+
 
 .gift-btn:hover svg {
   opacity: 0;
