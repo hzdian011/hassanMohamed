@@ -1,490 +1,16 @@
-/* ================== General ================== */
+/* =======================
+   General Styles
+======================= */
 section {
   overflow-x: hidden; /* منع أي scroll جانبي */
   width: 100%;
   box-sizing: border-box;
-}
-
-/* ================== Nav ================== */
-.gift-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 50px;
-  width: 100%;
-  box-sizing: border-box;
-  background: #F7F7F7;
-  flex-wrap: nowrap;
-}
-
-.gift-logo {
   font-family: 'Jost', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #000;
-  white-space: nowrap;
 }
 
-.gift-subtitle {
-  font-family: 'Jost', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: #000;
-  margin: 0;
-  text-align: center;
-  line-height: 1.25;
-  flex: 1;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* ================== Gift Button ================== */
-.gift-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  width: 207px;
-  padding: 14px 10px;
-  background: #FFF544;
-  border: none;
-  color: #000;
-  font-family: 'Jost', sans-serif;
-  font-size: 16px;
-  text-transform: uppercase;
-  cursor: pointer;
-  overflow: hidden;
-  transition: color 0.3s ease, border-color 0.3s ease;
-  z-index: 0;
-}
-
-/* ================== Background overlay ================== */
-.gift-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  opacity: 0; 
-  transition: all 0.3s ease;  
-  transition-delay: 0s;   
-  z-index: -1;
-}
-
-/* Hover in */
-.gift-btn:hover::before {
-  left: 0;
-  opacity: 1;
-  transition-delay: 0.25s;
-}
-
-/* Hover out */
-.gift-btn:not(:hover)::before {
-  opacity: 0.1;
-  transition-delay: 0s;
-}
-
-/* ================== SVG default ================== */
-.gift-btn svg {
-  position: relative;
-  z-index: 1;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.gift-btn svg path {
-  stroke: #000;
-  fill: #000;
-}
-
-/* ================== Hover state ================== */
-.gift-btn:hover {
-  color: #fff;
-  border-color: #000;
-}
-
-.gift-btn:hover::before {
-  left: 0;
-  transition-delay: 0s;
-}
-
-/* ================== Arrow animation ================== */
-.gift-btn:hover svg path {
-  stroke: #fff;
-  fill: #fff;
-}
-
-.gift-btn:hover svg {
-  animation: hideShowArrowIn 0.35s forwards;
-}
-
-@keyframes hideShowArrowIn {
-  0%   { opacity: 1; }
-  5%   { opacity: 0; }
-  95%  { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-.gift-btn:not(:hover) svg {
-  animation: hideShowArrowOut 0.35s forwards;
-}
-
-@keyframes hideShowArrowOut {
-  0%   { opacity: 1; }
-  5%   { opacity: 0; }
-  95%  { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* ================== Desktop ================== */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* ================== Burger hidden (desktop) ================== */
-.burger-btn {
-  display: none;
-}
-
-/* ================== Mobile ================== */
-@media (max-width: 768px) {
-  .burger-btn {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #000;
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .gift-nav {
-    justify-content: center;
-    position: relative;
-  }
-
-  /* ✅ Mobile Menu Smooth Transition */
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    background: #f2f2f2;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-
-    /* Smooth effect */
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-    padding: 0 15px;
-    transition: all 0.4s ease;
-  }
-
-  .nav-links.open {
-    max-height: 300px; /* رقم كافي لمحتوى المنيو */
-    opacity: 1;
-    transform: translateY(0);
-    padding: 15px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
-  }
-
-  /* ✅ ترتيب الـ subtitle و الـ button تحت بعض */
-  .nav-links .gift-subtitle {
-    position: static;
-    transform: none;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  .nav-links .gift-btn {
-    width: auto;
-    min-width: 250px;
-    justify-content: center;
-    margin: 0 auto;
-    gap: 30px; /* تزود المسافة بين النص والسهم */
-  }
-
-  .nav-links .gift-btn svg {
-    margin-left: auto; 
-    transform: translateX(10px);
-  }
-}
-
-/* ================== Row 2 ================== */
-.gift-row2 img {
-  width: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: left;
-  display: block;
-}
-
-/* ================== Row 3 ================== */
-.gift-row3 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 0 0 40px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.gift-row3 img {
-  object-fit: cover;
-  object-position: right 20%; 
-}
-
-.gift-title {
-  font-family: 'Jost', sans-serif;
-  font-style: normal;
-  font-size: 70px;
-  font-weight: 500;
-  line-height: 100%;
-  color: #000;
-  margin: 0px;
-}
-
-.gift-row3-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: start;
-  gap: 20px;
-  text-align: starts;
-  height: 100%;    
-}
-
-.gift-desc {
-  font-family: 'Jost', sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 140%;
-  max-width: 480px;
-  margin-bottom: 30px;
-  color: #000;
-}
-
-/* ================== Gift CTA Button ================== */
-.gift-cta {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 14px 40px;
-  background: #000;
-  border: none;
-  color: #FFF;
-  font-family: 'Jost', sans-serif;
-  font-size: 16px;
-  text-transform: uppercase;
-  cursor: pointer;
-  overflow: hidden;
-  transition: color 0.3s ease, border-color 0.3s ease;
-  z-index: 0;
-}
-
-.gift-cta::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: #FFF544;
-  opacity: 0;
-  transition: all 0.3s ease;
-  transition-delay: 0s;
-  z-index: -1;
-}
-
-.gift-cta:hover::before {
-  left: 0;
-  opacity: 1;
-  transition-delay: 0.25s;
-}
-
-.gift-cta:not(:hover)::before {
-  opacity: 0.1;
-  transition-delay: 0s;
-}
-
-.gift-cta svg {
-  position: relative;
-  z-index: 1;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.gift-cta svg path {
-  stroke: #FFF;
-  fill: #FFF;
-}
-
-.gift-cta:hover {
-  color: #000;
-  border-color: #FFF544;
-}
-
-.gift-cta:hover::before {
-  left: 0;
-  transition-delay: 0s;
-}
-
-.gift-cta:hover svg path {
-  stroke: #000;
-  fill: #000;
-}
-
-.gift-cta:hover svg {
-  animation: hideShowArrowIn 0.35s forwards;
-}
-
-.gift-cta:not(:hover) svg {
-  animation: hideShowArrowOut 0.35s forwards;
-}
-
-/* .gift-row3-right img {
-  max-width: 100%;
-  height: auto;
-} */
-.gift-row3-right {
-  flex: 1;
-  display: flex;
-  justify-content: center; /* أو flex-start */
-  align-items: center;
-}
-.gift-row3-right img {
-  width: 947px;  /* تزود العرض */
-  height: auto;
-  object-fit: contain;
-  margin-left: -100px; /* تزق الصورة شمال */
-  display: none;
-}
-
-
-
-/* إظهارها بس على الشاشات الكبيرة (desktop) */
-@media (min-width: 1025px) {
-  .gift-row3-right img {
-    display: block;
-  }
-}
-
-/* ================== Row 4 ================== */
-.gift-row4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 20px;
-  width: 100%;
-  background: #F5F5F5;
-  box-sizing: border-box;
-}
-
-.gift-footer {
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: #000;
-  margin: 0;
-  text-align: center;
-}
-
-/* ================== Responsive ================== */
-@media (max-width: 1024px) {
-  .gift-nav {
-    flex-wrap: wrap;
-    padding: 10px 20px;
-    gap: 10px;
-  }
-  /* .gift-row3 {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
-  .gift-desc {
-    margin: 0 auto 20px;
-  } */
-  .gift-row3-right {
-    display: none;
-  }
-
-  /* نخلي row2 تاخد مكانها أسفل النصوص */
-  .gift-row2 {
-    position: relative;
-    margin-top: 20px;
-  }
-
-  .gift-row2 img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  /* نخلي البوتون فوق صورة row2 */
-  .gift-cta {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    margin-top: 20px; /* مسافة بين النص والصورة */
-  }
-
-  /* نوسّط النصوص في row3 */
-  .gift-row3 {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .gift-row3-left {
-    align-items: center;
-    text-align: center;
-  }
-
-  .gift-title {
-    font-size: 36px;
-    text-align: center;
-  }
-
-  .gift-desc {
-    font-size: 16px;
-    margin: 10px auto 20px;
-    text-align: center;
-  }
-  
-}
-
-@media (max-width: 768px) {
-  .gift-subtitle,
-  .gift-btn {
-    display: block;
-  }
-  .gift-title {
-    font-size: 40px;
-  }
-  .gift-desc {
-    font-size: 16px;
-  }
-}
-
-
-/* 🔽 حط الكود الجديد هنا */
+/* =======================
+   Grid Layout for Section Content
+======================= */
 .gift-content {
   display: grid;
   grid-template-areas:
@@ -501,13 +27,233 @@ section {
 .gift-row4     { grid-area: row4; }
 .gift-footer   { grid-area: row5; }
 
-@media (max-width: 768px) {
-  .gift-content {
-    grid-template-areas:
-      "row1"
-      "row4"
-      "row3"
-      "row2"
-      "row5";
+/* =======================
+   Navigation Bar
+======================= */
+.gift-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  width: 100%;
+  background: #F7F7F7;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.gift-logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* Subtitle in Nav */
+.gift-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+  text-align: center;
+  line-height: 1.25;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  flex: 1;
+}
+
+/* Links Container */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Burger Button (Mobile) */
+.burger-btn {
+  display: none;
+}
+
+/* =======================
+   Buttons
+======================= */
+.gift-btn, .gift-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 14px 40px;
+  background: #FFF544;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  z-index: 0;
+}
+
+/* Button overlay effect */
+.gift-btn::before, .gift-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+/* Hover effect */
+.gift-btn:hover::before, .gift-cta:hover::before {
+  left: 0;
+  opacity: 1;
+}
+
+.gift-btn:hover, .gift-cta:hover {
+  color: #fff;
+}
+
+.gift-btn svg, .gift-cta svg {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Arrow animation */
+.gift-btn:hover svg, .gift-cta:hover svg {
+  animation: hideShowArrowIn 0.35s forwards;
+}
+
+.gift-btn:not(:hover) svg, .gift-cta:not(:hover) svg {
+  animation: hideShowArrowOut 0.35s forwards;
+}
+
+@keyframes hideShowArrowIn {
+  0% { opacity: 1; }
+  5% { opacity: 0; }
+  95% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes hideShowArrowOut {
+  0% { opacity: 1; }
+  5% { opacity: 0; }
+  95% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* =======================
+   Row 2 - Upper Image
+======================= */
+.gift-row2 img {
+  width: 100%;
+  object-fit: cover;
+  object-position: left;
+  display: block;
+}
+
+/* =======================
+   Row 3 - Main Content
+======================= */
+.gift-row3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+}
+
+.gift-row3-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.gift-title {
+  font-size: 70px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.gift-desc {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 480px;
+  margin-bottom: 30px;
+  color: #000;
+}
+
+.gift-row3-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gift-row3-right img {
+  width: 947px;
+  height: auto;
+  object-fit: contain;
+  margin-left: -100px;
+  display: none;
+}
+
+/* Desktop only */
+@media (min-width: 1025px) {
+  .gift-row3-right img {
+    display: block;
   }
+}
+
+/* =======================
+   Row 4 - Footer Text
+======================= */
+.gift-row4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  width: 100%;
+  background: #F5F5F5;
+}
+
+.gift-footer {
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+  text-align: center;
+  margin: 0;
+}
+
+/* =======================
+   Responsive Styles
+======================= */
+@media (max-width: 1024px) {
+  .gift-nav { flex-wrap: wrap; padding: 10px 20px; gap: 10px; }
+  .gift-row3 { flex-direction: column; align-items: center; text-align: center; padding: 20px; }
+  .gift-row3-left { align-items: center; text-align: center; }
+  .gift-title { font-size: 36px; }
+  .gift-desc { font-size: 16px; margin: 10px auto 20px; }
+  .gift-row3-right { display: none; }
+  .gift-row2 { margin-top: 20px; }
+  .gift-row2 img { width: 100%; height: auto; }
+  .gift-cta { margin-top: 20px; transform: none; position: relative; }
+}
+
+@media (max-width: 768px) {
+  .burger-btn { display: block; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; }
+  .gift-subtitle, .gift-btn { display: block; }
+  .gift-title { font-size: 40px; }
+  .gift-desc { font-size: 16px; }
+  .gift-content { grid-template-areas: "row1" "row4" "row3" "row2" "row5"; }
 }
