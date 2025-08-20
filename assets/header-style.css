@@ -263,6 +263,9 @@
         display: flex;
         justify-content: flex-end; /* يخلي الصورة ملزوقة يمين */
       }
+      .gift-row3-left {
+  flex: 1; /* مساحة أقل للنص */
+}
       .gift-row3-right img {
         max-width: 100%;
         height: auto;
