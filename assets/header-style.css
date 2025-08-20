@@ -425,11 +425,17 @@ section {
     height: auto;
   }
   .gift-cta {
-    position: relative;
+    /* position: relative;
     margin-top: 20px;
     bottom: auto;
     left: auto;
-    transform: none;
+    transform: none; */
+
+    position: absolute;
+    bottom: 20px; /* المسافة من تحت */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0; /* نلغي المارجن القديم */
   }
   .gift-row3 {
     flex-direction: column;
