@@ -378,9 +378,10 @@ section {
 
 
 /* إظهارها بس على الشاشات الكبيرة (desktop) */
-@media (min-width: 1025px) {
+@media (min-width: 1025px) and (max-width: 1400px) {
   .gift-row3-right img {
-    display: block;
+    max-width: 400px;   /* تصغير في المقاسات المتوسطة */
+    margin-left: 40px;  /* إبعادها عن النص */
   }
 }
 
