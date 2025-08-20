@@ -225,11 +225,6 @@
     justify-content: center;
     margin: 0 auto;     /* ✅ يخليه متوسّط */
   }
-  
-  .nav-links .gift-btn svg {
-  margin-left: auto;   /* يخلي السهم يتحرك أقصى اليمين */
-  transform: translateX(10px); /* تزود المسافة شوية لليمين */
-}
 .nav-links .gift-btn {
   gap: 30px; /* تزود المسافة بين النص والسهم */
 }
