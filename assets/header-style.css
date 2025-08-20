@@ -254,7 +254,7 @@ section {
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .gift-row2 { position: relative; margin-top: 20px; }
   .gift-row2 img { width: 100%; height: auto; }
   .gift-cta {
