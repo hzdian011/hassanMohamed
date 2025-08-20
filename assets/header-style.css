@@ -322,6 +322,9 @@ section {
     transform: translate(45px, 46px);
     z-index: 2;
   }
+  .mobile-desc{
+    z-index: 3;
+  }
   .gift-row3 { 
     padding: 0;
     margin: 0;
