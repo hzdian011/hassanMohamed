@@ -317,6 +317,9 @@ section {
     object-position: center; /* تظبط الكروب من النص */
     margin: 0;             /* نشيل أي padding أو margin */
     padding: 0;
+    scale: 2.2;
+    overflow: hidden;
+    transform: translate(45px, 46px);
   }
   .gift-row3 { 
     padding: 0;
