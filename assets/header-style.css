@@ -313,10 +313,7 @@ section {
 }
 .mobile-img {
   display: none;
-}
-/* إظهارها في الموبايل بدل gifts-right.svg */
-@media (max-width: 768px) {
-  
+
   .gift-row3 .gift-cta {
     position: absolute;
     bottom: 315px;   /* يبعد 20px عن أسفل الصورة */
@@ -336,4 +333,9 @@ section {
     padding: 0;
     margin: 0;
   }
+}
+/* إظهارها في الموبايل بدل gifts-right.svg */
+@media (max-width: 768px) {
+  
+
 }
