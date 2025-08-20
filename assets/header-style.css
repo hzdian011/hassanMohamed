@@ -247,7 +247,7 @@ section {
 /* Tablet */
 @media (max-width: 1024px) {
   .gift-nav { flex-wrap: wrap; padding: 10px 20px; gap: 10px; }
-  /* .gift-row3-right { display: none; } */
+  .gift-row3-right { display: none; }
   /* .gift-row2 { position: relative; margin-top: 20px; } */
  */
   .gift-row3 {
