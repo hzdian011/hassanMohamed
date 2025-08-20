@@ -221,7 +221,7 @@ section {
 }
 
 /* Grid Layout */
-.gift-content {
+/* .gift-content {
   display: grid;
   grid-template-areas:
     "row1"
@@ -229,7 +229,7 @@ section {
     "row3"
     "row4"
     "row5";
-}
+} */
 /* .gift-nav    { grid-area: row1; }
 .gift-row2   { grid-area: row2; }
 .gift-row3   { grid-area: row3; }
