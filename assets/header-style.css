@@ -221,6 +221,17 @@
 
 
       }
+
+      .gift-row3-left{
+        flex: 1; /* أو أي نسبة مناسبة */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;   /* يوسّط رأسي */
+        align-items: center;       /* يوسّط أفقي */
+        gap: 20px;                 /* مسافة متساوية بين العناصر */
+        text-align: center;        /* يخلي النصوص نفسها متوسّطة */
+        height: 100%;    
+      }
       .gift-desc {
         font-family: 'Jost', sans-serif;
         font-size: 20px;
