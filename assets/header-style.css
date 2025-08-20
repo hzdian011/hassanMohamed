@@ -264,7 +264,7 @@ section {
     padding: 20px;
   }
   .gift-title { font-size: 36px; }
-  .gift-desc { font-size: 16px; margin: 10px auto 20px; }
+  /* .gift-desc { font-size: 16px; margin: 10px auto 20px; } */
 }
 
 /* Mobile */
