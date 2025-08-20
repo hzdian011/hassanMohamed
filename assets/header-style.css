@@ -1,11 +1,9 @@
-
-
-  /* ================== General ================== */
-  section {
-    overflow-x: hidden; /* منع أي scroll جانبي */
-    width: 100%;
-    box-sizing: border-box;
-  }
+/* ================== General ================== */
+section {
+  overflow-x: hidden; /* منع أي scroll جانبي */
+  width: 100%;
+  box-sizing: border-box;
+}
 
 /* ================== Nav ================== */
 .gift-nav {
@@ -16,7 +14,7 @@
   padding: 10px 50px;
   width: 100%;
   box-sizing: border-box;
-  background: #F7F7F7; /*#606*/
+  background: #F7F7F7;
   flex-wrap: nowrap;
 }
 
@@ -37,15 +35,11 @@
   text-align: center;
   line-height: 1.25;
   flex: 1;
-
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* ======================= 
-*  =======================
-*/
 /* ================== Gift Button ================== */
 .gift-btn {
   position: relative;
@@ -120,13 +114,11 @@
 }
 
 /* ================== Arrow animation ================== */
-
 .gift-btn:hover svg path {
   stroke: #fff;
   fill: #fff;
 }
 
-/* Arrow animation on hover in */
 .gift-btn:hover svg {
   animation: hideShowArrowIn 0.35s forwards;
 }
@@ -138,7 +130,6 @@
   100% { opacity: 1; }
 }
 
-/* Arrow animation on hover out */
 .gift-btn:not(:hover) svg {
   animation: hideShowArrowOut 0.35s forwards;
 }
@@ -150,28 +141,19 @@
   100% { opacity: 1; }
 }
 
+/* ================== Desktop ================== */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
+/* ================== Burger hidden (desktop) ================== */
+.burger-btn {
+  display: none;
+}
 
-
-/* ======================= 
-*  =======================
-*/
-
-
-
-  /* افتراضي (ديسكتوب) */
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  /* بورجر مخفي في الديسكتوب */
-  .burger-btn {
-    display: none;
-  }
-
- /* موبايل */
+/* ================== Mobile ================== */
 @media (max-width: 768px) {
   .burger-btn {
     display: block;
@@ -190,25 +172,32 @@
     position: relative;
   }
 
-  /* منيو الموبايل */
+  /* ✅ Mobile Menu Smooth Transition */
   .nav-links {
-    display: none;
     flex-direction: column;
     align-items: center;
     gap: 15px;
     background: #f2f2f2;
-    padding: 15px;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    transition: all 0.3s ease;
+
+    /* Smooth effect */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    padding: 0 15px;
+    transition: all 0.4s ease;
   }
 
   .nav-links.open {
-    display: flex;
-    background: #f7f7f7;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15); /* ✅ Box shadow */
+    max-height: 300px; /* رقم كافي لمحتوى المنيو */
+    opacity: 1;
+    transform: translateY(0);
+    padding: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   }
 
   /* ✅ ترتيب الـ subtitle و الـ button تحت بعض */
@@ -220,81 +209,75 @@
   }
 
   .nav-links .gift-btn {
-    width: auto;        /* ✅ يرجع للعرض الطبيعي */
-    min-width: 250px;   /* ✅ يضمن يفضل ثابت زي الديسكتوب */
+    width: auto;
+    min-width: 250px;
     justify-content: center;
-    margin: 0 auto;     /* ✅ يخليه متوسّط */
+    margin: 0 auto;
+    gap: 30px; /* تزود المسافة بين النص والسهم */
   }
-  
+
   .nav-links .gift-btn svg {
-  margin-left: auto;   /* يخلي السهم يتحرك أقصى اليمين */
-  transform: translateX(10px); /* تزود المسافة شوية لليمين */
-}
-.nav-links .gift-btn {
-  gap: 30px; /* تزود المسافة بين النص والسهم */
-}
+    margin-left: auto; 
+    transform: translateX(10px);
+  }
 }
 
+/* ================== Row 2 ================== */
+.gift-row2 img {
+  width: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: left;
+  display: block;
+}
 
-  /*=================== Row 2 ================== */
-  /* خصص للـ Raw 2 */
-  .gift-row2 img  {
-    width: 100%;         /* الصورة تكبر 20% زيادة */
-    max-width: none;     /* تمنع المتصفح من حصرها */
-    object-fit: cover;   /* تخليها تغطي المساحة */
-    object-position: left; /* تسيب الشمال ثابت وتكبر يمين */
-    display: block;
-  }
+/* ================== Row 3 ================== */
+.gift-row3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
+.gift-row3 img {
+  object-fit: cover;
+  object-position: right 20%; 
+}
 
-  /* ================== Row 3 ================== */
-  .gift-row3 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0 0 40px;
-    width: 100%;
-    box-sizing: border-box;
-  }
+.gift-title {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 100%;
+  color: #000;
+  margin: 0px;
+}
 
-  .gift-row3 img {
-    object-fit: cover;
-    object-position: right 20%; 
-  }
+.gift-row3-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  gap: 20px;
+  text-align: center;
+  height: 100%;    
+}
 
-  .gift-title {
-    font-family: 'Jost', sans-serif;
-    font-style: normal;
-    font-size: 70px;
-    font-weight: 500;
-    line-height: 100%;
-    color: #000;
-    margin: 0px;
-    color: #000000;
-  }
+.gift-desc {
+  font-family: 'Jost', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 140%;
+  max-width: 480px;
+  margin-bottom: 30px;
+  color: #000;
+}
 
-  .gift-row3-left{
-    flex: 1; /* أو أي نسبة مناسبة */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;   /* يوسّط رأسي */
-    align-items: start;       /* يوسّط أفقي */
-    gap: 20px;                 /* مسافة متساوية بين العناصر */
-    text-align: center;        /* يخلي النصوص نفسها متوسّطة */
-    height: 100%;    
-  }
-
-  .gift-desc {
-    font-family: 'Jost', sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 140%;
-    max-width: 480px;
-    margin-bottom: 30px;
-    color: #000;
-  }
-
- /* ================== Gift CTA Button ================== */
+/* ================== Gift CTA Button ================== */
 .gift-cta {
   position: relative;
   display: inline-flex;
@@ -302,9 +285,9 @@
   justify-content: center;
   gap: 20px;
   padding: 14px 40px;
-  background: #000;               /* أساسي أسود */
+  background: #000;
   border: none;
-  color: #FFF;                    /* النص أبيض */
+  color: #FFF;
   font-family: 'Jost', sans-serif;
   font-size: 16px;
   text-transform: uppercase;
@@ -314,7 +297,6 @@
   z-index: 0;
 }
 
-/* ================== Background overlay ================== */
 .gift-cta::before {
   content: "";
   position: absolute;
@@ -322,27 +304,24 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: #FFF544;             /* Overlay أصفر */
+  background: #FFF544;
   opacity: 0;
   transition: all 0.3s ease;
   transition-delay: 0s;
   z-index: -1;
 }
 
-/* Hover in */
 .gift-cta:hover::before {
   left: 0;
   opacity: 1;
   transition-delay: 0.25s;
 }
 
-/* Hover out */
 .gift-cta:not(:hover)::before {
   opacity: 0.1;
   transition-delay: 0s;
 }
 
-/* ================== SVG default ================== */
 .gift-cta svg {
   position: relative;
   z-index: 1;
@@ -355,10 +334,9 @@
   fill: #FFF;
 }
 
-/* ================== Hover state ================== */
 .gift-cta:hover {
-  color: #000;               /* النص يتحول أسود */
-  border-color: #FFF544;     /* ممكن تضيف border أصفر لو حبيت */
+  color: #000;
+  border-color: #FFF544;
 }
 
 .gift-cta:hover::before {
@@ -366,90 +344,70 @@
   transition-delay: 0s;
 }
 
-/* ================== Arrow animation ================== */
 .gift-cta:hover svg path {
   stroke: #000;
   fill: #000;
 }
 
-/* Arrow animation on hover in */
 .gift-cta:hover svg {
   animation: hideShowArrowIn 0.35s forwards;
 }
 
-@keyframes hideShowArrowIn {
-  0%   { opacity: 1; }
-  5%   { opacity: 0; }
-  95%  { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* Arrow animation on hover out */
 .gift-cta:not(:hover) svg {
   animation: hideShowArrowOut 0.35s forwards;
 }
 
-@keyframes hideShowArrowOut {
-  0%   { opacity: 1; }
-  5%   { opacity: 0; }
-  95%  { opacity: 0; }
-  100% { opacity: 1; }
+.gift-row3-right img {
+  max-width: 100%;
+  height: auto;
 }
 
-  .gift-row3-right img {
-    max-width: 100%;
-    height: auto;
-  }
+/* ================== Row 4 ================== */
+.gift-row4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  width: 100%;
+  background: #F5F5F5;
+  box-sizing: border-box;
+}
 
-  /* ================== Row 4 ================== */
-  .gift-row4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 20px;
-    width: 100%;
-    background: #F5F5F5;
-    box-sizing: border-box;
+.gift-footer {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+  margin: 0;
+  text-align: center;
+}
+
+/* ================== Responsive ================== */
+@media (max-width: 1024px) {
+  .gift-nav {
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    gap: 10px;
   }
-  .gift-footer {
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    color: #000;
-    margin: 0;
+  .gift-row3 {
+    flex-direction: column;
     text-align: center;
+    padding: 20px;
   }
-
-  /* ================== Responsive ================== */
-  @media (max-width: 1024px) {
-    .gift-nav {
-      flex-wrap: wrap;
-      padding: 10px 20px;
-      gap: 10px;
-    }
-    .gift-row3 {
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-    }
-    .gift-desc {
-      margin: 0 auto 20px;
-    }
+  .gift-desc {
+    margin: 0 auto 20px;
   }
+}
 
-  @media (max-width: 768px) {
-    .gift-subtitle,
-    .gift-btn {
-      display: block;
-    }
-    .gift-title {
-      font-size: 40px;
-    }
-    .gift-desc {
-      font-size: 16px;
-    }
+@media (max-width: 768px) {
+  .gift-subtitle,
+  .gift-btn {
+    display: block;
   }
-
-
-
-      
+  .gift-title {
+    font-size: 40px;
+  }
+  .gift-desc {
+    font-size: 16px;
+  }
+}
