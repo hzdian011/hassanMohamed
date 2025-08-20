@@ -284,34 +284,108 @@
     color: #000;
   }
 
-  .gift-cta {
-    background: #000;
-    color: #FFF;
-    border: none;
-    padding: 14px 40px;
-    font-family: 'Jost', sans-serif;
-    font-size: 16px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-  .gift-cta::after {
-    content: "\2192";
-    margin-left: 8px;
-    color: #FFF;
-    display: inline-block;
-    transition: all 0.3s ease;
-  }
-  .gift-cta:hover {
-    background: #FFF;
-    color: #000;
-    border: 1.5px solid #000;
-  }
-  .gift-cta:hover::after {
-    color: #000;
-    transform: translateX(5px);
-  }
+ /* ================== Gift CTA Button ================== */
+.gift-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 14px 40px;
+  background: #000;               /* أساسي أسود */
+  border: none;
+  color: #FFF;                    /* النص أبيض */
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  z-index: 0;
+}
+
+/* ================== Background overlay ================== */
+.gift-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #FFF544;             /* Overlay أصفر */
+  opacity: 0;
+  transition: all 0.3s ease;
+  transition-delay: 0s;
+  z-index: -1;
+}
+
+/* Hover in */
+.gift-cta:hover::before {
+  left: 0;
+  opacity: 1;
+  transition-delay: 0.25s;
+}
+
+/* Hover out */
+.gift-cta:not(:hover)::before {
+  opacity: 0.1;
+  transition-delay: 0s;
+}
+
+/* ================== SVG default ================== */
+.gift-cta svg {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.gift-cta svg path {
+  stroke: #FFF;
+  fill: #FFF;
+}
+
+/* ================== Hover state ================== */
+.gift-cta:hover {
+  color: #000;               /* النص يتحول أسود */
+  border-color: #FFF544;     /* ممكن تضيف border أصفر لو حبيت */
+}
+
+.gift-cta:hover::before {
+  left: 0;
+  transition-delay: 0s;
+}
+
+/* ================== Arrow animation ================== */
+.gift-cta:hover svg path {
+  stroke: #000;
+  fill: #000;
+}
+
+/* Arrow animation on hover in */
+.gift-cta:hover svg {
+  animation: hideShowArrowIn 0.35s forwards;
+}
+
+@keyframes hideShowArrowIn {
+  0%   { opacity: 1; }
+  5%   { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Arrow animation on hover out */
+.gift-cta:not(:hover) svg {
+  animation: hideShowArrowOut 0.35s forwards;
+}
+
+@keyframes hideShowArrowOut {
+  0%   { opacity: 1; }
+  5%   { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
   .gift-row3-right img {
     max-width: 100%;
     height: auto;
