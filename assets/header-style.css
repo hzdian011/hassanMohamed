@@ -267,8 +267,10 @@
       }
 
       .gift-row3-right img {
-        max-width: 100%;
-        height: auto;
+          width: 120%;  /* تزود العرض شوية عشان تغطي الفراغ */
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-50px)
       }
 
       /* ================== Row 4 ================== */
