@@ -249,7 +249,6 @@ section {
   .gift-nav { flex-wrap: wrap; padding: 10px 20px; gap: 10px; }
   .gift-row3-right { display: none; }
   .gift-row2 { position: relative; margin-top: 20px; }
-  .gift-row2 img { width: 100%; height: auto; }
   .gift-cta {
     position: relative;
     bottom: -160px;
