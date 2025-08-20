@@ -366,15 +366,15 @@ section {
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
-  overflow: hidden; /* قص الزيادة */
+  overflow: hidden; /* قص أي زيادة */
   height: 100%;
 }
 
 .gift-row3-right img {
-  height: 100%;          /* يتمدد على الطول */
-  width: 120%;           /* 🟡 نكبر العرض شوية (جرب 120% أو أكتر حسب ما تحب) */
-  object-fit: cover;     
-  object-position: left top; /* 🟡 ثابت من الشمال لفوق */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: 66% 66%; /* 🟡 الثلثين من الشمال + من فوق */
   display: block;
 }
 
