@@ -511,8 +511,6 @@ section {
 }
 
 /* تعريف كل row */
-.row1 { grid-area: row1; }
-.row2 { grid-area: row2; }
-.row3 { grid-area: row3; }
-.row4 { grid-area: row4; }
-.row5 { grid-area: row5; }
+.gift-row2 { grid-area: row2; }
+.gift-row3 { grid-area: row3; }
+.gift-row4 { grid-area: row4; }
