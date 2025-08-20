@@ -364,18 +364,17 @@ section {
 .gift-row3-right {
   flex: 1;
   display: flex;
-  justify-content: flex-end; /* خليها تفضل لازقة يمين */
+  justify-content: center; /* أو flex-start */
   align-items: center;
-  overflow: hidden; /* عشان لو الصورة كبرت زيادة ما تعملش scroll */
 }
 
 .gift-row3-right img {
-  width: 120%;   /* تزود العرض شوية */
-  height: auto;
-  object-fit: cover;
-  object-position: right center; /* تفضل لازقة يمين */
+  width: 890px;
+  height: 402px;
+  object-fit: contain;
+  position: relative; /* رجّعها relative عشان ما تطيرش */
+  overflow:hidden;
 }
-
 
 
   /* اخفاء الصورة في الموبايل */
