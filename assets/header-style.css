@@ -364,23 +364,16 @@ section {
 .gift-row3-right {
   flex: 1;
   display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  overflow: hidden; /* قص الزيادة */
-  height: 100%;
-  position: relative
+  justify-content: center; /* أو flex-start */
+  align-items: center;
 }
 
 .gift-row3-right img {
-  position: absolute;
-  width: 890px;
-  height: 402px;
-  left: 550px;
-  top: 442px;
-  object-fit: cover; /* يخليها تتقص لو مش ماشية على المقاسات */
+  max-width: 100%;
+  height: auto;
+  object-fit: contain; /* أو cover لو عايز تقصها */
+  position: relative; /* رجّعها relative عشان ما تطيرش */
 }
-
-
 
 
   /* اخفاء الصورة في الموبايل */
