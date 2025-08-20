@@ -368,6 +368,7 @@ section {
   align-items: stretch;
   overflow: hidden; /* قص الزيادة */
   height: 100%;
+  position: relative
 }
 
 .gift-row3-right img {
