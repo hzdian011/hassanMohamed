@@ -92,7 +92,7 @@
 
 /* Hover out */
 .gift-btn:not(:hover)::before {
-  opacity: 0.5; /* تختفي تدريجياً */
+  opacity: 0.3; /* تختفي تدريجياً */
   transition-delay: 0s; /* بدون تأخير */
 }
 
