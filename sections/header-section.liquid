@@ -66,14 +66,41 @@
 }
 {% endschema %}
 
-
 <section>
   <!-- Raw 1 -->
   {% comment %} كل الناف جديد يا حسن {% endcomment %}
+  {% comment %}
+    <nav class="gift-nav">
+      <!-- Burger Menu -->
+      <button class="burger-btn" id="burger-btn" aria-label="Menu">
+        <!-- SVG Burger افتراضي -->
+        <svg id="burger-icon" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 6H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 1H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 11H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class="gift-logo">
+        <img src="{{ 'brandLogo.svg' | asset_url }}" alt="Brand Logo" width="150" height="">
+      </div>
+
+      <!-- Links -->
+      <div class="nav-links" id="mobile-menu">
+        <p class="gift-subtitle">{{ section.settings.nav_subtitle }}</p>
+        <button class="gift-btn">
+          {{ section.settings.nav_button }}
+          <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z" fill="#333333"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  {% endcomment %}
   <nav class="gift-nav">
     <!-- Burger Menu -->
     <button class="burger-btn" id="burger-btn" aria-label="Menu">
-      <!-- SVG Burger افتراضي -->
       <svg id="burger-icon" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 6H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M1 1H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -83,7 +110,13 @@
 
     <!-- Logo -->
     <div class="gift-logo">
-      <img src="{{ 'brandLogo.svg' | asset_url }}" alt="Brand Logo" width="150" height="">
+      {% if section.settings.logo_type == 'text' %}
+        <h1 class="logo-text">{{ section.settings.logo_text }}</h1>
+      {% elsif section.settings.logo_type == 'image' and section.settings.logo_image != blank %}
+        <img src="{{ section.settings.logo_image | img_url: '200x' }}" alt="Brand Logo" width="" height="">
+      {% else %}
+        <img src="{{ 'brandLogo.svg' | asset_url }}" alt="Brand Logo" width="150" height="">
+      {% endif %}
     </div>
 
     <!-- Links -->
