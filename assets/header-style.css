@@ -249,13 +249,13 @@ section {
   .gift-nav { flex-wrap: wrap; padding: 10px 20px; gap: 10px; }
   .gift-row3-right { display: none; }
   /* .gift-row2 { position: relative; margin-top: 20px; } */
-  .gift-cta {
+  /* .gift-cta {
     position: relative;
     bottom: -160px;
     left: 29%;
     transform: translateX(-50%);
     margin: 0;
-  }
+  } */
   .gift-row3 {
     flex-direction: column;
     align-items: center;
