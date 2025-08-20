@@ -371,7 +371,7 @@ section {
 .gift-row3-right img {
   width: 890px;
   height: 402px;
-  object-fit: cover;
+  object-fit: contain;
   position: relative; /* رجّعها relative عشان ما تطيرش */
 }
 
