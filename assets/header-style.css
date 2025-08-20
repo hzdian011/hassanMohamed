@@ -221,7 +221,7 @@
 
   .nav-links .gift-btn {
     width: auto;        /* ✅ يرجع للعرض الطبيعي */
-    min-width: 207px;   /* ✅ يضمن يفضل ثابت زي الديسكتوب */
+    min-width: 260px;   /* ✅ يضمن يفضل ثابت زي الديسكتوب */
     justify-content: center;
     margin: 0 auto;     /* ✅ يخليه متوسّط */
   }
