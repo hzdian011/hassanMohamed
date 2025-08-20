@@ -364,20 +364,19 @@ section {
 .gift-row3-right {
   flex: 1;
   display: flex;
-  justify-content: flex-start; /* نثبت الصورة للشمال */
-  align-items: stretch;        /* نخليها تتمدد على طول الارتفاع */
-  overflow: hidden;            /* نخلي الزيادة تتقص */
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden; /* قص الزيادة */
   height: 100%;
 }
 
 .gift-row3-right img {
-  height: 100%;          /* 🟡 الصورة تملى الطول */
-  width: auto;           /* 🟡 العرض يتحدد أوتوماتيك */
-  object-fit: cover;     /* 🟡 تخلي الصورة تملى المساحة */
-  object-position: left top; /* 🟡 نبدأ من الشمال لفوق */
+  height: 100%;          /* يتمدد على الطول */
+  width: 120%;           /* 🟡 نكبر العرض شوية (جرب 120% أو أكتر حسب ما تحب) */
+  object-fit: cover;     
+  object-position: left top; /* 🟡 ثابت من الشمال لفوق */
   display: block;
 }
-
 
 
   /* اخفاء الصورة في الموبايل */
