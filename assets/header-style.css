@@ -263,7 +263,7 @@ section {
   justify-content: space-evenly;
   align-items: start;
   gap: 20px;
-  text-align: center;
+  text-align: starts;
   height: 100%;    
 }
 
@@ -369,11 +369,10 @@ section {
 }
 
 .gift-row3-right img {
-  width: 890px;
-  height: 402px;
-  object-fit: contain;
-  position: relative; /* رجّعها relative عشان ما تطيرش */
-  overflow:hidden;
+width: 100%; /* خليها تاخد عرض الكونتينر */
+  height: auto; /* تحافظ على التناسق */
+  object-fit: cover; /* تعمل كروب وتمديد */
+  object-position: right center; /* تفضل لازقة ناحية اليمين */
 }
 
 
