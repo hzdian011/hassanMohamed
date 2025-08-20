@@ -367,14 +367,13 @@ section {
   justify-content: center; /* أو flex-start */
   align-items: center;
 }
-
 .gift-row3-right img {
-  width: 890px;
-  height: 402px;
+  width: 1100px;  /* تزود العرض */
+  height: auto;
   object-fit: contain;
-  position: relative; /* رجّعها relative عشان ما تطيرش */
-  overflow:hidden;
+  margin-left: -100px; /* تزق الصورة شمال */
 }
+
 
 
   /* اخفاء الصورة في الموبايل */
