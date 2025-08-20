@@ -332,3 +332,13 @@ section {
 .mobile-img {
   display: none;
 }
+/* إظهارها في الموبايل بدل gifts-right.svg */
+@media (max-width: 768px) {
+  .gift-row3-right { display: none; } /* نخفي صورة gifts-right.svg */
+  .mobile-img { 
+    display: block; 
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+  }
+}
