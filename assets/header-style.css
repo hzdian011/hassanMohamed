@@ -431,7 +431,7 @@ section {
     left: auto;
     transform: none; */
 
-    position: absolute;
+    position: relative;
     bottom: 20px; /* المسافة من تحت */
     left: 50%;
     transform: translateX(-50%);
