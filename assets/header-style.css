@@ -1,47 +1,47 @@
 
 
-      /* ================== General ================== */
-      section {
-        overflow-x: hidden; /* منع أي scroll جانبي */
-        width: 100%;
-        box-sizing: border-box;
-      }
+  /* ================== General ================== */
+  section {
+    overflow-x: hidden; /* منع أي scroll جانبي */
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-      /* ================== Nav ================== */
-      .gift-nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 50px;
-        width: 100%;
-        box-sizing: border-box;
-        background: #F7F7F7; /*#606*/
-        flex-wrap: nowrap;
-      }
+  /* ================== Nav ================== */
+  .gift-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #F7F7F7; /*#606*/
+    flex-wrap: nowrap;
+  }
 
-      .gift-logo {
-        font-family: 'Jost', sans-serif;
-        font-size: 18px;
-        font-weight: 600;
-        color: #000;
-        white-space: nowrap;
-      }
+  .gift-logo {
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    white-space: nowrap;
+  }
 
-      .gift-subtitle {
-        font-family: 'Jost', sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        color: #000;
-        margin: 0;
-        text-align: center;
-        line-height: 1.25;
-        flex: 1;
+  .gift-subtitle {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    margin: 0;
+    text-align: center;
+    line-height: 1.25;
+    flex: 1;
 
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
 .gift-btn {
   position: relative;
@@ -182,148 +182,145 @@
 }
 
 
-      /*=================== Row 2 ================== */
-      /* خصص للـ Raw 2 */
-      .gift-row2 img  {
-        width: 100%;         /* الصورة تكبر 20% زيادة */
-        max-width: none;     /* تمنع المتصفح من حصرها */
-        object-fit: cover;   /* تخليها تغطي المساحة */
-        object-position: left; /* تسيب الشمال ثابت وتكبر يمين */
-        display: block;
-      }
+  /*=================== Row 2 ================== */
+  /* خصص للـ Raw 2 */
+  .gift-row2 img  {
+    width: 100%;         /* الصورة تكبر 20% زيادة */
+    max-width: none;     /* تمنع المتصفح من حصرها */
+    object-fit: cover;   /* تخليها تغطي المساحة */
+    object-position: left; /* تسيب الشمال ثابت وتكبر يمين */
+    display: block;
+  }
 
 
-      /* ================== Row 3 ================== */
-      .gift-row3 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        /*padding: 50px;*/
-        /*gap: 40px;*/
-        padding: 0 0 0 40px;
-        width: 100%;
-        box-sizing: border-box;
-      }
+  /* ================== Row 3 ================== */
+  .gift-row3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 0 40px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-      .gift-row3 img {
-        object-fit: cover;
-        object-position: right 20%; /* تخليها تتحرك جوا الـ box بحيث تكشف أكتر من الشمال */
-      }
-      
+  .gift-row3 img {
+    object-fit: cover;
+    object-position: right 20%; 
+  }
 
-      .gift-title {
-        font-family: 'Jost', sans-serif;
-        font-style: normal;
-        font-size: 70px;
-        font-weight: 500;
-        line-height: 100%;
-        color: #000;
-        margin: 0px;
-        color: #000000;
+  .gift-title {
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    font-size: 70px;
+    font-weight: 500;
+    line-height: 100%;
+    color: #000;
+    margin: 0px;
+    color: #000000;
+  }
 
+  .gift-row3-left{
+    flex: 1; /* أو أي نسبة مناسبة */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;   /* يوسّط رأسي */
+    align-items: start;       /* يوسّط أفقي */
+    gap: 20px;                 /* مسافة متساوية بين العناصر */
+    text-align: center;        /* يخلي النصوص نفسها متوسّطة */
+    height: 100%;    
+  }
 
-      }
+  .gift-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 140%;
+    max-width: 480px;
+    margin-bottom: 30px;
+    color: #000;
+  }
 
-      .gift-row3-left{
-        flex: 1; /* أو أي نسبة مناسبة */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;   /* يوسّط رأسي */
-        align-items: start;       /* يوسّط أفقي */
-        gap: 20px;                 /* مسافة متساوية بين العناصر */
-        text-align: center;        /* يخلي النصوص نفسها متوسّطة */
-        height: 100%;    
-      }
-      .gift-desc {
-        font-family: 'Jost', sans-serif;
-        font-size: 20px;
-        font-weight: 400;
-        line-height: 140%;
-        max-width: 480px;
-        margin-bottom: 30px;
-        color: #000;
-      }
-      .gift-cta {
-        background: #000;
-        color: #FFF;
-        border: none;
-        padding: 14px 40px;
-        font-family: 'Jost', sans-serif;
-        font-size: 16px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-      .gift-cta::after {
-        content: "\2192";
-        margin-left: 8px;
-        color: #FFF;
-        display: inline-block;
-        transition: all 0.3s ease;
-      }
-      .gift-cta:hover {
-        background: #FFF;
-        color: #000;
-        border: 1.5px solid #000;
-      }
-      .gift-cta:hover::after {
-        color: #000;
-        transform: translateX(5px);
-      }
-      .gift-row3-right img {
-        max-width: 100%;
-        height: auto;
-      }
+  .gift-cta {
+    background: #000;
+    color: #FFF;
+    border: none;
+    padding: 14px 40px;
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .gift-cta::after {
+    content: "\2192";
+    margin-left: 8px;
+    color: #FFF;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  .gift-cta:hover {
+    background: #FFF;
+    color: #000;
+    border: 1.5px solid #000;
+  }
+  .gift-cta:hover::after {
+    color: #000;
+    transform: translateX(5px);
+  }
+  .gift-row3-right img {
+    max-width: 100%;
+    height: auto;
+  }
 
-      /* ================== Row 4 ================== */
-      .gift-row4 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 8px 20px;
-        width: 100%;
-        background: #F5F5F5;
-        box-sizing: border-box;
-      }
-      .gift-footer {
-        font-family: 'Jost', sans-serif;
-        font-weight: 400;
-        font-size: 16px;
-        color: #000;
-        margin: 0;
-        text-align: center;
-      }
+  /* ================== Row 4 ================== */
+  .gift-row4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    width: 100%;
+    background: #F5F5F5;
+    box-sizing: border-box;
+  }
+  .gift-footer {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
+    margin: 0;
+    text-align: center;
+  }
 
-      /* ================== Responsive ================== */
-      @media (max-width: 1024px) {
-        .gift-nav {
-          flex-wrap: wrap;
-          padding: 10px 20px;
-          gap: 10px;
-        }
-        .gift-row3 {
-          flex-direction: column;
-          text-align: center;
-          padding: 20px;
-        }
-        .gift-desc {
-          margin: 0 auto 20px;
-        }
-      }
+  /* ================== Responsive ================== */
+  @media (max-width: 1024px) {
+    .gift-nav {
+      flex-wrap: wrap;
+      padding: 10px 20px;
+      gap: 10px;
+    }
+    .gift-row3 {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+    .gift-desc {
+      margin: 0 auto 20px;
+    }
+  }
 
-      @media (max-width: 768px) {
-        .gift-subtitle,
-        .gift-btn {
-          display: block;
-        }
-        .gift-title {
-          font-size: 40px;
-        }
-        .gift-desc {
-          font-size: 16px;
-        }
-      }
+  @media (max-width: 768px) {
+    .gift-subtitle,
+    .gift-btn {
+      display: block;
+    }
+    .gift-title {
+      font-size: 40px;
+    }
+    .gift-desc {
+      font-size: 16px;
+    }
+  }
 
 
 
