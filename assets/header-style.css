@@ -233,12 +233,12 @@ section {
   .gift-row3-left  {align-items:center}
   .gift-row2 { position: relative; margin-top: 20px; }
   .gift-row2 img {display:none; }
-    .gift-row2 .gift-cta {
+    /* .gift-row2 .gift-cta {
       position: absolute;
       bottom: 20px;   /* يبعد 20px عن أسفل الصورة */
       left: 50%;
       transform: translateX(-50%);
-    }
+    } */
   /* .gift-cta {
     position: relative;
     bottom: -160px;
@@ -316,6 +316,13 @@ section {
 }
 /* إظهارها في الموبايل بدل gifts-right.svg */
 @media (max-width: 768px) {
+  
+  .gift-row3 .gift-cta {
+    position: absolute;
+    bottom: 20px;   /* يبعد 20px عن أسفل الصورة */
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .gift-row3-right { display: none; } /* نخفي صورة gifts-right.svg */
   .mobile-img { 
     display: block;
