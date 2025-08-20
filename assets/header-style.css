@@ -486,9 +486,8 @@ section {
   display: flex;
   flex-direction: column;
 }
-
-/* Desktop (الترتيب العادي) */
-.grid-container {
+/* 🔽 حط الكود الجديد هنا */
+.gift-content {
   display: grid;
   grid-template-areas:
     "row1"
@@ -498,19 +497,19 @@ section {
     "row5";
 }
 
-/* Mobile/Tablet */
+.gift-nav      { grid-area: row1; }
+.gift-row2     { grid-area: row2; }
+.gift-row3     { grid-area: row3; }
+.gift-row4     { grid-area: row4; }
+.gift-footer   { grid-area: row5; }
+
 @media (max-width: 768px) {
-  .grid-container {
+  .gift-content {
     grid-template-areas:
       "row1"
-      "row2"   /* نخلي row2 ييجي هنا */
-      "row4"   /* وبعده row4 */
+      "row4"
       "row3"
+      "row2"
       "row5";
   }
 }
-
-/* تعريف كل row */
-.gift-row2 { grid-area: row2; }
-.gift-row3 { grid-area: row3; }
-.gift-row4 { grid-area: row4; }
