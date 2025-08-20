@@ -65,7 +65,7 @@
   ]
 }
 {% endschema %}
-{% comment %} 
+
 <section>
   <!-- Raw 1 -->
   {% comment %} كل الناف جديد يا حسن {% endcomment %}
@@ -134,52 +134,4 @@
 
 {{ 'header-style.css' | asset_url | stylesheet_tag }}
 
-<script src="{{ 'header-script.js' | asset_url }}" defer></script> {% endcomment %}
-<section class="gift-section">
-  <!-- Nav -->
-  <nav class="gift-nav">
-    <div class="logo">MyLogo</div>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Shop</a></li>
-      <li><a href="#">Gifts</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero -->
-  <div class="gift-hero">
-    <div class="hero-content">
-      <h1>Find the Perfect Gift</h1>
-      <p>Discover amazing gifts for every occasion</p>
-      <a href="#" class="btn-primary">Shop Now</a>
-    </div>
-  </div>
-
-  <!-- Products -->
-  <div class="gift-products">
-    <h2>Featured Gifts</h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <img src="img/product1.jpg" alt="Gift 1" width="" height="">
-        <h3>Gift Item 1</h3>
-        <p>$29.99</p>
-      </div>
-      <div class="product-card">
-        <img src="img/product2.jpg" alt="Gift 2" width="" height="">
-        <h3>Gift Item 2</h3>
-        <p>$39.99</p>
-      </div>
-      <div class="product-card">
-        <img src="img/product3.jpg" alt="Gift 3" width="" height="">
-        <h3>Gift Item 3</h3>
-        <p>$49.99</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="gift-footer">
-    <p>&copy; 2025 Gift Store. All rights reserved.</p>
-  </footer>
-</section>
+<script src="{{ 'header-script.js' | asset_url }}" defer></script>
