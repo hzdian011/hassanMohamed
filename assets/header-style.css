@@ -257,12 +257,12 @@ section {
     transform: translateX(-50%);
     margin: 0;
   }
-  /* .gift-row3 {
+  .gift-row3 {
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 20px;
-  } */
+  }
   .gift-title { font-size: 36px; }
   /* .gift-desc { font-size: 16px; margin: 10px auto 20px; } */
 }
