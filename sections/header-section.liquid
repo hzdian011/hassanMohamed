@@ -3,6 +3,31 @@
   "name": "Gift Section",
   "settings": [
     {
+      "type": "select",
+      "id": "logo_type",
+      "label": "Logo Type",
+      "options": [
+        { "value": "svg", "label": "SVG (default)" },
+        { "value": "image", "label": "Image" },
+        { "value": "text", "label": "Text" }
+      ],
+      "default": "svg"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "My Brand",
+      "info": "Displayed if Logo Type is Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image",
+      "info": "Upload logo image (SVG, PNG, JPG)"
+    }
+    ,
+    {
       "type": "text",
       "id": "nav_subtitle",
       "label": "Navigation Subtitle",
