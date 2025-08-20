@@ -321,7 +321,7 @@ section {
   .gift-row3-right img { width: 100%; margin: 0; display: block; } */
 
   /* Grid reorder */
-  .gift-content {
+  /* .gift-content {
     grid-template-areas:
       "row1"
       "row3"
@@ -329,7 +329,7 @@ section {
       "row4"
       "row5";
   }
-  .gift-row3-right { grid-area: row4; }
+  .gift-row3-right { grid-area: row4; } */
 }
 .mobile-img {
   display: none;
