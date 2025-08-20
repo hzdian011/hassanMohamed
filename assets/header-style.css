@@ -338,13 +338,12 @@ section {
   .mobile-img { 
     display: block;
     width: 100vw;          /* تاخد عرض الشاشة كله */
-    height: 80vh;          /* طول مناسب (تقدر تزوده/تنقصه حسب الشكل) */
     object-fit: cover;     /* تكبر وتعمل crop */
     object-position: center; /* تظبط الكروب من النص */
     margin: 0;             /* نشيل أي padding أو margin */
     padding: 0;
   }
-    .gift-row3 { 
+  س.gift-row3 { 
     padding: 0;
     margin: 0;
   }
