@@ -369,9 +369,9 @@ section {
 }
 
 .gift-row3-right img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain; /* أو cover لو عايز تقصها */
+  width: 890px;
+  height: 402px;
+  object-fit: cover;
   position: relative; /* رجّعها relative عشان ما تطيرش */
 }
 
