@@ -88,7 +88,7 @@
 .gift-btn svg path {
   stroke: #000;
   fill: #000;
-  transition: stroke 0.3s ease, fill 0.3s ease;
+  ransition: stroke 0.3s ease 0.6s, fill 0.3s ease 0.6s;
 }
 
 /* Hover state */
