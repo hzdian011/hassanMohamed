@@ -417,7 +417,8 @@ section {
   }
   .gift-row2 {
     position: relative;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    overflow-x: hidden;
   }
   .gift-row2 img {
     display: block;
