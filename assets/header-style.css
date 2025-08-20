@@ -16,7 +16,7 @@
         padding: 10px 50px;
         width: 100%;
         box-sizing: border-box;
-        background: #F5F5F5;
+        background: #F7F7F7; /*#606*/
         flex-wrap: nowrap;
       }
 
@@ -141,7 +141,7 @@
       flex-direction: column;
       align-items: center;
       gap: 15px;
-      background: #f2f2f2;
+      background: #f2f2f2; /*#606*/
       padding: 15px;
       position: absolute;
       top: 100%;
