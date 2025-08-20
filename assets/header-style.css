@@ -533,22 +533,5 @@ section {
     height: auto;
     display: block;
   }
-  .gift-row2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-  }
-
-  .gift-row2 img {
-    display: block !important;
-    width: 100%;
-    height: auto;
-    max-width: 500px; /* تقدر تغيرها حسب المقاس */
-  }
-
-  .gift-row2 .gift-cta {
-    margin-top: 15px;
-    text-align: center;
-  }
+  
 }
