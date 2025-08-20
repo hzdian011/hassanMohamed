@@ -362,26 +362,17 @@ section {
   height: auto;
 } */
 
-.gift-row3-right {
-  flex: 1;
-  height: 100%;              /* ياخد طول القسم */
-  display: flex;
-  justify-content: flex-end; /* يمين */
-  align-items: stretch;      /* تمتد بالطول */
-  overflow: hidden;          /* نخفي الجزء اللي تحت */
-}
+  .gift-row3-right img {
+    max-width: none;          /* عشان نتحكم في القص */
+    width: 120%;              /* نخليها أوسع شوية */
+    object-fit: cover;
+    object-position: right 30% top; /* يمين شوية وتحت بحيث يبان ثلثين الصورة */
+    transform: translateY(20px);    /* نزول لتحت */
+  }
 
-.gift-row3-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: right 20% top; /* يدخل يمين أكتر */
-  transform: translateY(50px);    /* ينزل تحت */
-}
- 
-/* ✅ اخفاء في الموبايل */
+  /* اخفاء الصورة في الموبايل */
 @media (max-width: 768px) {
-  .gift-row3-right {
+  .gift-row3-right img {
     display: none;
   }
 }
