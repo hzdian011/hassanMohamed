@@ -259,9 +259,8 @@
         transform: translateX(5px);
       }
       .gift-row3-right img {
-        max-width: 110%;
+        max-width: 100%;
         height: auto;
-        transform: translateX(-50px);
       }
 
       /* ================== Row 4 ================== */
