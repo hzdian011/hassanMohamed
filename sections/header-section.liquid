@@ -102,10 +102,10 @@
     </div>
   </nav>
 
-  {% comment %} <!-- Raw 2 -->
+  <!-- Raw 2 -->
   <div class="gift-row2">
     <img src="{{ 'gifts-upper.svg' | asset_url }}" width="" height="">
-  </div> {% endcomment %}
+  </div>
 
   <!-- Raw 3 -->
   <div class="gift-row3">
@@ -126,17 +126,12 @@
     </div>
   </div>
 
-    <!-- Raw 2 -->
-  <div class="gift-row2">
-    <img src="{{ 'gifts-upper.svg' | asset_url }}" width="" height="">
-  </div>
-
   <!-- Raw 4 -->
   <div class="gift-row4" style="margin-top: -3px">
     <p class="gift-footer">{{ section.settings.footer_text }}</p>
   </div>
 
-
+  
 </section>
 
 {{ 'header-style.css' | asset_url | stylesheet_tag }}
