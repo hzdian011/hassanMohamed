@@ -487,14 +487,32 @@ section {
   flex-direction: column;
 }
 
-/* الترتيب الطبيعي (Desktop) */
-.gift-row2 { order: 1; }
-.gift-row3 { order: 2; }
-.gift-row4 { order: 3; }
-
-/* في الموبايل أو التابلت نعكس row2 و row4 */
-@media (max-width: 1024px) {
-  .gift-row2 { order: 3; } /* يخليها بعد row3 */
-  .gift-row3 { order: 1; }
-  .gift-row4 { order: 2; }
+/* Desktop (الترتيب العادي) */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "row1"
+    "row2"
+    "row3"
+    "row4"
+    "row5";
 }
+
+/* Mobile/Tablet */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-areas:
+      "row1"
+      "row2"   /* نخلي row2 ييجي هنا */
+      "row4"   /* وبعده row4 */
+      "row3"
+      "row5";
+  }
+}
+
+/* تعريف كل row */
+.row1 { grid-area: row1; }
+.row2 { grid-area: row2; }
+.row3 { grid-area: row3; }
+.row4 { grid-area: row4; }
+.row5 { grid-area: row5; }
