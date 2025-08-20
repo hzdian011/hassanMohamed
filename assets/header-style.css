@@ -120,24 +120,34 @@
 }
 
 /* ================== Arrow animation ================== */
-.gift-btn:hover svg {
-  /* animation: hideShowArrow 2s forwards; */
-  animation: hideShowArrow 0.35s forwards;
-}
 
 .gift-btn:hover svg path {
   stroke: #fff;
   fill: #fff;
 }
 
-/* Keyframes for arrow */
-@keyframes hideShowArrow {
-  0%   { opacity: 1; }
-  5%  { opacity: 0; }   /* يختفي بسرعة */
-  95%  { opacity: 0; }   /* يفضل مختفي ثانية */
-  100% { opacity: 1; }   /* يرجع يظهر */
+/* Arrow animation on hover in */
+.gift-btn:hover svg {
+  animation: hideShowArrowIn 0.35s forwards;
+}
 
-  
+@keyframes hideShowArrowIn {
+  0%   { opacity: 1; }
+  5%   { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Arrow animation on hover out */
+.gift-btn:not(:hover) svg {
+  animation: hideShowArrowOut 0.35s forwards;
+}
+
+@keyframes hideShowArrowOut {
+  0%   { opacity: 1; }
+  5%   { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 
