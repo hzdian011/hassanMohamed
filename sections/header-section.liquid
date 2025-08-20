@@ -64,8 +64,14 @@
     },
     {
       "type": "text",
-      "id": "footer_text",
-      "label": "Footer Text",
+      "id": "footer_text_desktop",
+      "label": "Footer Text (Desktop)",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
+    {
+      "type": "text",
+      "id": "footer_text_mobile",
+      "label": "Footer Text (Mobile)",
       "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
     }
   ]
@@ -119,8 +125,8 @@
       <!-- Left Side -->
       <div class="gift-row3-left">
         <h3 class="gift-title">{{ section.settings.left_title }}</h3>
-        <p class="gift-desc desktop-desc">{{ section.settings.left_text }}</p>
-        <p class="gift-desc mobile-desc">{{ section.settings.left_text }}</p>
+        <p class="gift-desc desktop-desc">{{ section.settings.left_text_desktop }}</p>
+        <p class="gift-desc mobile-desc">{{ section.settings.left_text_mobile }}</p>
         <button class="gift-cta">
           {{ section.settings.left_button }}
           <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
