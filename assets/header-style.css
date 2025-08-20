@@ -18,6 +18,7 @@
         box-sizing: border-box;
         background: #F7F7F7; /*#606*/
         flex-wrap: nowrap;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15); /*#606*/
       }
 
       .gift-logo {
