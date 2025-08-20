@@ -162,9 +162,6 @@ section {
 }
 
 /* Show row3 image only on desktop */
-@media (min-width: 1025px) {
-  .gift-row3-right img { display: block; }
-}
 
 /* CTA Button (Row 3) */
 .gift-cta {
