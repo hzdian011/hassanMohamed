@@ -133,9 +133,11 @@
 /* Keyframes for arrow */
 @keyframes hideShowArrow {
   0%   { opacity: 1; }
-  10%  { opacity: 0; }   /* يختفي بسرعة */
-  35%  { opacity: 0; }   /* يفضل مختفي ثانية */
+  5%  { opacity: 0; }   /* يختفي بسرعة */
+  95%  { opacity: 0; }   /* يفضل مختفي ثانية */
   100% { opacity: 1; }   /* يرجع يظهر */
+
+  
 }
 
 
