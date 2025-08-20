@@ -457,6 +457,8 @@ section {
     text-align: center;
   }
 }
+.desktop-desc { display: block; }
+.mobile-desc { display: none; }
 
 @media (max-width: 768px) {
   .gift-subtitle,
@@ -469,10 +471,9 @@ section {
   .gift-desc {
     font-size: 16px;
   }
-  .desktop-desc { display: block; }
-  .mobile-desc { display: none; }
+  .desktop-desc { display: none; }
+  .mobile-desc { display: block; }
 }
-
 /* =========================================================
    Grid Layout for Gift Content
    ========================================================= */
