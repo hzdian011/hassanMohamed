@@ -321,7 +321,20 @@ section {
     text-align: center;
     color: #000000;
    }
-  .gift-desc { font-size: 16px; margin: 0 0 10px 0; max-width: 90%; }
+  .gift-desc { 
+    font-size: 16px; 
+    margin: 0 0 10px 0; 
+    max-width: 90%;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    /* or 21px */
+    text-align: center;
+
+    color: #000000;
+  }
   .desktop-desc { display: none; }
   .mobile-desc { display: block; }
 
