@@ -221,14 +221,11 @@
 
   .nav-links .gift-btn {
     width: auto;        /* ✅ يرجع للعرض الطبيعي */
-    min-width: 260px;   /* ✅ يضمن يفضل ثابت زي الديسكتوب */
+    min-width: 250px;   /* ✅ يضمن يفضل ثابت زي الديسكتوب */
     justify-content: center;
     margin: 0 auto;     /* ✅ يخليه متوسّط */
   }
   
-  .gift-btn svg {
-    margin-left: auto;    /* يخلي السهم يتحرك أكتر لليمين */
-  }
 }
 
 
