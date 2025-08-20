@@ -222,7 +222,7 @@ section {
 
 .desktop-desc { display: block; }
 .mobile-desc { display: none; }
-
+.mobile-img { display: none;}
 
 /* =========================================================
     Responsive Styles (Tablet & Mobile)
@@ -310,11 +310,7 @@ section {
   }
   .desktop-desc { display: none; }
   .mobile-desc { display: block; }
-}
-.mobile-img {
-  display: none;
-
-  .gift-row3 .gift-cta {
+    .gift-row3 .gift-cta {
     position: absolute;
     bottom: 315px;   /* يبعد 20px عن أسفل الصورة */
     left: 50%;
@@ -334,6 +330,7 @@ section {
     margin: 0;
   }
 }
+
 /* إظهارها في الموبايل بدل gifts-right.svg */
 @media (max-width: 768px) {
   
