@@ -304,24 +304,6 @@ section {
   }
   .desktop-desc { display: none; }
   .mobile-desc { display: block; }
-
-  /* Layout */
-  /* .gift-row2 { display: none; }
-  .gift-row3 { flex-direction: column; gap: 20px; }
-  .gift-row3-left { align-items: center; gap: 10px; }
-  .gift-row3-right { order: 3; width: 100%; display: flex; justify-content: center; margin: 10px 0 0; }
-  .gift-row3-right img { width: 100%; margin: 0; display: block; } */
-
-  /* Grid reorder */
-  /* .gift-content {
-    grid-template-areas:
-      "row1"
-      "row3"
-      "row2"
-      "row4"
-      "row5";
-  }
-  .gift-row3-right { grid-area: row4; } */
 }
 .mobile-img {
   display: none;
