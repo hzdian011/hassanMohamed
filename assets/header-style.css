@@ -193,7 +193,7 @@ section {
   }
 
   .nav-links.open {
-    max-height: 300px; /* رقم كافي لمحتوى المنيو */
+    max-height: 300px;
     opacity: 1;
     transform: translateY(0);
     padding: 15px;
@@ -213,7 +213,7 @@ section {
     min-width: 250px;
     justify-content: center;
     margin: 0 auto;
-    gap: 30px; /* تزود المسافة بين النص والسهم */
+    gap: 30px;
   }
 
   .nav-links .gift-btn svg {
@@ -357,25 +357,20 @@ section {
   animation: hideShowArrowOut 0.35s forwards;
 }
 
-/* .gift-row3-right img {
-  max-width: 100%;
-  height: auto;
-} */
+/* ================== Row 3 Right Image ================== */
 .gift-row3-right {
   flex: 1;
   display: flex;
-  justify-content: center; /* أو flex-start */
+  justify-content: center;
   align-items: center;
 }
 .gift-row3-right img {
-  width: 947px;  /* تزود العرض */
+  width: 947px;
   height: auto;
   object-fit: contain;
-  margin-left: -100px; /* تزق الصورة شمال */
+  margin-left: -100px;
   display: none;
 }
-
-
 
 /* إظهارها بس على الشاشات الكبيرة (desktop) */
 @media (min-width: 1025px) {
@@ -411,15 +406,8 @@ section {
     padding: 10px 20px;
     gap: 10px;
   }
-  /* .gift-row3 {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
-  .gift-desc {
-    margin: 0 auto 20px;
-  } */
-   /* نخفي صورة row3 */
+
+  /* نخفي صورة row3 */
   .gift-row3-right {
     display: none;
   }
@@ -434,26 +422,28 @@ section {
   }
 
   .gift-row3-left {
+    order: 1;
     align-items: center;
     text-align: center;
   }
 
   .gift-title {
     font-size: 36px;
-    text-align: center;
+    margin-bottom: 15px;
   }
 
   .gift-desc {
     font-size: 16px;
-    margin: 10px auto 20px;
+    margin: 0 auto 20px;
     text-align: center;
+    max-width: 90%;
   }
 
-  /* نخلّي صورة row2 جوه row3 تحت النصوص */
+  /* صورة gifts-upper تنزل تحت */
   .gift-row2 {
     order: 2;
     width: 100%;
-    position: relative; /* عشان نقدر نثبت الزر فوقها */
+    position: relative;
     margin-top: 20px;
   }
 
@@ -466,12 +456,11 @@ section {
   /* الزر يركب على الصورة */
   .gift-cta {
     position: absolute;
-    bottom: 30%;   /* الثلث الأخير */
+    bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
   }
-  
 }
 
 @media (max-width: 768px) {
