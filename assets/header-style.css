@@ -368,7 +368,7 @@ section {
   align-items: center;
 }
 .gift-row3-right img {
-  width: 1100px;  /* تزود العرض */
+  width: 947px;  /* تزود العرض */
   height: auto;
   object-fit: contain;
   margin-left: -100px; /* تزق الصورة شمال */
