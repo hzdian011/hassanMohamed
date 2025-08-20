@@ -320,6 +320,7 @@ section {
     scale: 2.2;
     overflow: hidden;
     transform: translate(45px, 46px);
+    z-index: 2;
   }
   .gift-row3 { 
     padding: 0;
