@@ -372,11 +372,12 @@ section {
 }
 
 .gift-row3-right img {
-  height: 100%;          /* يتمدد على الطول */
-  width: 120%;           /* 🟡 نكبر العرض شوية (جرب 120% أو أكتر حسب ما تحب) */
-  object-fit: cover;     
-  object-position: left top; /* 🟡 ثابت من الشمال لفوق */
-  display: block;
+  position: absolute;
+  width: 890px;
+  height: 402px;
+  left: 550px;
+  top: 442px;
+  object-fit: cover; /* يخليها تتقص لو مش ماشية على المقاسات */
 }
 
 
