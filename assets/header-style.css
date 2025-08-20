@@ -305,7 +305,7 @@ section {
   .mobile-desc { display: block; }
     .gift-row3 .gift-cta {
     position: absolute;
-    bottom: 315px;   /* يبعد 20px عن أسفل الصورة */
+    bottom: 20px;   /* يبعد 20px عن أسفل الصورة */
     left: 50%;
     transform: translateX(-50%);
   }
