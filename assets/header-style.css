@@ -125,7 +125,7 @@
 /* أول ما أعمل hover → السهم يختفي */
 .gift-btn:hover svg {
   opacity: 0;
-  transition-delay: 0s;
+  transition-delay: opacity  0s;
 }
 
 /* يتغير اللون وهو مختفي */
@@ -137,7 +137,8 @@
 /* بعد ما الخلفية تتحرك → السهم يظهر أبيض */
 .gift-btn:hover svg {
   opacity: 1;
-  transition-delay: 0.8s; /* ✨ يظهر بعد انتهاء الانيميشن */
+  transition: opacity 0.3s ease;  /* انسيابية الظهور */
+  transition-delay: 1s;      
 }
 
 
