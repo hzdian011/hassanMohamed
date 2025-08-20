@@ -315,7 +315,7 @@ section {
 
   /* Layout */
   .gift-row2 { display: none; }
-  .gift-row3 { flex-direction: column; gap: 20px; padding: 20px 15px; }
+  .gift-row3 { flex-direction: column; gap: 20px; }
   .gift-row3-left { align-items: center; gap: 10px; }
   .gift-row3-right { order: 3; width: 100%; display: flex; justify-content: center; margin: 10px 0 0; }
   .gift-row3-right img { width: 100%; margin: 0; display: block; }
