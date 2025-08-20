@@ -357,10 +357,18 @@ section {
   animation: hideShowArrowOut 0.35s forwards;
 }
 
-.gift-row3-right img {
+/* .gift-row3-right img {
   max-width: 100%;
   height: auto;
-}
+} */
+
+  .gift-row3-right img {
+    max-width: none;          /* عشان نتحكم في القص */
+    width: 120%;              /* نخليها أوسع شوية */
+    object-fit: cover;
+    object-position: right 30% top; /* يمين شوية وتحت بحيث يبان ثلثين الصورة */
+    transform: translateY(20px);    /* نزول لتحت */
+  }
 
 /* ================== Row 4 ================== */
 .gift-row4 {
