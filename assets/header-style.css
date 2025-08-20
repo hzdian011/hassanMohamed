@@ -255,6 +255,7 @@ section {
 
 /* Mobile */
 @media (max-width: 1024px) {
+  .gift-row3-left  {align-items:center}
   .gift-row2 { position: relative; margin-top: 20px; }
   .gift-row2 img {display:none; }
   .gift-cta {
