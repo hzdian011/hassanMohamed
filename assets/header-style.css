@@ -425,17 +425,11 @@ section {
     height: auto;
   }
   .gift-cta {
-    /* position: relative;
-    margin-top: 20px;
-    bottom: auto;
-    left: auto;
-    transform: none; */
-
     position: relative;
     bottom: -160px; /* المسافة من تحت */
     left: 29%;
     transform: translateX(-50%);
-    margin: 0; /* نلغي المارجن القديم */
+    margin: 0;
   }
   .gift-row3 {
     flex-direction: column;
@@ -474,6 +468,7 @@ section {
   .desktop-desc { display: none; }
   .mobile-desc { display: block; }
 }
+
 /* =========================================================
    Grid Layout for Gift Content
    ========================================================= */
@@ -498,8 +493,21 @@ section {
     grid-template-areas:
       "row1"
       "row3"
-      "row2"
+      "row3-right"
       "row4"
       "row5";
+  }
+
+  /* إخفاء upper image */
+  .gift-row2 {
+    display: none;
+  }
+
+  /* إظهار right image تحت النص */
+  .gift-row3-right {
+    display: block;
+    grid-area: row3-right;
+    justify-content: center;
+    margin-top: 20px;
   }
 }
