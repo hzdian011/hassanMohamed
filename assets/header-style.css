@@ -245,13 +245,13 @@ section {
    ========================================================= */
 
 /* Tablet */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) { */
   /* .gift-nav { flex-wrap: wrap; padding: 10px 20px; gap: 10px; } */
   /* .gift-row3-right { display: none; } */
 
   /* .gift-title { font-size: 36px; } */
   /* .gift-desc { font-size: 16px; margin: 10px auto 20px; } */
-}
+/* } */
 
 /* Mobile */
 @media (max-width: 1024px) {
