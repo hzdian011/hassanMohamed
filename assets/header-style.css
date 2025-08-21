@@ -1,70 +1,65 @@
 /* =========================================================
-    Global Styles
+   🎯 Desktop Styles (Default)
    ========================================================= */
 
-/* General section wrapper */
+/* General */
 section {
-  overflow-x: hidden;        /* منع أي scroll أفقي */
+  overflow-x: hidden;
   width: 100%;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-/* =========================================================
-    Navigation Bar
-   ========================================================= */
-
+/* Navigation Bar */
 .gift-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(8px, 2vw, 10px) clamp(20px, 5vw, 50px);
+  padding: 10px 50px;
   width: 100%;
   background: #F7F7F7;
   box-sizing: border-box;
   flex-wrap: nowrap;
-  position: relative;
 }
 
 /* Logo */
 .gift-logo {
   font-family: 'Jost', sans-serif;
-  font-size: clamp(16px, 1.5vw, 18px);
+  font-size: 18px;
   font-weight: 600;
   color: #000;
   white-space: nowrap;
 }
 
-/* Subtitle (centered) */
+/* Subtitle */
 .gift-subtitle {
   font-family: 'Jost', sans-serif;
-  font-size: clamp(14px, 1.5vw, 16px);
+  font-size: 16px;
   font-weight: 400;
   color: #000;
   margin: 0;
   text-align: center;
   line-height: 1.25;
+  flex: 1;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* Navigation button */
+/* Nav Button */
 .gift-btn {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  width: clamp(160px, 20vw, 207px);
-  padding: clamp(10px, 2vw, 14px) clamp(8px, 2vw, 10px);
+  width: 207px;
+  padding: 14px 10px;
   background: #FFF544;
   border: none;
   color: #000;
   font-family: 'Jost', sans-serif;
-  font-size: clamp(14px, 2vw, 16px);
+  font-size: 16px;
   text-transform: uppercase;
   cursor: pointer;
   overflow: hidden;
@@ -83,6 +78,7 @@ section {
   background: #000;
   opacity: 0;
   transition: all 0.3s ease;
+  transition-delay: 0s;
   z-index: -1;
 }
 .gift-btn:hover::before { left: 0; opacity: 1; }
@@ -90,83 +86,67 @@ section {
 .gift-btn svg path { stroke: #000; fill: #000; }
 .gift-btn:hover svg path { stroke: #fff; fill: #fff; }
 
-/* Burger button (mobile only) */
-.burger-btn {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #000;
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+/* Arrow Animations */
+@keyframes hideShowArrowIn {
+  0% { opacity: 1; }
+  5% { opacity: 0; }
+  95% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes hideShowArrowOut {
+  0% { opacity: 1; }
+  5% { opacity: 0; }
+  95% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-/* Nav links */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+/* Desktop Nav Links */
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.burger-btn { display: none; }
 
-/* =========================================================
-    Row 2 (Full Image Banner)
-   ========================================================= */
-
+/* Row 2 (Full Image) */
 .gift-row2 img {
   width: 100%;
-  height: auto;
+  max-width: none;
   object-fit: cover;
   object-position: left;
   display: block;
-  max-width: 100%;
 }
 
-/* =========================================================
-    Row 3 (Content + Image)
-   ========================================================= */
-
+/* Row 3 (Content + Image) */
 .gift-row3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(10px, 5vw, 40px);
+  padding: 0 0 0 40px;
   width: 100%;
   box-sizing: border-box;
-  gap: clamp(15px, 4vw, 40px);
 }
-
-/* Left side (title + desc + button) */
 .gift-row3-left {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: flex-start;
-  gap: clamp(10px, 3vw, 20px);
+  align-items: start;
+  gap: 20px;
 }
-
 .gift-title {
   font-family: 'Jost', sans-serif;
+  font-size: 70px;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 100%;
   color: #000;
   margin: 0;
-  font-size: clamp(24px, 5vw, 70px);
 }
-
 .gift-desc {
   font-family: 'Jost', sans-serif;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 1.4;
-  max-width: min(90%, 480px);
-  margin: 0 0 clamp(15px, 3vw, 30px) 0;
+  line-height: 140%;
+  max-width: 480px;
+  margin-bottom: 30px;
   color: #000;
-  font-size: clamp(14px, 2vw, 20px);
 }
-
-/* Right side (image) */
 .gift-row3-right {
   flex: 1;
   display: flex;
@@ -174,26 +154,31 @@ section {
   align-items: center;
 }
 .gift-row3-right img {
-  width: clamp(500px, 60vw, 947px);
+  width: 947px;
   height: auto;
   object-fit: contain;
-  margin-left: -5%;
+  margin-left: -100px;
   display: none;
 }
 
-/* CTA button (row 3) */
+/* Show row3 image only on desktop */
+@media (min-width: 1025px) {
+  .gift-row3-right img { display: block; }
+}
+
+/* CTA Button (Row 3) */
 .gift-cta {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: clamp(10px, 2vw, 14px) clamp(20px, 5vw, 40px);
+  padding: 14px 40px;
   background: #000;
   border: none;
   color: #FFF;
   font-family: 'Jost', sans-serif;
-  font-size: clamp(14px, 2vw, 16px);
+  font-size: 16px;
   text-transform: uppercase;
   cursor: pointer;
   overflow: hidden;
@@ -216,46 +201,64 @@ section {
 .gift-cta svg path { stroke: #FFF; fill: #FFF; }
 .gift-cta:hover svg path { stroke: #000; fill: #000; }
 
-/* =========================================================
-    Row 4 (Footer strip)
-   ========================================================= */
-
+/* Row 4 (Footer strip) */
 .gift-row4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: clamp(5px, 2vw, 8px) clamp(10px, 4vw, 20px);
+  padding: 8px 20px;
   width: 100%;
   background: #F5F5F5;
   box-sizing: border-box;
 }
-
 .gift-footer {
   font-family: 'Jost', sans-serif;
   font-weight: 400;
-  font-size: clamp(14px, 1.5vw, 16px);
+  font-size: 16px;
   color: #000;
   margin: 0;
   text-align: center;
 }
 
-/* =========================================================
-    Responsive Utilities
-   ========================================================= */
-
 .desktop-desc { display: block; }
 .mobile-desc { display: none; }
-.mobile-img   { display: none; }
+.mobile-img { display: none;}
 
 /* =========================================================
-    Breakpoints (Tablet & Mobile)
+    Responsive Styles (Tablet & Mobile)
    ========================================================= */
 
-/* Tablets and below */
+/* Mobile */
 @media (max-width: 1024px) {
-  /* Nav adjustments */
-  .gift-nav { justify-content: center; }
-  .burger-btn { display: block; }
+  .gift-row3-left  {align-items:center}
+  .gift-row2 { position: relative; margin-top: 20px; }
+  .gift-row2 img {display:none; }
+    .gift-row2 .gift-cta {
+      position: absolute;
+      bottom: 20px;   /* يبعد 20px عن أسفل الصورة */
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  .gift-row3 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+  }
+
+  /* Burger Menu */
+  .burger-btn {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .gift-nav { justify-content: center; position: relative; }
 
   /* Mobile Menu */
   .nav-links {
@@ -265,58 +268,70 @@ section {
     background: #f2f2f2;
     position: absolute;
     top: 100%; left: 0; right: 0;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
+    max-height: 0; overflow: hidden;
+    opacity: 0; transform: translateY(-10px);
     padding: 0 15px;
     transition: all 0.4s ease;
   }
   .nav-links.open {
-    max-height: 300px;
-    opacity: 1;
+    max-height: 300px; opacity: 1;
     transform: translateY(0);
     padding: 15px;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
   }
   .nav-links .gift-subtitle { position: static; transform: none; margin-bottom: 10px; }
-  .nav-links .gift-btn { width: auto; min-width: 200px; margin: 0 auto; }
+  .nav-links .gift-btn { width: auto; min-width: 250px; justify-content: center; margin: 0 auto; }
 
-  /* Row3 layout */
-  .gift-row3 { flex-direction: column; text-align: center; }
-  .gift-row3-left { align-items: center; }
-  .gift-row3-right { display: none; }
-
-  /* Text */
-  .gift-title { font-size: clamp(20px, 6vw, 30px); }
-  .gift-desc { font-size: clamp(14px, 3vw, 16px); }
-
-  /* Show mobile desc */
+  /* Typography */
+  .gift-title {
+     font-size: 28px;
+    margin: 40px 0 0 0;
+    /* The Gift Guide */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+   }
+  .gift-desc { 
+    font-size: 16px; 
+    margin: 0 0 10px 0; 
+    max-width: 90%; 
+  }
   .desktop-desc { display: none; }
   .mobile-desc { display: block; }
-
-  /* Mobile Image */
-  .mobile-img { 
-    display: block;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    margin: 0;
-    padding: 0;
-    z-index: -1;
-  }
-  .gift-row3 { position: relative; overflow: hidden; }
-  .gift-row3 .mobile-img {
-    width: 100%;
-    transform: scale(1.5);
-    transform-origin: center;
-  }
-
-  /* CTA on mobile */
-  .gift-row3 .gift-cta {
+    .gift-row3 .gift-cta {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;   /* يبعد 20px عن أسفل الصورة */
     left: 50%;
     transform: translateX(-50%);
   }
+  .gift-row3-right { display: none; } /* نخفي صورة gifts-right.svg */
+  .mobile-img { 
+    display: block;
+    width: 100vw;          /* تاخد عرض الشاشة كله */
+    object-fit: cover;     /* تكبر وتعمل crop */
+    object-position: center; /* تظبط الكروب من النص */
+    margin: 0;             /* نشيل أي padding أو margin */
+    padding: 0;
+    z-index: -1;
+  }
+  .gift-row3 { 
+    padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden; /* يمنع الصورة تكسر على الفوتر */
+    width: 100%;
+    height: auto; /* أو حط ارتفاع ثابت لو عايز */
+  }
+  
+.gift-row3 .mobile-img {
+  width: 100%;
+  transform: scale(2.3) translate(45px, 46px);
+  transform-origin: center; /* يخلي التكبير من النص */
 }
+}
+
