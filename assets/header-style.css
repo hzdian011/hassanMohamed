@@ -114,14 +114,25 @@ section {
 }
 
 /* Row 3 (Content + Image) */
-.gift-row3 {
+/* .gift-row3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 0 0 40px;
   width: 100%;
   box-sizing: border-box;
+} */
+.gift-row3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(10px, 5vw, 40px);
+    width: 100%;
+    box-sizing: border-box;
+    gap: clamp(15px, 4vw, 40px);
 }
+
+
 .gift-row3-left {
   flex: 1;
   display: flex;
@@ -153,6 +164,8 @@ section {
   justify-content: center;
   align-items: center;
 }
+
+
 .gift-row3-right img {
   width: 947px;
   height: auto;
