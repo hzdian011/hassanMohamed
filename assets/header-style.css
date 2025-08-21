@@ -126,7 +126,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: clamp(10px, 5vw, 40px);
+    padding: 0 0 0 40px;
     width: 100%;
     box-sizing: border-box;
     gap: clamp(15px, 4vw, 40px);
