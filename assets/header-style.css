@@ -1,5 +1,5 @@
 /* =========================================================
-   🎯 Desktop Styles (Default)
+   Desktop Styles (Default)
    ========================================================= */
 
 /* General */
@@ -158,7 +158,7 @@ section {
   height: auto;
   object-fit: contain;
   margin-left: -100px;
-  display: none;
+  
 }
 
 /* Show row3 image only on desktop */
