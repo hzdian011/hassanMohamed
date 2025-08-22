@@ -422,3 +422,9 @@ body {
 }
 
 .plus-icon { width: 30px; height: 30px; color: white; }
+
+/* Placeholder Style للمقاس الافتراضي */
+.dropdown-btn.placeholder {
+  color: #999;        /* رمادي */
+  font-style: italic; /* يمّيّز إنه placeholder */
+}
