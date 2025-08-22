@@ -201,6 +201,7 @@ section {
   border: none;
   color: #FFF;
   font-family: 'Jost', sans-serif;
+  font-weight:400;
   font-size: clamp(14px, 2vw, 16px);
   text-transform: uppercase;
   cursor: pointer;
