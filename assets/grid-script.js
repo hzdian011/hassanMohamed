@@ -267,7 +267,6 @@
   })
     .then((res) => res.json())
     .then(async () => {
-      // ✅ الشرط المطلوب
       if (
         selectedColor?.toLowerCase() === "black" &&
         selectedSize?.toLowerCase() === "m"
