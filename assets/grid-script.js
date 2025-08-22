@@ -249,11 +249,11 @@
       ? document.getElementById("sizeDropdownBtn").textContent
       : null;
 
-    const selectedVariant = currentProduct.variants.find(
-      (v) =>
-        (!selectedColor || v.options.includes(selectedColor)) &&
-        (!selectedSize || v.options.includes(selectedSize))
-      );
+    // const selectedVariant = currentProduct.variants.find(
+    //   (v) =>
+    //     (!selectedColor || v.options.includes(selectedColor)) &&
+    //     (!selectedSize || v.options.includes(selectedSize))
+    //   );
 
    if (!selectedVariant) {
     alert("Please select options");
