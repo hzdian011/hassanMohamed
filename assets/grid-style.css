@@ -376,6 +376,16 @@ body {
   color: #fff;
 }
 
+
+#sizeDropdownBtn {
+  justify-content: space-between; /* زي ما هو */
+}
+
+/* بعد ما يختار مقاس */
+#sizeDropdownBtn.size-selected {
+  justify-content: center;
+}
+
 /* ==============================
     Add to Cart Button
    ============================== */
