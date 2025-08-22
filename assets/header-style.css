@@ -306,7 +306,7 @@ section {
 
   /* Show mobile desc */
   .desktop-desc { display: none; }
-  .mobile-desc { display: block; }
+  .mobile-desc { display: block; z-index: -1; } /* #606 new one line*/
 
   /* Mobile Image */
   .mobile-img { 
