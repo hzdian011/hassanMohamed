@@ -308,27 +308,19 @@ section {
 
   /* Row3 layout */
   .gift-row3 { flex-direction: column; text-align: center; }
-  .gift-row3-left { 
-    align-items: center;
-    /* Find the ideal gift for your loved ones. */
-      /* width: 260px; */
-      width: 100%; 
-      /* height: 14px; */
-      height: auto; /*#make sure*/
-      max-width: 90%; 
-      margin: 0 auto;
+.gift-row3-left { 
+  width: 100%; 
+  max-width: 90%; 
+  margin: 0 auto;
+  height: auto;
 
-      font-family: 'Jost'; /* #606 306-314*/
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 13px;
-      /* identical to box height, or 84% */
-      display: flex;
-      align-items: center;
-      text-align: center;
-      
-  }
+  display: flex;
+  flex-direction: column;  /* يخلي العناصر فوق بعض */
+  align-items: center;     /* يخليهم في النص */
+  text-align: center;
+  gap: 12px;               /* مسافة بين العنوان والوصف والزرار */
+}
+
   .gift-row3-right { display: none; }
 
   /* Text */
