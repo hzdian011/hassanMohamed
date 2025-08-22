@@ -234,7 +234,7 @@
   //     .catch((err) => console.error("Error adding to cart:", err));
   // }
 
-function handleAddToCart() {
+  function handleAddToCart() {
     if (!currentProduct) {
       alert("No product selected");
       return;
