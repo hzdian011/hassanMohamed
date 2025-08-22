@@ -332,11 +332,12 @@ section {
   .gift-row3-right { display: none; }
 
   /* Text */
-  .gift-title { font-size: clamp(30px, 6vw, 30px); 
-
+  .gift-title { 
+    font-size: clamp(30px, 6vw, 30px); 
     font-family: 'Jost';
     font-style: normal;
     font-weight: 500;  /* #606  334(30px) - 338 */
+    margin: clamp(40px, 8vw, 60px) 0 clamp(10px, 4vw, 20px) 0; /* responsive margin #606 de bdal elly fe */ 
 
   } /*#606*/
   .gift-desc { 
