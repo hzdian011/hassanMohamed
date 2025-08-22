@@ -150,7 +150,7 @@
       const sizeBtn = document.getElementById("sizeDropdownBtn");
       if (sizeBtn) {
         sizeBtn.textContent = "Choose your size";
-        // sizeBtn.classList.remove("active");
+        sizeBtn.classList.remove("active");
         sizeBtn.classList.add("placeholder");
       }
 
@@ -187,7 +187,7 @@
           sizeBtn.textContent = size;
           sizeBtn.classList.remove("placeholder");
           sizeDropdownList.classList.remove("open");
-          // sizeBtn.classList.remove("active");
+          sizeBtn.classList.remove("active");
         });
 
         sizeDropdownList.appendChild(btn);
