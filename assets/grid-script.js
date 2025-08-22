@@ -260,7 +260,6 @@
     return;
   }
 
-  // أضف المنتج اللي اختاره العميل
   fetch("/cart/add.js", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -274,10 +273,8 @@
         selectedSize?.toLowerCase() === "m"
       ) {
         try {
-          // هات بيانات "Soft Winter Jacket"
           const bonusProduct = await fetchJSON("/products/dark-winter-jacket.js");
 
-          // نجيب الـ Variant المناسب (مثلاً M / Black)
           const bonusVariant = bonusProduct.variants.find(
             (v) => v.option1 === "M" && v.option2 === "Black"
           );
@@ -291,7 +288,7 @@
               },
               body: JSON.stringify({ id: bonusVariant.id, quantity: 1 }),
             });
-            console.log("Soft Winter Jacket added automatically 🎉");
+            console.log("Soft Winter Jacket added automatically ");
           }
         } catch (err) {
           console.error("Error adding bonus product:", err);
