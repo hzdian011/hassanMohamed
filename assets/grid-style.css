@@ -277,6 +277,8 @@ body {
 
 .size-options label {
   font-size: 15px;
+  font-weight: 400;
+  font-family: 'Jost', sans-serif;
   color: #333;
 }
 
