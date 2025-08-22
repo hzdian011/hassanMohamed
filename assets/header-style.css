@@ -331,7 +331,13 @@ section {
   .gift-row3-right { display: none; }
 
   /* Text */
-  .gift-title { font-size: clamp(30px, 6vw, 30px); } /*#606*/
+  .gift-title { font-size: clamp(30px, 6vw, 30px); 
+
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 500;  /* #606  334(30px) - 338 */
+
+  } /*#606*/
   .gift-desc { font-size: clamp(14px, 3vw, 16px); }
 
   /* Show mobile desc */
