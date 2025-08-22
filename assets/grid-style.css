@@ -122,7 +122,8 @@ body {
   }
   .image-wrapper img { 
     /* height: 185px;  */
-  aspect-ratio: 3 / 4;
+    height: auto; 
+    aspect-ratio: 3 / 4;
   } /*#606*/
 }
 
