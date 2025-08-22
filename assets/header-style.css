@@ -345,6 +345,7 @@ section {
     font-family: 'Jost';
     font-style: normal;
     font-weight: 400;
+    margin: 0 auto clamp(20px, 6vw, 40px) auto; /* responsive margin bottom */
 
   }
 
@@ -389,7 +390,7 @@ section {
     /* bottom: 20px;
     left: 50%;
     transform: translateX(-50%); */
-    bottom: clamp(10px, 5vw, 30px);
+    bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   padding: clamp(8px, 2vw, 14px) clamp(16px, 4vw, 30px);
