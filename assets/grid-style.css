@@ -51,6 +51,8 @@ body {
   gap: 30px; 
   width: 100%;
   margin: 0 auto; 
+  margin-top: 80px;
+  margin-bottom: 80px ;
   padding: 0 50px;
   overflow-y: hidden; 
 }
