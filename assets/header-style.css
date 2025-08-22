@@ -337,7 +337,7 @@ section {
     font-family: 'Jost';
     font-style: normal;
     font-weight: 500;  /* #606  334(30px) - 338 */
-    margin: clamp(40px, 8vw, 60px) 0 clamp(10px, 4vw, 20px) 0; /* responsive margin #606 de bdal elly fe */ 
+    margin: clamp(40px, 8vw, 60px) 0 clamp(10px, 4vw, 20px) 0; /* de shalt line 321 #606 */ 
 
   } /*#606*/
   .gift-desc { 
