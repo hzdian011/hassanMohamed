@@ -185,8 +185,9 @@
         btn.addEventListener("click", () => {
           const sizeBtn = document.getElementById("sizeDropdownBtn");
           sizeBtn.textContent = size;
+          sizeBtn.classList.remove("placeholder");
           sizeDropdownList.classList.remove("open");
-          sizeBtn.classList.remove("active");
+          // sizeBtn.classList.remove("active");
         });
 
         sizeDropdownList.appendChild(btn);
