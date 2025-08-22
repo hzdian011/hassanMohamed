@@ -234,38 +234,37 @@ fetch("/cart/add.js", {
 })
   .then((res) => res.json())
   .then(async () => {
-    // ✅ Check condition: if selectedColor = Black and selectedSize = Medium
-    if (
-      selectedColor?.toLowerCase() === "black" &&
-      selectedSize?.toLowerCase() === "medium"
-    ) {
-      try {
-        // Fetch the Soft Winter Jacket product
-        const jacket = await fetchJSON("/products/soft-winter-jacket.js");
+  // ✅ Check condition: if selectedColor = Black and selectedSize = Medium
+  if (
+    selectedColor?.toLowerCase() === "black" &&
+    selectedSize?.toLowerCase() === "medium"
+  ) {
+    try {
+      // Fetch the Soft Winter Jacket product
+      const jacket = await fetchJSON("/products/soft-winter-jacket.js");
+      const jacketVariant = jacket.variants[0];
 
-        // Get first available variant (or pick logic you need)
-        const jacketVariant = jacket.variants[0];
-
-        if (jacketVariant) {
-          // Add the jacket to cart
-          await fetch("/cart/add.js", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify({ id: jacketVariant.id, quantity: 1 }),
-          });
-        }
-      } catch (err) {
-        console.error("Error adding Soft Winter Jacket:", err);
+      if (jacketVariant) {
+        // Add the jacket to cart
+        await fetch("/cart/add.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({ id: jacketVariant.id, quantity: 1 }),
+        });
       }
+    } catch (err) {
+      console.error("Error adding Soft Winter Jacket:", err);
     }
+  }
 
-    // ✅ Finally close modal and open cart
-    closeModal();
-    openCartDrawer();
-  })
+  // ✅ افتح الـ Drawer بعد ما تخلص كل حاجة
+  closeModal();
+  await openCartDrawer();
+})
+
   .catch((err) => console.error("Error adding to cart:", err));
 
   }
