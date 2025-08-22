@@ -153,7 +153,9 @@ section {
   font-weight: 500;
   line-height: 1.1;
   color: #000;
-  margin: -55px 0 0 0; /*#606c*/
+  /* margin: -55px 0 0 0; #606c */
+
+  margin: clamp(40px, 8vw, 60px) 0 clamp(10px, 4vw, 20px) 0; /* responsive margin #606 de bdal elly fe 156 */  
   font-size: clamp(24px, 5vw, 70px);/*#606*/
 }
 
