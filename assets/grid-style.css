@@ -376,12 +376,11 @@ body {
   color: #fff;
 }
 
-/* 
-#sizeDropdownBtn {
-  justify-content: space-between; /* زي ما هو */
+
+/* #sizeDropdownBtn {
+  justify-content: space-between; 
 }
 
-/* بعد ما يختار مقاس */
 #sizeDropdownBtn.size-selected {
   justify-content: center;
 } */
