@@ -394,13 +394,13 @@ section {
   }
 }
 
-@media (min-width: 1025px) {
+/* @media (min-width: 1025px) {
   .gift-row3 .mobile-img {
     width: auto;
     transform: none;
     margin-top: 0;
   }
-}
+} */
 
   /* CTA on mobile */
   .gift-row3 .gift-cta {
