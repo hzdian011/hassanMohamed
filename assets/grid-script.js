@@ -250,10 +250,12 @@
       : null;
 
     const selectedVariant = currentProduct.variants.find(
-    (v) =>
-      (!selectedColor || v.options.includes(selectedColor)) &&
-      (!selectedSize || v.options.includes(selectedSize))
-    );
+      (v) =>
+        // (!selectedColor || v.options.includes(selectedColor)) &&
+        // (!selectedSize || v.options.includes(selectedSize))
+          (!selectedColor || v.option1.toLowerCase() === selectedColor.toLowerCase().trim()) &&
+    (!selectedSize || v.option2.toLowerCase() === selectedSize.toLowerCase().trim())
+      );
 
    if (!selectedVariant) {
     alert("Please select options");
