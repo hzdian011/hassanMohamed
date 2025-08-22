@@ -359,11 +359,11 @@ section {
     z-index: -1;
   }
   .gift-row3 { 
-    flex-direction: column; /*#606 #make sure and the next line also* / 
-    text-align: center; /*#606*/
+    flex-direction: column; 
+    text-align: center; 
     position: relative; 
     overflow: hidden;  
-    padding:0; /*#606*/
+    padding:0; 
     
     
   }
