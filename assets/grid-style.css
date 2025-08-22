@@ -296,10 +296,11 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border: 1px solid #000;
   cursor: pointer;
   width: 100%;
+  min-height: 41px;
   background: #fff;
   font-size: 16px;
   font-weight: 400; /* 290-291 #606*/
