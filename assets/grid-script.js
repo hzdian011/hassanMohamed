@@ -163,7 +163,9 @@
 
         btn.addEventListener("click", () => {
           const sizeBtn = document.getElementById("sizeDropdownBtn");
-          sizeBtn.textContent = size;
+          const labelSpan = sizeBtn.querySelector(".label");
+          labelSpan.textContent = size;
+          // sizeBtn.textContent = size;
 
           // sizeBtn.classList.add("size-selected");
 
