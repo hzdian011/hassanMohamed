@@ -377,7 +377,7 @@ body {
 }
 #sizeDropdownBtn.size-selected .label {
   flex:1;
-}
+} /* #606 new*/
 
 
 /* #sizeDropdownBtn {
