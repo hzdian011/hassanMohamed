@@ -315,6 +315,8 @@ section {
       width: 100%;
       /* height: 14px; */
       height: auto;
+      max-width: 90%; 
+      margin: 0 auto;
 
       font-family: 'Jost'; /* #606 306-314*/
       font-style: normal;
