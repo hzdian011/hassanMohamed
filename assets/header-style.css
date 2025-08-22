@@ -335,17 +335,17 @@ section {
 
   } /*#606*/
   .gift-desc { 
-    font-size: clamp(16px, 3vw, 16px); /* #606(16px)*/
+    font-size: clamp(16px, 3vw, 16px); 
     font-family: 'Jost';
     font-style: normal;
     font-weight: 400;
-    margin: 0 auto clamp(20px, 6vw, 40px) auto; /* responsive margin bottom */
+    margin: 0 auto clamp(20px, 6vw, 40px) auto; 
 
   }
 
   /* Show mobile desc */
   .desktop-desc { display: none; }
-  .mobile-desc { display: block; } /* #606 new one line*/
+  .mobile-desc { display: block; } 
 
   /* Mobile Image */
   .mobile-img { 
