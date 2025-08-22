@@ -331,7 +331,7 @@ section {
   .gift-row3-right { display: none; }
 
   /* Text */
-  .gift-title { font-size: clamp(20px, 6vw, 30px); }
+  .gift-title { font-size: clamp(30px, 6vw, 30px); } /*#606*/
   .gift-desc { font-size: clamp(14px, 3vw, 16px); }
 
   /* Show mobile desc */
