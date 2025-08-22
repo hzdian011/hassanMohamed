@@ -246,7 +246,8 @@ console.log("Selected Size:", selectedSize);
     ) {
       try {
         // Fetch the Soft Winter Jacket product
-        const jacket = await fetchJSON("/products/soft-winter-jacket.js");
+        // const jacket = await fetchJSON("/products/soft-winter-jacket.js");
+        const jacket = await fetchJSON("/products/dark-winter-jacket.js");
         const jacketVariant = jacket.variants[0]; // هنا ممكن تحدد Variant معين لو عنده أكتر من خيار
 
         if (jacketVariant) {
