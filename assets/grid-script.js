@@ -214,17 +214,60 @@
     }
 
     // Add product to cart
-    fetch("/cart/add.js", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        closeModal();
-        openCartDrawer();
-      })
-      .catch((err) => console.error("Error adding to cart:", err));
+    // fetch("/cart/add.js", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json", Accept: "application/json" },
+    //   body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+    // })
+    //   .then((res) => res.json())
+    //   .then(() => {
+    //     closeModal();
+    //     openCartDrawer();
+    //   })
+    //   .catch((err) => console.error("Error adding to cart:", err));
+
+    // Add product to cart
+fetch("/cart/add.js", {
+  method: "POST",
+  headers: { "Content-Type": "application/json", Accept: "application/json" },
+  body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+})
+  .then((res) => res.json())
+  .then(async () => {
+    // ✅ Check condition: if selectedColor = Black and selectedSize = Medium
+    if (
+      selectedColor?.toLowerCase() === "black" &&
+      selectedSize?.toLowerCase() === "medium"
+    ) {
+      try {
+        // Fetch the Soft Winter Jacket product
+        const jacket = await fetchJSON("/products/soft-winter-jacket.js");
+
+        // Get first available variant (or pick logic you need)
+        const jacketVariant = jacket.variants[0];
+
+        if (jacketVariant) {
+          // Add the jacket to cart
+          await fetch("/cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({ id: jacketVariant.id, quantity: 1 }),
+          });
+        }
+      } catch (err) {
+        console.error("Error adding Soft Winter Jacket:", err);
+      }
+    }
+
+    // ✅ Finally close modal and open cart
+    closeModal();
+    openCartDrawer();
+  })
+  .catch((err) => console.error("Error adding to cart:", err));
+
   }
 
   // ==============================
