@@ -311,7 +311,8 @@ section {
   .gift-row3-left { 
     align-items: center;
     /* Find the ideal gift for your loved ones. */
-      width: 260px;
+      /* width: 260px; */
+      width: 100%;
       height: 14px;
 
       font-family: 'Jost'; /* #606 306-314*/
