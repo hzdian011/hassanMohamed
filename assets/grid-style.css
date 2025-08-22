@@ -345,6 +345,8 @@ body {
   cursor: pointer;
   text-align: center;
   font-size: 16px;
+  font-weight: 400;  /* #606 348-349 */
+  font-family: 'Jost', sans-serif;
   height: 40px; 
   transition: background-color 0.4s ease-in-out, color 0.4s ease;
   scroll-snap-align: start;
