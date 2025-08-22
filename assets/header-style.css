@@ -402,6 +402,19 @@ section {
   }
 }
 
+.img-container {
+  width: 100%;
+  height: 300px;   /* حسب المساحة اللي عايزها */
+  overflow: hidden;
+}
+
+.img-container .mobile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center top; /* تقدر تحرك crop من فوق أو النص */
+}
+
   /* CTA on mobile */
   .gift-row3 .gift-cta {
     position: absolute;
