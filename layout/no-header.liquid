@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
-    {{ content_for_header }}
     {{ 'fonts.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
 
   </head>
   {% section 'cart-drawer' %}
