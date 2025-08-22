@@ -237,6 +237,9 @@ fetch("/cart/add.js", {
   .then((res) => res.json())
   .then(async () => {
     // ✅ Check condition: if selectedColor = Black and selectedSize = Medium
+    console.log("Selected Color:", selectedColor);
+console.log("Selected Size:", selectedSize);
+
     if (
       selectedColor?.toLowerCase() === "black" &&
       selectedSize?.toLowerCase() === "m"
