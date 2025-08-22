@@ -378,13 +378,6 @@ body {
 } /* #606 new*/
 
 
-/* #sizeDropdownBtn {
-  justify-content: space-between; 
-}
-
-#sizeDropdownBtn.size-selected {
-  justify-content: center;
-} */
 
 /* ==============================
     Add to Cart Button
@@ -395,7 +388,7 @@ body {
   border: none; 
   padding: 22px 15px; 
   font-size: 14px; 
-  font-weight: 400; /*368-369  #606*/
+  font-weight: 400; 
   font-family: 'Jost', sans-serif;
   cursor: pointer; 
   margin-top: 30px; 
