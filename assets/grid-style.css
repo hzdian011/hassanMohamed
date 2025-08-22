@@ -120,7 +120,10 @@ body {
     gap: 5px; /*#606*/
     
   }
-  .image-wrapper img { height: 185px; } /*#606*/
+  .image-wrapper img { 
+    /* height: 185px;  */
+  aspect-ratio: 3 / 4;
+  } /*#606*/
 }
 
 /* ==============================
