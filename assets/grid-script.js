@@ -255,6 +255,12 @@
     //     (!selectedSize || v.options.includes(selectedSize))
     //   );
 
+    const selectedVariant = currentProduct.variants.find((v) => {
+      const matchColor = !selectedColor || v.option1?.toLowerCase() === selectedColor.toLowerCase() || v.option2?.toLowerCase() === selectedColor.toLowerCase();
+      const matchSize = !selectedSize || v.option1?.toLowerCase() === selectedSize.toLowerCase() || v.option2?.toLowerCase() === selectedSize.toLowerCase();
+      return matchColor && matchSize;
+    });
+
    if (!selectedVariant) {
     alert("Please select options");
     return;
