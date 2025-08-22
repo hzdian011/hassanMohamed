@@ -187,105 +187,45 @@
     }
   }
 
-  // 🛠️ Helper function to fetch JSON data
-async function fetchJSON(url) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch ${url}: ${response.status}`);
-  }
-  return response.json();
-}
-
-// 🛒 Function to add product to cart
-async function addToCart(variantId, quantity = 1) {
-  await fetch("/cart/add.js", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({ id: variantId, quantity }),
-  });
-}
-
-// 🚀 Main Add to Cart logic
-async function handleAddToCart(product) {
-  try {
-    // 🟣 حدد الـ options اللي اليوزر اختارها
-    const selectedColor = product.selectedOrFirstAvailableVariant?.option2;
-    const selectedSize = product.selectedOrFirstAvailableVariant?.option1;
-
-    // 🟢 Add the main product to the cart
-    await addToCart(product.selectedOrFirstAvailableVariant.id, 1);
-
-    // 🟠 Check condition: if user chose M + Black
-    if (
-      selectedSize?.toLowerCase() === "m" &&
-      selectedColor?.toLowerCase() === "black"
-    ) {
-      // 🟡 Fetch jacket product (handle = dark-winter-jacket)
-      const jacket = await fetchJSON("/products/dark-winter-jacket.js");
-
-      // 🔎 Find the correct variant "M / Black"
-      const jacketVariant = jacket.variants.find(
-        (v) =>
-          v.option1?.toLowerCase() === "m" &&
-          v.option2?.toLowerCase() === "black"
-      );
-
-      if (jacketVariant) {
-        await addToCart(jacketVariant.id, 1);
-        console.log("✅ Soft Winter Jacket (M / Black) added automatically");
-      } else {
-        console.warn("⚠️ No matching variant (M / Black) found for Soft Winter Jacket");
-      }
+  function handleAddToCart() {
+    if (!currentProduct) {
+      alert("No product selected");
+      return;
     }
-  } catch (err) {
-    console.error("❌ Error in handleAddToCart:", err);
+
+    const selectedColorBtn = document.querySelector(".color-btn.active");
+    const selectedColor = selectedColorBtn?.textContent || null;
+
+    const selectedSize =
+      document.getElementById("sizeDropdownBtn").textContent !==
+      "Choose your size"
+        ? document.getElementById("sizeDropdownBtn").textContent
+        : null;
+
+    const selectedVariant = currentProduct.variants.find(
+      (v) =>
+        (!selectedColor || v.options.includes(selectedColor)) &&
+        (!selectedSize || v.options.includes(selectedSize))
+    );
+
+    if (!selectedVariant) {
+      alert("Please select options");
+      return;
+    }
+
+    // Add product to cart
+    fetch("/cart/add.js", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        closeModal();
+        openCartDrawer();
+      })
+      .catch((err) => console.error("Error adding to cart:", err));
   }
-}
-
-
-
-  // function handleAddToCart() {
-  //   if (!currentProduct) {
-  //     alert("No product selected");
-  //     return;
-  //   }
-
-  //   const selectedColorBtn = document.querySelector(".color-btn.active");
-  //   const selectedColor = selectedColorBtn?.textContent || null;
-
-  //   const selectedSize =
-  //     document.getElementById("sizeDropdownBtn").textContent !==
-  //     "Choose your size"
-  //       ? document.getElementById("sizeDropdownBtn").textContent
-  //       : null;
-
-  //   const selectedVariant = currentProduct.variants.find(
-  //     (v) =>
-  //       (!selectedColor || v.options.includes(selectedColor)) &&
-  //       (!selectedSize || v.options.includes(selectedSize))
-  //   );
-
-  //   if (!selectedVariant) {
-  //     alert("Please select options");
-  //     return;
-  //   }
-
-  //   // Add product to cart
-  //   fetch("/cart/add.js", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json", Accept: "application/json" },
-  //     body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then(() => {
-  //       closeModal();
-  //       openCartDrawer();
-  //     })
-  //     .catch((err) => console.error("Error adding to cart:", err));
-  // }
 
   // ==============================
   // Init Event Listeners
