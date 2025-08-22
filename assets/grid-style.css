@@ -163,7 +163,7 @@ body {
 #modalTitle { 
   font-size: 16px; 
   font-weight: 300; 
-  font-family: 'Jost', sans-serif;
+  font-family: 'Jost', sans-serif; /*#606*/
   line-height: 120%; 
   color: #000; 
   margin-top: 4px; 
