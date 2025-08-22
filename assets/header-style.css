@@ -263,7 +263,7 @@ section {
 /* Tablets and below */
 @media (max-width: 1024px) {
   /* Nav adjustments */
-  .gift-nav { justify-content: center; }
+  .gift-nav { justify-content: center; padding: 18px 0;}
   .burger-btn { display: block; }
 
   /* Mobile Menu */
