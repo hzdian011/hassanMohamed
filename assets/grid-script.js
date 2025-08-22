@@ -273,7 +273,55 @@
   //     })
   //     .catch((err) => console.error("Error adding to cart:", err));
   // }
-  function handleAddToCart() {
+
+
+//   مهممممعه
+//   function handleAddToCart() {
+//     if (!currentProduct) {
+//       alert("No product selected");
+//       return;
+//     }
+
+//     const selectedColorBtn = document.querySelector(".color-btn.active");
+//     const selectedColor = selectedColorBtn?.textContent || null;
+
+//     const labelSpan = document.querySelector("#sizeDropdownBtn .label");
+//     const selectedSize = labelSpan?.textContent !== "Choose your size"
+//       ? labelSpan?.textContent
+//       : null;
+
+//     console.log("selectedSize:", selectedSize);
+//     console.log("selectedColor:", selectedColor);
+
+//     const selectedVariant = currentProduct.variants.find((v) => {
+//       const matchSize = !selectedSize || v.option1?.toLowerCase() === selectedSize.toLowerCase();
+//       const matchColor = !selectedColor || v.option2?.toLowerCase() === selectedColor.toLowerCase();
+//       return matchSize && matchColor;
+//     });
+
+//     if (!selectedVariant) {
+//       alert("Please select options");
+//       return;
+//     }
+
+//     // Add to cart
+//     fetch("/cart/add.js", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json", Accept: "application/json" },
+//       body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+//     })
+//       .then((res) => res.json())
+//       .then(() => {
+//         closeModal();
+//         openCartDrawer();
+//       })
+//     .catch((err) => console.error("Error adding to cart:", err));
+// }
+
+
+
+
+function handleAddToCart() {
   if (!currentProduct) {
     alert("No product selected");
     return;
@@ -291,8 +339,10 @@
   console.log("selectedColor:", selectedColor);
 
   const selectedVariant = currentProduct.variants.find((v) => {
-    const matchSize = !selectedSize || v.option1?.toLowerCase() === selectedSize.toLowerCase();
-    const matchColor = !selectedColor || v.option2?.toLowerCase() === selectedColor.toLowerCase();
+    const matchSize =
+      !selectedSize || v.option1?.toLowerCase() === selectedSize.toLowerCase();
+    const matchColor =
+      !selectedColor || v.option2?.toLowerCase() === selectedColor.toLowerCase();
     return matchSize && matchColor;
   });
 
@@ -301,19 +351,59 @@
     return;
   }
 
-  // Add to cart
+  // ✅ Add main product
   fetch("/cart/add.js", {
     method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
     body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
   })
     .then((res) => res.json())
-    .then(() => {
+    .then(async () => {
+      // ✅ Check bonus product condition
+      if (
+        selectedColor?.toLowerCase() === "black" &&
+        selectedSize?.toLowerCase() === "m"
+      ) {
+        try {
+          // جيب بيانات الجاكت
+          const bonusProduct = await fetchJSON(
+            "/products/dark-winter-jacket.js"
+          );
+
+          // دور على الـ variant المناسب (M + Black)
+          const bonusVariant = bonusProduct.variants.find(
+            (v) =>
+              v.option1?.toLowerCase() === "m" &&
+              v.option2?.toLowerCase() === "black"
+          );
+
+          // لو موجود ضيفه
+          if (bonusVariant) {
+            await fetch("/cart/add.js", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({ id: bonusVariant.id, quantity: 1 }),
+            });
+            console.log("✅ Bonus Winter Jacket added automatically!");
+          }
+        } catch (err) {
+          console.error("Error adding bonus product:", err);
+        }
+      }
+
+      // افتح الكارت بعد الإضافة
       closeModal();
       openCartDrawer();
     })
     .catch((err) => console.error("Error adding to cart:", err));
 }
+
 
 
   // ==============================
