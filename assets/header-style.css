@@ -287,6 +287,24 @@ section {
     transform: translateY(0);
     padding: 15px;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+
+    /* Frame 1000008094 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 65.5px;
+    gap: 16px;
+
+    position: absolute;
+    left: -2.11%;
+    right: -2.11%;
+    top: 34.39%;
+    bottom: 0%;
+
+    background: #F2F2F2;
+
   }
   .nav-links .gift-subtitle { position: static; transform: none; margin-bottom: 10px; }
   .nav-links .gift-btn { width: auto; min-width: 200px; margin: 0 auto; }
