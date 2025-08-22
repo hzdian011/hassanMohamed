@@ -214,7 +214,9 @@ body {
   background: transparent;
   cursor: pointer;
   text-align: start;
-  font-size: 18px;
+  font-size: 18px; 
+  font-weight: 400;   /* #606 218-219 */
+  font-family: 'Jost', sans-serif;
   border: none;
   outline: none;
   z-index: 3;
