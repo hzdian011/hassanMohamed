@@ -349,12 +349,18 @@ section {
     z-index: -1;
   }
   .gift-row3 { position: relative; overflow: hidden; padding:0; /*#606*/}
-  .gift-row3 .mobile-img {
+  /* .gift-row3 .mobile-img {
     width: 100%;
     transform: scale(1.5);
     transform-origin: center;
-  }
+  } */
 
+  .gift-row3 .mobile-img {
+    width: 82%;
+    transform: scale(2.2) translate(7px, -32px);
+    transform-origin: center;
+    margin-top: 80px;
+}
   /* CTA on mobile */
   .gift-row3 .gift-cta {
     position: absolute;
