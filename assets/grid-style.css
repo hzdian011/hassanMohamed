@@ -178,7 +178,7 @@ body {
 
 #modalDescription { 
   font-weight: 300; 
-  font-family: 'Jost', sans-serif; /*#606 174-175*/
+  font-family: 'Jost', sans-serif; 
   font-size: 14px; 
   line-height: 110%; 
   letter-spacing: -0.01em; 
@@ -205,7 +205,7 @@ body {
 
 .color-options label { 
   font-size: 15px; 
-  font-weight: 400;   /*#606 201-202*/
+  font-weight: 400;   
   font-family: 'Jost', sans-serif;
   color: #333; 
 }
@@ -226,7 +226,7 @@ body {
   cursor: pointer;
   text-align: start;
   font-size: 18px; 
-  font-weight: 400;   /* #606 218-219 */
+  font-weight: 400;   
   font-family: 'Jost', sans-serif;
   border: none;
   outline: none;
