@@ -375,6 +375,10 @@ body {
   background: #000;
   color: #fff;
 }
+span.label {
+    text-align: center;
+    flex: 1;
+}
 
 
 /* #sizeDropdownBtn {
