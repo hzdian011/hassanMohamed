@@ -234,45 +234,87 @@
   //     .catch((err) => console.error("Error adding to cart:", err));
   // }
 
+  // function handleAddToCart() {
+  //   if (!currentProduct) {
+  //     alert("No product selected");
+  //     return;
+  //   }
+
+  //   const selectedColorBtn = document.querySelector(".color-btn.active");
+  //   const selectedColor = selectedColorBtn?.textContent || null;
+
+  //   const selectedSize =
+  //     document.getElementById("sizeDropdownBtn").textContent !==
+  //     "Choose your size"
+  //       ? document.getElementById("sizeDropdownBtn").textContent
+  //       : null;
+
+  //   const selectedVariant = currentProduct.variants.find(
+  //     (v) =>
+  //       (!selectedColor || v.options.includes(selectedColor)) &&
+  //       (!selectedSize || v.options.includes(selectedSize))
+  //   );
+
+  //   if (!selectedVariant) {
+  //     alert("Please select options");
+  //     return;
+  //   }
+
+  //   // Add product to cart
+  //   fetch("/cart/add.js", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json", Accept: "application/json" },
+  //     body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then(() => {
+  //       closeModal();
+  //       openCartDrawer();
+  //     })
+  //     .catch((err) => console.error("Error adding to cart:", err));
+  // }
   function handleAddToCart() {
-    if (!currentProduct) {
-      alert("No product selected");
-      return;
-    }
-
-    const selectedColorBtn = document.querySelector(".color-btn.active");
-    const selectedColor = selectedColorBtn?.textContent || null;
-
-    const selectedSize =
-      document.getElementById("sizeDropdownBtn").textContent !==
-      "Choose your size"
-        ? document.getElementById("sizeDropdownBtn").textContent
-        : null;
-
-    const selectedVariant = currentProduct.variants.find(
-      (v) =>
-        (!selectedColor || v.options.includes(selectedColor)) &&
-        (!selectedSize || v.options.includes(selectedSize))
-    );
-
-    if (!selectedVariant) {
-      alert("Please select options");
-      return;
-    }
-
-    // Add product to cart
-    fetch("/cart/add.js", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        closeModal();
-        openCartDrawer();
-      })
-      .catch((err) => console.error("Error adding to cart:", err));
+  if (!currentProduct) {
+    alert("No product selected");
+    return;
   }
+
+  const selectedColorBtn = document.querySelector(".color-btn.active");
+  const selectedColor = selectedColorBtn?.textContent || null;
+
+  const labelSpan = document.querySelector("#sizeDropdownBtn .label");
+  const selectedSize = labelSpan?.textContent !== "Choose your size"
+    ? labelSpan?.textContent
+    : null;
+
+  console.log("selectedSize:", selectedSize);
+  console.log("selectedColor:", selectedColor);
+
+  const selectedVariant = currentProduct.variants.find((v) => {
+    const matchSize = !selectedSize || v.option1?.toLowerCase() === selectedSize.toLowerCase();
+    const matchColor = !selectedColor || v.option2?.toLowerCase() === selectedColor.toLowerCase();
+    return matchSize && matchColor;
+  });
+
+  if (!selectedVariant) {
+    alert("Please select options");
+    return;
+  }
+
+  // Add to cart
+  fetch("/cart/add.js", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+  })
+    .then((res) => res.json())
+    .then(() => {
+      closeModal();
+      openCartDrawer();
+    })
+    .catch((err) => console.error("Error adding to cart:", err));
+}
+
 
   // ==============================
   // Init Event Listeners
