@@ -400,6 +400,12 @@ function handleAddToCart() {
       // افتح الكارت بعد الإضافة
       closeModal();
       openCartDrawer();
+
+        // ✅ Reset size button to default
+  const sizeBtn = document.getElementById("sizeDropdownBtn");
+  const labelSpan = sizeBtn.querySelector(".label");
+  if (labelSpan) labelSpan.textContent = "Choose your size";
+  sizeBtn.classList.remove("size-selected");
     })
     .catch((err) => console.error("Error adding to cart:", err));
 }
