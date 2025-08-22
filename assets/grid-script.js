@@ -145,6 +145,27 @@
 
         colorContainer.appendChild(colorBtn);
       });
+
+      // Reset size dropdown عند فتح المودال
+      const sizeBtn = document.getElementById("sizeDropdownBtn");
+      if (sizeBtn) {
+        sizeBtn.textContent = "Choose your size";
+        sizeBtn.classList.remove("active");
+      }
+
+      const sizeDropdownList = document.getElementById("sizeDropdownList");
+      if (sizeDropdownList) {
+        sizeDropdownList.classList.remove("open");
+      }
+
+      // Reset colors (اختياري لو عايز ترجع لأول اختيار دايمًا)
+      const firstColorBtn = document.querySelector(".color-btn");
+      if (firstColorBtn) {
+        document.querySelectorAll(".color-btn").forEach((b) =>
+          b.classList.remove("active")
+        );
+        firstColorBtn.classList.add("active");
+      }
     }
 
     // ------------------------------
