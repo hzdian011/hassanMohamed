@@ -214,18 +214,65 @@
     }
 
     // Add product to cart
-    fetch("/cart/add.js", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        closeModal();
-        openCartDrawer();
+    // fetch("/cart/add.js", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json", Accept: "application/json" },
+    //   body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+    // })
+    //   .then((res) => res.json())
+    //   .then(() => {
+      //     closeModal();
+      //     openCartDrawer();
+      //   })
+      //   .catch((err) => console.error("Error adding to cart:", err));
+      Add product to cart
+      fetch("/cart/add.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
       })
-      .catch((err) => console.error("Error adding to cart:", err));
+        .then((res) => res.json())
+        .then(async () => {
+  console.log("Selected Color:", selectedColor);
+  console.log("Selected Size:", selectedSize);
+
+  let jacketAdded = false;
+
+  if (
+    selectedColor?.toLowerCase() === "black" &&
+    selectedSize?.toLowerCase() === "m"
+  ) {
+    try {
+      // ✅ Use the correct handle:
+      const jacket = await fetchJSON("/products/soft-winter-jacket.js");
+      const jacketVariant = jacket.variants[0];
+
+      if (jacketVariant) {
+        await fetch("/cart/add.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({ id: jacketVariant.id, quantity: 1 }),
+        });
+        jacketAdded = true;
+      }
+    } catch (err) {
+      console.error("Error adding Dark Winter Jacket:", err);
+    }
   }
+
+  // ✅ افتح الـ Drawer بعد كل الإضافات
+  closeModal();
+  await openCartDrawer();
+
+  if (jacketAdded) {
+    console.log("Dark Winter Jacket was added automatically 🎉");
+  }
+})
+
+    }
 
   // ==============================
   // Init Event Listeners
