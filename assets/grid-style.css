@@ -113,6 +113,7 @@ body {
   .section-title {
     text-align: center;
     margin: 0 auto;
+    font-size: 24px;
   }
   .products-grid { 
     grid-template-columns: repeat(2, 1fr);
