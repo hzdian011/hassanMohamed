@@ -165,7 +165,7 @@
           const sizeBtn = document.getElementById("sizeDropdownBtn");
           sizeBtn.textContent = size;
 
-          sizeBtn.classList.add("size-selected");
+          // sizeBtn.classList.add("size-selected");
 
           sizeDropdownList.classList.remove("open");
           sizeBtn.classList.remove("active");
