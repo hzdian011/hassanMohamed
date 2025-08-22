@@ -2,6 +2,7 @@
 <html lang="{{ request.locale.iso_code }}">
   <head>
     {% comment %} {{ 'fonts.css' | asset_url | stylesheet_tag }} {% endcomment %}
+        {%- render 'fonts' -%}
     {{ content_for_header }}
 
   </head>
