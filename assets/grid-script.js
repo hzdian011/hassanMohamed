@@ -150,7 +150,8 @@
       const sizeBtn = document.getElementById("sizeDropdownBtn");
       if (sizeBtn) {
         sizeBtn.textContent = "Choose your size";
-        sizeBtn.classList.remove("active");
+        // sizeBtn.classList.remove("active");
+        sizeBtn.classList.add("placeholder");
       }
 
       const sizeDropdownList = document.getElementById("sizeDropdownList");
