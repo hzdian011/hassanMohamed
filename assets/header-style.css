@@ -384,17 +384,14 @@ section {
   /* CTA on mobile */
   .gift-row3 .gift-cta {
     position: absolute;
-    /* bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%); */
     bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: clamp(8px, 2vw, 14px) clamp(16px, 4vw, 30px);
-  font-size: clamp(16px, 3vw, 16px);  /*#606(16px)*/
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 400;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: clamp(8px, 2vw, 14px) clamp(16px, 4vw, 30px);
+    font-size: clamp(16px, 3vw, 16px);  /*#606(16px)*/
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
 
   }
 }
