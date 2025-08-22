@@ -146,7 +146,6 @@
         colorContainer.appendChild(colorBtn);
       });
 
-      
     }
 
     // ------------------------------
