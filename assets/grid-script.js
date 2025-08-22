@@ -234,56 +234,114 @@
   //     .catch((err) => console.error("Error adding to cart:", err));
   // }
 
+  // function handleAddToCart() {
+  //   if (!currentProduct) {
+  //     alert("No product selected");
+  //     return;
+  //   }
+
+  //   const selectedColorBtn = document.querySelector(".color-btn.active");
+  //   const selectedColor = selectedColorBtn?.textContent || null;
+
+  //   const selectedSize =
+  //   document.getElementById("sizeDropdownBtn").textContent !==
+  //   "Choose your size"
+  //     ? document.getElementById("sizeDropdownBtn").textContent
+  //     : null;
+
+  //   const selectedVariant = currentProduct.variants.find(
+  //     (v) =>
+  //       (!selectedColor || v.options.includes(selectedColor)) &&
+  //       (!selectedSize || v.options.includes(selectedSize))
+  //     );
+
+  //  if (!selectedVariant) {
+  //   alert("Please select options");
+  //   return;
+  //  }
+
+  //  fetch("/cart/add.js", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json", Accept: "application/json" },
+  //   body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+  //  })
+  //   .then((res) => res.json())
+  //   .then(async () => {
+  //     if (
+  //       selectedColor?.toLowerCase() === "black" &&
+  //       selectedSize?.toLowerCase() === "m"
+  //     ) {
+  //       try {
+  //         const bonusProduct = await fetchJSON("/products/dark-winter-jacket.js");
+
+  //         const bonusVariant = bonusProduct.variants.find(
+  //           (v) => v.option1 === "M" && v.option2 === "Black"
+  //         );
+
+  //         if (bonusVariant) {
+  //           await fetch("/cart/add.js", {
+  //             method: "POST",
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //               Accept: "application/json",
+  //             },
+  //             body: JSON.stringify({ id: bonusVariant.id, quantity: 1 }),
+  //           });
+  //           console.log("Soft Winter Jacket added automatically ");
+  //         }
+  //       } catch (err) {
+  //         console.error("Error adding bonus product:", err);
+  //       }
+  //     }
+
+  //     closeModal();
+  //     openCartDrawer();
+  //   })
+  //   .catch((err) => console.error("Error adding to cart:", err));
+  // }
   function handleAddToCart() {
-    if (!currentProduct) {
-      alert("No product selected");
-      return;
-    }
+  if (!currentProduct) {
+    alert("No product selected");
+    return;
+  }
 
-    const selectedColorBtn = document.querySelector(".color-btn.active");
-    const selectedColor = selectedColorBtn?.textContent || null;
+  const selectedColorBtn = document.querySelector(".color-btn.active");
+  const selectedColor = selectedColorBtn?.textContent || null;
 
-    const selectedSize =
-    document.getElementById("sizeDropdownBtn").textContent !==
-    "Choose your size"
-      ? document.getElementById("sizeDropdownBtn").textContent
-      : null;
+  const sizeBtn = document.getElementById("sizeDropdownBtn");
+  const selectedSize = sizeBtn.textContent !== "Choose your size"
+    ? sizeBtn.textContent
+    : null;
 
-    // const selectedVariant = currentProduct.variants.find(
-    //   (v) =>
-    //     (!selectedColor || v.options.includes(selectedColor)) &&
-    //     (!selectedSize || v.options.includes(selectedSize))
-    //   );
+  // ✅ هنا التعديل الأساسي
+  const selectedVariant = currentProduct.variants.find((v) => {
+    const matchSize = !selectedSize || v.option1?.toLowerCase() === selectedSize.toLowerCase();
+    const matchColor = !selectedColor || v.option2?.toLowerCase() === selectedColor.toLowerCase();
+    return matchSize && matchColor;
+  });
 
-    const selectedVariant = currentProduct.variants.find((v) => {
-      const matchColor = !selectedColor || v.option1?.toLowerCase() === selectedColor.toLowerCase() || v.option2?.toLowerCase() === selectedColor.toLowerCase();
-      const matchSize = !selectedSize || v.option1?.toLowerCase() === selectedSize.toLowerCase() || v.option2?.toLowerCase() === selectedSize.toLowerCase();
-      return matchColor && matchSize;
-    });
-
-   if (!selectedVariant) {
+  if (!selectedVariant) {
     alert("Please select options");
     return;
-   }
+  }
 
-   fetch("/cart/add.js", {
+  fetch("/cart/add.js", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
-   })
+  })
     .then((res) => res.json())
     .then(async () => {
+      // Bonus product example
       if (
         selectedColor?.toLowerCase() === "black" &&
         selectedSize?.toLowerCase() === "m"
       ) {
         try {
           const bonusProduct = await fetchJSON("/products/dark-winter-jacket.js");
-
           const bonusVariant = bonusProduct.variants.find(
             (v) => v.option1 === "M" && v.option2 === "Black"
           );
-
           if (bonusVariant) {
             await fetch("/cart/add.js", {
               method: "POST",
@@ -304,7 +362,8 @@
       openCartDrawer();
     })
     .catch((err) => console.error("Error adding to cart:", err));
-  }
+}
+
 
   // ==============================
   // Init Event Listeners
