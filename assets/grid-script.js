@@ -239,7 +239,7 @@ fetch("/cart/add.js", {
     // ✅ Check condition: if selectedColor = Black and selectedSize = Medium
     if (
       selectedColor?.toLowerCase() === "black" &&
-      selectedSize?.toLowerCase() === "medium"
+      selectedSize?.toLowerCase() === "m"
     ) {
       try {
         // Fetch the Soft Winter Jacket product
