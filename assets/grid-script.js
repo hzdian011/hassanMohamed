@@ -368,19 +368,15 @@ function handleAddToCart() {
         selectedSize?.toLowerCase() === "m"
       ) {
         try {
-          // جيب بيانات الجاكت
           const bonusProduct = await fetchJSON(
             "/products/dark-winter-jacket.js"
           );
-
-          // دور على الـ variant المناسب (M + Black)
           const bonusVariant = bonusProduct.variants.find(
             (v) =>
               v.option1?.toLowerCase() === "m" &&
               v.option2?.toLowerCase() === "black"
           );
 
-          // لو موجود ضيفه
           if (bonusVariant) {
             await fetch("/cart/add.js", {
               method: "POST",
@@ -396,16 +392,14 @@ function handleAddToCart() {
           console.error("Error adding bonus product:", err);
         }
       }
-
-      // افتح الكارت بعد الإضافة
       closeModal();
       openCartDrawer();
 
-        // ✅ Reset size button to default
-  const sizeBtn = document.getElementById("sizeDropdownBtn");
-  const labelSpan = sizeBtn.querySelector(".label");
-  if (labelSpan) labelSpan.textContent = "Choose your size";
-  sizeBtn.classList.remove("size-selected");
+      // Reset size button to default
+      const sizeBtn = document.getElementById("sizeDropdownBtn");
+      const labelSpan = sizeBtn.querySelector(".label");
+      if (labelSpan) labelSpan.textContent = "Choose your size";
+      sizeBtn.classList.remove("size-selected");
     })
     .catch((err) => console.error("Error adding to cart:", err));
 }
