@@ -225,46 +225,47 @@
     //     openCartDrawer();
     //   })
     //   .catch((err) => console.error("Error adding to cart:", err));
-
     // Add product to cart
 fetch("/cart/add.js", {
   method: "POST",
-  headers: { "Content-Type": "application/json", Accept: "application/json" },
+  headers: { 
+    "Content-Type": "application/json", 
+    Accept: "application/json" 
+  },
   body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
 })
   .then((res) => res.json())
   .then(async () => {
-  // ✅ Check condition: if selectedColor = Black and selectedSize = Medium
-  if (
-    selectedColor?.toLowerCase() === "black" &&
-    selectedSize?.toLowerCase() === "medium"
-  ) {
-    try {
-      // Fetch the Soft Winter Jacket product
-      const jacket = await fetchJSON("/products/soft-winter-jacket.js");
-      const jacketVariant = jacket.variants[0];
+    // ✅ Check condition: if selectedColor = Black and selectedSize = Medium
+    if (
+      selectedColor?.toLowerCase() === "black" &&
+      selectedSize?.toLowerCase() === "medium"
+    ) {
+      try {
+        // Fetch the Soft Winter Jacket product
+        const jacket = await fetchJSON("/products/soft-winter-jacket.js");
+        const jacketVariant = jacket.variants[0]; // هنا ممكن تحدد Variant معين لو عنده أكتر من خيار
 
-      if (jacketVariant) {
-        // Add the jacket to cart
-        await fetch("/cart/add.js", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({ id: jacketVariant.id, quantity: 1 }),
-        });
+        if (jacketVariant) {
+          // Add the jacket to cart
+          await fetch("/cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({ id: jacketVariant.id, quantity: 1 }),
+          });
+        }
+      } catch (err) {
+        console.error("Error adding Soft Winter Jacket:", err);
       }
-    } catch (err) {
-      console.error("Error adding Soft Winter Jacket:", err);
     }
-  }
 
-  // ✅ افتح الـ Drawer بعد ما تخلص كل حاجة
-  closeModal();
-  await openCartDrawer();
-})
-
+    // ✅ افتح الـ Drawer بعد ما تخلص كل حاجة
+    closeModal();
+    await openCartDrawer();
+  })
   .catch((err) => console.error("Error adding to cart:", err));
 
   }
