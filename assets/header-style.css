@@ -348,7 +348,7 @@ section {
     padding: 0;
     z-index: -1;
   }
-  .gift-row3 { position: relative; overflow: hidden; }
+  .gift-row3 { position: relative; overflow: hidden; padding:0; }
   .gift-row3 .mobile-img {
     width: 100%;
     transform: scale(1.5);
