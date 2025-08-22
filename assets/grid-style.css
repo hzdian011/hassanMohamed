@@ -287,6 +287,8 @@ body {
   width: 100%;
   background: #fff;
   font-size: 16px;
+  font-weight: 400; /* 290-291 #606*/
+  font-family: 'Jost', sans-serif;
 }
 
 .dropdown-btn .label { padding: 12px; }
