@@ -166,8 +166,9 @@
           const labelSpan = sizeBtn.querySelector(".label");
           labelSpan.textContent = size;
           // sizeBtn.textContent = size;
+            sizeBtn.classList.add("size-selected");
 
-          // sizeBtn.classList.add("size-selected");
+
 
           sizeDropdownList.classList.remove("open");
           sizeBtn.classList.remove("active");

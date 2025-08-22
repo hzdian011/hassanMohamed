@@ -377,13 +377,13 @@ body {
 }
 
 
-/* #sizeDropdownBtn {
+#sizeDropdownBtn {
   justify-content: space-between; 
 }
 
 #sizeDropdownBtn.size-selected {
   justify-content: center;
-} */
+}
 
 /* ==============================
     Add to Cart Button
