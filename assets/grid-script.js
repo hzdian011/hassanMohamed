@@ -351,7 +351,7 @@ function handleAddToCart() {
     return;
   }
 
-  // ✅ Add main product
+  //  Add main product
   fetch("/cart/add.js", {
     method: "POST",
     headers: {
@@ -362,7 +362,7 @@ function handleAddToCart() {
   })
     .then((res) => res.json())
     .then(async () => {
-      // ✅ Check bonus product condition
+      // Check bonus product condition
       if (
         selectedColor?.toLowerCase() === "black" &&
         selectedSize?.toLowerCase() === "m"
