@@ -379,7 +379,7 @@ section {
     transform-origin: center;
   } */
 
-  .gift-row3 .mobile-img {
+  /* .gift-row3 .mobile-img {
     width: 82%;
     transform: scale(2.2) translate(7px, -32px);
     transform-origin: center;
@@ -400,7 +400,7 @@ section {
     transform: none;
     margin-top: 0;
   }
-}
+} */
 
 .img-container {
   width: 100%;
