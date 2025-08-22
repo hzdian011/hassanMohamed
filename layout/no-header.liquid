@@ -2,7 +2,8 @@
 <html lang="{{ request.locale.iso_code }}">
   <head>
     {{ content_for_header }}
-    
+    {{ 'fonts.css' | asset_url | stylesheet_tag }}
+
   </head>
   {% section 'cart-drawer' %}
   <body class="no-header-layout">
