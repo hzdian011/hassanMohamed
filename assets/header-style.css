@@ -266,6 +266,8 @@ section {
   .gift-nav { justify-content: center; padding: 18px 0;}
   .burger-btn { display: block; }
 
+    .gift-row3-right { display: none !important; }
+
   /* Mobile Menu */
   .nav-links {
     flex-direction: column;
