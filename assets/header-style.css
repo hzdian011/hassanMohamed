@@ -338,7 +338,13 @@ section {
     font-weight: 500;  /* #606  334(30px) - 338 */
 
   } /*#606*/
-  .gift-desc { font-size: clamp(14px, 3vw, 16px); }
+  .gift-desc { 
+    font-size: clamp(16px, 3vw, 16px); /* #606(16px)*/
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+
+  }
 
   /* Show mobile desc */
   .desktop-desc { display: none; }
@@ -377,6 +383,11 @@ section {
   left: 50%;
   transform: translateX(-50%);
   padding: clamp(8px, 2vw, 14px) clamp(16px, 4vw, 30px);
-  font-size: clamp(12px, 3vw, 16px);
+  font-size: clamp(16px, 3vw, 16px);  /*#606(16px)*/
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+
+
   }
 }
