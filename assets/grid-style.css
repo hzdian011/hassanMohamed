@@ -285,7 +285,7 @@ body {
 .size-options label {
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Jost', sans-serif; /* 280-281 #606*/
+  font-family: 'Jost', sans-serif; 
   color: #333;
 }
 
@@ -301,7 +301,7 @@ body {
   min-height: 41px;
   background: #fff;
   font-size: 16px;
-  font-weight: 400; /* 290-291 #606*/
+  font-weight: 400; 
   font-family: 'Jost', sans-serif;
 }
 
@@ -359,7 +359,7 @@ body {
   cursor: pointer;
   text-align: center;
   font-size: 16px;
-  font-weight: 400;  /* #606 348-349 */
+  font-weight: 400;  
   font-family: 'Jost', sans-serif;
   height: 40px; 
   transition: background-color 0.4s ease-in-out, color 0.4s ease;
