@@ -255,7 +255,7 @@ body {
 /* Color Indicator (Background Slider) */
 .color-indicator {
   position: absolute;
-  top: 0; left: 0;
+  top: 0; left: 6px;
   width: calc(100% / var(--count));
   height: 100%;
   background: #000;
