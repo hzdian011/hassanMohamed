@@ -256,7 +256,7 @@ body {
 .color-indicator {
   position: absolute;
   top: 0; left: 6px;
-  width: calc(100% / var(--count));
+  width: calc(100% / var(--count) );
   height: 100%;
   background: #000;
   transition: transform 0.4s ease;
