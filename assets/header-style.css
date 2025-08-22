@@ -313,7 +313,8 @@ section {
     /* Find the ideal gift for your loved ones. */
       /* width: 260px; */
       width: 100%;
-      height: 14px;
+      /* height: 14px; */
+      height: auto;
 
       font-family: 'Jost'; /* #606 306-314*/
       font-style: normal;
