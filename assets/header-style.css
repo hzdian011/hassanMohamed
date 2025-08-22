@@ -297,7 +297,23 @@ section {
 
   /* Row3 layout */
   .gift-row3 { flex-direction: column; text-align: center; }
-  .gift-row3-left { align-items: center; }
+  .gift-row3-left { 
+    align-items: center;
+    /* Find the ideal gift for your loved ones. */
+      width: 260px;
+      height: 14px;
+
+      font-family: 'Jost';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 13px;
+      /* identical to box height, or 84% */
+      display: flex;
+      align-items: center;
+      text-align: center;
+      
+  }
   .gift-row3-right { display: none; }
 
   /* Text */
