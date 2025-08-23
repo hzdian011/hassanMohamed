@@ -329,6 +329,9 @@ function handleAddToCart() {
 
     const addToCartBtn = document.getElementById("addToCartBtn");
   const loader = addToCartBtn.querySelector(".loader");
+    // Show loader
+  addToCartBtn.classList.add("loading");
+  loader.style.display = "inline-block"
 
   const selectedColorBtn = document.querySelector(".color-btn.active");
   const selectedColor = selectedColorBtn?.textContent || null;
