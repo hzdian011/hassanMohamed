@@ -409,7 +409,6 @@ function handleAddToCart() {
     .finally(() => {
       // Hide loader
       addToCartBtn.classList.remove("loading");
-      loader.style.display = "none";
     });
 }
 
