@@ -321,101 +321,11 @@
 
 
 
-// function handleAddToCart() {
-//   if (!currentProduct) {
-//     alert("No product selected");
-//     return;
-//   }
-
-//   const selectedColorBtn = document.querySelector(".color-btn.active");
-//   const selectedColor = selectedColorBtn?.textContent || null;
-
-//   const labelSpan = document.querySelector("#sizeDropdownBtn .label");
-//   const selectedSize = labelSpan?.textContent !== "Choose your size"
-//     ? labelSpan?.textContent
-//     : null;
-
-//   console.log("selectedSize:", selectedSize);
-//   console.log("selectedColor:", selectedColor);
-
-//   const selectedVariant = currentProduct.variants.find((v) => {
-//     const matchSize =
-//       !selectedSize || v.option1?.toLowerCase() === selectedSize.toLowerCase();
-//     const matchColor =
-//       !selectedColor || v.option2?.toLowerCase() === selectedColor.toLowerCase();
-//     return matchSize && matchColor;
-//   });
-
-//   if (!selectedVariant) {
-//     alert("Please select options");
-//     return;
-//   }
-
-//   //  Add main product
-//   fetch("/cart/add.js", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Accept: "application/json",
-//     },
-//     body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
-//   })
-//     .then((res) => res.json())
-//     .then(async () => {
-//       // Check bonus product condition
-//       if (
-//         selectedColor?.toLowerCase() === "black" &&
-//         selectedSize?.toLowerCase() === "m"
-//       ) {
-//         try {
-//           const bonusProduct = await fetchJSON(
-//             "/products/dark-winter-jacket.js"
-//           );
-//           const bonusVariant = bonusProduct.variants.find(
-//             (v) =>
-//               v.option1?.toLowerCase() === "m" &&
-//               v.option2?.toLowerCase() === "black"
-//           );
-
-//           if (bonusVariant) {
-//             await fetch("/cart/add.js", {
-//               method: "POST",
-//               headers: {
-//                 "Content-Type": "application/json",
-//                 Accept: "application/json",
-//               },
-//               body: JSON.stringify({ id: bonusVariant.id, quantity: 1 }),
-//             });
-//             console.log("✅ Bonus Winter Jacket added automatically!");
-//           }
-//         } catch (err) {
-//           console.error("Error adding bonus product:", err);
-//         }
-//       }
-//       closeModal();
-//       openCartDrawer();
-
-//       // Reset size button to default
-//       const sizeBtn = document.getElementById("sizeDropdownBtn");
-//       const labelSpan = sizeBtn.querySelector(".label");
-//       if (labelSpan) labelSpan.textContent = "Choose your size";
-//       sizeBtn.classList.remove("size-selected");
-//     })
-//     .catch((err) => console.error("Error adding to cart:", err));
-// }
-
 function handleAddToCart() {
   if (!currentProduct) {
     alert("No product selected");
     return;
   }
-
-  const addToCartBtn = document.getElementById("addToCartBtn");
-  const loader = addToCartBtn.querySelector(".loader");
-
-  // Show loader
-  addToCartBtn.classList.add("loading");
-  loader.style.display = "inline-block";
 
   const selectedColorBtn = document.querySelector(".color-btn.active");
   const selectedColor = selectedColorBtn?.textContent || null;
@@ -424,6 +334,9 @@ function handleAddToCart() {
   const selectedSize = labelSpan?.textContent !== "Choose your size"
     ? labelSpan?.textContent
     : null;
+
+  console.log("selectedSize:", selectedSize);
+  console.log("selectedColor:", selectedColor);
 
   const selectedVariant = currentProduct.variants.find((v) => {
     const matchSize =
@@ -435,11 +348,10 @@ function handleAddToCart() {
 
   if (!selectedVariant) {
     alert("Please select options");
-    addToCartBtn.classList.remove("loading");
-    loader.style.display = "none";
     return;
   }
 
+  //  Add main product
   fetch("/cart/add.js", {
     method: "POST",
     headers: {
@@ -450,22 +362,46 @@ function handleAddToCart() {
   })
     .then((res) => res.json())
     .then(async () => {
-      // bonus logic زي ما عندك ...
+      // Check bonus product condition
+      if (
+        selectedColor?.toLowerCase() === "black" &&
+        selectedSize?.toLowerCase() === "m"
+      ) {
+        try {
+          const bonusProduct = await fetchJSON(
+            "/products/dark-winter-jacket.js"
+          );
+          const bonusVariant = bonusProduct.variants.find(
+            (v) =>
+              v.option1?.toLowerCase() === "m" &&
+              v.option2?.toLowerCase() === "black"
+          );
+
+          if (bonusVariant) {
+            await fetch("/cart/add.js", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({ id: bonusVariant.id, quantity: 1 }),
+            });
+            console.log("✅ Bonus Winter Jacket added automatically!");
+          }
+        } catch (err) {
+          console.error("Error adding bonus product:", err);
+        }
+      }
       closeModal();
       openCartDrawer();
 
-      // Reset size button
+      // Reset size button to default
       const sizeBtn = document.getElementById("sizeDropdownBtn");
       const labelSpan = sizeBtn.querySelector(".label");
       if (labelSpan) labelSpan.textContent = "Choose your size";
       sizeBtn.classList.remove("size-selected");
     })
-    .catch((err) => console.error("Error adding to cart:", err))
-    .finally(() => {
-      // Hide loader
-      addToCartBtn.classList.remove("loading");
-      loader.style.display = "none";
-    });
+    .catch((err) => console.error("Error adding to cart:", err));
 }
 
 
