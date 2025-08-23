@@ -236,7 +236,6 @@
 //     .catch((err) => console.error("Error adding to cart:", err));
 // }
 
-
 function handleAddToCart() {
   if (!currentProduct) {
     alert("No product selected");
@@ -327,7 +326,6 @@ function handleAddToCart() {
       addToCartBtn.classList.remove("loading");
     });
 }
-
 
 
   // ==============================
