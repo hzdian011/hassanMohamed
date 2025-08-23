@@ -362,7 +362,7 @@ function handleAddToCart() {
   );
 
   if (!selectedVariant) {
-    alert("This variant is not available");
+    alert("Please Select Fill all options");
     addToCartBtn.classList.remove("loading");
     return;
   }
