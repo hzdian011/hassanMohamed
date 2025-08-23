@@ -176,7 +176,8 @@
     </div>
   </div>
 </section>
-{{ 'grid-style.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'grid-style.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{{ 'new-gridStyle.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'grid-script.js' | asset_url }}" defer></script>
 
 
