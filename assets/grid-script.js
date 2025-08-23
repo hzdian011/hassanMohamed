@@ -351,8 +351,7 @@ function handleAddToCart() {
 
   if (!selectedVariant) {
     alert("Please select options");
-        addToCartBtn.classList.remove("loading");
-    loader.style.display = "none";
+    addToCartBtn.classList.remove("loading");
     return;
   }
 
