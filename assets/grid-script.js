@@ -327,6 +327,9 @@ function handleAddToCart() {
     return;
   }
 
+    const addToCartBtn = document.getElementById("addToCartBtn");
+  const loader = addToCartBtn.querySelector(".loader");
+
   const selectedColorBtn = document.querySelector(".color-btn.active");
   const selectedColor = selectedColorBtn?.textContent || null;
 
