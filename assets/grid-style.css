@@ -429,14 +429,19 @@ body {
 
 
 /* Loader or Spinner */
-.loader {
-  border: 3px solid #f3f3f3; /* لون فاتح */
-  border-top: 3px solid #000; /* لون غامق */
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
+.addToCartBtn-icon {
   display: inline-block;
-  animation: spin 0.6s linear infinite;
+}
+
+.loader {
+  display: inline-block;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 0.8s linear infinite;
+  margin-left: 8px; /* علشان تبقى مكان السهم تقريبا */
 }
 
 @keyframes spin {
@@ -444,19 +449,10 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-#addToCartBtn.loading .btn-text {
-  display: none; /* اخفي النص */
+/* وقت الـ loading */
+#addToCartBtn.loading .addToCartBtn-icon {
+  display: none;
 }
 #addToCartBtn.loading .loader {
-  display: inline-block; /* اظهر اللودر مكان النص */
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-#addToCartBtn.loading .btn-text {
-  opacity: 0.5;
-  pointer-events: none;
+  display: inline-block;
 }
