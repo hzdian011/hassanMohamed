@@ -328,7 +328,9 @@ function handleAddToCart() {
   }
 
     const addToCartBtn = document.getElementById("addToCartBtn");
-  const loader = addToCartBtn.querySelector(".loader");
+
+      addToCartBtn.classList.add("loading");
+
     // Show loader
   addToCartBtn.classList.add("loading");
   loader.style.display = "inline-block"
