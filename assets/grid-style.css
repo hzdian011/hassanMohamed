@@ -430,14 +430,25 @@ body {
 
 /* Loader or Spinner */
 .loader {
-  border: 3px solid #f3f3f3; /* فاتح */
+  border: 3px solid #f3f3f3; /* لون فاتح */
   border-top: 3px solid #000; /* لون غامق */
   border-radius: 50%;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   animation: spin 0.6s linear infinite;
-  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#addToCartBtn.loading .btn-text {
+  display: none; /* اخفي النص */
+}
+#addToCartBtn.loading .loader {
+  display: inline-block; /* اظهر اللودر مكان النص */
 }
 
 @keyframes spin {
