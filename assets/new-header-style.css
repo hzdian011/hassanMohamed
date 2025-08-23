@@ -1,0 +1,336 @@
+/* =========================================================
+   Global Variables
+   ========================================================= */
+:root {
+  --color-black: #000;
+  --color-white: #FFF;
+  --color-highlight: #FFF544;
+  --color-bg-light: #F7F7F7;
+  --color-bg-footer: #F5F5F5;
+  --font-main: 'Jost', sans-serif;
+}
+
+/* =========================================================
+   Global Styles
+   ========================================================= */
+body {
+  font-family: var(--font-main);
+}
+section {
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================
+   Navigation Bar
+   ========================================================= */
+.gift-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(8px, 2vw, 10px) clamp(20px, 5vw, 50px);
+  width: 100%;
+  background: var(--color-bg-light);
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+/* Logo */
+.gift-logo {
+  font-size: clamp(16px, 1.5vw, 18px);
+  font-weight: 600;
+  color: var(--color-black);
+  white-space: nowrap;
+}
+
+/* Subtitle (centered) */
+.gift-subtitle {
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 400;
+  color: var(--color-black);
+  margin: 0;
+  text-align: center;
+  line-height: 1.25;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Navigation button */
+.gift-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: clamp(160px, 20vw, 207px);
+  padding: clamp(10px, 2vw, 14px) clamp(8px, 2vw, 10px);
+  background: var(--color-highlight);
+  border: none;
+  color: var(--color-black);
+  font-size: clamp(14px, 2vw, 16px);
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  z-index: 0;
+}
+.gift-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--color-black);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+.gift-btn:hover::before { left: 0; opacity: 1; }
+.gift-btn:hover { color: var(--color-white); border-color: var(--color-black); }
+.gift-btn svg path { stroke: var(--color-black); fill: var(--color-black); }
+.gift-btn:hover svg path { stroke: var(--color-white); fill: var(--color-white); }
+
+/* Burger button (mobile only) */
+.burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-black);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* =========================================================
+   Row 2 (Full Image Banner)
+   ========================================================= */
+.gift-row2 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: left;
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================================================
+   Row 3 (Content + Image)
+   ========================================================= */
+.gift-row3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.gift-row3-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: clamp(10px, 3vw, 30px);
+}
+.gift-title {
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-black);
+  margin: -55px 0 0 0;
+  font-size: clamp(24px, 5vw, 70px);
+}
+.gift-desc {
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: min(90%, 480px);
+  margin: 0 0 clamp(15px, 3vw, 30px) 0;
+  color: var(--color-black);
+  font-size: clamp(14px, 2vw, 20px);
+}
+.gift-row3-right {
+  flex: 1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.gift-row3-right img {
+  width: 945px;
+  height: auto;
+  object-fit: contain;
+  margin-left: -5%;
+  display: none;
+}
+/* Show row3 image only on desktop */
+@media (min-width: 1025px) {
+  .gift-row3-right img { display: block; }
+}
+
+/* CTA button (row 3) */
+.gift-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: clamp(10px, 2vw, 14px) clamp(20px, 5vw, 40px);
+  background: var(--color-black);
+  border: none;
+  color: var(--color-white);
+  font-weight: 400;
+  font-size: clamp(14px, 2vw, 16px);
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 0;
+}
+.gift-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--color-highlight);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+.gift-cta:hover::before { left: 0; opacity: 1; }
+.gift-cta:hover { color: var(--color-black); border-color: var(--color-highlight); }
+.gift-cta svg path { stroke: var(--color-white); fill: var(--color-white); }
+.gift-cta:hover svg path { stroke: var(--color-black); fill: var(--color-black); }
+
+/* =========================================================
+   Row 4 (Footer strip)
+   ========================================================= */
+.gift-row4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(5px, 2vw, 8px) clamp(10px, 4vw, 20px);
+  width: 100%;
+  background: var(--color-bg-footer);
+  box-sizing: border-box;
+}
+.gift-footer {
+  font-weight: 400;
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--color-black);
+  margin: 0;
+  text-align: center;
+}
+
+/* =========================================================
+   Responsive Utilities
+   ========================================================= */
+.desktop-desc { display: block; }
+.mobile-desc { display: none; }
+.mobile-img   { display: none; }
+
+/* =========================================================
+   Breakpoints (Tablet & Mobile)
+   ========================================================= */
+@media (max-width: 1440px) {
+  /* ---------------- Nav ---------------- */
+  .gift-nav { justify-content: center; padding: 18px 0; }
+  .burger-btn { display: block; }
+
+  /* Mobile Menu */
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: #f2f2f2;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    padding: 0 15px;
+    transition: all 0.4s ease;
+  }
+  .nav-links.open {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 25px 65.5px;
+    gap: 16px;
+    background: #F2F2F2;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+    z-index: 1;
+  }
+  .nav-links .gift-subtitle { position: static; transform: none; margin-bottom: 10px; }
+  .nav-links .gift-btn { width: auto; min-width: 200px; margin: 0 auto; }
+
+  /* ---------------- Row 2 ---------------- */
+  .gift-row2 img { display: none; }
+
+  /* ---------------- Row 3 ---------------- */
+  .gift-row3 { flex-direction: column; text-align: center; position: relative; overflow: hidden; padding: 0; }
+  .gift-row3-left {
+    align-items: center;
+    width: 100%;
+    max-width: 90%;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    gap: 16px;
+  }
+  .gift-row3-right { display: none; }
+  .gift-title {
+    font-size: clamp(30px, 6vw, 30px);
+    font-weight: 500;
+    margin: clamp(40px, 8vw, 60px) 0 clamp(10px, 4vw, 20px) 0;
+  }
+  .gift-desc {
+    font-size: clamp(16px, 3vw, 16px);
+    font-weight: 400;
+    margin: 0 auto clamp(20px, 6vw, 40px) auto;
+  }
+
+  /* Mobile desc */
+  .desktop-desc { display: none; }
+  .mobile-desc { display: block; }
+
+  /* Mobile Image */
+  .img-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  .img-container .mobile-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* CTA on mobile */
+  .gift-row3 .gift-cta {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: clamp(8px, 2vw, 14px) clamp(16px, 4vw, 30px);
+    font-size: clamp(16px, 3vw, 16px);
+    font-weight: 400;
+  }
+}
