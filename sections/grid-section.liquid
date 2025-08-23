@@ -180,4 +180,5 @@
 
 
 {{ 'new-gridStyle.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'grid-script.js' | asset_url }}" defer></script>
+{% comment %} <script src="{{ 'grid-script.js' | asset_url }}" defer></script> {% endcomment %}
+<script src="{{ 'new-grid-script.js' | asset_url }}" defer></script>
