@@ -331,9 +331,6 @@ function handleAddToCart() {
 
       addToCartBtn.classList.add("loading");
 
-    // Show loader
-  addToCartBtn.classList.add("loading");
-  loader.style.display = "inline-block"
 
   const selectedColorBtn = document.querySelector(".color-btn.active");
   const selectedColor = selectedColorBtn?.textContent || null;
@@ -343,8 +340,6 @@ function handleAddToCart() {
     ? labelSpan?.textContent
     : null;
 
-  console.log("selectedSize:", selectedSize);
-  console.log("selectedColor:", selectedColor);
 
   const selectedVariant = currentProduct.variants.find((v) => {
     const matchSize =
