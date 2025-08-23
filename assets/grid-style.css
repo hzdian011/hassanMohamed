@@ -447,24 +447,23 @@ body {
 
 .loader {
   display: none;
-  border: 2px solid red;        /* مؤقتًا أحمر علشان تشوفه */
-  border-top: 2px solid yellow; /* مؤقتًا أصفر */
+  border: 2px solid #fff;      /* خليناها أبيض */
+  border-top: 2px solid transparent;
   border-radius: 50%;
   width: 18px;
   height: 18px;
-  animation: spin 0.8s linear infinite;
+
   position: absolute;
   right: 35px;
   top: 50%;
-  transform: translateY(-50%);
-  z-index: 10; /* يتأكد إنه فوق السهم */
+  margin-top: -9px; /* بدل translateY - يخليها تتوسط */
+  
+  animation: spin 0.8s linear infinite;
+  z-index: 10;
 }
 
-
-
-
 @keyframes spin {
-  0% { transform: rotate(0deg); }
+  0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
