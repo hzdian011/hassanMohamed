@@ -326,101 +326,101 @@
 //       addToCartBtn.classList.remove("loading");
 //     });
 // }
-function handleAddToCart() {
-  if (!currentProduct) {
-    alert("No product selected");
-    return;
-  }
+  function handleAddToCart() {
+    if (!currentProduct) {
+      alert("No product selected");
+      return;
+    }
 
-  const addToCartBtn = document.getElementById("addToCartBtn");
-  addToCartBtn.classList.add("loading");
+    const addToCartBtn = document.getElementById("addToCartBtn");
+    addToCartBtn.classList.add("loading");
 
-  const selectedColorBtn = document.querySelector(".color-btn.active");
-  const selectedColor = selectedColorBtn?.textContent || null;
+    const selectedColorBtn = document.querySelector(".color-btn.active");
+    const selectedColor = selectedColorBtn?.textContent || null;
 
-  const labelSpan = document.querySelector("#sizeDropdownBtn .label");
-  const selectedSize =
-    labelSpan?.textContent !== "Choose your size" ? labelSpan?.textContent : null;
+    const labelSpan = document.querySelector("#sizeDropdownBtn .label");
+    const selectedSize =
+      labelSpan?.textContent !== "Choose your size" ? labelSpan?.textContent : null;
 
-  // ✅ لازم المقاس واللون يتختاروا قبل الإضافة
-  if (!selectedSize) {
-    alert("Please select a size");
-    addToCartBtn.classList.remove("loading");
-    return;
-  }
-
-  if (!selectedColor) {
-    alert("Please select a color");
-    addToCartBtn.classList.remove("loading");
-    return;
-  }
-
-  const selectedVariant = currentProduct.variants.find(
-    (v) =>
-      v.option1?.toLowerCase() === selectedSize.toLowerCase() &&
-      v.option2?.toLowerCase() === selectedColor.toLowerCase()
-  );
-
-  if (!selectedVariant) {
-    alert("Please Select Fill all options");
-    addToCartBtn.classList.remove("loading");
-    return;
-  }
-
-  // 🛒 Add main product
-  fetch("/cart/add.js", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
-  })
-    .then((res) => res.json())
-    .then(async () => {
-      // 🎁 Bonus product condition
-      if (
-        selectedColor?.toLowerCase() === "black" &&
-        selectedSize?.toLowerCase() === "m"
-      ) {
-        try {
-          const bonusProduct = await fetchJSON("/products/dark-winter-jacket.js");
-          const bonusVariant = bonusProduct.variants.find(
-            (v) =>
-              v.option1?.toLowerCase() === "m" &&
-              v.option2?.toLowerCase() === "black"
-          );
-
-          if (bonusVariant) {
-            await fetch("/cart/add.js", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-              body: JSON.stringify({ id: bonusVariant.id, quantity: 1 }),
-            });
-            console.log("✅ Bonus Winter Jacket added automatically!");
-          }
-        } catch (err) {
-          console.error("Error adding bonus product:", err);
-        }
-      }
-
-      closeModal();
-      openCartDrawer();
-
-      // Reset size button to default
-      const sizeBtn = document.getElementById("sizeDropdownBtn");
-      const labelSpan = sizeBtn.querySelector(".label");
-      if (labelSpan) labelSpan.textContent = "Choose your size";
-      sizeBtn.classList.remove("size-selected");
-    })
-    .catch((err) => console.error("Error adding to cart:", err))
-    .finally(() => {
+    // ✅ لازم المقاس واللون يتختاروا قبل الإضافة
+    if (!selectedSize) {
+      alert("Please select a size");
       addToCartBtn.classList.remove("loading");
-    });
-}
+      return;
+    }
+
+    if (!selectedColor) {
+      alert("Please select a color");
+      addToCartBtn.classList.remove("loading");
+      return;
+    }
+
+    const selectedVariant = currentProduct.variants.find(
+      (v) =>
+        v.option1?.toLowerCase() === selectedSize.toLowerCase() &&
+        v.option2?.toLowerCase() === selectedColor.toLowerCase()
+    );
+
+    if (!selectedVariant) {
+      alert("Please Select Fill all options");
+      addToCartBtn.classList.remove("loading");
+      return;
+    }
+
+    // 🛒 Add main product
+    fetch("/cart/add.js", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ id: selectedVariant.id, quantity: 1 }),
+    })
+      .then((res) => res.json())
+      .then(async () => {
+        // 🎁 Bonus product condition
+        if (
+          selectedColor?.toLowerCase() === "black" &&
+          selectedSize?.toLowerCase() === "m"
+        ) {
+          try {
+            const bonusProduct = await fetchJSON("/products/dark-winter-jacket.js");
+            const bonusVariant = bonusProduct.variants.find(
+              (v) =>
+                v.option1?.toLowerCase() === "m" &&
+                v.option2?.toLowerCase() === "black"
+            );
+
+            if (bonusVariant) {
+              await fetch("/cart/add.js", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify({ id: bonusVariant.id, quantity: 1 }),
+              });
+              console.log("✅ Bonus Winter Jacket added automatically!");
+            }
+          } catch (err) {
+            console.error("Error adding bonus product:", err);
+          }
+        }
+
+        closeModal();
+        openCartDrawer();
+
+        // Reset size button to default
+        const sizeBtn = document.getElementById("sizeDropdownBtn");
+        const labelSpan = sizeBtn.querySelector(".label");
+        if (labelSpan) labelSpan.textContent = "Choose your size";
+        sizeBtn.classList.remove("size-selected");
+      })
+      .catch((err) => console.error("Error adding to cart:", err))
+      .finally(() => {
+        addToCartBtn.classList.remove("loading");
+      });
+  }
 
 
 
