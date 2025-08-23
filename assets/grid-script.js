@@ -409,7 +409,12 @@ function handleAddToCart() {
       if (labelSpan) labelSpan.textContent = "Choose your size";
       sizeBtn.classList.remove("size-selected");
     })
-    .catch((err) => console.error("Error adding to cart:", err));
+    .catch((err) => console.error("Error adding to cart:", err))
+    .finally(() => {
+      // Hide loader
+      addToCartBtn.classList.remove("loading");
+      loader.style.display = "none";
+    });
 }
 
 
